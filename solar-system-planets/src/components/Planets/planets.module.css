@@ -15,8 +15,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 250px;
-  width: 250px;
+  height: 225px;
+  width: 225px;
   box-shadow: 0 0 2px rgb(205, 198, 198);
   border: 1px whitesmoke;
   border-radius: 50%;
@@ -108,10 +108,49 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1500px) {
   .planetSmall {
     margin: 15px;
+    height: 210px;
+    width: 210px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .planetSmall {
     height: 200px;
     width: 200px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .planetSmall {
+    height: 175px;
+    width: 175px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  body {
+    height: 100vh;
+  }
+  .planetsContainer {
+    width: 100vw;
+  }
+  .planetSmall {
+    padding: 10px;
+    margin: 10px;
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .planetSmall {
+    padding: 5px;
+    margin: 5px;
+    height: 100px;
+    width: 100px;
+  }
+  .planetSmall h2 {
+    font-size: 14px;
   }
 }

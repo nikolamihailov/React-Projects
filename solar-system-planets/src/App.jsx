@@ -16,7 +16,7 @@ function App() {
       .then((data) => {
         //console.log(data);
         setPlanets(data);
-        setTimeout(() => setIsLoading(false), 1500);
+        setIsLoading(false);
       })
       .catch((err) => {
         //   setHaveError(true);

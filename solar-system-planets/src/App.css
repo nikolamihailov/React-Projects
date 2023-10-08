@@ -7,7 +7,7 @@
 body {
   width: 100vh;
   width: 100vw;
-  background-image: url("./assets/sky.jpg");
+  background-image: url("/sky.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

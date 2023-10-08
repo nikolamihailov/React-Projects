@@ -5,7 +5,7 @@ const Nav = () => {
     <nav className={styles.navigation}>
       <ul>
         <li>
-          <img src="/src/assets/lg.png" alt="logo" />
+          <img src="/lg.png" alt="logo" />
         </li>
       </ul>
     </nav>

@@ -97,6 +97,7 @@
 
 .planetBig button {
   all: unset;
+  cursor: pointer;
   margin: 10px 0;
   text-decoration: none;
   background-color: white;
@@ -105,4 +106,12 @@
   font-size: 17px;
   border-radius: 20px;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 1000px) {
+  .planetSmall {
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+  }
 }

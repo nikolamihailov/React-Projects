@@ -1,0 +1,17 @@
+.navigation {
+  padding: 15px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation ul {
+  list-style-type: none;
+}
+
+.navigation img {
+  height: 8rem;
+  width: 6rem;
+}

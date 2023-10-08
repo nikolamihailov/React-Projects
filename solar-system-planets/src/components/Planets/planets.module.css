@@ -1,0 +1,108 @@
+.planetsContainer {
+  animation: fade 2s linear;
+  width: 80vw;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.planetSmall {
+  background-color: black;
+  scale: 1;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 250px;
+  box-shadow: 0 0 2px rgb(205, 198, 198);
+  border: 1px whitesmoke;
+  border-radius: 50%;
+  padding: 15px;
+  transition: 0.7s ease-in-out;
+}
+
+.planetSmall img {
+  animation: fade 2s linear;
+  filter: contrast(120%);
+  position: relative;
+  height: 70%;
+  width: 70%;
+  border-radius: 25px;
+}
+
+.planetSmall:hover {
+  transition: 0.7s ease-in-out;
+  box-shadow: 0 0 10px rgb(205, 198, 198);
+  scale: 1.1;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.planetBig {
+  animation: fade 2s linear;
+  position: relative;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50px;
+  width: 70vw;
+  height: 70vh;
+}
+.planetBig i {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+.planetBig table {
+  border-spacing: 15px;
+}
+
+.planetBig p {
+  margin: 8px;
+  font-size: 15px;
+}
+.planetBig p strong {
+  font-size: 18px;
+}
+
+.planetBig img {
+  position: relative;
+  width: auto;
+  height: 40%;
+}
+
+.planetBig a {
+  margin: 10px;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  padding: 15px;
+  font-size: 17px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.planetBig button {
+  all: unset;
+  margin: 10px 0;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  padding: 15px;
+  font-size: 17px;
+  border-radius: 20px;
+  font-weight: bold;
+}

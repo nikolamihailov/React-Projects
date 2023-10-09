@@ -14,7 +14,7 @@ function App() {
     planetService
       .getAllPlanets()
       .then((data) => {
-        //console.log(data);
+        // console.log(data);
         setPlanets(data);
         setIsLoading(false);
       })

@@ -1,0 +1,11 @@
+.btn {
+  all: unset;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 999;
+}
+.btn i {
+  font-size: 25px;
+}

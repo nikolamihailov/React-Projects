@@ -128,12 +128,18 @@
   }
 }
 @media only screen and (max-width: 1200px) {
+  .planetsContainer {
+    width: 90vw;
+  }
   .planetSmall {
     height: 200px;
     width: 200px;
   }
 }
 @media only screen and (max-width: 1000px) {
+  .planetsContainer {
+    width: 80vw;
+  }
   .planetBig i {
     margin-bottom: 20px;
     font-size: 13px;
@@ -157,9 +163,6 @@
 }
 
 @media only screen and (max-width: 650px) {
-  body {
-    height: 100vh;
-  }
   .planetsContainer {
     width: 100vw;
   }
@@ -215,5 +218,10 @@
   .planetBig button {
     padding: 10px;
     font-size: 12px;
+  }
+}
+@media only screen and (max-width: 250px) {
+  body {
+    height: auto;
   }
 }

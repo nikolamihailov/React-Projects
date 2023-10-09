@@ -1,21 +1,13 @@
 const BASE_URL = "https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/";
 
-/* console.log(import.meta.env.VITE_API_KEY);
-const options = {
-    method: 'GET',
-    url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
-    headers: {
-        'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_API_HOST
-    }
-};
- */
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_HOST = import.meta.env.VITE_API_HOST;
 
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '783d4795f5msh7b334c2c6ddf04ep1174e1jsn4f5402dd379b',
-        'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com'
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': API_HOST
     }
 };
 

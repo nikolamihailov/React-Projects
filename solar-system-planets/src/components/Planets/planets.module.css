@@ -181,7 +181,11 @@
     font-size: 11px;
   }
   .planetBig table {
-    border-spacing: 10px;
+    border-spacing: 5px;
+  }
+  .planetBig table td,
+  th {
+    font-size: 12px;
   }
 
   .planetBig p {
@@ -205,11 +209,11 @@
   }
   .planetBig a {
     padding: 10px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .planetBig button {
     padding: 10px;
-    font-size: 13px;
+    font-size: 12px;
   }
 }

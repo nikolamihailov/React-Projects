@@ -39,7 +39,10 @@
   scale: 1.1;
   cursor: pointer;
 }
-
+.planetsContainer > div:nth-child(6) img {
+  height: 55%;
+  width: 100%;
+}
 @keyframes fade {
   0% {
     opacity: 0;

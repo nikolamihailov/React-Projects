@@ -8,6 +8,7 @@ const AudioPlayer = () => {
   const startStopAudio = () => {
     if (isPlaying) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     } else {
       audioRef.current.play();
     }

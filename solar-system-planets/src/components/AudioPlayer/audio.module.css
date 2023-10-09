@@ -1,11 +1,25 @@
 .btn {
   all: unset;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 25px;
+  right: 25px;
   cursor: pointer;
   z-index: 999;
 }
 .btn i {
-  font-size: 25px;
+  font-size: 27px;
+}
+
+@media only screen and (max-width: 400px) {
+  .btn {
+    all: unset;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  .btn i {
+    font-size: 20px;
+  }
 }

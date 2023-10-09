@@ -5,6 +5,7 @@
   flex: 1;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .planetSmall {
@@ -138,7 +139,7 @@
 }
 @media only screen and (max-width: 1000px) {
   .planetsContainer {
-    width: 80vw;
+    width: 95vw;
   }
   .planetBig i {
     margin-bottom: 20px;
@@ -179,6 +180,9 @@
 }
 
 @media only screen and (max-width: 430px) {
+  .planetBig {
+    height: 60vh;
+  }
   .planetBig i {
     margin-bottom: 12px;
     font-size: 11px;
@@ -220,6 +224,12 @@
     font-size: 12px;
   }
 }
+@media only screen and (max-width: 320px) {
+  .planetBig {
+    height: 80vh;
+  }
+}
+
 @media only screen and (max-width: 250px) {
   body {
     height: auto;

@@ -1,5 +1,6 @@
 .planetsContainer {
   animation: fade 2s linear;
+  height: 100%;
   width: 80vw;
   display: flex;
   flex: 1;

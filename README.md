@@ -1,4 +1,4 @@
-# React-Projects
+# React-Projects demos
 
 ## Solar System Planets
 ### Live Demo:

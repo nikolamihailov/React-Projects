@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fade 1.8s ease-in-out;
 }
 
 .navigation ul {
@@ -14,6 +15,15 @@
 .navigation img {
   height: 8rem;
   width: 6rem;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 1000px) {

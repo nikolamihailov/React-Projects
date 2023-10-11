@@ -16,7 +16,7 @@ const Footer = () => {
           </li>
           <li>
             <a
-              href="https://www.facebook.com/nikolamihaylov6/"
+              href="https://github.com/nikolamihailov"
               target="_blank"
             >
               <i className="fa-brands fa-github"></i>

@@ -5,6 +5,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: white;
   padding-bottom: 10px;
+  animation: fade 6s ease-in-out;
 }
 
 .footer p {
@@ -48,6 +49,15 @@
 
 .social-networks ul li i:hover {
   scale: 1.15;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 650px) {

@@ -23,6 +23,13 @@
   }
 }
 
+@media only screen and (max-width: 650px) {
+  .navigation img {
+    height: 5rem;
+    width: 4rem;
+  }
+}
+
 @media only screen and (max-width: 430px) {
   .navigation img {
     height: 4rem;

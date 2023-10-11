@@ -164,12 +164,15 @@
 }
 
 @media only screen and (max-width: 650px) {
+  .planetBig img {
+    height: 25%;
+  }
   .planetsContainer {
     width: 100vw;
   }
   .planetBig {
     width: 80vw;
-    height: 80vh;
+    height: 70vh;
   }
   .planetSmall {
     padding: 10px;

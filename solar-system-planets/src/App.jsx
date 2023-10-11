@@ -5,6 +5,7 @@ import { planetService } from "./services/api";
 import Spinner from "./components/Spinner/Spinner";
 import PlanetList from "./components/Planets/PlanetsList";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [planets, setPlanets] = useState([]);
@@ -35,6 +36,7 @@ function App() {
           <AudioPlayer />
           <Nav planets={planets} />
           <PlanetList planets={planets} />
+          <Footer />
         </>
       )}
     </>

@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./assets/logo.svg";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  // dynamically set page title
+  useEffect(
+    () => (document.title = "KolPlace - Your Online Shop"),
+    []
+  );
 
   return (
     <>

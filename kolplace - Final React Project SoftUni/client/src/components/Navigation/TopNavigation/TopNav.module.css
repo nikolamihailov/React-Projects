@@ -1,0 +1,11 @@
+.logo {
+  height: 3em;
+  will-change: filter;
+  filter: drop-shadow(0 0 0.5em #e70a0aaa);
+}
+
+@media (max-width: 700px) {
+  .logo {
+    will-change: filter;
+  }
+}

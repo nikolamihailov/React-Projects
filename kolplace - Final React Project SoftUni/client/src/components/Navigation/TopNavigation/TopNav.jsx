@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./TopNav.module.css";
+import UserIconDropDown from "../Icons/UserIcon/UserIconDropdown";
+import FavouritesIcon from "../Icons/FavouritesIcon/FavouritesIcon";
+import ShoppingCartIcon from "../Icons/ShoppingCartIcon/ShoppingCartIcon";
 
 const TopNav = () => {
   const [logoSrc, setLogoSrc] = useState(
@@ -35,7 +38,11 @@ const TopNav = () => {
           />
         </div>
         {/*  // icons navigation */}
-        <div></div>
+        <div>
+          <UserIconDropDown />
+          <FavouritesIcon />
+          <ShoppingCartIcon />
+        </div>
       </div>
     </nav>
   );

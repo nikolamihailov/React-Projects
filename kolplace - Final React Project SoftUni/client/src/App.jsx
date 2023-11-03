@@ -20,7 +20,10 @@ function App() {
   return (
     <div className={`app-${theme}`}>
       <TopNav />
-      <ThemeButton toggleTheme={toggleTheme} />
+      <ThemeButton
+        toggleTheme={toggleTheme}
+        theme={theme}
+      />
     </div>
   );
 }

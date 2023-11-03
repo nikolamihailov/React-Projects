@@ -1,12 +1,9 @@
-.theme-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.icon-btn {
   all: unset;
   cursor: pointer;
   padding: 15px;
 }
-.theme-btn i {
+.icon-btn i {
   font-size: 25px;
   color: var(--primary-white-theme-second-color);
 }

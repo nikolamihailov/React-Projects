@@ -1,7 +1,9 @@
 :root {
-  --primary-white-theme-color: white;
+  --background-white-theme-color: whitesmoke;
+  --background-dark-theme-color: #23272f;
+  --primary-white-theme-color: #23272f;
   --primary-white-theme-second-color: red;
-  --primary-dark-theme-color: #23272f;
+  --primary-dark-theme-color: whitesmoke;
   --primary-dark-theme-second-color: red;
 }
 
@@ -10,13 +12,8 @@ body {
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  color: var(--primary-white-theme-color);
+  background-color: var(--background-white-theme-color);
 }
 
 * {
@@ -58,4 +55,17 @@ body {
 
 *::-webkit-scrollbar-thumb:active {
   background-color: rgb(162, 22, 1);
+}
+
+.app-light {
+  height: 100%;
+  width: 100%;
+  color: var(--primary-white-theme-color);
+  background-color: var(--background-white-theme-color);
+}
+.app-dark {
+  height: 100%;
+  width: 100%;
+  color: var(--primary-dark-theme-color);
+  background-color: var(--background-dark-theme-color);
 }

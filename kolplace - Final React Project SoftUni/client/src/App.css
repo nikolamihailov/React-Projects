@@ -1,4 +1,11 @@
-#root {
+:root {
+  --primary-white-theme-color: white;
+  --primary-white-theme-second-color: red;
+  --primary-dark-theme-color: #23272f;
+  --primary-dark-theme-second-color: red;
+}
+
+body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
   line-height: 1.5;
@@ -10,4 +17,45 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* For Firefox */
+  scrollbar-color: var(--primary-white-theme-second-color)
+    var(--primary-white-theme-color);
+  scrollbar-width: thin;
+}
+
+/* Other browsers - Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: var(--primary-white-theme-color);
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: var(--primary-white-theme-color);
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--primary-white-theme-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: var(--primary-white-theme-second-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(162, 22, 1);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgb(162, 22, 1);
 }

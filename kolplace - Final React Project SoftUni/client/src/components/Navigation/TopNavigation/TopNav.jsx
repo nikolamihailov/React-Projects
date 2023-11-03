@@ -12,9 +12,11 @@ const TopNav = () => {
         <Logo />
         {/*  // icons navigation */}
         <div>
-          <UserIconDropDown />
-          <FavouritesIcon />
-          <ShoppingCartIcon />
+          <div className={styles["icons-container"]}>
+            <UserIconDropDown />
+            <FavouritesIcon />
+            <ShoppingCartIcon />
+          </div>
         </div>
       </div>
     </nav>

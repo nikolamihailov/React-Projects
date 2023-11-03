@@ -2,8 +2,14 @@
   all: unset;
   cursor: pointer;
   padding: 15px;
+  transition: all 0.5s ease-in-out;
 }
 .icon-btn i {
   font-size: 25px;
-  color: var(--primary-white-theme-second-color);
+  color: var(--secondary-color);
+  filter: drop-shadow(0 0 2px var(--dropshadow-color));
+}
+
+.icon-btn:hover {
+  scale: 1.2;
 }

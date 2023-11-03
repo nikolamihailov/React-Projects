@@ -2,9 +2,9 @@
   --background-white-theme-color: whitesmoke;
   --background-dark-theme-color: #23272f;
   --primary-white-theme-color: #23272f;
-  --primary-white-theme-second-color: red;
   --primary-dark-theme-color: whitesmoke;
-  --primary-dark-theme-second-color: red;
+  --secondary-color: red;
+  --dropshadow-color: rgb(203, 21, 21);
 }
 
 body {

@@ -1,0 +1,10 @@
+.logo {
+  height: 2.5em;
+  will-change: filter;
+  filter: drop-shadow(0 0 0.3em var(--dropshadow-color));
+  transition: scale 0.5s ease-in-out;
+}
+.logo:hover {
+  scale: 1.05;
+  filter: drop-shadow(0 0 0.5em var(--dropshadow-color));
+}

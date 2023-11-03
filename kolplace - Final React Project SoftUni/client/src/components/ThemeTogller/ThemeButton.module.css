@@ -1,12 +1,22 @@
 .theme-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   all: unset;
+  position: absolute;
+  top: 15px;
+  right: 10px;
   cursor: pointer;
   padding: 15px;
 }
+.theme-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--secondary-color);
+}
 .theme-btn i {
   font-size: 25px;
-  color: var(--primary-white-theme-second-color);
+  color: var(--secondary-color);
+  filter: drop-shadow(0 0 0.5px var(--dropshadow-color));
 }

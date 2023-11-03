@@ -1,16 +1,18 @@
-.logo {
-  height: 3em;
-  will-change: filter;
-  filter: drop-shadow(0 0 0.3em #e70a0aaa);
-  transition: scale 0.5s ease-in-out;
-}
-.logo:hover {
-  scale: 1.05;
-  filter: drop-shadow(0 0 0.8em #e70a0aaa);
+.top-nav {
+  padding: 15px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 6px solid var(--secondary-color);
 }
 
-@media (max-width: 700px) {
-  .logo {
-    will-change: filter;
-  }
+.top-nav-container {
+  position: relative;
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

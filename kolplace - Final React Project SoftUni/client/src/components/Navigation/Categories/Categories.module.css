@@ -1,0 +1,18 @@
+.categories-btn-container {
+  background-color: var(--main-nav-categories);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.categories-btn-container button {
+  all: unset;
+  font-size: 21px;
+}
+
+.categories-btn-container i {
+  font-size: 28px;
+}

@@ -1,5 +1,6 @@
 :root {
   --background-color: whitesmoke;
+  --background-inverted-color: #23272f;
   --primary-color: #23272f;
   --secondary-color: red;
   --dropshadow-color: rgb(203, 21, 21);
@@ -58,6 +59,7 @@ body {
   height: 100%;
   width: 100%;
   --background-color: whitesmoke;
+  --background-inverted-color: #23272f;
   --primary-color: #23272f;
   --top-nav-background-color: whitesmoke;
   color: var(--primary-color);
@@ -67,6 +69,7 @@ body {
   height: 100%;
   width: 100%;
   --background-color: #23272f;
+  --background-inverted-color: whitesmoke;
   --primary-color: whitesmoke;
   --top-nav-background-color: #23272f;
   color: var(--primary-color);

@@ -6,10 +6,12 @@
   top: 100%;
   left: 0;
   z-index: 999;
+  border-radius: 5px;
 }
 
 .user-dropdown li {
   padding: 14px;
+  border-radius: 5px;
   transition: all linear 0.3s;
 }
 

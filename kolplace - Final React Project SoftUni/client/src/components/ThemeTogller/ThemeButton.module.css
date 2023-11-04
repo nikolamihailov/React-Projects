@@ -4,7 +4,9 @@
   cursor: pointer;
   padding: 5px 15px;
   z-index: 999;
+  border-radius: 50%;
 }
+
 .theme-btn::before {
   content: "";
   position: absolute;
@@ -14,8 +16,10 @@
   width: 2px;
   background-color: var(--secondary-color);
 }
+
 .theme-btn i {
   font-size: 28px;
   color: var(--secondary-color);
   filter: drop-shadow(0 0 1px var(--dropshadow-color));
+  transition: all 0.8s ease-in-out;
 }

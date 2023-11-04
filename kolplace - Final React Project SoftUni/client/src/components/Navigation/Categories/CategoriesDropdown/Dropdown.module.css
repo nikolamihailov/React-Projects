@@ -4,7 +4,7 @@
   color: var(--background-color);
   position: absolute;
   top: 100%;
-  left: 10%;
+  left: 0;
   z-index: 999;
   border-radius: 5px;
   display: flex;
@@ -22,6 +22,7 @@
   transition: all 0.5s ease-in-out;
   display: flex;
   justify-content: flex-start;
+  padding-left: 10%;
 }
 
 .categories-dropdown li:hover {
@@ -31,7 +32,12 @@
 }
 
 .categories-dropdown i {
+  flex: 1;
   color: var(--secondary-color);
   font-size: 18px;
   margin-right: 10px;
+}
+
+.categories-dropdown span {
+  flex: 3;
 }

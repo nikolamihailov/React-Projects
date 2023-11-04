@@ -6,7 +6,9 @@
   top: 100%;
   left: 0;
   z-index: 999;
+  font-size: 18px;
   border-radius: 5px;
+  width: 200%;
 }
 
 .user-dropdown li {
@@ -16,7 +18,13 @@
 }
 
 .user-dropdown li:hover {
-  background: var(--secondary-color);
+  background: rgb(146, 141, 141);
   cursor: pointer;
   color: var(--primary-color);
+}
+
+.user-dropdown i {
+  color: var(--secondary-color);
+  font-size: 18px;
+  margin-right: 10px;
 }

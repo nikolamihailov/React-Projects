@@ -2,7 +2,8 @@
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: flex-start;
+  padding-left: 5%;
+  justify-content: space-evenly;
 }
 
 .categories-container {
@@ -22,7 +23,6 @@
   display: inline-block;
   font-size: 17px;
   font-weight: bold;
-  transition: all 0.7s ease-in-out;
 }
 
 .links li:hover {

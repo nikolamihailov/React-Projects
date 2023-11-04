@@ -1,10 +1,9 @@
 :root {
-  --background-white-theme-color: whitesmoke;
-  --background-dark-theme-color: #23272f;
-  --primary-white-theme-color: #23272f;
-  --primary-dark-theme-color: whitesmoke;
+  --background-color: whitesmoke;
+  --primary-color: #23272f;
   --secondary-color: red;
   --dropshadow-color: rgb(203, 21, 21);
+  --top-nav-background-color: whitesmoke;
 }
 
 body {
@@ -12,8 +11,6 @@ body {
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: var(--primary-white-theme-color);
-  background-color: var(--background-white-theme-color);
 }
 
 * {
@@ -21,32 +18,32 @@ body {
   margin: 0;
   padding: 0;
   /* For Firefox */
-  scrollbar-color: var(--primary-white-theme-second-color)
-    var(--primary-white-theme-color);
+  scrollbar-color: var(--secondary-color)
+    var(--primary-color);
   scrollbar-width: auto;
 }
 
 /* Other browsers - Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 20px;
+  width: 15px;
 }
 
 *::-webkit-scrollbar-track {
   border-radius: 5px;
-  background-color: var(--primary-white-theme-color);
+  background-color: var(--primary-color);
 }
 
 *::-webkit-scrollbar-track:hover {
-  background-color: var(--primary-white-theme-color);
+  background-color: var(--primary-color);
 }
 
 *::-webkit-scrollbar-track:active {
-  background-color: var(--primary-white-theme-color);
+  background-color: var(--primary-color);
 }
 
 *::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: var(--primary-white-theme-second-color);
+  background-color: var(--secondary-color);
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -60,12 +57,18 @@ body {
 .app-light {
   height: 100%;
   width: 100%;
-  color: var(--primary-white-theme-color);
-  background-color: var(--background-white-theme-color);
+  --background-color: whitesmoke;
+  --primary-color: #23272f;
+  --top-nav-background-color: whitesmoke;
+  color: var(--primary-color);
+  background-color: var(--background-color);
 }
 .app-dark {
   height: 100%;
   width: 100%;
-  color: var(--primary-dark-theme-color);
-  background-color: var(--background-dark-theme-color);
+  --background-color: #23272f;
+  --primary-color: whitesmoke;
+  --top-nav-background-color: #23272f;
+  color: var(--primary-color);
+  background-color: var(--background-color);
 }

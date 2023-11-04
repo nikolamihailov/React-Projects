@@ -24,6 +24,7 @@ const UserIconDropDown = () => {
         title="User Profile"
       >
         <i className="fa-regular fa-user"></i>
+        <i className="fa-regular fa-circle-check"></i>
       </button>
       {isDropdownOpen && <DropDownUser />}
     </div>

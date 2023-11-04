@@ -1,7 +1,7 @@
 .user-dropdown {
   list-style: none;
-  background: rgb(30, 27, 27);
-  color: whitesmoke;
+  background: var(--primary-color);
+  color: var(--background-color);
   position: absolute;
   top: 100%;
   left: 0;
@@ -14,7 +14,7 @@
 }
 
 .user-dropdown li:hover {
-  background: gray;
+  background: var(--secondary-color);
   cursor: pointer;
-  color: #fff;
+  color: var(--primary-color);
 }

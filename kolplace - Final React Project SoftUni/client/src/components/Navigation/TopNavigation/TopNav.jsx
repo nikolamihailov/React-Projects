@@ -3,8 +3,9 @@ import UserIconDropDown from "../Icons/UserIcon/UserIconDropdown";
 import FavouritesIcon from "../Icons/FavouritesIcon/FavouritesIcon";
 import ShoppingCartIcon from "../Icons/ShoppingCartIcon/ShoppingCartIcon";
 import Logo from "../Logo/Logo";
+import ThemeButton from "../../ThemeTogller/ThemeButton";
 
-const TopNav = () => {
+const TopNav = ({ theme, toggleTheme }) => {
   return (
     <nav className={styles["top-nav"]}>
       <div className={styles["top-nav-container"]}>
@@ -19,6 +20,10 @@ const TopNav = () => {
           </div>
         </div>
       </div>
+      <ThemeButton
+        toggleTheme={toggleTheme}
+        theme={theme}
+      />
     </nav>
   );
 };

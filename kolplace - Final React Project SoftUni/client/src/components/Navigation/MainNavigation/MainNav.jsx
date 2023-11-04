@@ -7,7 +7,7 @@ const MainNav = () => {
       <div className={styles["categories-container"]}>
         <Categories />
       </div>
-      <ul>
+      <ul className={styles["links"]}>
         <li>Promotions</li>
         <li>Contacts</li>
         <li>Our stores</li>

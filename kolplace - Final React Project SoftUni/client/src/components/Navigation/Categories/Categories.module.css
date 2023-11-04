@@ -6,6 +6,7 @@
   align-items: center;
   color: var(--white-color);
   cursor: pointer;
+  position: relative;
 }
 
 .categories-btn-container button {

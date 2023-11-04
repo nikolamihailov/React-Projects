@@ -5,6 +5,10 @@
   --secondary-color: red;
   --dropshadow-color: rgb(203, 21, 21);
   --top-nav-background-color: whitesmoke;
+  --main-nav-background: rgb(20, 19, 19);
+  --main-nav-categories: rgb(191, 1, 1);
+  --white-color: whitesmoke;
+  --black-color: #23272f;
 }
 
 body {

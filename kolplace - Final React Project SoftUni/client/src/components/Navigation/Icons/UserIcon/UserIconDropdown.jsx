@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DropDownUser from "../../DropdownUser/DropDownUser";
+import DropDownUser from "./DropdownUser/DropDownUser";
 import styles from "../Icons.module.css";
 
 const UserIconDropDown = () => {

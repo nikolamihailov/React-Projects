@@ -4,6 +4,7 @@ import FavouritesIcon from "../Icons/FavouritesIcon/FavouritesIcon";
 import ShoppingCartIcon from "../Icons/ShoppingCartIcon/ShoppingCartIcon";
 import Logo from "../Logo/Logo";
 import ThemeButton from "../../ThemeTogller/ThemeButton";
+import Search from "../Search/Search";
 
 const TopNav = ({ theme, toggleTheme }) => {
   return (
@@ -11,6 +12,7 @@ const TopNav = ({ theme, toggleTheme }) => {
       <div className={styles["top-nav-container"]}>
         {/* logo */}
         <Logo />
+        <Search />
         {/*  // icons navigation */}
         <div>
           <div className={styles["icons-container"]}>

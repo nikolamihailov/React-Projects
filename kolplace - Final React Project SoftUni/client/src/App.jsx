@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import TopNav from "./components/Navigation/TopNavigation/TopNav";
+import Header from "./components/Header/Header";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className={`app-${theme}`}>
-      <TopNav theme={theme} toggleTheme={toggleTheme} />
+      <Header theme={theme} toggleTheme={toggleTheme} />
     </div>
   );
 }

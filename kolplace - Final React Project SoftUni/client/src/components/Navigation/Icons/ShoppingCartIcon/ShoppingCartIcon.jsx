@@ -8,6 +8,7 @@ const ShoppingCartIcon = () => {
         title="Shopping Cart"
       >
         <i className="fa-solid fa-cart-shopping"></i>
+        <span>0</span>
       </button>
     </>
   );

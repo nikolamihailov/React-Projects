@@ -12,6 +12,11 @@
   transition: all 0.7s ease-in-out;
 }
 
+.icon-btn:hover > i:nth-child(1) {
+  animation: iconAnimation 0.7s ease-in-out;
+  scale: 1.15;
+}
+
 .icon-btn i:nth-child(2) {
   position: absolute;
   bottom: 7px;
@@ -20,9 +25,16 @@
   z-index: 999;
 }
 
-.icon-btn:hover > i:nth-child(1) {
-  animation: iconAnimation 0.7s ease-in-out;
-  scale: 1.15;
+.icon-btn span {
+  border-radius: 10px;
+  padding: 0 5px;
+  font-weight: bold;
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  font-size: 13px;
+  background-color: var(--background-inverted-color);
+  color: var(--secondary-color);
 }
 
 .dropdown-container {

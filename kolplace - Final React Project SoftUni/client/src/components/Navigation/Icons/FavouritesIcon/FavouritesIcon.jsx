@@ -8,6 +8,7 @@ const FavouritesIcon = () => {
         title="Favourite Products"
       >
         <i className="fa-regular fa-heart"></i>
+        <span>0</span>
       </button>
     </>
   );

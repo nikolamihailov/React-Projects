@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import TopNav from "./components/Navigation/TopNavigation/TopNav";
-import ThemeButton from "./components/ThemeTogller/ThemeButton";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -19,11 +18,7 @@ function App() {
 
   return (
     <div className={`app-${theme}`}>
-      <ThemeButton
-        toggleTheme={toggleTheme}
-        theme={theme}
-      />
-      <TopNav />
+      <TopNav theme={theme} toggleTheme={toggleTheme} />
     </div>
   );
 }

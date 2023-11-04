@@ -3,7 +3,7 @@ import "./App.css";
 import TopNav from "./components/Navigation/TopNavigation/TopNav";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   // dynamically set page title
   useEffect(() => {

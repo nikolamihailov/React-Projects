@@ -4,7 +4,7 @@ import CategoriesDropdown from "./CategoriesDropdown/CategoriesDropdown";
 
 const Categories = () => {
   const [isDropdownOpen, setIsDropDownOpen] =
-    useState(true);
+    useState(false);
 
   const handleMouseEnter = () => {
     setIsDropDownOpen(true);

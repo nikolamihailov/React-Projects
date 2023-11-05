@@ -2,8 +2,9 @@
   width: 100%;
   height: auto;
   display: flex;
-  padding-left: 5%;
   justify-content: space-evenly;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
 }
 
 .categories-container {
@@ -11,7 +12,7 @@
 }
 
 .links {
-  flex: 5;
+  flex: 4.5;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

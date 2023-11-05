@@ -1,13 +1,11 @@
 .top-nav {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
   padding: 15px;
   width: 100%;
   height: auto;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 2;
   background-color: var(--top-nav-background-color);
   border-bottom: 6px solid var(--secondary-color);
 }

@@ -3,7 +3,7 @@ import UserIconDropDown from "../Icons/UserIcon/UserIconDropdown";
 import FavouritesIcon from "../Icons/FavouritesIcon/FavouritesIcon";
 import ShoppingCartIcon from "../Icons/ShoppingCartIcon/ShoppingCartIcon";
 import Logo from "../Logo/Logo";
-import ThemeButton from "../../ThemeTogller/ThemeButton";
+import ThemeButton from "../../ThemeToggler/ThemeButton";
 import Search from "../Search/Search";
 
 const TopNav = ({ theme, toggleTheme }) => {

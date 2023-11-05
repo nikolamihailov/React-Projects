@@ -1,5 +1,6 @@
-import MainNav from "../Navigation/MainNavigation/MainNav";
-import TopNav from "../Navigation/TopNavigation/TopNav";
+import "./Header.module.css";
+import MainNav from "../Navigation/NavigationMain/MainNav";
+import TopNav from "../Navigation/NavigationTop/TopNav";
 
 const Header = ({ theme, toggleTheme }) => {
   return (

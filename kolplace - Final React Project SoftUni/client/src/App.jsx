@@ -19,6 +19,7 @@ function App() {
   return (
     <div className={`app-${theme}`}>
       <Header theme={theme} toggleTheme={toggleTheme} />
+      <main className="main"></main>
     </div>
   );
 }

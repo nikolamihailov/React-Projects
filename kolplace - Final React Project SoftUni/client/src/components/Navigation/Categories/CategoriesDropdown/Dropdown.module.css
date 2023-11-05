@@ -4,13 +4,13 @@
   color: var(--background-color);
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 999;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   width: auto;
-  width: 100%;
+  width: 80%;
 }
 
 .categories-dropdown li {

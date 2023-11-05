@@ -18,6 +18,12 @@ body {
   font-weight: 400;
 }
 
+.main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -60,6 +66,7 @@ body {
 }
 
 .app-light {
+  position: relative;
   height: 100%;
   width: 100%;
   --background-color: whitesmoke;
@@ -70,6 +77,7 @@ body {
   background-color: var(--background-color);
 }
 .app-dark {
+  position: relative;
   height: 100%;
   width: 100%;
   --background-color: #23272f;

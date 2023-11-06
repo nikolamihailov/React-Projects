@@ -6,7 +6,7 @@ import Logo from "../Logo/Logo";
 import ThemeButton from "../../ThemeToggler/ThemeButton";
 import Search from "../Search/Search";
 
-const TopNav = ({ theme, toggleTheme }) => {
+const TopNav = () => {
   return (
     <nav className={styles["top-nav"]}>
       <div className={styles["top-nav-container"]}>
@@ -22,10 +22,7 @@ const TopNav = ({ theme, toggleTheme }) => {
           </div>
         </div>
       </div>
-      <ThemeButton
-        toggleTheme={toggleTheme}
-        theme={theme}
-      />
+      <ThemeButton />
     </nav>
   );
 };

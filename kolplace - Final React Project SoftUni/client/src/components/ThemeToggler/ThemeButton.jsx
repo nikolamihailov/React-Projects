@@ -1,11 +1,14 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/themeContext";
 import styles from "./ThemeButton.module.css";
 
-const ThemeButton = ({ toggleTheme, theme }) => {
+const ThemeButton = () => {
+  const { toggleTheme, theme } = useContext(ThemeContext);
   return (
     <button
       className={styles["theme-btn"]}
       onClick={toggleTheme}
-      title="White/Dark Theme"
+      title={`${theme === "dark" ? "Dark" : "White"} Theme`}
     >
       <i
         className={`fa-regular fa-${

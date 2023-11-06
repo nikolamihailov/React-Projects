@@ -1,7 +1,8 @@
-import "./App.css";
-import changeTheme from "./assets/js/theme.js";
 import { useState, useEffect } from "react";
+import changeTheme from "./assets/js/theme.js";
 import Header from "./components/Header/Header";
+import { ThemeContext } from "./contexts/themeContext.js";
+import "./App.css";
 
 function App() {
   const [theme, setTheme] = useState("");
@@ -17,11 +18,18 @@ function App() {
     else setTheme("light");
   };
 
+  const values = {
+    theme,
+    toggleTheme,
+  };
+
   return (
-    <div className={`app ${theme}`}>
-      <Header theme={theme} toggleTheme={toggleTheme} />
-      <main className="main"></main>
-    </div>
+    <ThemeContext.Provider value={values}>
+      <div className={`app ${theme}`}>
+        <Header />
+        <main className="main"></main>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

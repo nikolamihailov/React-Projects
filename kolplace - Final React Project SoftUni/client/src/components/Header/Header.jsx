@@ -2,10 +2,10 @@ import "./Header.module.css";
 import MainNav from "../Navigation/NavigationMain/MainNav";
 import TopNav from "../Navigation/NavigationTop/TopNav";
 
-const Header = ({ theme, toggleTheme }) => {
+const Header = () => {
   return (
     <header>
-      <TopNav theme={theme} toggleTheme={toggleTheme} />
+      <TopNav />
       <MainNav />
     </header>
   );

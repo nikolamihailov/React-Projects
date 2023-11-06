@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
 import "./App.css";
+import changeTheme from "./assets/js/theme.js";
+import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
-
+  const [theme, setTheme] = useState("");
   // dynamically set page title
   useEffect(() => {
     document.title = "KolPlace - Your Online Shop";
+    setTheme(changeTheme());
   }, []);
 
   // change app theme class on theme on btn click
@@ -17,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className={`app-${theme}`}>
+    <div className={`app ${theme}`}>
       <Header theme={theme} toggleTheme={toggleTheme} />
       <main className="main"></main>
     </div>

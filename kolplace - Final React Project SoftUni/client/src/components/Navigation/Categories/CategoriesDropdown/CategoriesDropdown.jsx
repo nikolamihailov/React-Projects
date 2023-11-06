@@ -15,8 +15,8 @@ const CategoriesDropdown = () => {
         <span>Laptops</span>
       </li>
       <li>
-        <i className="fa-solid fa-desktop"></i>
-        <span> Monitors</span>
+        <i className="fa-solid fa-tv"></i>
+        <span> TVs</span>
       </li>
       <li>
         <i className="fa-solid fa-book"></i>

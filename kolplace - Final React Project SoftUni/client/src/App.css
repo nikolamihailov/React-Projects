@@ -31,7 +31,7 @@ body {
   /* For Firefox */
   scrollbar-color: var(--secondary-color)
     var(--primary-color);
-  scrollbar-width: auto;
+  scrollbar-width: thin;
 }
 
 /* Other browsers - Chrome, Edge, and Safari */
@@ -65,7 +65,7 @@ body {
   background-color: rgb(162, 22, 1);
 }
 
-.app-light {
+.light {
   position: relative;
   height: 100%;
   width: 100%;
@@ -76,7 +76,7 @@ body {
   color: var(--primary-color);
   background-color: var(--background-color);
 }
-.app-dark {
+.dark {
   position: relative;
   height: 100%;
   width: 100%;

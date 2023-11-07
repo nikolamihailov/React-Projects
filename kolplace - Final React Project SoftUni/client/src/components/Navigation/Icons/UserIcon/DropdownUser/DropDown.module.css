@@ -10,6 +10,10 @@
   border-radius: 5px;
   width: 200%;
 }
+.user-dropdown a {
+  text-decoration: none;
+  color: var(--background-color);
+}
 
 .user-dropdown li {
   padding: 14px;

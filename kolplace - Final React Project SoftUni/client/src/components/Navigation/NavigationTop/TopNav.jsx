@@ -5,13 +5,16 @@ import ShoppingCartIcon from "../Icons/ShoppingCartIcon/ShoppingCartIcon";
 import Logo from "../Logo/Logo";
 import ThemeButton from "../../ThemeToggler/ThemeButton";
 import Search from "../Search/Search";
+import { Link } from "react-router-dom";
 
 const TopNav = () => {
   return (
     <nav className={styles["top-nav"]}>
       <div className={styles["top-nav-container"]}>
         {/* logo */}
-        <Logo />
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <Search />
         {/*  // icons navigation */}
         <div>

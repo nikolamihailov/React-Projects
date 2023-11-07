@@ -1,31 +1,46 @@
 import { Link } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
+import styles from "../Auth.module.css";
 
 const Login = () => {
   useTitle("Login Page");
   return (
-    <section>
-      <div>
-        <h1>Login</h1>
-      </div>
+    <section className={styles["login-section"]}>
       <form>
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" name="email" />
+          <h1>Login</h1>
         </div>
-        <div>
+        <div className={styles["form-group"]}>
+          <label htmlFor="email">Email</label>
+          <div>
+            <i className="fas fa-user-circle"></i>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="johndoe@gmail.com"
+            />
+          </div>
+        </div>
+        <div className={styles["form-group"]}>
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-          />
+          <div>
+            <i className="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="************"
+            />
+          </div>
         </div>
 
-        <p>
-          Do not have account?
-          <Link to={"/register"}>Register</Link>
-        </p>
+        <div className={styles["btns"]}>
+          <button type="submit">Sign in</button>
+          <button>Reset</button>
+        </div>
+
+        <Link to="/register"> Do not have an account?</Link>
       </form>
     </section>
   );

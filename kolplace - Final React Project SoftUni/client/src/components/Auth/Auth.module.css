@@ -21,6 +21,7 @@
     0 0 9px var(--background-inverted-color)
   );
   min-height: 40%;
+  max-height: 80%;
   min-width: 20%;
   color: var(--background-color);
   padding: 30px 40px;
@@ -79,29 +80,26 @@
 }
 
 .btns {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  position: relative;
+  width: 70%;
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .btns button {
   all: unset;
+  width: 100%;
   cursor: pointer;
   padding: 15px;
   font-size: 18px;
   color: var(--white-color);
   font-weight: bold;
   border-radius: 15px;
-}
-
-.btns button:nth-child(1) {
   background: linear-gradient(
     to bottom right,
     var(--secondary-color),
     var(--black-color)
   );
-}
-
-.btns button:nth-child(2) {
-  background-color: var(--reset-btn-color);
 }

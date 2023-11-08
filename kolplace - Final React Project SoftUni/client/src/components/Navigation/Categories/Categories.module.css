@@ -1,5 +1,6 @@
 .categories-btn-container {
   background-color: var(--main-nav-categories);
+  height: 100%;
   padding: 10px 15px;
   display: flex;
   justify-content: space-evenly;

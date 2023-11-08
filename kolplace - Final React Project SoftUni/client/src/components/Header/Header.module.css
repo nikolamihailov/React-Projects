@@ -1,6 +1,6 @@
 header {
-  position: sticky;
-  top: 0;
+  position: relative;
+  height: var(--header-height);
   display: flex;
   flex-direction: column;
   z-index: 2;

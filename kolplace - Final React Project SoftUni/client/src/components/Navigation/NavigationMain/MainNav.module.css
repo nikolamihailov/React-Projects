@@ -1,6 +1,7 @@
 .main-nav {
   width: 100%;
-  height: auto;
+  height: 100%;
+  flex: 1;
   display: flex;
   justify-content: space-evenly;
   background-color: var(--background-inverted-color);

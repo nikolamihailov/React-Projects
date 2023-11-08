@@ -6,7 +6,7 @@ const Login = () => {
   useTitle("Login Page");
   return (
     <section className={styles["login-section"]}>
-      <form>
+      <form method="POST">
         <div>
           <h1>Login</h1>
         </div>
@@ -37,7 +37,6 @@ const Login = () => {
 
         <div className={styles["btns"]}>
           <button type="submit">Sign in</button>
-          <button>Reset</button>
         </div>
 
         <Link to="/register"> Do not have an account?</Link>

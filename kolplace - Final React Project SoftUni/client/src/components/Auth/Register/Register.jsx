@@ -6,7 +6,7 @@ const Register = () => {
   useTitle("Register Page");
   return (
     <section className={styles["register-section"]}>
-      <form>
+      <form method="POST">
         <div>
           <h1>Register</h1>
         </div>
@@ -62,7 +62,6 @@ const Register = () => {
 
         <div className={styles["btns"]}>
           <button type="submit">Register</button>
-          <button>Reset</button>
         </div>
         <Link to="/login">Already have an account?</Link>
       </form>

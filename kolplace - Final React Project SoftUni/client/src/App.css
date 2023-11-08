@@ -8,10 +8,10 @@
   --main-nav-background: rgb(20, 19, 19);
   --main-nav-categories: rgb(191, 1, 1);
   --reset-btn-color: green;
-  /*   --header-height: 10vh; */
+  --header-height: 18vh;
   /* --footer-height: 10%; */
-  /*  --main-height: calc(100vh - var(--header-height)); */
-  --section-min-height: 80vh;
+  /* --main-height: calc(100vh - var(--header-height)); */
+  --section-min-height: calc(100vh - var(--header-height));
   --white-color: whitesmoke;
   --black-color: #23272f;
 }

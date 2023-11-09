@@ -14,7 +14,7 @@ function App() {
   const [theme, setTheme] = useState("");
 
   // dynamically set page title
-  useTitle("KolPlace - Your Online Shop");
+  useTitle("KolPlace - Your Shopping Place");
   useEffect(() => {
     setTheme(changeTheme());
   }, []);

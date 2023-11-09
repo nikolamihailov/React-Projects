@@ -1,0 +1,19 @@
+.footer {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  clear: both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--white-color);
+  width: 100%;
+  background-color: var(--secondary-color);
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--white-color);
+  margin-left: 10px;
+}

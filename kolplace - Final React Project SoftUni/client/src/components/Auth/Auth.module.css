@@ -63,7 +63,7 @@
 .form-group input {
   color: var(--background-color);
   background: none;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   padding: 10px 15px;
   border-radius: 15px;
@@ -74,7 +74,7 @@
 }
 
 .form-group label {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 1vh;
 }
@@ -92,7 +92,7 @@
   all: unset;
   width: 100%;
   cursor: pointer;
-  padding: 15px;
+  padding: 12px 15px;
   font-size: 18px;
   color: var(--white-color);
   font-weight: bold;

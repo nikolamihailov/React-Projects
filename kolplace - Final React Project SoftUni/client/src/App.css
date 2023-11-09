@@ -8,10 +8,14 @@
   --main-nav-background: rgb(20, 19, 19);
   --main-nav-categories: rgb(191, 1, 1);
   --reset-btn-color: green;
+  --scrollbar-track: rgb(102, 0, 0);
   --header-height: 18vh;
+  --footer-height: 8vh;
   /* --footer-height: 10%; */
   /* --main-height: calc(100vh - var(--header-height)); */
-  --section-min-height: calc(100vh - var(--header-height));
+  --section-min-height: calc(
+    100vh - (var(--header-height) + var(--footer-height))
+  );
   --white-color: whitesmoke;
   --black-color: #23272f;
 }
@@ -43,12 +47,12 @@ body {
   background-color: var(--primary-color);
 }
 
-*::-webkit-scrollbar-track:hover {
+/* *::-webkit-scrollbar-track:hover {
   background-color: var(--primary-color);
-}
+} */
 
 *::-webkit-scrollbar-track:active {
-  background-color: var(--primary-color);
+  background-color: var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -56,13 +60,11 @@ body {
   background-color: var(--secondary-color);
 }
 
-*::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(162, 22, 1);
-}
+/* s */
 
-*::-webkit-scrollbar-thumb:active {
+/* *::-webkit-scrollbar-thumb:active {
   background-color: rgb(162, 22, 1);
-}
+} */
 
 .light {
   position: relative;

@@ -1,4 +1,5 @@
 .footer {
+  height: var(--footer-height);
   padding: 10px;
   position: absolute;
   bottom: 0;

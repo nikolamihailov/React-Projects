@@ -10,7 +10,7 @@
   flex-direction: column;
   color: var(--white-color);
   width: 100%;
-  background-color: var(--secondary-color);
+  background-color: var(--footer-color);
 }
 
 .footer a {

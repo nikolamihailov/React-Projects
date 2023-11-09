@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login/Login.jsx";
 import useTitle from "./hooks/useTitle.js";
 import Home from "./components/Home/Home.jsx";
 import Register from "./components/Auth/Register/Register.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   const [theme, setTheme] = useState("");
@@ -46,6 +47,7 @@ function App() {
             ></Route>
           </Routes>
         </main>
+        <Footer />
       </div>
     </ThemeContext.Provider>
   );

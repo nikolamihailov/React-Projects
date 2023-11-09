@@ -1,9 +1,10 @@
 import useTitle from "../../hooks/useTitle";
+import styles from "./Home.module.css";
 
 const Home = () => {
-  useTitle("KolPlace - Your Online Shop");
+  useTitle("KolPlace - Your Shopping Place");
   return (
-    <section>
+    <section className={styles["home"]}>
       <h1>Home Page</h1>
     </section>
   );

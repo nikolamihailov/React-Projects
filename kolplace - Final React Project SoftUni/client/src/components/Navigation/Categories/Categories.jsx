@@ -1,6 +1,6 @@
 import styles from "./Categories.module.css";
 import CategoriesDropdown from "./CategoriesDropdown/CategoriesDropdown";
-import useDropdown from "../../../hooks/useDropdown";
+import { useDropdown } from "../../../hooks/useDropdown";
 
 const Categories = () => {
   const { isOpen, mouseEnter, mouseLeave } = useDropdown();

@@ -3,7 +3,7 @@
   position: relative;
   cursor: pointer;
   padding: 5px 15px;
-  z-index: 999;
+  z-index: 2;
   border-radius: 50%;
 }
 

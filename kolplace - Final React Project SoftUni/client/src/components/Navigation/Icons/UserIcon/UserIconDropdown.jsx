@@ -1,6 +1,6 @@
 import DropDownUser from "./DropdownUser/DropDownUser";
 import styles from "../Icons.module.css";
-import useDropdown from "../../../../hooks/useDropdown";
+import { useDropdown } from "../../../../hooks/useDropdown";
 
 const UserIconDropDown = () => {
   const { isOpen, mouseEnter, mouseLeave } = useDropdown();

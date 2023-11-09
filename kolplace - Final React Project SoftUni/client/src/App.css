@@ -10,8 +10,8 @@
   --footer-color: rgb(237, 23, 3);
   --reset-btn-color: green;
   --scrollbar-track: rgb(102, 0, 0);
-  --header-height: 18vh;
-  --footer-height: 8vh;
+  --header-height: 17.5vh;
+  --footer-height: 7.5vh;
   /* --footer-height: 10%; */
   /* --main-height: calc(100vh - var(--header-height)); */
   --section-min-height: calc(

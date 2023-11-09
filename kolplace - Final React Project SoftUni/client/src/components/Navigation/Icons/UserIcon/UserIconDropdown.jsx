@@ -1,23 +1,15 @@
-import { useState } from "react";
 import DropDownUser from "./DropdownUser/DropDownUser";
 import styles from "../Icons.module.css";
+import useDropdown from "../../../../hooks/useDropdown";
 
 const UserIconDropDown = () => {
-  const [isDropdownOpen, setIsDropDownOpen] =
-    useState(false);
+  const { isOpen, mouseEnter, mouseLeave } = useDropdown();
 
-  const handleMouseEnter = () => {
-    setIsDropDownOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDropDownOpen(false);
-  };
   return (
     <div
       className={styles["dropdown-container"]}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
     >
       <button
         className={styles["icon-btn"]}
@@ -26,7 +18,7 @@ const UserIconDropDown = () => {
         <i className="fa-regular fa-user"></i>
         <i className="fa-regular fa-circle-check"></i>
       </button>
-      {isDropdownOpen && <DropDownUser />}
+      {isOpen && <DropDownUser />}
     </div>
   );
 };

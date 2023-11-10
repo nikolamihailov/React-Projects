@@ -3,10 +3,10 @@
   top: 0;
   right: 0;
   height: 100vh;
-  width: 40vw;
+  width: 25vw;
   background-color: var(--background-inverted-color);
   z-index: 4;
-  padding: 15px;
+  padding: 15px 5px;
   border-left: 4px solid var(--secondary-color);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
@@ -25,15 +25,15 @@
 }
 .cart-item-container {
   overflow-y: scroll;
-
+  width: 90%;
   height: 80vh;
 }
 .cart-item {
   color: var(--background-color);
   cursor: pointer;
-  padding: 25px;
+  padding: 25px 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--secondary-color);
 }

@@ -7,7 +7,7 @@ import Home from "./components/Home/Home.jsx";
 import Register from "./components/Auth/Register/Register.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
-import { ThemeContext } from "./contexts/ThemeContext.js";
+import { ThemeContext } from "./contexts/themeContext.js";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 
 function App() {

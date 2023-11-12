@@ -1,12 +1,30 @@
 import { Link } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import styles from "../Auth.module.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useForm } from "../../../hooks/useForm";
+
+const FORM_KEYS = {
+  Email: "email",
+  Password: "password",
+};
 
 const Login = () => {
   useTitle("Login Page");
+  const { onLoginSubmit } = useContext(AuthContext);
+
+  const { values, changeHandler, onSubmit } = useForm(
+    {
+      [FORM_KEYS.Email]: "",
+      [FORM_KEYS.Password]: "",
+    },
+    onLoginSubmit
+  );
+
   return (
     <section className={styles["login-section"]}>
-      <form method="POST">
+      <form method="POST" onSubmit={onSubmit}>
         <div>
           <h1>Login</h1>
         </div>
@@ -17,8 +35,10 @@ const Login = () => {
             <input
               type="text"
               id="email"
-              name="email"
               placeholder="johndoe@gmail.com"
+              name={FORM_KEYS.Email}
+              value={values[FORM_KEYS.Email]}
+              onChange={changeHandler}
             />
           </div>
         </div>
@@ -29,8 +49,10 @@ const Login = () => {
             <input
               type="password"
               id="password"
-              name="password"
               placeholder="************"
+              name={FORM_KEYS.Password}
+              value={values[FORM_KEYS.Password]}
+              onChange={changeHandler}
             />
           </div>
         </div>

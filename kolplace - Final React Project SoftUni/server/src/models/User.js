@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema({
         minLength: [6, "Password must be at least 6 characters!"],
         maxLength: [20, "Password must not be more than 20 characters!"],
     },
+    role: {
+        type: String,
+        enum: ['normalUser', 'admin'],
+        default: 'normalUser'
+    }
 });
 userSchema.pre("save", async function () {
     const hash = await bcrypt.hash(this.password, 11);

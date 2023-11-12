@@ -2,7 +2,7 @@
   border: 3px solid var(--primary-color);
   padding: 10px;
   border-radius: 20px;
-  width: 20vw;
+  width: 25vw;
   overflow: hidden;
   display: flex;
 }

@@ -9,8 +9,13 @@ export const AuthProvider = ({ children }) => {
     console.log(values);
     navigateTo("/");
   };
+  const onLoginSubmit = (values) => {
+    console.log(values);
+    //navigateTo("/");
+  };
   const ctxValues = {
     onRegisterSubmit,
+    onLoginSubmit,
   };
   return (
     <AuthContext.Provider value={ctxValues}>

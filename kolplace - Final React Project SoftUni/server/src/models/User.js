@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
         minLength: [7, "Email must be at least 7 characters!"],
         maxLength: [25, "Email must not be more than 25 characters!"],
         unique: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Provide a valid email address!'],
         validate: {
             validator: async function (email) {
                 const user = await User.findOne({ email });

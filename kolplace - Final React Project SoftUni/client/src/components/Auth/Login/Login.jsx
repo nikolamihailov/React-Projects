@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import styles from "../Auth.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useForm } from "../../../hooks/useForm";
 import Notification from "../../Notification/Notification";
+import { login } from "../../../data/services/userService";
+import { v4 as uuidv4 } from "uuid";
 
 const FORM_KEYS = {
   Email: "email",
@@ -13,15 +14,33 @@ const FORM_KEYS = {
 
 const Login = () => {
   useTitle("Login Page");
-  const { onLoginSubmit, errors } = useContext(AuthContext);
+  const { updateAuth } = useContext(AuthContext);
+  const navigateTo = useNavigate();
 
-  const { values, changeHandler, onSubmit } = useForm(
-    {
-      [FORM_KEYS.Email]: "",
-      [FORM_KEYS.Password]: "",
-    },
-    onLoginSubmit
-  );
+  const [errors, setErrors] = useState([]);
+  const [values, setValues] = useState({
+    [FORM_KEYS.Email]: "",
+    [FORM_KEYS.Password]: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setValues((state) => ({ ...state, [name]: value }));
+    setErrors([]);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const userData = await login(values);
+    if (userData.errors) {
+      const errs = Object.values(userData.errors);
+      setErrors(errs);
+    } else {
+      updateAuth(userData);
+      setErrors([]);
+      navigateTo("/");
+    }
+  };
 
   return (
     <section className={styles["login-section"]}>
@@ -67,11 +86,7 @@ const Login = () => {
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>
           {errors.map((e) => (
-            <Notification
-              text={e}
-              type={"error"}
-              key={e.length}
-            />
+            <Notification text={e} type={"error"} key={uuidv4()} />
           ))}
         </div>
       )}

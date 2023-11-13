@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import styles from "../Auth.module.css";
-import { useForm } from "../../../hooks/useForm";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Notification from "../../Notification/Notification";
+import { register } from "../../../data/services/userService";
+import { v4 as uuidv4 } from "uuid";
 
 const FORM_KEYS = {
   FirstName: "firstName",
@@ -15,18 +16,35 @@ const FORM_KEYS = {
 
 const Register = () => {
   useTitle("Register Page");
-  const { onRegisterSubmit, errors } =
-    useContext(AuthContext);
+  const { updateAuth } = useContext(AuthContext);
+  const navigateTo = useNavigate();
 
-  const { values, changeHandler, onSubmit } = useForm(
-    {
-      [FORM_KEYS.FirstName]: "",
-      [FORM_KEYS.LastName]: "",
-      [FORM_KEYS.Email]: "",
-      [FORM_KEYS.Password]: "",
-    },
-    onRegisterSubmit
-  );
+  const [errors, setErrors] = useState([]);
+  const [values, setValues] = useState({
+    [FORM_KEYS.FirstName]: "",
+    [FORM_KEYS.LastName]: "",
+    [FORM_KEYS.Email]: "",
+    [FORM_KEYS.Password]: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setValues((state) => ({ ...state, [name]: value }));
+    setErrors([]);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const userData = await register(values);
+
+    if (userData.errors) {
+      setErrors(Object.values(userData.errors));
+    } else {
+      updateAuth(userData);
+      setErrors([]);
+      navigateTo("/");
+    }
+  };
 
   return (
     <section className={styles["register-section"]}>
@@ -100,11 +118,7 @@ const Register = () => {
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>
           {errors.map((e) => (
-            <Notification
-              text={e}
-              type={"error"}
-              key={e.length}
-            />
+            <Notification text={e} type={"error"} key={uuidv4()} />
           ))}
         </div>
       )}

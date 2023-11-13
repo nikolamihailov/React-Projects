@@ -3,8 +3,7 @@ import styles from "./Dropdown.module.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 const DropDownUser = () => {
-  const { isAdmin, isAuthenticated } =
-    useContext(AuthContext);
+  const { isAdmin, isAuthenticated } = useContext(AuthContext);
   return (
     <ul className={styles["user-dropdown"]}>
       {isAuthenticated ? (
@@ -22,13 +21,6 @@ const DropDownUser = () => {
               <span>Favourite Products</span>
             </li>
           </Link>
-          <Link to={"/logout"}>
-            <li>
-              <i className="fa-solid fa-right-from-bracket"></i>
-              <span>Logout</span>
-            </li>
-          </Link>
-
           {isAdmin && (
             <Link to={"/admin"}>
               <li>
@@ -37,6 +29,12 @@ const DropDownUser = () => {
               </li>
             </Link>
           )}
+          <Link to={"/logout"}>
+            <li>
+              <i className="fa-solid fa-right-from-bracket"></i>
+              <span>Logout</span>
+            </li>
+          </Link>
         </>
       ) : (
         <>

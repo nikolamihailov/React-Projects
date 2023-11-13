@@ -2,9 +2,7 @@ const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
 
 const requester = async (method, URL, data) => {
 
-    const options = {
-        method
-    };
+    const options = { method };
 
     if (data) {
         options.headers = {
@@ -15,15 +13,10 @@ const requester = async (method, URL, data) => {
 
     // if user is making authorized request, put special header
 
-    const req = await fetch(BASE_URL + URL, options);
+    const res = await fetch(BASE_URL + URL, options);
+    const result = await res.json();
 
-    if (!req.status.ok) {
-        console.log("Problem");
-    }
-
-    const res = await req.json();
-
-    return res;
+    return result;
 };
 
 export const request = {

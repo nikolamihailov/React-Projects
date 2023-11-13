@@ -2,6 +2,7 @@
 .register-section {
   height: var(--section-min-height);
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,4 +103,12 @@
     var(--secondary-color),
     var(--black-color)
   );
+}
+
+.errors-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
 }

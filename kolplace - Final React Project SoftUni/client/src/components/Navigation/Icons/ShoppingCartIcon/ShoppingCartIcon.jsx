@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ShoppingCartExpanded from "../../../ShoppingCart/ShoppingCartExpanded/ShoppingCartAside";
 import styles from "../Icons.module.css";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const ShoppingCartIcon = () => {
   const [isOpen, setIOpen] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext);
 
   const onClick = () => setIOpen(!isOpen);
   return (
@@ -15,11 +17,9 @@ const ShoppingCartIcon = () => {
           onClick={onClick}
         >
           <i className="fa-solid fa-cart-shopping"></i>
-          <span>0</span>
+          {isAuthenticated && <span>0</span>}
         </button>
-        {isOpen && (
-          <ShoppingCartExpanded onClick={onClick} />
-        )}
+        {isOpen && <ShoppingCartExpanded onClick={onClick} />}
       </div>
     </>
   );

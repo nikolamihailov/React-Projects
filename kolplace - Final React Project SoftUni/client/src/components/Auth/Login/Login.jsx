@@ -4,6 +4,7 @@ import styles from "../Auth.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useForm } from "../../../hooks/useForm";
+import Notification from "../../Notification/Notification";
 
 const FORM_KEYS = {
   Email: "email",
@@ -12,7 +13,7 @@ const FORM_KEYS = {
 
 const Login = () => {
   useTitle("Login Page");
-  const { onLoginSubmit } = useContext(AuthContext);
+  const { onLoginSubmit, errors } = useContext(AuthContext);
 
   const { values, changeHandler, onSubmit } = useForm(
     {
@@ -63,6 +64,17 @@ const Login = () => {
 
         <Link to="/register"> Do not have an account?</Link>
       </form>
+      {errors.length > 0 && (
+        <div className={styles["errors-container"]}>
+          {errors.map((e) => (
+            <Notification
+              text={e}
+              type={"error"}
+              key={e.length}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

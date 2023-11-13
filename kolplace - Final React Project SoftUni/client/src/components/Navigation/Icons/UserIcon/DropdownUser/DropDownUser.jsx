@@ -11,20 +11,20 @@ const DropDownUser = () => {
         <>
           <Link to={"/my-profile"}>
             <li>
-              <i className="fa-solid fa-key"></i>
+              <i className="fa-regular fa-user"></i>
               <span>My Profile</span>
             </li>
           </Link>
 
           <Link to={"/favourite-products"}>
             <li>
-              <i className="fa-solid fa-user-plus"></i>
+              <i className="fa-regular fa-heart"></i>
               <span>Favourite Products</span>
             </li>
           </Link>
           <Link to={"/logout"}>
             <li>
-              <i className="fa-solid fa-user-plus"></i>
+              <i className="fa-solid fa-right-from-bracket"></i>
               <span>Logout</span>
             </li>
           </Link>
@@ -32,7 +32,7 @@ const DropDownUser = () => {
           {isAdmin && (
             <Link to={"/admin"}>
               <li>
-                <i className="fa-solid fa-key"></i>
+                <i className="fas fa-user-cog"></i>
                 <span>Admin Panel</span>
               </li>
             </Link>

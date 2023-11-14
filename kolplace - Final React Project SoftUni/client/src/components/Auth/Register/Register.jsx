@@ -3,9 +3,10 @@ import useTitle from "../../../hooks/useTitle";
 import styles from "../Auth.module.css";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext, useState } from "react";
-import Notification from "../../Notification/Notification";
+import Notification from "../../Notifications/Notification";
 import { register } from "../../../data/services/userService";
 import { v4 as uuidv4 } from "uuid";
+import { NotifContext } from "../../../contexts/NotificationContext";
 
 const FORM_KEYS = {
   FirstName: "firstName",
@@ -17,6 +18,7 @@ const FORM_KEYS = {
 const Register = () => {
   useTitle("Register Page");
   const { updateAuth } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
 
   const [errors, setErrors] = useState([]);
@@ -41,6 +43,7 @@ const Register = () => {
       setErrors(Object.values(userData.errors));
     } else {
       updateAuth(userData);
+      updateNotifs([{ text: "You successfully registered!", type: "success" }]);
       setErrors([]);
       navigateTo("/");
     }

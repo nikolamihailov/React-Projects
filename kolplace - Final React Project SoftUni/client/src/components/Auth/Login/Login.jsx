@@ -3,9 +3,10 @@ import useTitle from "../../../hooks/useTitle";
 import styles from "../Auth.module.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import Notification from "../../Notification/Notification";
+import Notification from "../../Notifications/Notification";
 import { login } from "../../../data/services/userService";
 import { v4 as uuidv4 } from "uuid";
+import { NotifContext } from "../../../contexts/NotificationContext";
 
 const FORM_KEYS = {
   Email: "email",
@@ -15,6 +16,7 @@ const FORM_KEYS = {
 const Login = () => {
   useTitle("Login Page");
   const { updateAuth } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
 
   const [errors, setErrors] = useState([]);
@@ -36,6 +38,7 @@ const Login = () => {
       const errs = Object.values(userData.errors);
       setErrors(errs);
     } else {
+      updateNotifs([{ text: "You successfully logged in!", type: "success" }]);
       updateAuth(userData);
       setErrors([]);
       navigateTo("/");

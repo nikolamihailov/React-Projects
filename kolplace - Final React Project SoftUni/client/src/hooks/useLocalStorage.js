@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const useLocalStorage = (lsKey, initialState) => {
     const [user, setUser] = useState(() => {
@@ -7,11 +7,11 @@ const useLocalStorage = (lsKey, initialState) => {
         return initialState;
     });
 
-    const setStorageState = (data) => {
+    const setStorageState = useCallback((data) => {
         setUser(data);
 
         localStorage.setItem(lsKey, JSON.stringify(data));
-    };
+    }, [lsKey]);
 
     return [user, setStorageState];
 };

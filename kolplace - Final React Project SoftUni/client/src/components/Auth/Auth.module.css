@@ -18,9 +18,7 @@
 
 .login-section form,
 .register-section form {
-  filter: drop-shadow(
-    0 0 9px var(--background-inverted-color)
-  );
+  filter: drop-shadow(0 0 9px var(--background-inverted-color));
   min-height: 40%;
   max-height: 90%;
   min-width: 20%;

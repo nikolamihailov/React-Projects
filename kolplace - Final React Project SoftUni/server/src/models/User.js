@@ -39,8 +39,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['normalUser', 'admin'],
         default: 'normalUser'
-    }
-});
+    },
+    avatar: {
+        type: String,
+        match: [/^https?:\/\/.+/, "Provide valid image link!"]
+    },
+},
+    { timestamps: true }
+);
 userSchema.pre("save", async function () {
     const hash = await bcrypt.hash(this.password, 11);
     this.password = hash;

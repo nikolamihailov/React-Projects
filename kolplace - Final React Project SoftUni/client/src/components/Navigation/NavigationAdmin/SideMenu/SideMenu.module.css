@@ -1,0 +1,23 @@
+.side-menu-links {
+  width: 60%;
+  list-style: none;
+}
+
+.side-menu-links a {
+  text-decoration: none;
+  color: var(--background-color);
+  font-size: 18px;
+  padding: 20px;
+}
+.side-menu-links li {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.side-menu-links li i {
+  flex: 1;
+}
+.side-menu-links li span {
+  flex: 2;
+}

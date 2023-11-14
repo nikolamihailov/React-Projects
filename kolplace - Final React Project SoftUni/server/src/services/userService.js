@@ -13,6 +13,8 @@ exports.register = async (data) => {
             _id: user._id,
             email: user.email,
             token,
+            firstName: user.firstName,
+            lastName: user.lastName,
             role: user.role
         };
     }
@@ -31,6 +33,8 @@ exports.login = async (email, password) => {
         _id: user._id,
         email: user.email,
         token,
+        firstName: user.firstName,
+        lastName: user.lastName,
         role: user.role
     };
 

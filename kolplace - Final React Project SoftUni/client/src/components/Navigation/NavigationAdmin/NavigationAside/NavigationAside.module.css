@@ -1,0 +1,22 @@
+.aside {
+  height: 100vh;
+  width: 25vw;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-info {
+  flex: 1;
+}
+
+.side-menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 4;
+}

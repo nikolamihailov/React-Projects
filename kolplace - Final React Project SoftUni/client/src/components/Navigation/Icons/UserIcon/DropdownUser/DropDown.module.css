@@ -32,3 +32,12 @@
   font-size: 18px;
   margin-right: 10px;
 }
+
+.errors-container {
+  z-index: 9999;
+  position: fixed;
+  top: 120px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+}

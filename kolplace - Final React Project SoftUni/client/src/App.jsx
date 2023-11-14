@@ -9,6 +9,9 @@ import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 import { ThemeContext } from "./contexts/themeContext.js";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
+import AdminPanel from "./components/Admin/Admin.jsx";
+import { NotifProvider } from "./contexts/NotificationContext.jsx";
+import NotificationContainer from "./components/Notifications/NotificationContianer/NotificationContainer.jsx";
 
 function App() {
   const [theme, setTheme] = useState("");
@@ -30,23 +33,21 @@ function App() {
   return (
     <AuthProvider>
       <ThemeContext.Provider value={values}>
-        <div className={`app ${theme}`}>
-          <Header />
-          <main className="main">
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route
-                path="/login"
-                element={<Login />}
-              ></Route>
-              <Route
-                path="/register"
-                element={<Register />}
-              ></Route>
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <NotifProvider>
+          <div className={`app ${theme}`}>
+            <Header />
+            <main className="main">
+              <NotificationContainer />
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/register" element={<Register />}></Route>
+                <Route path="/admin-panel" element={<AdminPanel />}></Route>
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </NotifProvider>
       </ThemeContext.Provider>
     </AuthProvider>
   );

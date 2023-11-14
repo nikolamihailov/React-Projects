@@ -1,0 +1,18 @@
+.info {
+  padding: 15px;
+  border-bottom: 3px solid var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info img {
+  width: 150px;
+  height: 150px;
+}
+
+.info p {
+  font-size: 20px;
+  font-weight: bold;
+}

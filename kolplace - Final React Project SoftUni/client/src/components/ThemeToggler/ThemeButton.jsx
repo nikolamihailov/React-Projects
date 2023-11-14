@@ -10,11 +10,7 @@ const ThemeButton = () => {
       onClick={toggleTheme}
       title={`${theme === "dark" ? "Dark" : "White"} Theme`}
     >
-      <i
-        className={`fa-regular fa-${
-          theme === "dark" ? "moon" : "sun"
-        }`}
-      ></i>
+      <i className={`fa-regular fa-${theme === "dark" ? "moon" : "sun"}`}></i>
     </button>
   );
 };

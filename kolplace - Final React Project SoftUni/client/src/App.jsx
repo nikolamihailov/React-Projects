@@ -14,6 +14,10 @@ import { NotifProvider } from "./contexts/NotificationContext.jsx";
 import NotificationContainer from "./components/Notifications/NotificationContianer/NotificationContainer.jsx";
 import About from "./components/About/About.jsx";
 import OurStores from "./components/OurStores/OurStores.jsx";
+import Categories from "./components/Admin/Categories/Categories.jsx";
+import Products from "./components/Admin/Products/Products.jsx";
+import Users from "./components/Admin/Users/Users.jsx";
+import Stores from "./components/Admin/Stores/Stores.jsx";
 
 function App() {
   const [theme, setTheme] = useState("");
@@ -44,7 +48,12 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/register" element={<Register />}></Route>
-                <Route path="/admin-panel" element={<AdminPanel />}></Route>
+                <Route path="/admin-panel" element={<AdminPanel />}>
+                  <Route path="categories" element={<Categories />}></Route>
+                  <Route path="products" element={<Products />}></Route>
+                  <Route path="users" element={<Users />}></Route>
+                  <Route path="stores" element={<Stores />}></Route>
+                </Route>
                 <Route path="/about-us" element={<About />}></Route>
                 <Route path="/our-stores" element={<OurStores />}></Route>
               </Routes>

@@ -7,6 +7,7 @@ export const NotifProvider = ({ children }) => {
 
   const updateNotifs = useCallback((data) => {
     setNotifications(data);
+    setTimeout(() => setNotifications([]), 5000);
   }, []);
 
   const ctxValues = {

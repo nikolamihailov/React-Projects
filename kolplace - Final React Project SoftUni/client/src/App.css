@@ -10,6 +10,10 @@
   --footer-color: rgb(237, 23, 3);
   --reset-btn-color: green;
   --scrollbar-track: rgb(102, 0, 0);
+  --notification-error-color: rgb(252, 103, 103);
+  --notification-success-color: rgb(87, 222, 83);
+  --notification-error-progress-color: rgb(213, 0, 0);
+  --notification-success-progress-color: rgb(4, 106, 0);
   --header-height: 17.5vh;
   --footer-height: 7.5vh;
   /* --footer-height: 10%; */
@@ -94,4 +98,8 @@ body {
 .main {
   overflow-y: auto;
   width: 100%;
+}
+
+.active {
+  color: var(--secondary-color);
 }

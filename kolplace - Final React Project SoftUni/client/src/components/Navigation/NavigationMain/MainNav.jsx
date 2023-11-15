@@ -9,13 +9,40 @@ const MainNav = () => {
         <Categories />
       </div>
       <ul className={styles["links"]}>
-        <NavLink to="/promotions">
+        <NavLink
+          to="/promotions"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? styles["pending"]
+              : isActive
+              ? styles["active-link"]
+              : ""
+          }
+        >
           <li>Promotions</li>
         </NavLink>
-        <NavLink to="/about-us">
+        <NavLink
+          to="/about-us"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? styles["pending"]
+              : isActive
+              ? styles["active-link"]
+              : ""
+          }
+        >
           <li>About Us</li>
         </NavLink>
-        <NavLink to="/our-stores">
+        <NavLink
+          to="/our-stores"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? styles["pending"]
+              : isActive
+              ? styles["active-link"]
+              : ""
+          }
+        >
           <li>Our Stores</li>
         </NavLink>
       </ul>

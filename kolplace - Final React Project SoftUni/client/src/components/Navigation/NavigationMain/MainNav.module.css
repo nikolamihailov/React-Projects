@@ -27,7 +27,7 @@
   color: var(--background-color);
   padding: 15px;
 }
-.active li {
+.active-link li {
   color: var(--secondary-color);
 }
 

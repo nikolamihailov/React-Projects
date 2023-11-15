@@ -10,6 +10,7 @@
   padding: 20px;
 }
 .side-menu-links li {
+  font-weight: bold;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -20,4 +21,8 @@
 }
 .side-menu-links li span {
   flex: 2;
+}
+
+.side-menu-links .active-link li {
+  color: var(--secondary-color);
 }

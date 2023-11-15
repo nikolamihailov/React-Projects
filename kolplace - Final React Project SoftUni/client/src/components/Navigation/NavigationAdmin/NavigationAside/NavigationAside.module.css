@@ -1,12 +1,12 @@
 .aside {
-  height: 100vh;
-  width: 25vw;
+  flex: 1;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-right: 5px solid var(--secondary-color);
 }
 
 .admin-info {

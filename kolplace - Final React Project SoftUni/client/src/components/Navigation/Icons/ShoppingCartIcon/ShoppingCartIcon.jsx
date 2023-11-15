@@ -7,7 +7,9 @@ const ShoppingCartIcon = () => {
   const [isOpen, setIOpen] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
 
-  const onClick = () => setIOpen(!isOpen);
+  const onClick = () => {
+    if (isAuthenticated) setIOpen(!isOpen);
+  };
   return (
     <>
       <div className={styles["dropdown-container"]}>

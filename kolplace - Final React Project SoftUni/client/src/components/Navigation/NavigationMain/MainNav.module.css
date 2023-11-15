@@ -19,14 +19,18 @@
   align-items: center;
   list-style: none;
 }
-
-.links li {
-  cursor: pointer;
+.links a {
+  text-decoration: none;
   display: inline-block;
   font-size: 17px;
   font-weight: bold;
+  color: var(--background-color);
+  padding: 15px;
+}
+.active li {
+  color: var(--secondary-color);
 }
 
-.links li:hover {
+.links a:hover {
   color: var(--secondary-color);
 }

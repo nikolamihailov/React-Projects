@@ -4,7 +4,7 @@
   margin-bottom: 10px;
   font-size: 17px;
   z-index: 999;
-  background-color: rgb(249, 111, 111);
+  background-color: var(--notification-error-color);
   padding-right: 20px;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   display: block;
   height: 100%;
   margin-right: 15px;
-  background-color: var(--secondary-color);
+  background-color: var(--notification-error-progress-color);
 }
 
 .notification-success {
@@ -28,7 +28,7 @@
   margin-bottom: 10px;
   font-size: 17px;
   z-index: 999;
-  background-color: rgb(134, 255, 136);
+  background-color: var(--notification-success-color);
   padding-right: 20px;
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@
   display: block;
   height: 100%;
   margin-right: 15px;
-  background-color: green;
+  background-color: var(--notification-success-progress-color);
 }
 
 .notification-error .progress {
@@ -52,7 +52,7 @@
   left: 0;
   width: 0%;
   height: 6px;
-  background-color: var(--secondary-color);
+  background-color: var(--notification-error-progress-color);
   animation: progressBar 5s linear;
 }
 .notification-success .progress {
@@ -61,7 +61,7 @@
   left: 0;
   width: 0%;
   height: 6px;
-  background-color: green;
+  background-color: var(--notification-success-progress-color);
   animation: progressBar 5s linear;
 }
 @keyframes progressBar {

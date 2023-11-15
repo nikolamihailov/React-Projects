@@ -19,6 +19,8 @@ export const AuthProvider = ({ children }) => {
     auth,
     updateAuth,
     email: auth?.email,
+    role: auth?.role,
+    names: [auth?.firstName, auth?.lastName],
   };
   return (
     <AuthContext.Provider value={ctxValues}>{children}</AuthContext.Provider>

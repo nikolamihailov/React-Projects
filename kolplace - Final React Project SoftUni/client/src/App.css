@@ -15,6 +15,8 @@
   --notification-error-progress-color: rgb(213, 0, 0);
   --notification-success-progress-color: rgb(4, 106, 0);
   --header-height: 17.5vh;
+  --header-admin-height: 10vh;
+  --aside-admin-height: calc(100vh - var(--header-admin-height));
   --footer-height: 7.5vh;
   /* --footer-height: 10%; */
   /* --main-height: calc(100vh - var(--header-height)); */
@@ -95,11 +97,7 @@ body {
   background-color: var(--background-color);
 }
 
-.main {
+/* .main {
   overflow-y: auto;
   width: 100%;
-}
-
-.active {
-  color: var(--secondary-color);
-}
+} */

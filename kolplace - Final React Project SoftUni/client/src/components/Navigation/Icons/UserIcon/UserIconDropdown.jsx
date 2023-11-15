@@ -18,7 +18,7 @@ const UserIconDropDown = () => {
         <i className="fa-regular fa-user"></i>
         {isAuthenticated && <i className="fa-regular fa-circle-check"></i>}
       </button>
-      {isOpen && <DropDownUser />}
+      {isOpen && <DropDownUser mouseLeave={mouseLeave} />}
     </div>
   );
 };

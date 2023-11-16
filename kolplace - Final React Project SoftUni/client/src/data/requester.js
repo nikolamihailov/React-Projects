@@ -12,6 +12,10 @@ const requester = async (method, URL, data) => {
     }
 
     // if user is making authorized request, put special header
+    const token = localStorage.getItem("kolplace-auth");
+    if (token && Object.keys(token).length > 0) {
+        options.headers["x-auth"] = token;
+    }
 
     const res = await fetch(BASE_URL + URL, options);
     const result = await res.json();

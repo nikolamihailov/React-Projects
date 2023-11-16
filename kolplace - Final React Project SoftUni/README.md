@@ -1,1 +1,1 @@
-# KOLPLACE - REACT SOFTUNI PROJECT DEFENSE
+# KolPlace - React SoftUni Final Project

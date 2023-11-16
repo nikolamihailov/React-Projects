@@ -10,7 +10,7 @@ exports.auth = async (req, res, next) => {
             next();
         } catch (error) {
             res.status(401).json({
-                message: "Unauthorized, sorry!"
+                message: "Your session has expired, you have to login again!"
             });
         }
     } else {

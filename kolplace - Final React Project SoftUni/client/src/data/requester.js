@@ -2,7 +2,7 @@ const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
 
 const requester = async (method, URL, data) => {
 
-    const options = { method };
+    const options = { method, headers: {} };
 
     if (data) {
         options.headers = {
@@ -12,9 +12,9 @@ const requester = async (method, URL, data) => {
     }
 
     // if user is making authorized request, put special header
-    const token = localStorage.getItem("kolplace-auth");
-    if (token && Object.keys(token).length > 0) {
-        options.headers["x-auth"] = token;
+    const lsData = JSON.parse(localStorage.getItem("kolplace-auth"));
+    if (lsData !== null && Object.keys(lsData).length > 0) {
+        options.headers["X-Authorization"] = lsData.token;
     }
 
     const res = await fetch(BASE_URL + URL, options);

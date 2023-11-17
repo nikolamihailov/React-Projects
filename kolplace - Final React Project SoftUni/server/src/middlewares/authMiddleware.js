@@ -1,19 +1,16 @@
 const jwt = require("../utils/jwt");
 
 exports.auth = async (req, res, next) => {
-    const token = req.header('x-auth');
+    const token = req.header('X-Authorization');
 
     if (token) {
         try {
             const decToken = await jwt.verify(token, process.env.JWT_SECRET);
             req.user = decToken;
-            next();
         } catch (error) {
-            res.status(401).json({
-                message: "Your session has expired, you have to login again!"
-            });
+            req.decToken = token;
         }
-    } else {
-        next();
     }
+    next();
+
 };

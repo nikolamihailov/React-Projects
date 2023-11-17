@@ -8,14 +8,17 @@ exports.register = async (data) => {
     const user = await User.create(data);
 
     if (user) {
-        const token = await generateToken(user._id);
-        return {
+        const payload = {
             _id: user._id,
             email: user.email,
-            token,
             firstName: user.firstName,
             lastName: user.lastName,
             role: user.role
+        };
+        const token = await generateToken(payload);
+        return {
+            ...payload,
+            token
         };
     }
 };
@@ -28,18 +31,21 @@ exports.login = async (email, password) => {
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) throw new Error("Invalid email or password!");
 
-    const token = await generateToken(user._id);
-    return {
+    const payload = {
         _id: user._id,
         email: user.email,
-        token,
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role
     };
+    const token = await generateToken(payload);
+    return {
+        ...payload,
+        token
+    };
 
 };
 
-async function generateToken(id) {
-    return await jwt.sign({ id }, SECRET, { expiresIn: "1d" });
+async function generateToken(data) {
+    return await jwt.sign({ data }, SECRET, { expiresIn: "1d" });
 }

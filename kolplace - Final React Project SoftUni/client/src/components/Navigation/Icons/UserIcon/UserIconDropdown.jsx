@@ -1,11 +1,11 @@
 import DropDownUser from "./DropdownUser/DropDownUser";
 import styles from "../Icons.module.css";
-import { useDropdown } from "../../../../hooks/useDropdown";
+import { useShowHide } from "../../../../hooks/useShowHide";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
 const UserIconDropDown = () => {
-  const { isOpen, mouseEnter, mouseLeave } = useDropdown();
+  const { isOpen, mouseEnter, mouseLeave } = useShowHide();
   const { isAuthenticated } = useContext(AuthContext);
 
   return (

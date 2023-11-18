@@ -48,4 +48,5 @@ exports.login = async (email, password) => {
 
 async function generateToken(data) {
     return await jwt.sign({ data }, SECRET, { expiresIn: "1d" });
+    // return await jwt.sign({ data }, SECRET, { expiresIn: "15s" });
 }

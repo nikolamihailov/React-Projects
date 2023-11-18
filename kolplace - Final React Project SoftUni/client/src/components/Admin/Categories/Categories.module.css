@@ -10,7 +10,8 @@
 
 .admin-categories h1 {
   position: absolute;
-  top: 25px;
+  font-size: 35px;
+  top: 15px;
 }
 .admin-categories button {
   all: unset;
@@ -22,12 +23,21 @@
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
 }
+/* 
+.admin-categories p {
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+} */
 
 .admin-categories-container {
   height: 70%;
-  width: 90%;
+  width: 70%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }

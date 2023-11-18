@@ -1,53 +1,81 @@
 import styles from "./Categories.module.css";
-import { getAll } from "../../../data/services/categoryService";
 import { useContext, useEffect, useState } from "react";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
-import AddCatgoryName from "./AddCategoryItem/AddCaregoryItem";
 import CategoryItem from "./CategoryItem/CategoryItem";
+import usePagination from "../../../hooks/usePagination";
+import Pagination from "../../Pagination/Pagination";
+import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
+import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
+
+const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
 
 const Categories = () => {
+  const { page, pageCount, prevPage, nextPage, updatePageCount } =
+    usePagination();
   const [categories, setCategories] = useState();
   const [isAddOpen, setIsAddOpen] = useState(false);
-  const { updateAuth } = useContext(AuthContext);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const { updateAuth, auth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
 
   useEffect(() => {
-    getAll()
+    fetch(`${BASE_URL}/categories?page=${page}`, {
+      method: "GET",
+      headers: {
+        "X-Authorization": auth.token,
+      },
+    })
+      .then((res) => res.json())
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
           navigateTo("/login");
           updateAuth({});
         }
-        setCategories(data);
+        updatePageCount(data.pageCount);
+        setCategories(data.categories);
       })
       .catch((error) => {
         console.log(error.message);
       });
-  }, [navigateTo, updateNotifs, updateAuth]);
+  }, [page, navigateTo, updateAuth, updateNotifs, auth.token, updatePageCount]);
 
-  const updateCategories = (data) => setCategories((state) => [...state, data]);
-  const onClose = () => setIsAddOpen(false);
+  const onCloseAdd = () => setIsAddOpen(false);
+  const onCloseEdit = () => setIsEditOpen(false);
+  const openEdit = (id) => {
+    setIsEditOpen(true);
+    setSelectedCategory(id);
+  };
 
   return (
     <div className={styles["admin-categories"]}>
       <h1>All Categories</h1>
-      <button onClick={() => setIsAddOpen((state) => !state)}>
+      <button onClick={() => setIsAddOpen(true)}>
         Add category <i className="fa-solid fa-circle-plus"></i>
       </button>
       <div className={styles["admin-categories-container"]}>
         {categories?.length > 0 ? (
-          categories.map((c) => <CategoryItem key={c._id} {...c} />)
+          categories.map((c) => (
+            <CategoryItem key={c._id} {...c} openEdit={openEdit} />
+          ))
         ) : (
           <h2>No categories</h2>
         )}
       </div>
-      {isAddOpen && (
-        <AddCatgoryName updateCategories={updateCategories} onClose={onClose} />
+      {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
+      {isEditOpen && (
+        <EditCategoryItem onClose={onCloseEdit} id={selectedCategory} />
       )}
+      <Pagination
+        page={page}
+        pageCount={pageCount}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const FORM_VALUES = {
   CategoryImage: "categoryImage",
 };
 
-const AddCatgoryName = ({ updateCategories, onClose }) => {
+const AddCategoryItem = ({ onClose }) => {
   const [values, setValues] = useState({
     [FORM_VALUES.Name]: "",
     [FORM_VALUES.CategoryImage]: "",
@@ -31,14 +31,13 @@ const AddCatgoryName = ({ updateCategories, onClose }) => {
     e.preventDefault();
     const category = await createCategory(values);
     if (category.errors) {
-      const errs = Object.values(category.errors);
-      setErrors(errs);
+      console.log(Object.values(category.errors));
+      setErrors(Object.values(category.errors));
     } else {
       updateNotifs([
         { text: `Category - ${category.name} added!`, type: "success" },
       ]);
       setErrors([]);
-      updateCategories(category);
       onClose();
       navigateTo("/admin-panel/categories");
     }
@@ -91,4 +90,4 @@ const AddCatgoryName = ({ updateCategories, onClose }) => {
   );
 };
 
-export default AddCatgoryName;
+export default AddCategoryItem;

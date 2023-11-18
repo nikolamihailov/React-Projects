@@ -1,10 +1,18 @@
 import styles from "./CategoryItem.module.css";
 
-const CategoryItem = ({ name, categoryImage }) => {
+const CategoryItem = ({ _id, name, categoryImage, openEdit }) => {
   return (
     <div className={styles["admin-category-item"]}>
-      <img src={categoryImage} alt={name} />
       <h2>{name}</h2>
+      <img src={categoryImage} alt={name} />
+      <div>
+        <button onClick={() => openEdit(_id)}>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button>
+          <i className="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
     </div>
   );
 };

@@ -44,8 +44,9 @@
 }
 
 .add-category img {
-  height: 100px;
-  width: 100px;
+  height: 130px;
+  width: 130px;
+  object-fit: contain;
 }
 
 .errors-container {

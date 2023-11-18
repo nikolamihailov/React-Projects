@@ -1,4 +1,24 @@
+.admin-category-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .admin-category-item img {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px var(--background-inverted-color));
+}
+
+.admin-category-item div > button:nth-child(1) {
+  margin-right: 10px;
+  background-color: var(--edit-btn-color);
+  filter: drop-shadow(0 0 4px var(--edit-btn-color));
+}
+
+.admin-category-item div > button:nth-child(2) {
+  background-color: var(--delete-btn-color);
+  filter: drop-shadow(0 0 4px var(--delete-btn-color));
 }

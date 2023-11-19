@@ -12,7 +12,7 @@ const Pagination = ({ page, pageCount, prevPage, nextPage, switchToPage }) => {
           <button
             key={p}
             onClick={() => switchToPage(p)}
-            className={page === p && styles["page-active"]}
+            className={page === p ? styles["page-active"] : ""}
             title={`Page: ${p}`}
           >
             {p}

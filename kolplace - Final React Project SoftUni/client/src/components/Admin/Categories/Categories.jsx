@@ -22,10 +22,10 @@ const Categories = () => {
   const { updateAuth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
-  const [nameFilter, setNameFilter] = useState("");
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    getAllWithFilters(page, nameFilter)
+    getAllWithFilters(page, filter)
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -38,7 +38,7 @@ const Categories = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, nameFilter]);
+  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter]);
 
   const updateCategories = (data) => setCategories(data);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
@@ -53,7 +53,7 @@ const Categories = () => {
     setSelectedCategory(id);
   }, []);
 
-  const onChange = (e) => setNameFilter(e.target.value);
+  const onChange = (e) => setFilter(e.target.value);
 
   return (
     <div className={styles["admin-categories"]}>
@@ -64,9 +64,10 @@ const Categories = () => {
           Add category <i className="fa-solid fa-circle-plus"></i>
         </button>
         <select name="filters" id="filters" onChange={onChange}>
-          <option value="asc">By Name (a-z)</option>
-          <option value="desc">By Name (z-a)</option>
-          <option value="">No filter</option>
+          <option value="createdAt-asc">Oldest</option>
+          <option value="createdAt-desc">Newest</option>
+          <option value="name-asc">Name (-z)</option>
+          <option value="name-desc">Name (z-a)</option>
         </select>
       </div>
 

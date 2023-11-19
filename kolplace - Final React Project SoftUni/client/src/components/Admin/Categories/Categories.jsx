@@ -1,5 +1,5 @@
 import styles from "./Categories.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -8,15 +8,17 @@ import usePagination from "../../../hooks/usePagination";
 import Pagination from "../../Pagination/Pagination";
 import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
 import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
+import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 
 const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
 
 const Categories = () => {
-  const { page, pageCount, prevPage, nextPage, updatePageCount } =
+  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
     usePagination();
   const [categories, setCategories] = useState();
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const { updateAuth, auth } = useContext(AuthContext);
   const navigateTo = useNavigate();
@@ -44,12 +46,18 @@ const Categories = () => {
       });
   }, [page, navigateTo, updateAuth, updateNotifs, auth.token, updatePageCount]);
 
-  const onCloseAdd = () => setIsAddOpen(false);
-  const onCloseEdit = () => setIsEditOpen(false);
-  const openEdit = (id) => {
+  const updateCategories = (data) => setCategories(data);
+  const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
+  const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
+  const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
+  const openEdit = useCallback((id) => {
     setIsEditOpen(true);
     setSelectedCategory(id);
-  };
+  }, []);
+  const openDelete = useCallback((id) => {
+    setIsDeleteOpen(true);
+    setSelectedCategory(id);
+  }, []);
 
   return (
     <div className={styles["admin-categories"]}>
@@ -60,7 +68,12 @@ const Categories = () => {
       <div className={styles["admin-categories-container"]}>
         {categories?.length > 0 ? (
           categories.map((c) => (
-            <CategoryItem key={c._id} {...c} openEdit={openEdit} />
+            <CategoryItem
+              key={c._id}
+              {...c}
+              openEdit={openEdit}
+              openDelete={openDelete}
+            />
           ))
         ) : (
           <h2>No categories</h2>
@@ -68,13 +81,25 @@ const Categories = () => {
       </div>
       {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
       {isEditOpen && (
-        <EditCategoryItem onClose={onCloseEdit} id={selectedCategory} />
+        <EditCategoryItem
+          onClose={onCloseEdit}
+          id={selectedCategory}
+          updateCategories={updateCategories}
+        />
+      )}
+      {isDeleteOpen && (
+        <DeleteCategoryItem
+          onClose={onCloseDelete}
+          id={selectedCategory}
+          updateCategories={updateCategories}
+        />
       )}
       <Pagination
         page={page}
         pageCount={pageCount}
         prevPage={prevPage}
         nextPage={nextPage}
+        switchToPage={switchToPage}
       />
     </div>
   );

@@ -61,18 +61,18 @@
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  background-color: var(--background-color);
-}
-
-.admin-category-top select:hover,
-.admin-category-top select:focus {
-  border-color: var(--secondary-color);
+  border-radius: 15px;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
 }
 
 .admin-category-top option {
-  background-color: var(--background-color);
+  background-color: var(--background-inverted-color);
   color: var(--secondary-color);
   font-size: 17px;
   font-weight: bold;
-  padding: 10px 15px;
+}
+
+.admin-category-top option:hover {
+  background-color: gray;
 }

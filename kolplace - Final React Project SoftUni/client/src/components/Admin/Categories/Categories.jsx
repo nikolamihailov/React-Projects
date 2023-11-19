@@ -22,9 +22,10 @@ const Categories = () => {
   const { updateAuth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
+  const [nameFilter, setNameFilter] = useState("");
 
   useEffect(() => {
-    getAllWithFilters(page)
+    getAllWithFilters(page, nameFilter)
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -37,7 +38,7 @@ const Categories = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount]);
+  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, nameFilter]);
 
   const updateCategories = (data) => setCategories(data);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
@@ -52,12 +53,23 @@ const Categories = () => {
     setSelectedCategory(id);
   }, []);
 
+  const onChange = (e) => setNameFilter(e.target.value);
+
   return (
     <div className={styles["admin-categories"]}>
       <h1>All Categories</h1>
-      <button onClick={() => setIsAddOpen(true)}>
-        Add category <i className="fa-solid fa-circle-plus"></i>
-      </button>
+
+      <div className={styles["admin-category-top"]}>
+        <button onClick={() => setIsAddOpen(true)}>
+          Add category <i className="fa-solid fa-circle-plus"></i>
+        </button>
+        <select name="filters" id="filters" onChange={onChange}>
+          <option value="asc">By Name (a-z)</option>
+          <option value="desc">By Name (z-a)</option>
+          <option value="">No filter</option>
+        </select>
+      </div>
+
       <div className={styles["admin-categories-container"]}>
         {categories?.length > 0 ? (
           categories.map((c) => (

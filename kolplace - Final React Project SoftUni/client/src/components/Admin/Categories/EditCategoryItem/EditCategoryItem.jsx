@@ -6,16 +6,18 @@ import styles from "../AddCategoryItem/AddCategory.module.css";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import Notification from "../../../Notifications/Notification";
 import { getOneCategory } from "../../../../data/services/categoryService";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const FORM_VALUES = {
   Name: "name",
   CategoryImage: "categoryImage",
 };
 
-const EditCategoryItem = ({ onClose, id }) => {
+const EditCategoryItem = ({ onClose, id, updateCategories }) => {
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
   const { updateNotifs } = useContext(NotifContext);
+  const { updateAuth } = useContext(AuthContext);
 
   const [values, setValues] = useState({
     [FORM_VALUES.Name]: "",
@@ -39,11 +41,24 @@ const EditCategoryItem = ({ onClose, id }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const editedCategory = await editCategory(id, values);
+    if (editedCategory.expMessage) {
+      updateNotifs([{ text: editedCategory.expMessage, type: "error" }]);
+      navigateTo("/login");
+      updateAuth({});
+    }
     if (editedCategory.errors) {
       setErrors(Object.values(editedCategory.errors));
     } else {
+      updateCategories((categs) =>
+        categs.map((category) =>
+          category._id === editedCategory._id ? editedCategory : category
+        )
+      );
       updateNotifs([
-        { text: `Category - ${editedCategory.name} updated!`, type: "success" },
+        {
+          text: `Category - ${editedCategory.name} updated!`,
+          type: "success",
+        },
       ]);
       setErrors([]);
       onClose();

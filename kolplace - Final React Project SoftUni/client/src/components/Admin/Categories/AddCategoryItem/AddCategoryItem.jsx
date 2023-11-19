@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./AddCategory.module.css";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import Notification from "../../../Notifications/Notification";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const FORM_VALUES = {
   Name: "name",
@@ -20,6 +21,7 @@ const AddCategoryItem = ({ onClose }) => {
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
   const { updateNotifs } = useContext(NotifContext);
+  const { updateAuth } = useContext(AuthContext);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +32,12 @@ const AddCategoryItem = ({ onClose }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const category = await createCategory(values);
+    if (category.expMessage) {
+      updateNotifs([{ text: category.expMessage, type: "error" }]);
+      navigateTo("/login");
+      updateAuth({});
+    }
     if (category.errors) {
-      console.log(Object.values(category.errors));
       setErrors(Object.values(category.errors));
     } else {
       updateNotifs([

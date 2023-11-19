@@ -23,7 +23,7 @@ categoryController.get("/categories", async (req, res) => {
     }
 });
 
-categoryController.get("/categories/:id", isAdmin, async (req, res) => {
+categoryController.get("/categories/:id", async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
@@ -55,11 +55,22 @@ categoryController.put("/categories/:id", isAdmin, async (req, res) => {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
         const updatedCategory = await categoryService.editCategory(req.params.id, { ...req.body });
-        console.log(updatedCategory);
-        res.status(201).json(updatedCategory);
+        res.status(200).json(updatedCategory);
     } catch (error) {
         const errors = extractErrors(error);
         res.status(400).json({ errors });
+    }
+});
+
+categoryController.delete("/categories/:id", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const deletedCategory = await categoryService.deleteCategory(req.params.id);
+        res.status(200).json(deletedCategory);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
 

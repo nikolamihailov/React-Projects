@@ -9,8 +9,7 @@ import Pagination from "../../Pagination/Pagination";
 import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
 import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
 import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
-
-const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
+import { getAllWithFilters } from "../../../data/services/categoryService";
 
 const Categories = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -20,18 +19,12 @@ const Categories = () => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const { updateAuth, auth } = useContext(AuthContext);
+  const { updateAuth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/categories?page=${page}`, {
-      method: "GET",
-      headers: {
-        "X-Authorization": auth.token,
-      },
-    })
-      .then((res) => res.json())
+    getAllWithFilters(page)
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -44,7 +37,7 @@ const Categories = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [page, navigateTo, updateAuth, updateNotifs, auth.token, updatePageCount]);
+  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount]);
 
   const updateCategories = (data) => setCategories(data);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);

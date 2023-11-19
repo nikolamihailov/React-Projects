@@ -13,6 +13,10 @@ export const getAll = async () => {
     return await request.get(categoryEndpoints.getAll);
 };
 
+export const getAllWithFilters = async (page = "") => {
+    return await request.get(categoryEndpoints.getAll + `?page=${page}`);
+};
+
 export const getOneCategory = async (id) => {
     return await request.get(categoryEndpoints.getOne + id);
 };

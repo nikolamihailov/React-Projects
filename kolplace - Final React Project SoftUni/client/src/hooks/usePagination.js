@@ -16,10 +16,12 @@ const usePagination = () => {
             return (p -= 1);
         }), []);
 
+    const switchToPage = useCallback((page) => setPage(page), []);
+
     const updatePageCount = useCallback((pC) => setPageCount(pC), []);
 
     return {
-        page, pageCount, nextPage, prevPage, updatePageCount
+        page, pageCount, nextPage, prevPage, updatePageCount, switchToPage
     };
 };
 

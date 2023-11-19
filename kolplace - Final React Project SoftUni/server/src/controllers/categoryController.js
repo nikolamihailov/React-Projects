@@ -7,13 +7,12 @@ const ITEMS_PER_PAGE = 3;
 
 categoryController.get("/categories", async (req, res) => {
     try {
-        console.log(req.query);
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
         if (Object.keys(req.query).length > 0) {
-            const { page, name } = req.query;
-            const data = await categoryService.getAllWithFilters(ITEMS_PER_PAGE, page, name);
+            const { page, filter } = req.query;
+            const data = await categoryService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
             res.status(200).json(data);
         } else {
             const allCategories = await categoryService.getAllCategories();

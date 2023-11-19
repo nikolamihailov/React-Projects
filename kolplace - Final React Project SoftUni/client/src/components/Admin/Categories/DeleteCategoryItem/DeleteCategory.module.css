@@ -1,0 +1,40 @@
+.delete-category {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  min-height: 20vh;
+  z-index: 3;
+  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  max-height: 90%;
+  color: var(--background-color);
+  padding: 30px 40px;
+  background: var(--background-inverted-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+}
+
+.delete-category p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.delete-category p > span {
+  font-size: 20px;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.delete-category div > button:nth-child(1) {
+  background-color: green;
+  filter: drop-shadow(0 0 3px green);
+  margin-right: 20px;
+}
+.delete-category div > button:nth-child(2) {
+  background-color: var(--secondary-color);
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

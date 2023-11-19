@@ -41,3 +41,38 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.admin-category-top {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.admin-category-top label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.admin-category-top select {
+  padding: 8px;
+  font-size: 19px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--background-color);
+}
+
+.admin-category-top select:hover,
+.admin-category-top select:focus {
+  border-color: var(--secondary-color);
+}
+
+.admin-category-top option {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px 15px;
+}

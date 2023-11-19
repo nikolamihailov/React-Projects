@@ -18,6 +18,6 @@ exports.getOneCategory = (id) => Category.findById(id);
 
 exports.createCategory = (data) => Category.create(data);
 
-exports.editCategory = (id, data) => Category.findByIdAndUpdate(id, data, { runValidators: true });
+exports.editCategory = (id, data) => Category.findByIdAndUpdate(id, data, { new: true, runValidators: true });
 
 

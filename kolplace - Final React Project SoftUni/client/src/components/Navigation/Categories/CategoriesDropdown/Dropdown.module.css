@@ -32,7 +32,7 @@
 }
 
 .categories-dropdown li:hover {
-  scale: 1.04;
+  scale: 1.05;
   background: rgb(146, 141, 141);
   cursor: pointer;
   color: var(--primary-color);

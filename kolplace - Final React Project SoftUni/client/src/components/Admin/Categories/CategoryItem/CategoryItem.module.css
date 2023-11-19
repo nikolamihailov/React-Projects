@@ -17,7 +17,7 @@
 }
 
 .admin-category-item div > button:nth-child(1) {
-  margin-right: 10px;
+  margin-right: 20px;
   background-color: var(--edit-btn-color);
   filter: drop-shadow(0 0 4px var(--edit-btn-color));
 }

@@ -13,8 +13,8 @@ export const getAll = async () => {
     return await request.get(categoryEndpoints.getAll);
 };
 
-export const getAllWithFilters = async (page = "") => {
-    return await request.get(categoryEndpoints.getAll + `?page=${page}`);
+export const getAllWithFilters = async (page = "", name = "") => {
+    return await request.get(categoryEndpoints.getAll + `?page=${page}&name=${name}`);
 };
 
 export const getOneCategory = async (id) => {

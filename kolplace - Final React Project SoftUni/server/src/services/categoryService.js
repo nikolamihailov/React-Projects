@@ -2,15 +2,20 @@ const Category = require("../models/Category");
 
 exports.getAllCategories = () => Category.find();
 
-exports.getAllWithPagination = async (itemsPerPage = 3, page) => {
+exports.getAllWithFilters = async (itemsPerPage = 3, page, name = "") => {
+    const query = {};
+    if (name) query.name = name;
 
     const categoryCount = await Category.estimatedDocumentCount();
-
     const pageCount = Math.ceil(categoryCount / itemsPerPage);
     const skip = itemsPerPage * (page - 1);
 
-    const categories = await Category.find().skip(skip).limit(itemsPerPage);
+    let categories;
 
+    if (Object.keys(query).length > 0) categories = await Category.find().sort(query);
+    else categories = await Category.find();
+
+    categories = categories.slice(skip, skip + itemsPerPage);
     return { categories, pageCount };
 
 };

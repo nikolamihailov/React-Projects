@@ -2,9 +2,12 @@ const Category = require("../models/Category");
 
 exports.getAllCategories = () => Category.find();
 
-exports.getAllWithFilters = async (itemsPerPage = 3, page, name = "") => {
+exports.getAllWithFilters = async (itemsPerPage = 3, page, filter = "") => {
     const query = {};
-    if (name) query.name = name;
+    if (filter) {
+        if (filter.includes("name")) query.name = filter.split("-")[1];
+        if (filter.includes("createdAt")) query.createdAt = filter.split("-")[1];
+    }
 
     const categoryCount = await Category.estimatedDocumentCount();
     const pageCount = Math.ceil(categoryCount / itemsPerPage);
@@ -12,7 +15,7 @@ exports.getAllWithFilters = async (itemsPerPage = 3, page, name = "") => {
 
     let categories;
 
-    if (Object.keys(query).length > 0) categories = await Category.find().sort(query);
+    if (Object.keys(query).length > 0) categories = await Category.find().sort(query).collation({ locale: 'en', strength: 2 });
     else categories = await Category.find();
 
     categories = categories.slice(skip, skip + itemsPerPage);

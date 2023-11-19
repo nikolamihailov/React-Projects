@@ -16,8 +16,9 @@ const Home = () => {
           src="https://smartphone.bg/system/images/421908/original/mtv73rxa.png"
           alt=""
           style={{
-            height: "300px",
-            width: "400px",
+            height: "250px",
+            width: "250px",
+            objectFit: "contain",
             filter: "drop-shadow(0 0 3px var(--primary-color))",
           }}
         />

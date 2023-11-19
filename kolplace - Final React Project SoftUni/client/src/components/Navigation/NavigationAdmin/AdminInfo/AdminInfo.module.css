@@ -5,11 +5,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 280px;
 }
 
 .info img {
+  border-radius: 50%;
   width: 120px;
   height: 120px;
+  margin-bottom: 20px;
 }
 
 .info p {

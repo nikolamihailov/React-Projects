@@ -11,7 +11,6 @@
   flex-direction: column;
   width: auto;
   width: 150%;
-  border: 2px solid var(--secondary-color);
 }
 
 .categories-dropdown li {
@@ -33,6 +32,7 @@
 }
 
 .categories-dropdown li:hover {
+  scale: 1.04;
   background: rgb(146, 141, 141);
   cursor: pointer;
   color: var(--primary-color);
@@ -41,7 +41,7 @@
   flex: 1;
   height: 50px;
   width: 50px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .categories-dropdown span {

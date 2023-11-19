@@ -1,7 +1,6 @@
 .pagination {
   display: flex;
   justify-content: space-between;
-  width: 170px;
 }
 
 .pagination button {
@@ -13,6 +12,8 @@
   font-size: 19px;
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
+  margin: 0 5px;
+  font-weight: bold;
 }
 
 .pagination button:disabled {
@@ -26,4 +27,10 @@
   font-size: 19px;
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
+.pagination .page-active {
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  filter: drop-shadow(0 0 3px var(--background-inverted-color));
 }

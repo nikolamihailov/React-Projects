@@ -10,6 +10,7 @@ import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
 import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
 import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 import { getAllWithFilters } from "../../../data/services/categoryService";
+import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCategories";
 
 const Categories = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -40,7 +41,7 @@ const Categories = () => {
       });
   }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter]);
 
-  const updateCategories = (data) => setCategories(data);
+  const updateCategories = useCallback((data) => setCategories(data), []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
   const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
   const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
@@ -53,7 +54,7 @@ const Categories = () => {
     setSelectedCategory(id);
   }, []);
 
-  const onChange = (e) => setFilter(e.target.value);
+  const onChange = useCallback((e) => setFilter(e.target.value), []);
 
   return (
     <div className={styles["admin-categories"]}>
@@ -63,12 +64,7 @@ const Categories = () => {
         <button onClick={() => setIsAddOpen(true)}>
           Add category <i className="fa-solid fa-circle-plus"></i>
         </button>
-        <select name="filters" id="filters" onChange={onChange}>
-          <option value="createdAt-asc">Oldest</option>
-          <option value="createdAt-desc">Newest</option>
-          <option value="name-asc">Name (-z)</option>
-          <option value="name-desc">Name (z-a)</option>
-        </select>
+        <FilterCategories onChange={onChange} />
       </div>
 
       <div className={styles["admin-categories-container"]}>

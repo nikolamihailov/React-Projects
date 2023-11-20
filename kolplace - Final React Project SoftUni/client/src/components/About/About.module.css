@@ -1,0 +1,64 @@
+.about-us-section {
+  text-align: center;
+  height: var(--section-min-height);
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-us-section div:nth-child(1) {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 25px;
+}
+
+.about-us-section div:nth-child(1) > h1 {
+  font-size: 40px;
+}
+.about-us-section div:nth-child(1) > p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 450;
+  font-size: 20px;
+}
+
+.about-us-section .contact-section {
+  flex: 1;
+  text-align: center;
+  padding: 40px;
+}
+
+.about-us-section .contact-section p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.about-us-section .contact-section p:nth-child(1) {
+  font-size: 1.3rem;
+}
+
+.about-us-section .contact-section a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.5s ease;
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.about-us-section .contact-section a:hover {
+  color: var(--dropshadow-color);
+  text-decoration: underline;
+}
+
+.about-us-section iframe {
+  flex: 2;
+  width: 100%;
+  border: 5px solid var(--main-nav-categories);
+}

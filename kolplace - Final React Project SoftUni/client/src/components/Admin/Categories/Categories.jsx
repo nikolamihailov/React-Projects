@@ -15,7 +15,7 @@ import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCa
 const Categories = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
     usePagination();
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -60,7 +60,7 @@ const Categories = () => {
     <div className={styles["admin-categories"]}>
       <h1>All Categories</h1>
 
-      <div className={styles["admin-category-top"]}>
+      <div className={styles["admin-categories-top"]}>
         <button onClick={() => setIsAddOpen(true)}>
           Add category <i className="fa-solid fa-circle-plus"></i>
         </button>

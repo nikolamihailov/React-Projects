@@ -1,0 +1,22 @@
+.add-product {
+  background-color: var(--background-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  min-height: 50vh;
+  z-index: 3;
+
+  /* ---------------------------------------- */
+  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  max-height: 90%;
+  color: var(--background-color);
+  padding: 30px 40px;
+  background: var(--background-inverted-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+}

@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import "./App.css";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { NotifProvider } from "./contexts/NotificationContext.jsx";
-import NotificationContainer from "./components/Notifications/NotificationContianer/NotificationContainer.jsx";
+import NotificationContainer from "./components/Notifications/NotificationContainer/NotificationContainer.jsx";
 import About from "./components/About/About.jsx";
 import OurStores from "./components/OurStores/OurStores.jsx";
 import Categories from "./components/Admin/Categories/Categories.jsx";

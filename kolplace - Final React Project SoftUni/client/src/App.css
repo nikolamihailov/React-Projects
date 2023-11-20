@@ -76,7 +76,6 @@ body {
 .light {
   position: relative;
   min-height: 100vh;
-  height: auto;
   width: 100%;
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
@@ -89,7 +88,6 @@ body {
 .dark {
   position: relative;
   min-height: 100vh;
-  height: auto;
   width: 100%;
   --background-color: #23272f;
   --background-inverted-color: whitesmoke;

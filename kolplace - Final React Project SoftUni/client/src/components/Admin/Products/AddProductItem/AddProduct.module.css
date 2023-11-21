@@ -21,6 +21,17 @@
   min-width: 45vw;
 }
 
+.add-product button {
+  all: unset;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
 .all-product-inputs {
   padding: 5px;
   display: flex;

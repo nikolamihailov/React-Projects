@@ -57,7 +57,6 @@ const AddProductItem = ({ onClose }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
     const product = await createProduct(values);
     if (product.expMessage) {
       updateNotifs([{ text: product.expMessage, type: "error" }]);

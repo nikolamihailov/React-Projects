@@ -5,7 +5,16 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "Product name is required!"],
         minLength: [5, "Product name must be at least 5 characters!"],
-        maxLength: [40, "Product name must not be more than 40 characters!"],
+        maxLength: [60, "Product name must not be more than 60 characters!"],
+        unique: true,
+        validator: async function (name) {
+            if (this.isModified('name') || this.isNew) {
+                const product = await Product.findOne({ name });
+                return !product;
+            }
+            return true;
+        },
+        message: 'Product with this name already exists!',
     },
     price: {
         type: Number,
@@ -17,14 +26,11 @@ const productSchema = new mongoose.Schema({
             message: 'Price must be positive number and in range (1-9999)!'
         }
     },
+    hasPromoPrice: {
+        type: Boolean,
+    },
     promoPrice: {
         type: Number,
-        validate: {
-            validator: function (value) {
-                return value === undefined || (value > 0 && value < this.price);
-            },
-            message: 'Promo price must be a positive number and lower than the regular price!'
-        }
     },
     description: {
         type: String,

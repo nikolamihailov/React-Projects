@@ -37,7 +37,7 @@ const Categories = () => {
         setCategories(data.categories);
       })
       .catch((error) => {
-        console.log(error.message);
+        updateNotifs([{ text: error, type: "error" }]);
       });
   }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter]);
 

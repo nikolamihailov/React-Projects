@@ -4,7 +4,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
-  min-height: 50vh;
+  min-height: 70vh;
   z-index: 3;
 
   /* ---------------------------------------- */
@@ -18,5 +18,173 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 400px;
+  min-width: 45vw;
+}
+
+.all-product-inputs {
+  padding: 5px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.all-product-inputs .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-product .form-group label,
+.add-product .form-group input {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-product .form-group input {
+  color: var(--background-color);
+  background: none;
+  font-size: 16px;
+  border: none;
+  padding: 10px 15px;
+  border-bottom: 3px solid var(--secondary-color);
+  outline: none;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.all-product-inputs textarea {
+  padding: 10px;
+  border-radius: 15px;
+  width: 300px;
+  height: 150px;
+  font-size: 15px;
+}
+.form-group:focus-within {
+  transform: scale(1.07);
+}
+
+.all-product-inputs .images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.all-product-inputs .images img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+/*  CUSTOM CHECKMARK*/
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin: 20px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  margin-left: 15px;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  right: 4.5px;
+  top: 6px;
+  width: 2.5px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* dropdown*/
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group select {
+  padding: 6px 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: var(--background-color);
+  color: var(--background-inverted-color);
+}
+
+.form-group option {
+  background-color: var(--background-inverted-color);
+  color: var(--secondary-color);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.form-group option:hover {
+  background-color: gray;
+}
+
+.errors-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
 }

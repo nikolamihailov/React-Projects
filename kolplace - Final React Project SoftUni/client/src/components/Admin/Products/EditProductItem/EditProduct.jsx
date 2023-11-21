@@ -94,7 +94,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
         )
       );
       updateNotifs([
-        { text: `Product - ${editedProduct.name} added!`, type: "success" },
+        { text: `Product - ${editedProduct.name} updated!`, type: "success" },
       ]);
       setErrors([]);
       onClose();

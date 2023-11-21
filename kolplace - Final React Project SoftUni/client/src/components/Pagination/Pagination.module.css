@@ -20,14 +20,6 @@
   cursor: not-allowed;
   background-color: rgb(245, 130, 130);
 }
-.pagination p {
-  color: var(--white-color);
-  padding: 10px 15px;
-  background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
-}
 
 .pagination .page-active {
   background-color: var(--background-inverted-color);

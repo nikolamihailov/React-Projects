@@ -7,19 +7,6 @@ const productSchema = new mongoose.Schema({
         minLength: [5, "Product name must be at least 5 characters!"],
         maxLength: [40, "Product name must not be more than 40 characters!"],
     },
-    images: [
-        {
-            type: String,
-            required: [true, "Product image is required!"],
-            match: [/^https?:\/\/.+/, "Provide valid image link!"]
-        }
-    ],
-    description: {
-        type: String,
-        required: [true, "Product description is required!"],
-        minLength: [30, "Product description must be at least 30 characters!"],
-        maxLength: [400, "Product description must not be more than 400 characters!"],
-    },
     price: {
         type: Number,
         required: [true, "Product price is required!"],
@@ -38,6 +25,29 @@ const productSchema = new mongoose.Schema({
             },
             message: 'Promo price must be a positive number and lower than the regular price!'
         }
+    },
+    description: {
+        type: String,
+        required: [true, "Product description is required!"],
+        minLength: [30, "Product description must be at least 30 characters!"],
+        maxLength: [2000, "Product description must not be more than 2000 characters!"],
+    },
+    mainImage: {
+        type: String,
+        required: [true, "Product image is required!"],
+        match: [/^https?:\/\/.+/, "Provide valid image link!"]
+    },
+    imageTwo: {
+        type: String,
+        match: [/^https?:\/\/.+/, "Provide valid image 2 link!"]
+    },
+    imageThree: {
+        type: String,
+        match: [/^https?:\/\/.+/, "Provide valid image 3 link!"]
+    },
+    imageFour: {
+        type: String,
+        match: [/^https?:\/\/.+/, "Provide valid image 4 link!"]
     },
     reviews: [
         {

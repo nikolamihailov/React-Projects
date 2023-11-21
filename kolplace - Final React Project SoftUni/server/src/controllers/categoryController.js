@@ -44,7 +44,11 @@ categoryController.post("/categories", isAdmin, async (req, res) => {
         const newCategory = await categoryService.createCategory({ ...req.body });
         res.status(201).json(newCategory);
     } catch (error) {
-        const errors = extractErrors(error);
+        let errors = extractErrors(error);
+        errors = errors.filter(e => e.includes("E11000") ? "" : e);
+        if (error.code === 11000) {
+            errors.push('Category with this name already exists!');
+        }
         res.status(400).json({ errors });
     }
 });

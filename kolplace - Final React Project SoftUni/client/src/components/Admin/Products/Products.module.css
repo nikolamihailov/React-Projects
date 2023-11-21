@@ -3,8 +3,9 @@
   flex: 5;
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
 }
 
@@ -13,7 +14,7 @@
   margin-bottom: 25px;
 }
 
-.admin-products button {
+.admin-products-top button {
   all: unset;
   cursor: pointer;
   color: var(--white-color);
@@ -29,6 +30,14 @@
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+}
+
+.admin-products-top {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }

@@ -38,8 +38,23 @@
   filter: drop-shadow(0 0 4px var(--delete-btn-color));
 }
 
+.admin-product-item .prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .admin-product-item p {
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
+}
+
+.admin-product-item .promo-price {
+  margin-left: 10px;
+  background-color: var(--secondary-color);
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--white-color);
 }

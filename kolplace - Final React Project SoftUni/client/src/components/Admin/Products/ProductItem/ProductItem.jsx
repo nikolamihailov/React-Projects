@@ -1,4 +1,5 @@
 import styles from "./ProductItem.module.css";
+import { motion } from "framer-motion";
 
 const ProductItem = ({
   _id,
@@ -11,7 +12,13 @@ const ProductItem = ({
   promoPrice,
 }) => {
   return (
-    <div className={styles["admin-product-item"]}>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles["admin-product-item"]}
+    >
       <div>
         <button onClick={() => openEdit(_id)} title={"Edit Item"}>
           <i className="fa-solid fa-pen-to-square"></i>
@@ -36,7 +43,7 @@ const ProductItem = ({
           <p className={styles["promo-price"]}>${promoPrice}</p>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

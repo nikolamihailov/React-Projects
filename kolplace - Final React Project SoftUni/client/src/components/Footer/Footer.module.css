@@ -1,7 +1,7 @@
 .footer {
   height: var(--footer-height);
   padding: 10px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   clear: both;
   display: flex;

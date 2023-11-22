@@ -45,14 +45,15 @@ productController.post("/products", isAdmin, async (req, res) => {
         let { promoPrice, ...body } = req.body;
         if (promoPrice) body.promoPrice = promoPrice;
         body.price = Number(body.price);
+        if (body.promoPrice >= body.price) throw new Error("Promo price must be a positive number and lower than the regular price!");
         const newProduct = await productService.addProduct(body);
         res.status(201).json(newProduct);
     } catch (error) {
         let errors = extractErrors(error);
-        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         if (error.code === 11000) {
-            errors.push('Category with this name already exists!');
+            errors.push('Product with this name already exists!');
         }
+        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         res.status(400).json({ errors });
     }
 });
@@ -70,7 +71,12 @@ productController.put("/products/:id", isAdmin, async (req, res) => {
         console.log(updatedProduct);
         res.status(200).json(updatedProduct);
     } catch (error) {
-        const errors = extractErrors(error);
+        let errors = extractErrors(error);
+        console.log(errors);
+        if (error.code === 11000) {
+            errors.push('Product with this name already exists!');
+        }
+        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         res.status(400).json({ errors });
     }
 });

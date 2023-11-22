@@ -45,10 +45,10 @@ categoryController.post("/categories", isAdmin, async (req, res) => {
         res.status(201).json(newCategory);
     } catch (error) {
         let errors = extractErrors(error);
-        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         if (error.code === 11000) {
             errors.push('Category with this name already exists!');
         }
+        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         res.status(400).json({ errors });
     }
 });
@@ -61,7 +61,11 @@ categoryController.put("/categories/:id", isAdmin, async (req, res) => {
         const updatedCategory = await categoryService.editCategory(req.params.id, { ...req.body });
         res.status(200).json(updatedCategory);
     } catch (error) {
-        const errors = extractErrors(error);
+        let errors = extractErrors(error);
+        if (error.code === 11000) {
+            errors.push('Category with this name already exists!');
+        }
+        errors = errors.filter(e => e.includes("E11000") ? "" : e);
         res.status(400).json({ errors });
     }
 });

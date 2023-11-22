@@ -1,20 +1,21 @@
 .admin-product-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-basis: 22%;
+  height: 275px;
 }
 
 .admin-product-item img {
-  height: 115px;
+  height: 105px;
   width: 115px;
   object-fit: contain;
   filter: drop-shadow(0 0 3px var(--background-inverted-color));
 }
 
 .admin-product-item h2 {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .admin-product-item button {
@@ -50,9 +51,10 @@
 }
 
 .admin-product-item .promo-price {
+  margin-top: 0;
   margin-left: 10px;
   background-color: var(--secondary-color);
-  padding: 5px;
+  padding: 3px 5px;
   border-radius: 50%;
   font-size: 19px;
   font-weight: bold;

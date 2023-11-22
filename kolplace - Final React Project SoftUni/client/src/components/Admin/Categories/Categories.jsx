@@ -11,6 +11,7 @@ import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
 import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 import { getAllWithFilters } from "../../../data/services/categoryService";
 import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCategories";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Categories = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -67,20 +68,22 @@ const Categories = () => {
         <FilterCategories onChange={onChange} />
       </div>
 
-      <div className={styles["admin-categories-container"]}>
-        {categories?.length > 0 ? (
-          categories.map((c) => (
-            <CategoryItem
-              key={c._id}
-              {...c}
-              openEdit={openEdit}
-              openDelete={openDelete}
-            />
-          ))
-        ) : (
-          <h2>No categories</h2>
-        )}
-      </div>
+      <motion.div layout className={styles["admin-categories-container"]}>
+        <AnimatePresence>
+          {categories?.length > 0 ? (
+            categories.map((c) => (
+              <CategoryItem
+                key={c._id}
+                {...c}
+                openEdit={openEdit}
+                openDelete={openDelete}
+              />
+            ))
+          ) : (
+            <h2>No categories</h2>
+          )}
+        </AnimatePresence>
+      </motion.div>
       {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
       {isEditOpen && (
         <EditCategoryItem

@@ -1,8 +1,15 @@
 import styles from "./CategoryItem.module.css";
+import { motion } from "framer-motion";
 
 const CategoryItem = ({ _id, name, categoryImage, openEdit, openDelete }) => {
   return (
-    <div className={styles["admin-category-item"]}>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles["admin-category-item"]}
+    >
       <div>
         <button onClick={() => openEdit(_id)} title={"Edit Item"}>
           <i className="fa-solid fa-pen-to-square"></i>
@@ -13,7 +20,7 @@ const CategoryItem = ({ _id, name, categoryImage, openEdit, openDelete }) => {
       </div>
       <img src={categoryImage} alt={name} />
       <h2>{name}</h2>
-    </div>
+    </motion.div>
   );
 };
 

@@ -12,6 +12,7 @@ import EditProductItem from "./EditProductItem/EditProduct";
 import DeleteProductItem from "./DeleteProductItem/DeleteProductItem";
 import FilterProductsByCategory from "../../Filters/AdminFilters/ProductFilters/FilterProductsByCategory";
 import FilterProductsBySort from "../../Filters/AdminFilters/ProductFilters/FilterProductsBySort";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Products = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -86,20 +87,22 @@ const Products = () => {
         <FilterProductsBySort onChange={onSortFilterChange} />
       </div>
 
-      <div className={styles["admin-products-container"]}>
-        {products?.length > 0 ? (
-          products.map((p) => (
-            <ProductItem
-              key={p._id}
-              {...p}
-              openEdit={openEdit}
-              openDelete={openDelete}
-            />
-          ))
-        ) : (
-          <h2>No products</h2>
-        )}
-      </div>
+      <motion.div layout className={styles["admin-products-container"]}>
+        <AnimatePresence>
+          {products?.length > 0 ? (
+            products.map((p) => (
+              <ProductItem
+                key={p._id}
+                {...p}
+                openEdit={openEdit}
+                openDelete={openDelete}
+              />
+            ))
+          ) : (
+            <h2>No products</h2>
+          )}
+        </AnimatePresence>
+      </motion.div>
       {isAddOpen && <AddProductItem onClose={onCloseAdd} />}
       {isEditOpen && (
         <EditProductItem

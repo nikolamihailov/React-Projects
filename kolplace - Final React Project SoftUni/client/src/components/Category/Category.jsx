@@ -8,10 +8,12 @@ import ProductItem from "./ProductItem/ProductItem";
 import useTitle from "../../hooks/useTitle";
 
 import styles from "./Category.module.css";
+import Spinner from "../Spinner/Spinner";
 
 const Category = () => {
   const { name } = useParams();
   useTitle(`${name.at(0).toUpperCase() + name.slice(1)} Category | KolPlace`);
+  const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
   const navigateTo = useNavigate();
@@ -43,6 +45,7 @@ const Category = () => {
           updateAuth({});
         }
         setProducts(productsData);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -53,25 +56,31 @@ const Category = () => {
 
   return (
     <section className={styles["category-section"]}>
-      <div>
-        <h1>{category?.name}</h1>
-        <img
-          className={styles["category-banner-image"]}
-          src={category?.categoryImage}
-          alt={category?.name}
-        />
-        <p>Hello there!</p>
-      </div>
+      {isLoading ? (
+        <Spinner className={styles["spinner"]} />
+      ) : (
+        <>
+          <div>
+            <h1>{category?.name}</h1>
+            <img
+              className={styles["category-banner-image"]}
+              src={category?.categoryImage}
+              alt={category?.name}
+            />
+            <p>Hello there!</p>
+          </div>
 
-      <div className={styles["products"]}>
-        {products.length > 0 ? (
-          products.map((p) => {
-            return <ProductItem key={p._id} {...p} />;
-          })
-        ) : (
-          <h2>No products in this category!</h2>
-        )}
-      </div>
+          <div className={styles["products"]}>
+            {products.length > 0 ? (
+              products.map((p) => {
+                return <ProductItem key={p._id} {...p} />;
+              })
+            ) : (
+              <h2>No products in this category!</h2>
+            )}
+          </div>
+        </>
+      )}
     </section>
   );
 };

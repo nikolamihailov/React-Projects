@@ -20,3 +20,10 @@
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
+
+.category-section .spinner {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+}

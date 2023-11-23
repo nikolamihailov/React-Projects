@@ -17,7 +17,8 @@
   background-color: var(--secondary-color);
 }
 
-.theme-btn i {
+.theme-btn i,
+.theme-btn svg {
   font-size: 28px;
   color: var(--secondary-color);
   filter: drop-shadow(0 0 1px var(--dropshadow-color));

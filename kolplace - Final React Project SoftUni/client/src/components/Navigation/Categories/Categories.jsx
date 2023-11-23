@@ -35,7 +35,9 @@ const Categories = () => {
     >
       <i className="fa-solid fa-list"></i>
       <button>Categories</button>
-      {isOpen && <CategoriesDropdown categories={categories} />}
+      {isOpen && (
+        <CategoriesDropdown categories={categories} onClose={mouseLeave} />
+      )}
     </div>
   );
 };

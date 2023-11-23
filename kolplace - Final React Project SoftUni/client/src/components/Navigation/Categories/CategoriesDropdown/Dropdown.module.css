@@ -11,6 +11,7 @@
   flex-direction: column;
   width: auto;
   width: 150%;
+  z-index: 4;
 }
 
 .categories-dropdown li {
@@ -25,6 +26,12 @@
   align-items: center;
   padding-left: 10%;
   border-bottom: 2px solid var(--secondary-color);
+  z-index: 4;
+}
+.categories-dropdown a {
+  z-index: 4;
+  text-decoration: none;
+  color: var(--background-color);
 }
 
 .categories-dropdown li:last-child() {
@@ -42,6 +49,7 @@
   height: 50px;
   width: 50px;
   object-fit: contain;
+  z-index: 4;
 }
 
 .categories-dropdown span {

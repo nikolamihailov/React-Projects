@@ -2,7 +2,7 @@ const categoryController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
 const categoryService = require("../services/categoryService");
 const { extractErrors } = require("../utils/errParse");
-
+const mongoose = require('mongoose');
 const ITEMS_PER_PAGE = 3;
 
 categoryController.get("/categories", async (req, res) => {
@@ -28,6 +28,15 @@ categoryController.get("/categories/:id", async (req, res) => {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
+        const { id } = req.params;
+
+        if (!mongoose.isValidObjectId(id)) {
+            const name = id.charAt(0).toUpperCase() + id.slice(1);
+            console.log(name);
+            const category = await categoryService.getOneCategoryByName(name);
+            return res.status(200).json(category);
+        }
+
         const category = await categoryService.getOneCategory(req.params.id);
         res.status(200).json(category);
     } catch (error) {
@@ -35,6 +44,7 @@ categoryController.get("/categories/:id", async (req, res) => {
         res.status(400).json({ errors });
     }
 });
+
 
 categoryController.post("/categories", isAdmin, async (req, res) => {
     try {

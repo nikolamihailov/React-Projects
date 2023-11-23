@@ -1,3 +1,4 @@
 .home {
   min-height: var(--section-min-height);
+  position: relative;
 }

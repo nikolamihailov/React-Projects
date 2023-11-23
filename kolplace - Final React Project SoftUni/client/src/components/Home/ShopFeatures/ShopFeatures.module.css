@@ -1,0 +1,35 @@
+.shopFeatures {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 75vw;
+  margin-top: 20px;
+  position: relative;
+  height: 90px;
+}
+
+.feature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+}
+.feature i {
+  font-size: 45px;
+  color: var(--secondary-color);
+}
+
+.feature p {
+  font-size: 18px;
+  margin-top: 15px;
+  color: var(--primary-color);
+}
+
+.feature-slash {
+  margin-left: 25px;
+  height: 100%;
+  width: 2px;
+  background-color: var(--secondary-color);
+  transform: rotate(40deg);
+}

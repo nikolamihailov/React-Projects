@@ -1,0 +1,36 @@
+.carousel-home-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90vw;
+  height: 40vh;
+}
+
+.carousel-home-item img {
+  width: 90vw;
+  height: 40vh;
+  object-fit: contain;
+}
+
+.carousel-home-item a {
+  text-decoration: none;
+  position: absolute;
+  bottom: 30px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 5px solid var(--secondary-color);
+}
+.carousel-home-item button {
+  all: unset;
+
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 25px;
+  background-color: var(--secondary-color);
+  font-size: 25px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

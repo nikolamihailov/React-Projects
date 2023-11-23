@@ -16,6 +16,7 @@ import Users from "./components/Admin/Users/Users.jsx";
 import Stores from "./components/Admin/Stores/Stores.jsx";
 import RouteGuardAdmin from "./guards/RouteGuardAdmin.jsx";
 import { ThemeProvider } from "./contexts/themeContext.jsx";
+import Category from "./components/Category/Category.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/register" element={<Register />}></Route>
               <Route path="/about-us" element={<About />}></Route>
               <Route path="/our-stores" element={<OurStores />}></Route>
+              <Route path="/categories/:name" element={<Category />}></Route>
               <Route path="/admin-panel" element={<RouteGuardAdmin />}>
                 <Route path="categories" element={<Categories />}></Route>
                 <Route path="products" element={<Products />}></Route>

@@ -21,6 +21,10 @@ export const getOneCategory = async (id) => {
     return await request.get(categoryEndpoints.getOne + id);
 };
 
+export const getOneCategoryByName = async (name) => {
+    return await request.get(categoryEndpoints.getOne + name);
+};
+
 export const createCategory = async (data) => {
     return await request.post(categoryEndpoints.createCategory, data);
 };

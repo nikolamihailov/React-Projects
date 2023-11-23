@@ -24,6 +24,8 @@ exports.getAllWithFilters = async (itemsPerPage = 3, page, filter = "") => {
 };
 exports.getOneCategory = (id) => Category.findById(id);
 
+exports.getOneCategoryByName = (name) => Category.findOne({ name });
+
 exports.createCategory = (data) => Category.create(data);
 
 exports.editCategory = (id, data) => Category.findByIdAndUpdate(id, data, { new: true, runValidators: true });

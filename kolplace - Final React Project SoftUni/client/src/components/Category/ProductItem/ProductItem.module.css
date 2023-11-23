@@ -3,3 +3,25 @@
   height: 200px;
   object-fit: contain;
 }
+
+.category-product-item .prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category-product-item p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.category-product-item .promo-price {
+  margin-top: 0;
+  margin-left: 10px;
+  background-color: var(--secondary-color);
+  padding: 3px 5px;
+  border-radius: 50%;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--white-color);
+}

@@ -1,4 +1,7 @@
 .home {
   min-height: var(--section-min-height);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

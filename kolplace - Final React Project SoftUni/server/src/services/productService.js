@@ -5,7 +5,7 @@
 const Product = require("../models/Product");
 
 
-exports.getAllProducts = () => Product.find();
+exports.getAllProducts = () => Product.find().populate("category");
 
 exports.getAllWithFilters = async (itemsPerPage = 9, page, filter = "", category) => {
     const query = {};

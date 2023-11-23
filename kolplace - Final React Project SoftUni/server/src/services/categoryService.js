@@ -24,7 +24,7 @@ exports.getAllWithFilters = async (itemsPerPage = 3, page, filter = "") => {
 };
 exports.getOneCategory = (id) => Category.findById(id);
 
-exports.getOneCategoryByName = (name) => Category.findOne({ name });
+exports.getOneCategoryByName = (name) => Category.findOne({ name }).collation({ locale: 'en', strength: 2 });
 
 exports.createCategory = (data) => Category.create(data);
 

@@ -1,30 +1,12 @@
 import useTitle from "../../hooks/useTitle";
+import Carousel from "./CategoryCarousel/CarouselContainer/Carousel";
 import styles from "./Home.module.css";
 
 const Home = () => {
   useTitle("KolPlace - Your Shopping Place");
   return (
     <section className={styles["home"]}>
-      <h1>Home Page</h1>
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "15px",
-        }}
-      >
-        <img
-          src="https://smartphone.bg/system/images/421908/original/mtv73rxa.png"
-          alt=""
-          style={{
-            height: "250px",
-            width: "250px",
-            objectFit: "contain",
-            filter: "drop-shadow(0 0 3px var(--primary-color))",
-          }}
-        />
-        <h2>Iphone 15 Pro Max</h2>
-        <p>$999</p>
-      </div>
+      <Carousel />
     </section>
   );
 };

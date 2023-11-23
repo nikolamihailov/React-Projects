@@ -2,9 +2,8 @@ const productController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
-
+const mongoose = require('mongoose');
 const ITEMS_PER_PAGE = 8;
-
 
 productController.get("/products", async (req, res) => {
     try {
@@ -28,6 +27,14 @@ productController.get("/products/:id", async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const { id } = req.params;
+        if (!mongoose.isValidObjectId(id)) {
+            const categoryName = id.charAt(0).toUpperCase() + id.slice(1);
+            const allProducts = await productService.getAllProducts();
+            console.log(categoryName);
+            const allProductsFiltered = allProducts.filter(p => p.category.name.toLowerCase() === categoryName.toLowerCase());
+            return res.status(200).json(allProductsFiltered);
         }
         const product = await productService.getOneProduct(req.params.id);
         res.status(200).json(product);
@@ -68,7 +75,6 @@ productController.put("/products/:id", isAdmin, async (req, res) => {
         body.price = Number(body.price);
         if (body.promoPrice >= body.price) throw new Error("Promo price must be a positive number and lower than the regular price!");
         const updatedProduct = await productService.editProduct(req.params.id, body);
-        console.log(updatedProduct);
         res.status(200).json(updatedProduct);
     } catch (error) {
         let errors = extractErrors(error);

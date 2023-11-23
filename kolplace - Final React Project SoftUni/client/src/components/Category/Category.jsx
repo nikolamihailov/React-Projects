@@ -5,11 +5,13 @@ import { NotifContext } from "../../contexts/NotificationContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAllFromCategory } from "../../data/services/productService";
 import ProductItem from "./ProductItem/ProductItem";
+import useTitle from "../../hooks/useTitle";
 
 import styles from "./Category.module.css";
 
 const Category = () => {
   const { name } = useParams();
+  useTitle(`${name.at(0).toUpperCase() + name.slice(1)} Category | KolPlace`);
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
   const navigateTo = useNavigate();

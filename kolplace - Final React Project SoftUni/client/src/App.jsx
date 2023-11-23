@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Login from "./components/Auth/Login/Login.jsx";
 import Home from "./components/Home/Home.jsx";
@@ -17,6 +17,7 @@ import Stores from "./components/Admin/Stores/Stores.jsx";
 import RouteGuardAdmin from "./guards/RouteGuardAdmin.jsx";
 import { ThemeProvider } from "./contexts/themeContext.jsx";
 import Category from "./components/Category/Category.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
                 <Route path="users" element={<Users />}></Route>
                 <Route path="stores" element={<Stores />}></Route>
               </Route>
+              <Route path="/*" element={<Navigate to="/error" />} />
+              <Route path="/error" element={<ErrorPage />} />
             </Routes>
           </main>
           <Footer />

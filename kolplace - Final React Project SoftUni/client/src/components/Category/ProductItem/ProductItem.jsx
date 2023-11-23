@@ -1,15 +1,22 @@
 import styles from "./ProductItem.module.css";
+import { motion } from "framer-motion";
 
 const ProductItem = ({
   name,
   mainImage,
-  category,
   price,
   hasPromoPrice,
   promoPrice,
+  category,
 }) => {
   return (
-    <div className={styles["category-product-item"]}>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles["category-product-item"]}
+    >
       <img src={mainImage} alt={name} />
       <h2>{name}</h2>
       <span>{category.name}</span>
@@ -24,10 +31,13 @@ const ProductItem = ({
           ${price.toFixed(2)}
         </p>
         {hasPromoPrice && (
-          <p className={styles["promo-price"]}>${promoPrice}</p>
+          <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
         )}
       </div>
-    </div>
+      <button>
+        Buy <i className="fa-solid fa-cart-shopping"></i>{" "}
+      </button>
+    </motion.div>
   );
 };
 

@@ -2,11 +2,12 @@
   position: sticky;
   top: 10px;
   overflow: hidden;
-  width: 90vw;
-  height: 40vh;
+  width: 75vw;
+  height: 35vh;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+  margin-bottom: 40px;
 }
 
 .carousel-home .inner {

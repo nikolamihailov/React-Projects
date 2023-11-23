@@ -3,13 +3,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 90vw;
-  height: 40vh;
+  width: 75vw;
+  height: 35vh;
 }
 
 .carousel-home-item img {
-  width: 90vw;
-  height: 40vh;
+  width: 75vw;
+  height: 35vh;
   object-fit: contain;
 }
 
@@ -30,7 +30,7 @@
   color: var(--white-color);
   padding: 10px 25px;
   background-color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 22px;
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
 }

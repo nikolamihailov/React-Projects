@@ -1,13 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import CarouselItem from "../CarouselItem/CarouselItem";
 import styles from "./Carousel.module.css";
 import { getAll } from "../../../../data/services/categoryService";
 import CarouselBtn from "../CarouselBtn/CarouselBtn";
+import { useNavigate } from "react-router-dom";
+import { NotifContext } from "../../../../contexts/NotificationContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const Carousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [categories, setCategories] = useState([]);
   const [isIntervalStopped, setIntervalStopped] = useState(false);
+  const navigateTo = useNavigate();
+  const { updateNotifs } = useContext(NotifContext);
+  const { updateAuth } = useContext(AuthContext);
 
   const prevSlide = useCallback(
     (slide) => {
@@ -30,6 +36,11 @@ const Carousel = () => {
   useEffect(() => {
     getAll()
       .then((data) => {
+        if (data.expMessage) {
+          updateNotifs([{ text: data.expMessage, type: "error" }]);
+          navigateTo("/login");
+          updateAuth({});
+        }
         setCategories(data);
       })
       .catch((err) => console.log(err));
@@ -41,7 +52,14 @@ const Carousel = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [activeSlide, nextSlide, isIntervalStopped]);
+  }, [
+    activeSlide,
+    nextSlide,
+    isIntervalStopped,
+    updateAuth,
+    updateNotifs,
+    navigateTo,
+  ]);
 
   return (
     <>

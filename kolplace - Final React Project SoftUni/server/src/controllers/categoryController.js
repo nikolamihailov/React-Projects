@@ -32,8 +32,10 @@ categoryController.get("/categories/:id", async (req, res) => {
 
         if (!mongoose.isValidObjectId(id)) {
             const name = id.charAt(0).toUpperCase() + id.slice(1);
-            console.log(name);
             const category = await categoryService.getOneCategoryByName(name);
+            if (!category) {
+                return res.status(404).json({ nonExisting: "There is no such category!" });
+            }
             return res.status(200).json(category);
         }
 

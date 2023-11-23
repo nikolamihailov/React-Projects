@@ -40,7 +40,7 @@ const ProductItem = ({
           ${price.toFixed(2)}
         </p>
         {hasPromoPrice && (
-          <p className={styles["promo-price"]}>${promoPrice}</p>
+          <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
         )}
       </div>
     </motion.div>

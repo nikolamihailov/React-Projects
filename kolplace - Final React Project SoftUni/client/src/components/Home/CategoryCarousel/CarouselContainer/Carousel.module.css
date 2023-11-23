@@ -1,0 +1,48 @@
+.carousel-home {
+  position: sticky;
+  top: 10px;
+  overflow: hidden;
+  width: 90vw;
+  height: 40vh;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-home .inner {
+  transition: 0.8s ease-in-out;
+  position: relative;
+  display: flex;
+}
+
+.left-btn {
+  all: unset;
+  position: absolute;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 25px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  z-index: 1;
+}
+
+.right-btn {
+  all: unset;
+  position: absolute;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 25px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  z-index: 1;
+}

@@ -1,0 +1,39 @@
+.error-section {
+  height: var(--section-min-height);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  color: var(--primary-color);
+  text-align: center;
+  padding: 20px;
+}
+
+.error-section h2 {
+  font-size: 35px;
+}
+
+.error-section p {
+  font-size: 20px;
+}
+
+.error-section img {
+  height: 40vh;
+  object-fit: contain;
+}
+
+.error-section span {
+  color: var(--secondary-color);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.error-section a {
+  text-decoration: none;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

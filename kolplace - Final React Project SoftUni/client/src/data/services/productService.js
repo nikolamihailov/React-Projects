@@ -3,6 +3,7 @@ import { request } from "../requester";
 
 const productEndpoints = {
     getAll: PRODUCTS_URL + "",
+    getAllFromCategory: PRODUCTS_URL + "/",
     getOne: PRODUCTS_URL + "/",
     createProduct: PRODUCTS_URL + "",
     editProduct: PRODUCTS_URL + "/",
@@ -12,6 +13,10 @@ const productEndpoints = {
 
 export const getAllWithFilters = async (page = "", filter = "", category) => {
     return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}`);
+};
+
+export const getAllFromCategory = async (name) => {
+    return await request.get(productEndpoints.getAllFromCategory + name);
 };
 
 export const getOneProduct = async (id) => {

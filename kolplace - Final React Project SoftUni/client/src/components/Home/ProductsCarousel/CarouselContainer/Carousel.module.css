@@ -1,0 +1,62 @@
+.carousel-products {
+  display: flex;
+  width: 75vw;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.carousel-products .carousel-products-heading {
+  position: relative;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-products .carousel-products-heading {
+  width: 100%;
+  margin-bottom: 15px;
+  font-weight: bold;
+  position: relative;
+}
+
+.carousel-products .category-name {
+  width: 85%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-products .category-name h2 {
+  font-size: 35px;
+  padding: 0 10px;
+  background-color: var(--background-color);
+  z-index: 2;
+}
+
+.carousel-products-heading .category-name span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--secondary-color);
+}
+
+.carousel-products .carousel-products-heading > a {
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.carousel-products .products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

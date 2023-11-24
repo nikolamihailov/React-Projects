@@ -1,8 +1,6 @@
 .footer {
+  margin-top: 0;
   height: var(--footer-height);
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
   clear: both;
   display: flex;
   justify-content: center;

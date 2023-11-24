@@ -9,6 +9,8 @@ const ProductItem = ({
   promoPrice,
   category,
 }) => {
+  const discountInPercentage = Math.ceil(((price - promoPrice) / price) * 100);
+
   return (
     <motion.div
       layout
@@ -22,6 +24,11 @@ const ProductItem = ({
       }}
       className={styles["category-product-item"]}
     >
+      {hasPromoPrice && (
+        <span className={styles["discount"]}>
+          {`-${discountInPercentage}%`}
+        </span>
+      )}
       <img src={mainImage} alt={name} />
       <h2>{name}</h2>
       <span>{category.name}</span>

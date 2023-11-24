@@ -9,7 +9,21 @@
   margin: 20px;
   padding: 10px 20px;
   border-radius: 20px;
+  position: relative;
 }
+
+.category-product-item .discount {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgb(185, 0, 0);
+  color: var(--white-color);
+  padding: 7px 10px;
+  border-radius: 15px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
 /*
 .category-product-item:hover {
   transform: scale(1.02) translateY(-30px);
@@ -43,6 +57,7 @@
   padding: 4px 6px;
   font-size: 15px;
 }
+
 .category-product-item p {
   margin-top: 10px;
   font-size: 19px;

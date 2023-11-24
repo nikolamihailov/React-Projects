@@ -1,0 +1,81 @@
+.carousel-product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  margin: 15px;
+  padding: 0px 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.carousel-product-item .discount {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgb(185, 0, 0);
+  color: var(--white-color);
+  padding: 7px 10px;
+  border-radius: 15px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.carousel-product-item h2 {
+  font-size: 19px;
+}
+
+.carousel-product-item img {
+  width: 190px;
+  height: 190px;
+  object-fit: contain;
+}
+
+.carousel-product-item span {
+  color: var(--white-color);
+  border-radius: 10px;
+  background-color: green;
+  font-weight: bold;
+  padding: 4px 6px;
+  font-size: 15px;
+  margin: 10px;
+}
+
+.carousel-product-item .prices {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-product-item p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.carousel-product-item .promo-price {
+  margin-top: 0;
+  margin-left: 10px;
+  background-color: var(--secondary-color);
+  padding: 3px 5px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+.carousel-product-item button {
+  all: unset;
+  width: 60%;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

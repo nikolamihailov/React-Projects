@@ -1,9 +1,9 @@
 import styles from "../Filters.module.css";
 
-const FilterProductsBySort = ({ onChange }) => {
+const FilterProductsBySort = ({ onChange, value }) => {
   return (
     <div className={styles["filters"]}>
-      <select name="filters" id="filters" onChange={onChange}>
+      <select name="filters" id="filters" value={value} onChange={onChange}>
         <option value="createdAt-asc">Oldest</option>
         <option value="createdAt-desc">Newest</option>
         <option value="name-asc">Name (a-z)</option>

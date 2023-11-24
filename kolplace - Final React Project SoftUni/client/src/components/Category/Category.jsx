@@ -21,7 +21,9 @@ const Category = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
+  const [productsCount, setProductsCount] = useState(0);
   const [sortFilter, setSortFilter] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("createdAt-asc");
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
@@ -64,6 +66,7 @@ const Category = () => {
           return;
         }
         setProducts(productsData.products);
+        setProductsCount(productsData.productsCount);
         setIsLoading(false);
         updatePageCount(productsData.pageCount);
       } catch (err) {
@@ -82,6 +85,13 @@ const Category = () => {
     updatePageCount,
   ]);
 
+  useEffect(() => {
+    // clear filter on category change
+    setSortFilter("");
+    setSelectedFilter("createdAt-asc");
+    window.scrollTo(0, 0);
+  }, [name]);
+
   return (
     <section className={styles["category-section"]}>
       {isLoading ? (
@@ -97,9 +107,23 @@ const Category = () => {
             />
           </div>
 
+          <hr />
+
           <div className={styles["sort-and-info"]}>
-            <p>Products in this category: {products.length}</p>
-            <FilterProductsBySort onChange={onSortFilterChange} />
+            <p>
+              Products in this category: <span>{productsCount}</span>
+            </p>
+            {products.length >= 2 && (
+              <FilterProductsBySort
+                value={selectedFilter}
+                onChange={(e) => {
+                  setSelectedFilter(e.target.value);
+                  onSortFilterChange(e);
+                }}
+                /*onChange={onSortFilterChange}
+              value={selectedFilter}*/
+              />
+            )}
           </div>
 
           <motion.div layout className={styles["products"]}>

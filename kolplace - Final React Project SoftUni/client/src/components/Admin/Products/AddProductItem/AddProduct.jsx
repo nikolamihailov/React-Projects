@@ -26,7 +26,7 @@ const AddProductItem = ({ onClose }) => {
   const [values, setValues] = useState({
     [FORM_VALUES.Name]: "",
     [FORM_VALUES.Price]: "",
-    [FORM_VALUES.Category]: categories[0],
+    [FORM_VALUES.Category]: "",
     [FORM_VALUES.HasPromoPrice]: false,
     [FORM_VALUES.PromoPrice]: "",
     [FORM_VALUES.Description]: "",
@@ -57,6 +57,8 @@ const AddProductItem = ({ onClose }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!values[FORM_VALUES.Category])
+      values[FORM_VALUES.Category] = categories[0]._id;
     const product = await createProduct(values);
     if (product.expMessage) {
       updateNotifs([{ text: product.expMessage, type: "error" }]);

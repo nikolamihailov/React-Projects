@@ -53,6 +53,8 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
 
 };
 
+exports.getAllFromCategory = (categoryId) => Product.find({ category: categoryId });
+
 exports.getOneProduct = (id) => Product.findById(id);
 
 exports.addProduct = (data) => Product.create(data);

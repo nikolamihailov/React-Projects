@@ -23,8 +23,8 @@
 }
 
 .category-product-item img {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   object-fit: contain;
 }
 
@@ -61,7 +61,7 @@
 
 .category-product-item button {
   all: unset;
-  width: 80%;
+  width: 60%;
   cursor: pointer;
   color: var(--white-color);
   padding: 10px 15px;

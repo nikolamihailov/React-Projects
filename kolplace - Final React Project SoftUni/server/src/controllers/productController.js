@@ -15,7 +15,7 @@ productController.get("/products", async (req, res) => {
             const data = await productService.getAllWithFilters(ITEMS_PER_PAGE, page, filter, category);
             res.status(200).json(data);
         } else {
-            const allProducts = await categoryService.getAllCategories();
+            const allProducts = await productService.getAllProducts();
             res.status(200).json(allProducts);
         }
     } catch (error) {

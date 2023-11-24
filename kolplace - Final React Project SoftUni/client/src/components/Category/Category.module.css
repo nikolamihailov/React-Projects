@@ -32,13 +32,18 @@
 
 .category-section .sort-and-info {
   display: flex;
+  align-items: center;
   width: 90%;
   justify-content: space-evenly;
   margin-bottom: 50px;
 }
 
 .category-section .sort-and-info p {
-  font-size: 19px;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  padding: 8px 13px;
+  font-size: 18px;
+  border-radius: 15px;
   font-weight: bold;
 }
 

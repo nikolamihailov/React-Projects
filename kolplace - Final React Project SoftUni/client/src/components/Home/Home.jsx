@@ -17,6 +17,11 @@ const Home = () => {
         items={5}
         title={"Latest Smartphones"}
       />
+      <CarouselProducts
+        category={"laptops"}
+        items={5}
+        title={"Latest Laptops"}
+      />
       <CarouselProducts category={"books"} items={5} title={"Latest Books"} />
       <ShortAboutSection />
     </section>

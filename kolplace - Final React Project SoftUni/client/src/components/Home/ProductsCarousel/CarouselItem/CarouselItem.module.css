@@ -14,7 +14,7 @@
 
 .carousel-product-item .discount {
   position: absolute;
-  top: 15px;
+  top: 0px;
   left: 15px;
   background-color: rgb(185, 0, 0);
   color: var(--white-color);
@@ -22,6 +22,7 @@
   border-radius: 15px;
   font-size: 21px;
   font-weight: bold;
+  margin: 0;
 }
 
 .carousel-product-item h2 {

@@ -10,6 +10,9 @@ const productEndpoints = {
     deleteProduct: PRODUCTS_URL + "/",
 };
 
+export const getAll = async () => {
+    return await request.get(productEndpoints.getAll);
+};
 
 export const getAllWithFilters = async (page = "", filter = "", category) => {
     return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}`);

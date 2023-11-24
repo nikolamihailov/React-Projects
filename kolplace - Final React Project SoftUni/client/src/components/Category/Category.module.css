@@ -10,6 +10,7 @@
 }
 .category-section h1 {
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .category-banner-image {
@@ -19,11 +20,33 @@
   margin-bottom: 50px;
 }
 
+.category-section hr {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  width: 75vw;
+  height: 5px;
+  margin: 30px 0;
+  background-color: var(--secondary-color);
+}
+
 .category-section .sort-and-info {
   display: flex;
   width: 90%;
   justify-content: space-evenly;
   margin-bottom: 50px;
+}
+
+.category-section .sort-and-info p {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.category-section .sort-and-info span {
+  margin-left: 5px;
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--secondary-color);
 }
 
 .category-section .products {

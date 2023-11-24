@@ -1,12 +1,12 @@
 .loader {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   border: 5px solid;
-  border-color: #ff3d00 transparent;
+  border-color: var(--secondary-color);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  animation: rotation 0.5s linear infinite;
 }
 
 @keyframes rotation {

@@ -115,15 +115,17 @@ const Category = () => {
           </motion.div>
         </>
       )}
-      {pageCount > 1 && (
-        <Pagination
-          page={page}
-          pageCount={pageCount}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          switchToPage={switchToPage}
-        />
-      )}
+      <div className={styles["pagination"]}>
+        {pageCount > 1 && (
+          <Pagination
+            page={page}
+            pageCount={pageCount}
+            prevPage={prevPage}
+            nextPage={nextPage}
+            switchToPage={switchToPage}
+          />
+        )}
+      </div>
     </section>
   );
 };

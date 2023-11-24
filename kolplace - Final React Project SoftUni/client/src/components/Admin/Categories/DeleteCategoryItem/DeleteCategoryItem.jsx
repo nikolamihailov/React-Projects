@@ -25,6 +25,11 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
       navigateTo("/login");
       updateAuth({});
     }
+    if (deletedCategory.hasProducts) {
+      updateNotifs([{ text: deletedCategory.hasProducts, type: "error" }]);
+      onClose();
+      return;
+    }
     if (deletedCategory.error) {
       updateNotifs([{ text: deleteCategory.error, type: "error" }]);
     } else {

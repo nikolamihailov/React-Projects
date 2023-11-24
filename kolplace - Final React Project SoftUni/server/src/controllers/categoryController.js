@@ -1,6 +1,7 @@
 const categoryController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
 const categoryService = require("../services/categoryService");
+const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
 const mongoose = require('mongoose');
 const ITEMS_PER_PAGE = 3;
@@ -87,6 +88,8 @@ categoryController.delete("/categories/:id", isAdmin, async (req, res) => {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
+        const products = await productService.getAllFromCategory(req.params.id);
+        if (products.length > 0) return res.status(400).json({ hasProducts: "Category cannot be deleted because it has products in it!" });;
         const deletedCategory = await categoryService.deleteCategory(req.params.id);
         res.status(200).json(deletedCategory);
     } catch (error) {

@@ -97,11 +97,6 @@ body {
   background-color: var(--background-color);
 }
 
-/* .main {
-  overflow-y: auto;
-  width: 100%;
-} */
-
 .backdrop {
   position: fixed; /* or position absolute */
   top: 0;

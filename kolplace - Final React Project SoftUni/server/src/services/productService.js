@@ -39,17 +39,17 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
 
     } else products = await Product.find(findQuery).populate("category");
 
-    const categoryCount = products.length;
+    const productsCount = products.length;
 
-    let pageCount = Math.ceil(categoryCount / itemsPerPage);
+    let pageCount = Math.ceil(productsCount / itemsPerPage);
     let skip = itemsPerPage * (page - 1);
-    if (categoryCount <= itemsPerPage) {
+    if (productsCount <= itemsPerPage) {
         skip = 0;
         pageCount = 1;
     }
 
     products = products.slice(skip, skip + itemsPerPage);
-    return { products, pageCount };
+    return { products, pageCount, productsCount };
 
 };
 

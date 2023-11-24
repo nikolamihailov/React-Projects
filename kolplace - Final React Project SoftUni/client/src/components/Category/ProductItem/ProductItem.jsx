@@ -15,6 +15,11 @@ const ProductItem = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      whileHover={{
+        scale: 1.03,
+        y: -20,
+        transition: { duration: 0.6 },
+      }}
       className={styles["category-product-item"]}
     >
       <img src={mainImage} alt={name} />

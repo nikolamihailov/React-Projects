@@ -15,6 +15,7 @@ import FilterProductsBySort from "../../Filters/AdminFilters/ProductFilters/Filt
 import { motion, AnimatePresence } from "framer-motion";
 
 const Products = () => {
+  const onPromotion = false;
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
     usePagination();
   const [products, setProducts] = useState([]);
@@ -30,7 +31,7 @@ const Products = () => {
   const { updateNotifs } = useContext(NotifContext);
 
   useEffect(() => {
-    getAllWithFilters(page, sortFilter, categoryFilter)
+    getAllWithFilters(page, sortFilter, categoryFilter, onPromotion)
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -51,6 +52,7 @@ const Products = () => {
     updatePageCount,
     sortFilter,
     categoryFilter,
+    onPromotion,
   ]);
 
   const updateProducts = useCallback((data) => setProducts(data), []);

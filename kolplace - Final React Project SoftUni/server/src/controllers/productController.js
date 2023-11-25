@@ -11,8 +11,8 @@ productController.get("/products", async (req, res) => {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
         if (Object.keys(req.query).length > 0) {
-            const { page, filter, category } = req.query;
-            const data = await productService.getAllWithFilters(ITEMS_PER_PAGE, page, filter, category);
+            const { page, filter, category, onPromotion } = req.query;
+            const data = await productService.getAllWithFilters(ITEMS_PER_PAGE, page, filter, category, onPromotion);
             res.status(200).json(data);
         } else {
             const allProducts = await productService.getAllProducts();

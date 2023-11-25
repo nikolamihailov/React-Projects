@@ -21,7 +21,7 @@
   position: absolute;
   top: 0px;
   left: 15px;
-  background-color: rgb(185, 0, 0);
+  background-color: var(--promo-price-color);
   color: var(--white-color);
   padding: 7px 12px;
   border-top-left-radius: 0;
@@ -69,7 +69,7 @@
 .carousel-product-item .promo-price {
   margin-top: 0;
   margin-left: 10px;
-  background-color: var(--secondary-color);
+  background-color: var(--promo-price-color);
   padding: 3px 5px;
   border-radius: 50%;
   font-size: 18px;

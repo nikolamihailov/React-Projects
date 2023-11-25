@@ -1,12 +1,16 @@
 .loader {
-  width: 58px;
-  height: 58px;
-  border: 5px solid;
-  border-color: var(--secondary-color);
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  width: 68px;
+  height: 68px;
+  border: 10px solid;
+  border-color: var(--secondary-color) var(--background-inverted-color);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: rotation 0.5s linear infinite;
+  animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {

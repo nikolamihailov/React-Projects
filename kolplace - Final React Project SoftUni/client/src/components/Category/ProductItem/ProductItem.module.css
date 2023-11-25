@@ -12,6 +12,11 @@
   position: relative;
 }
 
+.category-product-item a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .category-product-item .discount {
   position: absolute;
   top: 5px;

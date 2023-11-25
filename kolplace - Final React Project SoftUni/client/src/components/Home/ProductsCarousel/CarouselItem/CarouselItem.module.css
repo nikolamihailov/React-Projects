@@ -12,6 +12,11 @@
   position: relative;
 }
 
+.carousel-product-item a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .carousel-product-item .discount {
   position: absolute;
   top: 0px;

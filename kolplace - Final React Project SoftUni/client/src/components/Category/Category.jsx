@@ -14,6 +14,7 @@ import usePagination from "../../hooks/usePagination";
 import Pagination from "../Pagination/Pagination";
 
 const Category = () => {
+  const onPromotion = false;
   const { name } = useParams();
   useTitle(`${name.at(0).toUpperCase() + name.slice(1)} Category | KolPlace`);
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -56,7 +57,8 @@ const Category = () => {
         const productsData = await getAllWithFilters(
           page,
           sortFilter,
-          categoryData._id
+          categoryData._id,
+          onPromotion
         );
 
         if (productsData.expMessage) {
@@ -83,6 +85,7 @@ const Category = () => {
     updateNotifs,
     navigateTo,
     updatePageCount,
+    onPromotion,
   ]);
 
   useEffect(() => {
@@ -90,12 +93,12 @@ const Category = () => {
     setSortFilter("");
     setSelectedFilter("createdAt-asc");
     window.scrollTo(0, 0);
-  }, [name]);
+  }, [name, sortFilter]);
 
   return (
     <section className={styles["category-section"]}>
       {isLoading ? (
-        <Spinner className={styles["spinner"]} />
+        <Spinner />
       ) : (
         <>
           <div>

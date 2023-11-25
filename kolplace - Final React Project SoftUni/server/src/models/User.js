@@ -35,15 +35,23 @@ const userSchema = new mongoose.Schema({
         minLength: [6, "Password must be at least 6 characters!"],
         maxLength: [20, "Password must not be more than 20 characters!"],
     },
+    avatar: {
+        type: String,
+        match: [/^https?:\/\/.+/, "Provide valid image link!"]
+    },
     role: {
         type: String,
         enum: ['normalUser', 'admin'],
         default: 'normalUser'
     },
-    avatar: {
-        type: String,
-        match: [/^https?:\/\/.+/, "Provide valid image link!"]
-    },
+    favouriteProducts: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Product"
+    }],
+    shoppingCart: {
+        type: mongoose.Types.ObjectId,
+        ref: "ShoppingCart"
+    }
 },
     { timestamps: true }
 );

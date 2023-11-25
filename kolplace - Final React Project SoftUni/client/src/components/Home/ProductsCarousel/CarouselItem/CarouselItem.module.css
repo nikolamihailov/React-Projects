@@ -18,8 +18,11 @@
   left: 15px;
   background-color: rgb(185, 0, 0);
   color: var(--white-color);
-  padding: 7px 10px;
-  border-radius: 15px;
+  padding: 7px 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   font-size: 21px;
   font-weight: bold;
   margin: 0;
@@ -38,7 +41,7 @@
 .carousel-product-item span {
   color: var(--white-color);
   border-radius: 10px;
-  background-color: green;
+  background-color: var(--product-category-background-color);
   font-weight: bold;
   padding: 4px 6px;
   font-size: 15px;

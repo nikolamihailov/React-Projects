@@ -62,14 +62,6 @@
   justify-content: center;
 }
 
-.category-section .spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
 .pagination {
   margin-top: 50px;
   margin-bottom: 100px;

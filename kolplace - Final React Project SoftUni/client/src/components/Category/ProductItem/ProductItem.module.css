@@ -14,12 +14,15 @@
 
 .category-product-item .discount {
   position: absolute;
-  top: 15px;
+  top: 5px;
   left: 15px;
-  background-color: rgb(185, 0, 0);
+  background-color: var(--promo-price-color);
   color: var(--white-color);
-  padding: 7px 10px;
-  border-radius: 15px;
+  padding: 7px 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   font-size: 21px;
   font-weight: bold;
 }
@@ -52,7 +55,7 @@
 .category-product-item span {
   color: var(--white-color);
   border-radius: 10px;
-  background-color: green;
+  background-color: var(--product-category-background-color);
   font-weight: bold;
   padding: 4px 6px;
   font-size: 15px;
@@ -67,7 +70,7 @@
 .category-product-item .promo-price {
   margin-top: 0;
   margin-left: 10px;
-  background-color: var(--secondary-color);
+  background-color: var(--promo-price-color);
   padding: 3px 5px;
   border-radius: 50%;
   font-size: 19px;

@@ -14,8 +14,8 @@ export const getAll = async () => {
     return await request.get(productEndpoints.getAll);
 };
 
-export const getAllWithFilters = async (page = "", filter = "", category) => {
-    return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}`);
+export const getAllWithFilters = async (page = "", filter = "", category, onPromotion) => {
+    return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}&onPromotion=${onPromotion}`);
 };
 
 export const getAllFromCategory = async (name) => {

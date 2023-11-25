@@ -29,7 +29,7 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
     if (onPromotion === "true") {
         findQuery.hasPromoPrice = true;
         if (Object.keys(query).length > 0) {
-            products = await Product.find(findQuery).sort(query).collation({ locale: 'en', strength: 2 }).populate("category");
+            products = await Product.find(findQuery).sort(query).collation({ locale: 'en', strength: 3 }).populate("category");
         } else products = await Product.find(findQuery).populate("category");
 
         const productsCount = products.length;
@@ -49,7 +49,7 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
     if (Object.keys(query).length > 0) {
         products = await Product.find(findQuery)
             .sort(query)
-            .collation({ locale: 'en', strength: 2 }).populate("category");
+            .collation({ locale: 'en', strength: 3 }).populate("category");
         if (query.price) {
             products.sort((a, b) => {
                 const priceA = a.hasPromoPrice ? a.promoPrice : a.price;

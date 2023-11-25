@@ -88,8 +88,8 @@ const ProductDetails = () => {
             {product?.description}
           </p>
           <div className={styles["product-prices-buttons"]}>
-            <p>${product?.price}</p>
-            {product?.hasPromoPrice && <p>${product?.promoPrice}</p>}
+            <p>${product?.price.toFixed(2)}</p>
+            {product?.hasPromoPrice && <p>${product?.promoPrice.toFixed(2)}</p>}
             <button>
               Buy <i className="fa-solid fa-cart-shopping"></i>
             </button>

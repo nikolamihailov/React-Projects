@@ -1,0 +1,119 @@
+.product-details {
+  min-height: var(--section-min-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.product-details .product {
+  width: 80vw;
+  min-height: var(--section-min-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-details .product-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.product-details .product-info {
+  height: 650px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: left;
+  position: relative;
+}
+
+.product-details .product-images .main-image {
+  flex: 5;
+}
+
+.product-details .product-images .other-images {
+  flex: 1;
+}
+
+.product-details .product-images .other-images .active-image {
+  border: 6px solid var(--secondary-color);
+}
+
+.product-details .product-images .other-images .non-active-image {
+  border: 1px solid var(--background-inverted-color);
+}
+
+.product-details .product-images .main-image img {
+  width: 800px;
+  height: 580px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product-details .product-images .other-images img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+.product-details .product-info h1 {
+  font-size: 40px;
+}
+
+.product-details .product-info strong {
+  margin-right: 20px;
+}
+.product-details .product-info a {
+  text-decoration: none;
+}
+
+.product-details .product-info p {
+  font-size: 21px;
+}
+.product-details .product-info span {
+  color: var(--white-color);
+  border-radius: 10px;
+  background-color: var(--product-category-background-color);
+  font-weight: bold;
+  padding: 8px 12px;
+  font-size: 19px;
+  margin: 10px;
+}
+
+.product-details .product-info .product-prices-buttons {
+  padding: 15px;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  border-radius: 15px;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product-details .product-info .product-prices-buttons p:nth-child(1) {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.product-details .product-info button {
+  all: unset;
+  width: 20%;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

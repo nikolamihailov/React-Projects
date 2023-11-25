@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const ShoppingCart = require("../models/ShoppinCart");
 const jwt = require("../utils/jwt");
 const bcrypt = require("bcrypt");
 const SECRET = process.env.JWT_SECRET;
@@ -6,6 +7,8 @@ const SECRET = process.env.JWT_SECRET;
 exports.register = async (data) => {
 
     const user = await User.create(data);
+    const shoppingCart = await ShoppingCart.create({});
+    await User.findByIdAndUpdate(user._id, { shoppingCart: shoppingCart._id });
 
     if (user) {
         const payload = {

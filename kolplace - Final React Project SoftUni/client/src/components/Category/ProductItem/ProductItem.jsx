@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import styles from "./ProductItem.module.css";
 import { motion } from "framer-motion";
 
 const ProductItem = ({
+  _id,
   name,
   mainImage,
   price,
@@ -29,8 +31,12 @@ const ProductItem = ({
           {`-${discountInPercentage}%`}
         </span>
       )}
-      <img src={mainImage} alt={name} />
-      <h2>{name}</h2>
+      <Link to={`/products/${_id}`}>
+        <img src={mainImage} alt={name} />
+      </Link>
+      <Link to={`/products/${_id}`}>
+        <h2>{name}</h2>
+      </Link>
       <span>{category.name}</span>
       <div className={styles["prices"]}>
         <p

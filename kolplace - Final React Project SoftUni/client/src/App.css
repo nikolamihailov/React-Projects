@@ -14,6 +14,8 @@
   --notification-success-color: rgb(87, 222, 83);
   --notification-error-progress-color: rgb(213, 0, 0);
   --notification-success-progress-color: rgb(4, 106, 0);
+  --product-category-background-color: green;
+  --promo-price-color: rgb(185, 0, 0);
   --edit-btn-color: rgb(34, 211, 34);
   --delete-btn-color: rgb(195, 0, 0);
   --header-height: 17.5vh;

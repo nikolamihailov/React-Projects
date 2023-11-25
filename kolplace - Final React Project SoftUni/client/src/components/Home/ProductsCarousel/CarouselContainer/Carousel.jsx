@@ -4,17 +4,32 @@ import { Link } from "react-router-dom";
 import CaroueselProductItem from "../CarouselItem/CarouselItem";
 import styles from "./Carousel.module.css";
 
-const CarouselProducts = ({ category, items, title }) => {
+const CarouselProducts = ({ category, items, title, id }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getAll().then((data) => {
-      const filteredProducts = data
-        .filter((p) => p.category.name.toLowerCase() === category.toLowerCase())
-        .slice(-items);
-      setProducts(filteredProducts);
+      let filteredProducts;
+      if (id) {
+        filteredProducts = data
+          .filter(
+            (p) =>
+              p.category.name.toLowerCase() === category?.toLowerCase() &&
+              p._id !== id
+          )
+          .sort(() => Math.floor(Math.random() - 0.5))
+          .slice(-items);
+        setProducts(filteredProducts);
+      } else {
+        filteredProducts = data
+          .filter(
+            (p) => p.category.name.toLowerCase() === category?.toLowerCase()
+          )
+          .slice(-items);
+        setProducts(filteredProducts);
+      }
     });
-  }, [category, items]);
+  }, [category, items, id]);
 
   return (
     <div className={styles["carousel-products"]}>
@@ -24,7 +39,7 @@ const CarouselProducts = ({ category, items, title }) => {
           <span></span>
         </div>
 
-        <Link to={`/categories/${category}`}>View All</Link>
+        {!id && <Link to={`/categories/${category}`}>View All</Link>}
       </div>
       <div className={styles["products"]}>
         {products.length > 0 &&

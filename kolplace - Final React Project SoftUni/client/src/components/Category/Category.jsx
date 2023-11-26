@@ -93,7 +93,7 @@ const Category = () => {
     setSortFilter("");
     setSelectedFilter("createdAt-asc");
     window.scrollTo(0, 0);
-  }, [name, sortFilter]);
+  }, [name]);
 
   return (
     <section className={styles["category-section"]}>

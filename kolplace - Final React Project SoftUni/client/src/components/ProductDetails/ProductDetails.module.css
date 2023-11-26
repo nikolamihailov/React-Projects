@@ -43,11 +43,11 @@
 }
 
 .product-details .product-images .other-images .active-image {
-  border: 6px solid var(--secondary-color);
+  border: 7px solid var(--secondary-color);
 }
 
 .product-details .product-images .other-images .non-active-image {
-  border: 1px solid var(--background-inverted-color);
+  border: none;
 }
 
 .product-details .product-images .main-image img {
@@ -66,6 +66,7 @@
 
 .product-details .product-info h1 {
   font-size: 40px;
+  text-align: center;
 }
 
 .product-details .product-info strong {

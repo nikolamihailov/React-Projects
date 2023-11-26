@@ -19,13 +19,15 @@ const shoppingCartSchema = new mongoose.Schema({
     }]
 }, { timestamps: true });
 
-shoppingCartSchema.virtual("totalPrice").get(async function () {
-    await this.populate('products.product').execPopulate();
+
+/* shoppingCartSchema.virtual("totalPrice").get(async function () {
+    // const allProducts = await ShoppingCart.findById(this._id).populate('products.product');
+    console.log(this.products);
     return this.products.reduce((total, product) => {
         const price = product.product.hasPromoPrice ? product.product.promoPrice : product.product.price;
-        return total + price * product.count;
+        return total + price * product.quantity;
     }, 0);
-});
+}); */
 
 const ShoppingCart = mongoose.model("ShoppingCart", shoppingCartSchema);
 

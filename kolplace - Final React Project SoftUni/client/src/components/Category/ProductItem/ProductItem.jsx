@@ -35,7 +35,7 @@ const ProductItem = ({
         <img src={mainImage} alt={name} />
       </Link>
       <Link to={`/products/${_id}`}>
-        <h2>{name}</h2>
+        <h2>{name.length > 45 ? name.slice(0, 41) + " ..." : name}</h2>
       </Link>
       <span>{category.name}</span>
       <div className={styles["prices"]}>

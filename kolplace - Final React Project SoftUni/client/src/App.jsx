@@ -20,37 +20,43 @@ import Category from "./components/Category/Category.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Promotions from "./components/Promotions/Promotions.jsx";
 import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
+import { ShoppingCartProvider } from "./contexts/ShoppingCartContext.jsx";
 
 function App() {
   return (
     <AuthProvider>
-      <NotifProvider>
-        <ThemeProvider>
-          <Header />
-          <main className="main">
-            <NotificationContainer />
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/register" element={<Register />}></Route>
-              <Route path="/about-us" element={<About />}></Route>
-              <Route path="/our-stores" element={<OurStores />}></Route>
-              <Route path="/categories/:name" element={<Category />}></Route>
-              <Route path="/products/:id" element={<ProductDetails />}></Route>
-              <Route path="/promotions" element={<Promotions />}></Route>
-              <Route path="/admin-panel" element={<RouteGuardAdmin />}>
-                <Route path="categories" element={<Categories />}></Route>
-                <Route path="products" element={<Products />}></Route>
-                <Route path="users" element={<Users />}></Route>
-                <Route path="stores" element={<Stores />}></Route>
-              </Route>
-              <Route path="/*" element={<Navigate to="/error" />} />
-              <Route path="/error" element={<ErrorPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </NotifProvider>
+      <ShoppingCartProvider>
+        <NotifProvider>
+          <ThemeProvider>
+            <Header />
+            <main className="main">
+              <NotificationContainer />
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/register" element={<Register />}></Route>
+                <Route path="/about-us" element={<About />}></Route>
+                <Route path="/our-stores" element={<OurStores />}></Route>
+                <Route path="/categories/:name" element={<Category />}></Route>
+                <Route
+                  path="/products/:id"
+                  element={<ProductDetails />}
+                ></Route>
+                <Route path="/promotions" element={<Promotions />}></Route>
+                <Route path="/admin-panel" element={<RouteGuardAdmin />}>
+                  <Route path="categories" element={<Categories />}></Route>
+                  <Route path="products" element={<Products />}></Route>
+                  <Route path="users" element={<Users />}></Route>
+                  <Route path="stores" element={<Stores />}></Route>
+                </Route>
+                <Route path="/*" element={<Navigate to="/error" />} />
+                <Route path="/error" element={<ErrorPage />} />
+              </Routes>
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </NotifProvider>
+      </ShoppingCartProvider>
     </AuthProvider>
   );
 }

@@ -12,6 +12,7 @@ exports.register = async (data) => {
 
     if (user) {
         const payload = {
+            user,
             _id: user._id,
             email: user.email,
             firstName: user.firstName,
@@ -35,6 +36,7 @@ exports.login = async (email, password) => {
     if (!isPasswordCorrect) throw new Error("Invalid email or password!");
 
     const payload = {
+        user,
         _id: user._id,
         email: user.email,
         firstName: user.firstName,

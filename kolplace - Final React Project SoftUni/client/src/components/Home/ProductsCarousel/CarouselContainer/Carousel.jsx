@@ -25,7 +25,8 @@ const CarouselProducts = ({ category, items, title, id }) => {
           .filter(
             (p) => p.category.name.toLowerCase() === category?.toLowerCase()
           )
-          .slice(-items);
+          .slice(-items)
+          .reverse();
         setProducts(filteredProducts);
       }
     });

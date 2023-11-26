@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./CarouselItem.module.css";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
 
 const CaroueselProductItem = ({
   _id,
@@ -11,7 +13,17 @@ const CaroueselProductItem = ({
   promoPrice,
   category,
 }) => {
+  const { addProductToCart } = useContext(ShoppingCartContext);
   const discountInPercentage = Math.ceil(((price - promoPrice) / price) * 100);
+  const product = {
+    _id,
+    name,
+    mainImage,
+    price,
+    hasPromoPrice,
+    promoPrice,
+    category,
+  };
   return (
     <motion.div
       whileHover={{
@@ -47,7 +59,7 @@ const CaroueselProductItem = ({
           <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
         )}
       </div>
-      <button>
+      <button onClick={() => addProductToCart(product)}>
         Buy <i className="fa-solid fa-cart-shopping"></i>
       </button>
     </motion.div>

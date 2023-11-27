@@ -12,10 +12,26 @@ shoppingCartController.get("/shopping-cart/:id", async (req, res) => {
 
 shoppingCartController.post("/shopping-cart/:id", async (req, res) => {
     try {
-        console.log(req.params.id);
-        console.log(req.body);
         const updatedCart = await shoppingCartService.addToCart(req.params.id, req.body);
-        console.log(updatedCart);
+        res.status(200).json(updatedCart);
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+});
+
+shoppingCartController.put("/shopping-cart/:id", async (req, res) => {
+    try {
+        console.log(req.body);
+        const updatedCart = await shoppingCartService.removeProduct(req.params.id, req.body);
+        res.status(200).json(updatedCart);
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+});
+
+shoppingCartController.delete("/shopping-cart/:id", async (req, res) => {
+    try {
+        const updatedCart = await shoppingCartService.emptyCart(req.params.id);
         res.status(200).json(updatedCart);
     } catch (error) {
         res.status(400).json({ error });

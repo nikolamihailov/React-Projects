@@ -4,6 +4,7 @@ import { getOneProduct } from "../../data/services/productService";
 import styles from "./ProductDetails.module.css";
 import CarouselProducts from "../Home/ProductsCarousel/CarouselContainer/Carousel";
 import Spinner from "../Spinner/Spinner";
+import useTitle from "../../hooks/useTitle";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const ProductDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [product, setProduct] = useState(null);
+  useTitle(`${product?.name} | KolPlace`);
   useEffect(() => {
     window.scrollTo(0, 0);
     getOneProduct(id)

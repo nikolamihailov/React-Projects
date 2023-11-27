@@ -8,8 +8,8 @@ const NotificationContainer = () => {
   const { notifications } = useContext(NotifContext);
   return (
     <div className={styles["notifs-container"]}>
-      {notifications.length > 0 &&
-        notifications.map((n) => (
+      {notifications?.length > 0 &&
+        notifications?.map((n) => (
           <Notification text={n.text} type={n.type} key={uuidv4()} />
         ))}
     </div>

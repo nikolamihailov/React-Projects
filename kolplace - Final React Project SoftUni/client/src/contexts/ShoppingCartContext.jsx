@@ -21,6 +21,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: [...state.products, action.product],
+        totalPrice: state.products.reduce((total, p) => {
+          const price = p.product.hasPromoPrice
+            ? p.product.promoPrice
+            : p.product.price;
+          return total + price * p.quantity;
+        }, 0),
       };
     default:
       return state;

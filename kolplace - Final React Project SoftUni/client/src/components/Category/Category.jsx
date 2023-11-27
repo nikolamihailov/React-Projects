@@ -15,6 +15,7 @@ import Pagination from "../Pagination/Pagination";
 
 const Category = () => {
   const onPromotion = false;
+  /*   const [searchParams, setSearchParams] = useSearchParams(); */
   const { name } = useParams();
   useTitle(`${name.at(0).toUpperCase() + name.slice(1)} Category | KolPlace`);
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
@@ -54,6 +55,14 @@ const Category = () => {
 
         setCategory(categoryData);
 
+        /*setSearchParams({
+          page,
+          sortFilter,
+          category: categoryData._id,
+          onPromotion,
+        }); */
+        // console.log(searchParams.get("page"));
+        // set searchParams
         const productsData = await getAllWithFilters(
           page,
           sortFilter,

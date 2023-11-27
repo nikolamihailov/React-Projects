@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import styles from "./Aside.module.css";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
+import ShoppingCartItem from "../ShoppingCartItem/ShoppingCartItem";
 
 const ShoppingCartExpanded = ({ onClick }) => {
+  const { cart } = useContext(ShoppingCartContext);
   return (
     <>
       <div className="backdrop" onClick={onClick}></div>
@@ -9,14 +13,10 @@ const ShoppingCartExpanded = ({ onClick }) => {
           <i className="fa-solid fa-x"></i>
         </div>
         <div className={styles["cart-item-container"]}>
-          <div className={styles["cart-item"]}>
-            <img
-              src="https://smartphone.bg/system/images/421908/original/mtv73rxa.png"
-              alt=""
-            />
-            <h4>Ihone 15 Pro Max</h4>
-            <p>$999</p>
-          </div>
+          {console.log(cart.totalPrice)}
+          {cart?.products.map((p) => {
+            return <ShoppingCartItem key={p._id} {...p.product} />;
+          })}
         </div>
         <button>
           <i className="fa-solid fa-cart-shopping"></i>

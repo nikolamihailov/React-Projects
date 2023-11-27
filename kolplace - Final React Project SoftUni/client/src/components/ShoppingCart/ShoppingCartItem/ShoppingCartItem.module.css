@@ -1,0 +1,19 @@
+.cart-item {
+  color: var(--background-color);
+  cursor: pointer;
+  padding: 25px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.cart-item img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.cart-aside button i {
+  margin-right: 10px;
+}

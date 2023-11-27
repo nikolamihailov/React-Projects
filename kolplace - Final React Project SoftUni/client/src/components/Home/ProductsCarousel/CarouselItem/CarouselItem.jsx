@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./CarouselItem.module.css";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
+import { NotifContext } from "../../../../contexts/NotificationContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const CaroueselProductItem = ({
   _id,
@@ -13,7 +15,11 @@ const CaroueselProductItem = ({
   promoPrice,
   category,
 }) => {
+  const { isAuthenticated } = useContext(AuthContext);
   const { addProductToCart } = useContext(ShoppingCartContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
+
   const discountInPercentage = Math.ceil(((price - promoPrice) / price) * 100);
   const product = {
     _id,
@@ -59,7 +65,22 @@ const CaroueselProductItem = ({
           <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
         )}
       </div>
-      <button onClick={() => addProductToCart(product)}>
+      <button
+        onClick={() => {
+          if (isAuthenticated) {
+            addProductToCart(product);
+            updateNotifs([{ text: `${name} added to cart!`, type: "success" }]);
+          } else {
+            updateNotifs([
+              {
+                text: "You need to be signed in to buy products!",
+                type: "error",
+              },
+            ]);
+            navigateTo("/login");
+          }
+        }}
+      >
         Buy <i className="fa-solid fa-cart-shopping"></i>
       </button>
     </motion.div>

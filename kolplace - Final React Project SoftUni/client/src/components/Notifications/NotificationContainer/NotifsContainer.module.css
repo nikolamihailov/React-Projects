@@ -1,7 +1,8 @@
 .notifs-container {
-  position: absolute;
+  position: fixed;
   top: 200px;
   right: 15px;
   display: flex;
   flex-direction: column;
+  z-index: 99999;
 }

@@ -16,7 +16,7 @@ const ProductDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated } = useContext(AuthContext);
   const { cart, addProductToCart } = useContext(ShoppingCartContext);
-  const { addProductToFavouriteProducts } = useContext(
+  const { canAddProduct, addProductToFavouriteProducts } = useContext(
     FavouriteProductsContext
   );
   const { updateNotifs } = useContext(NotifContext);
@@ -110,51 +110,76 @@ const ProductDetails = () => {
                 {product?.description}
               </p>
               <div className={styles["product-prices-buttons"]}>
-                <p>${product?.price.toFixed(2)}</p>
-                {product?.hasPromoPrice && (
-                  <p>${product?.promoPrice.toFixed(2)}</p>
-                )}
-                <button
-                  onClick={() => {
-                    if (isAuthenticated) {
-                      addProductToCart(product);
-                      const isIn = cart.products.find(
-                        (p) => p.product._id === product?._id
-                      );
-                      if (isIn)
-                        updateNotifs([
-                          {
-                            text: `Product already in cart, quantity increased!`,
-                            type: "success",
-                          },
-                        ]);
-                      else
-                        updateNotifs([
-                          {
-                            text: `${product?.name} added to cart!`,
-                            type: "success",
-                          },
-                        ]);
-                    } else {
-                      updateNotifs([
-                        {
-                          text: "You need to be signed in to buy products!",
-                          type: "error",
-                        },
-                      ]);
-                      navigateTo("/login");
+                <div className={styles["prices"]}>
+                  <p
+                    style={
+                      product?.hasPromoPrice
+                        ? { textDecoration: "line-through", fontSize: "17px" }
+                        : { textDecoration: "none" }
                     }
-                  }}
-                >
-                  Buy <i className="fa-solid fa-cart-shopping"></i>
-                </button>
-                <button
-                  onClick={() => {
-                    addProductToFavouriteProducts(product._id);
-                  }}
-                >
-                  add to favouriteProducts
-                </button>
+                  >
+                    ${product?.price.toFixed(2)}
+                  </p>
+                  {product?.hasPromoPrice && (
+                    <p className={styles["promo-price"]}>
+                      ${product?.promoPrice.toFixed(2)}
+                    </p>
+                  )}
+                </div>
+                <div className={styles["btns"]}>
+                  <button
+                    title="Add To Cart"
+                    onClick={() => {
+                      if (isAuthenticated) {
+                        addProductToCart(product);
+                        const isIn = cart.products.find(
+                          (p) => p.product._id === product?._id
+                        );
+                        if (isIn)
+                          updateNotifs([
+                            {
+                              text: `Product already in cart, quantity increased!`,
+                              type: "success",
+                            },
+                          ]);
+                        else
+                          updateNotifs([
+                            {
+                              text: `${product?.name} added to cart!`,
+                              type: "success",
+                            },
+                          ]);
+                      } else {
+                        updateNotifs([
+                          {
+                            text: "You need to be signed in to buy products!",
+                            type: "error",
+                          },
+                        ]);
+                        navigateTo("/login");
+                      }
+                    }}
+                  >
+                    Buy <i className="fa-solid fa-cart-shopping"></i>
+                  </button>
+
+                  {/* <i className="fa-solid fa-heart"></i> */}
+                  {canAddProduct(product?._id) ? (
+                    <p
+                      onClick={() => {
+                        addProductToFavouriteProducts(product._id);
+                      }}
+                      title="Add To Favourite Products"
+                    >
+                      Add To Favourites <i className="fa-regular fa-heart"></i>
+                    </p>
+                  ) : (
+                    <p title="Product Is In Favourites">
+                      Product Is In Favourites{" "}
+                      <i className="fa-solid fa-heart"></i>
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -27,11 +27,12 @@
 } */
 
 .cart-item input {
-  width: 40px;
+  width: 50px;
   font-weight: bold;
   background-color: var(--secondary-color);
   color: var(--white-color);
   font-size: 16px;
+  padding: 3px;
 }
 .cart-item p {
   font-size: 19px;

@@ -167,7 +167,23 @@ const ProductDetails = () => {
                   {canAddProduct(product?._id) ? (
                     <p
                       onClick={() => {
-                        addProductToFavouriteProducts(product._id);
+                        if (isAuthenticated) {
+                          addProductToFavouriteProducts(product._id);
+                          updateNotifs([
+                            {
+                              text: `${product?.name} added to favourites!`,
+                              type: "success",
+                            },
+                          ]);
+                        } else {
+                          updateNotifs([
+                            {
+                              text: "You need to be signed in to add to favourite products!",
+                              type: "error",
+                            },
+                          ]);
+                          navigateTo("/login");
+                        }
                       }}
                       title="Add To Favourite Products"
                     >

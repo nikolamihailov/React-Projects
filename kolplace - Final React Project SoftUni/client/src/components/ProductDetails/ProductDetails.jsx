@@ -8,6 +8,7 @@ import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../contexts/NotificationContext";
+import { FavouriteProductsContext } from "../../contexts/FavouriteProducts";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,6 +16,9 @@ const ProductDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated } = useContext(AuthContext);
   const { cart, addProductToCart } = useContext(ShoppingCartContext);
+  const { addProductToFavouriteProducts } = useContext(
+    FavouriteProductsContext
+  );
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
 
@@ -143,6 +147,13 @@ const ProductDetails = () => {
                   }}
                 >
                   Buy <i className="fa-solid fa-cart-shopping"></i>
+                </button>
+                <button
+                  onClick={() => {
+                    addProductToFavouriteProducts(product._id);
+                  }}
+                >
+                  add to favouriteProducts
                 </button>
               </div>
             </div>

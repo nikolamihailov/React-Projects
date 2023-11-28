@@ -55,3 +55,12 @@ async function generateToken(data) {
     return await jwt.sign({ data }, SECRET, { expiresIn: "1d" });
     // return await jwt.sign({ data }, SECRET, { expiresIn: "15s" });
 }
+
+exports.getFavouriteProducts = (id) => User.findById(id).populate("favouriteProducts");
+
+exports.addProductToFavourites = (id, product) => User.findByIdAndUpdate(id, {
+    $push: {
+        favouriteProducts: product.productId
+    }
+}, { new: true, runValidators: true }).populate("favouriteProducts");
+

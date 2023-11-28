@@ -49,6 +49,17 @@ const reducer = (state, action) => {
         products: action.products,
         totalPrice: 0,
       };
+
+    case "CHANGE_PRODUCT_QUANTITY":
+      return {
+        products: action.products,
+        totalPrice: action.products.reduce((total, p) => {
+          const price = p.product.hasPromoPrice
+            ? p.product.promoPrice
+            : p.product.price;
+          return total + price * p.quantity;
+        }, 0),
+      };
     default:
       return state;
   }
@@ -79,18 +90,20 @@ export const ShoppingCartProvider = ({ children }) => {
   const addProductToCart = useCallback(
     async (product, quantity = 1) => {
       const hasItem = cart.products.find((p) => p.product._id === product._id);
-      console.log(hasItem);
-
+      if (hasItem) quantity = hasItem.quantity + 1;
+      // console.log(hasItem);
+      // console.log(quantity);
       const updatedProducts = await addToCart(userShoppingCartId, {
         product: product._id,
         quantity,
       });
+      console.log(updatedProducts);
       dispatch({
         type: "ADD_TO_CART",
         products: updatedProducts.products,
       });
     },
-    [userShoppingCartId]
+    [userShoppingCartId, cart.products]
   );
 
   const removeCartProduct = useCallback(
@@ -114,11 +127,24 @@ export const ShoppingCartProvider = ({ children }) => {
     });
   }, [userShoppingCartId]);
 
+  const changeProductQuantity = useCallback(
+    async (productId, quantity) => {
+      const updated = await addToCart(userShoppingCartId, {
+        product: productId,
+        quantity,
+      });
+
+      dispatch({ type: "CHANGE_PRODUCT_QUANTITY", products: updated.products });
+    },
+    [userShoppingCartId]
+  );
+
   const ctxValues = {
     cart,
     addProductToCart,
     emptyCartProducts,
     removeCartProduct,
+    changeProductQuantity,
   };
 
   return (

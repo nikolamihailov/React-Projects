@@ -32,19 +32,9 @@ const reducer = (state, action) => {
             : 0,
       };
     case "ADD_TO_CART":
-      return {
-        ...state,
-        products: action.products,
-        totalPrice: action.products.reduce((total, p) => {
-          const price = p.product.hasPromoPrice
-            ? p.product.promoPrice
-            : p.product.price;
-          return total + price * p.quantity;
-        }, 0),
-      };
     case "REMOVE_CART_PRODUCT":
+    case "CHANGE_PRODUCT_QUANTITY":
       return {
-        ...state,
         products: action.products,
         totalPrice: action.products.reduce((total, p) => {
           const price = p.product.hasPromoPrice
@@ -57,17 +47,6 @@ const reducer = (state, action) => {
       return {
         products: action.products,
         totalPrice: 0,
-      };
-
-    case "CHANGE_PRODUCT_QUANTITY":
-      return {
-        products: action.products,
-        totalPrice: action.products.reduce((total, p) => {
-          const price = p.product.hasPromoPrice
-            ? p.product.promoPrice
-            : p.product.price;
-          return total + price * p.quantity;
-        }, 0),
       };
     default:
       return state;
@@ -100,13 +79,11 @@ export const ShoppingCartProvider = ({ children }) => {
     async (product, quantity = 1) => {
       const hasItem = cart.products.find((p) => p.product._id === product._id);
       if (hasItem) quantity = hasItem.quantity + 1;
-      // console.log(hasItem);
-      // console.log(quantity);
+
       const updatedProducts = await addToCart(userShoppingCartId, {
         product: product._id,
         quantity,
       });
-      console.log(updatedProducts);
       dispatch({
         type: "ADD_TO_CART",
         products: updatedProducts.products,

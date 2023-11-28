@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getOneProduct } from "../../data/services/productService";
 import styles from "./ProductDetails.module.css";
 import CarouselProducts from "../Home/ProductsCarousel/CarouselContainer/Carousel";
 import Spinner from "../Spinner/Spinner";
 import useTitle from "../../hooks/useTitle";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import { NotifContext } from "../../contexts/NotificationContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [activeImage, setActiveImage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated } = useContext(AuthContext);
+  const { cart, addProductToCart } = useContext(ShoppingCartContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
 
   const [product, setProduct] = useState(null);
   useTitle(`${product?.name} | KolPlace`);
@@ -103,7 +110,38 @@ const ProductDetails = () => {
                 {product?.hasPromoPrice && (
                   <p>${product?.promoPrice.toFixed(2)}</p>
                 )}
-                <button>
+                <button
+                  onClick={() => {
+                    if (isAuthenticated) {
+                      addProductToCart(product);
+                      const isIn = cart.products.find(
+                        (p) => p.product._id === product?._id
+                      );
+                      if (isIn)
+                        updateNotifs([
+                          {
+                            text: `Product already in cart, quantity increased!`,
+                            type: "success",
+                          },
+                        ]);
+                      else
+                        updateNotifs([
+                          {
+                            text: `${product?.name} added to cart!`,
+                            type: "success",
+                          },
+                        ]);
+                    } else {
+                      updateNotifs([
+                        {
+                          text: "You need to be signed in to buy products!",
+                          type: "error",
+                        },
+                      ]);
+                      navigateTo("/login");
+                    }
+                  }}
+                >
                   Buy <i className="fa-solid fa-cart-shopping"></i>
                 </button>
               </div>

@@ -40,7 +40,6 @@ export const FavouriteProductsProvider = ({ children }) => {
     if (auth.user?._id) {
       getFavouriteProducts(auth.user?._id)
         .then((data) => {
-          console.log(data);
           dispatch({
             type: "INIT",
             products: data,
@@ -65,9 +64,20 @@ export const FavouriteProductsProvider = ({ children }) => {
     [auth.user?._id]
   );
 
+  const canAddProduct = useCallback(
+    (productId) => {
+      const product = favProducts.favouriteProducts.find(
+        (p) => p._id === productId
+      );
+      return product ? false : true;
+    },
+    [favProducts.favouriteProducts]
+  );
+
   const ctxValues = {
     favProducts,
     addProductToFavouriteProducts,
+    canAddProduct,
   };
 
   return (

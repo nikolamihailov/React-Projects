@@ -21,6 +21,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: action.products,
+        totalPrice:
+          action.products.length > 0
+            ? action.products.reduce((total, p) => {
+                const price = p.product.hasPromoPrice
+                  ? p.product.promoPrice
+                  : p.product.price;
+                return total + price * p.quantity;
+              }, 0)
+            : 0,
       };
     case "ADD_TO_CART":
       return {

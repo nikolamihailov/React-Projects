@@ -26,9 +26,7 @@ userController.post("/register", trimBody, async (req, res) => {
 
 userController.get("/:id", async (req, res) => {
     try {
-        console.log(req.params.id);
         const userData = await userService.getFavouriteProducts(req.params.id);
-        console.log(userData);
         res.status(201).json(userData.favouriteProducts);
     } catch (error) {
         const errors = extractErrors(error);
@@ -38,9 +36,7 @@ userController.get("/:id", async (req, res) => {
 
 userController.post("/:id", async (req, res) => {
     try {
-        console.log(req.params.id);
         const userData = await userService.addProductToFavourites(req.params.id, req.body);
-        console.log(userData);
         res.status(201).json(userData.favouriteProducts);
     } catch (error) {
         const errors = extractErrors(error);

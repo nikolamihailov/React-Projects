@@ -4,8 +4,7 @@ import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import ShoppingCartItem from "../ShoppingCartItem/ShoppingCartItem";
 
 const ShoppingCartExpanded = ({ onClick }) => {
-  const { cart, emptyCartProducts, removeCartProduct } =
-    useContext(ShoppingCartContext);
+  const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
   return (
     <>
       <div className="backdrop" onClick={onClick}></div>
@@ -28,8 +27,8 @@ const ShoppingCartExpanded = ({ onClick }) => {
             return (
               <ShoppingCartItem
                 key={p.product._id}
-                {...p.product}
-                removeCartProduct={removeCartProduct}
+                productInfo={p}
+                onClick={onClick}
               />
             );
           })}

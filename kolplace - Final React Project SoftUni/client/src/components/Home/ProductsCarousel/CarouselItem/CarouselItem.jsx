@@ -16,7 +16,7 @@ const CaroueselProductItem = ({
   category,
 }) => {
   const { isAuthenticated } = useContext(AuthContext);
-  const { addProductToCart } = useContext(ShoppingCartContext);
+  const { cart, addProductToCart } = useContext(ShoppingCartContext);
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
 
@@ -69,7 +69,18 @@ const CaroueselProductItem = ({
         onClick={() => {
           if (isAuthenticated) {
             addProductToCart(product);
-            updateNotifs([{ text: `${name} added to cart!`, type: "success" }]);
+            const isIn = cart.products.find((p) => p.product._id === _id);
+            if (isIn)
+              updateNotifs([
+                {
+                  text: `Product already in cart, quantity increased!`,
+                  type: "success",
+                },
+              ]);
+            else
+              updateNotifs([
+                { text: `${name} added to cart!`, type: "success" },
+              ]);
           } else {
             updateNotifs([
               {

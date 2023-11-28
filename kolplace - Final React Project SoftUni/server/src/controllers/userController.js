@@ -44,6 +44,18 @@ userController.post("/:id", async (req, res) => {
     }
 });
 
+userController.put("/:id", async (req, res) => {
+    try {
+        console.log("in");
+        const userData = await userService.removeProductFromFavourites(req.params.id, req.body);
+        console.log(userData);
+        res.status(201).json(userData.favouriteProducts);
+    } catch (error) {
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
 
 
 module.exports = userController;

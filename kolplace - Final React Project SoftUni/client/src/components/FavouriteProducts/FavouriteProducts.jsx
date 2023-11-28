@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FavouriteProductsContext } from "../../contexts/FavouriteProducts";
+import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
 
 const FavouriteProducts = () => {
   const { favProducts } = useContext(FavouriteProductsContext);

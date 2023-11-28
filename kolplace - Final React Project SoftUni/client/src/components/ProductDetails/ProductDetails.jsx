@@ -8,7 +8,7 @@ import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../contexts/NotificationContext";
-import { FavouriteProductsContext } from "../../contexts/FavouriteProducts";
+import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
 
 const ProductDetails = () => {
   const { id } = useParams();

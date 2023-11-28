@@ -21,7 +21,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Promotions from "./components/Promotions/Promotions.jsx";
 import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext.jsx";
-import { FavouriteProductsProvider } from "./contexts/FavouriteProducts.jsx";
+import { FavouriteProductsProvider } from "./contexts/FavouriteProductsContext.jsx";
 import FavouriteProducts from "./components/FavouriteProducts/FavouriteProducts.jsx";
 
 function App() {

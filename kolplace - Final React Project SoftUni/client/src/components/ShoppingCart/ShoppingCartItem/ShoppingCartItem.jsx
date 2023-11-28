@@ -7,8 +7,16 @@ const ShoppingCartItem = ({ onClick, productInfo }) => {
   const { product, quantity } = productInfo;
   const { removeCartProduct, changeProductQuantity } =
     useContext(ShoppingCartContext);
+
   const onChange = (e) => {
-    changeProductQuantity(product._id, Number(e.target.value));
+    const { value } = e.target;
+    /* 
+    if (value) {
+      const newValue = Number(Math.min(Math.max(1, value), 25));
+      e.target.value = newValue;
+      changeProductQuantity(product._id, newValue);
+    } */
+    changeProductQuantity(product._id, Number(value));
   };
   return (
     <div className={styles["cart-item"]}>
@@ -19,6 +27,7 @@ const ShoppingCartItem = ({ onClick, productInfo }) => {
       X
       <input
         type="number"
+        name="quantity"
         min={1}
         max={25}
         value={quantity || 1}

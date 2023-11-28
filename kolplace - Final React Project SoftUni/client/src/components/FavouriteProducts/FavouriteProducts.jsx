@@ -5,7 +5,9 @@ import styles from "./FavouriteProducts.module.css";
 import FavouriteProductItem from "./FavouriteProductItem/FavouriteProductItem";
 
 const FavouriteProducts = () => {
-  const { favProducts } = useContext(FavouriteProductsContext);
+  const { favProducts, removeProductFromFavouritesList } = useContext(
+    FavouriteProductsContext
+  );
   return (
     <section className={styles["favourite-products-section"]}>
       <div>
@@ -30,7 +32,15 @@ const FavouriteProducts = () => {
         <AnimatePresence>
           {favProducts.favouriteProducts.length > 0 ? (
             favProducts.favouriteProducts.map((p) => {
-              return <FavouriteProductItem key={p._id} {...p} />;
+              return (
+                <FavouriteProductItem
+                  key={p._id}
+                  {...p}
+                  removeProductFromFavouritesList={
+                    removeProductFromFavouritesList
+                  }
+                />
+              );
             })
           ) : (
             <h2>You have no favourite products!</h2>

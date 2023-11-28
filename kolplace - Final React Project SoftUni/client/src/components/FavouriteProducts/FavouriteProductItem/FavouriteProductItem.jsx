@@ -14,6 +14,7 @@ const FavouriteProductItem = ({
   hasPromoPrice,
   promoPrice,
   category,
+  removeProductFromFavouritesList,
 }) => {
   const { isAuthenticated } = useContext(AuthContext);
   const { cart, addProductToCart } = useContext(ShoppingCartContext);
@@ -31,73 +32,94 @@ const FavouriteProductItem = ({
   };
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      whileHover={{
-        scale: 1.03,
-        y: -20,
-        transition: { duration: 0.6 },
-      }}
-      className={styles["favourite-product-item"]}
-    >
-      {hasPromoPrice && (
-        <span className={styles["discount"]}>
-          {`-${discountInPercentage}%`}
-        </span>
-      )}
-      <Link to={`/products/${_id}`}>
-        <img src={mainImage} alt={name} />
-      </Link>
-      <Link to={`/products/${_id}`}>
-        <h2>{name.length > 45 ? name.slice(0, 41) + " ..." : name}</h2>
-      </Link>
-      <div className={styles["prices"]}>
-        <p
-          style={
-            hasPromoPrice
-              ? { textDecoration: "line-through", fontSize: "13px" }
-              : { textDecoration: "none" }
-          }
-        >
-          ${price.toFixed(2)}
-        </p>
-        {hasPromoPrice && (
-          <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
-        )}
-      </div>
-      <button
-        onClick={() => {
-          if (isAuthenticated) {
-            addProductToCart(product);
-            const isIn = cart.products.find((p) => p.product._id === _id);
-            if (isIn)
+    <>
+      <motion.div
+        layout
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        whileHover={{
+          scale: 1.03,
+          y: -20,
+          transition: { duration: 0.6 },
+        }}
+        className={styles["favourite-product-item"]}
+      >
+        <div className={styles["icons-top"]}>
+          <button
+            onClick={() => {
+              removeProductFromFavouritesList(product?._id);
               updateNotifs([
                 {
-                  text: `Product already in cart, quantity increased!`,
+                  text: `${product?.name} removed from favourites!`,
                   type: "success",
                 },
               ]);
-            else
+            }}
+            className={styles["remove"]}
+            title="Remove Product From Favourites"
+          >
+            <i className="fa-solid fa-trash-can"></i>
+          </button>
+          <i className="fa-solid fa-heart" title="Favourite Product"></i>
+        </div>
+
+        {hasPromoPrice && (
+          <span className={styles["discount"]}>
+            {`-${discountInPercentage}%`}
+          </span>
+        )}
+        <Link to={`/products/${_id}`}>
+          <img src={mainImage} alt={name} />
+        </Link>
+        <Link to={`/products/${_id}`}>
+          <h2>{name.length > 45 ? name.slice(0, 41) + " ..." : name}</h2>
+        </Link>
+        <div className={styles["prices"]}>
+          <p
+            style={
+              hasPromoPrice
+                ? { textDecoration: "line-through", fontSize: "13px" }
+                : { textDecoration: "none" }
+            }
+          >
+            ${price.toFixed(2)}
+          </p>
+          {hasPromoPrice && (
+            <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
+          )}
+        </div>
+        <button
+          onClick={() => {
+            if (isAuthenticated) {
+              addProductToCart(product);
+              const isIn = cart.products.find((p) => p.product._id === _id);
+              if (isIn)
+                updateNotifs([
+                  {
+                    text: `Product already in cart, quantity increased!`,
+                    type: "success",
+                  },
+                ]);
+              else
+                updateNotifs([
+                  { text: `${name} added to cart!`, type: "success" },
+                ]);
+            } else {
               updateNotifs([
-                { text: `${name} added to cart!`, type: "success" },
+                {
+                  text: "You need to be signed in to buy products!",
+                  type: "error",
+                },
               ]);
-          } else {
-            updateNotifs([
-              {
-                text: "You need to be signed in to buy products!",
-                type: "error",
-              },
-            ]);
-            navigateTo("/login");
-          }
-        }}
-      >
-        Buy <i className="fa-solid fa-cart-shopping"></i>
-      </button>
-    </motion.div>
+              navigateTo("/login");
+            }
+          }}
+        >
+          Buy <i className="fa-solid fa-cart-shopping"></i>
+        </button>
+      </motion.div>
+    </>
   );
 };
 

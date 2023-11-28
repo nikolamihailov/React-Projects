@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const mongoose = require('mongoose');
 const ShoppingCart = require("../models/ShoppingCart");
 const jwt = require("../utils/jwt");
 const bcrypt = require("bcrypt");
@@ -63,4 +64,17 @@ exports.addProductToFavourites = (id, product) => User.findByIdAndUpdate(id, {
         favouriteProducts: product.productId
     }
 }, { new: true, runValidators: true }).populate("favouriteProducts");
+
+exports.removeProductFromFavourites = async (id, product) => {
+
+    const obj = new mongoose.Types.ObjectId(product.productId);
+
+    const user = await User.findByIdAndUpdate(
+        id,
+        { $pull: { favouriteProducts: obj } },
+        { new: true }
+    ).populate("favouriteProducts");
+
+    return user;
+}
 

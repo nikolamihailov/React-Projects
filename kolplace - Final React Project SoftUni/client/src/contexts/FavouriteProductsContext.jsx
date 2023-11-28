@@ -37,21 +37,23 @@ export const FavouriteProductsProvider = ({ children }) => {
   // console.log(auth.user._id);
 
   useEffect(() => {
-    getFavouriteProducts(auth.user?._id)
-      .then((data) => {
-        console.log(data);
-        dispatch({
-          type: "INIT",
-          products: data,
-        });
-      })
-      .catch((err) => console.log(err));
+    if (auth.user?._id) {
+      getFavouriteProducts(auth.user?._id)
+        .then((data) => {
+          console.log(data);
+          dispatch({
+            type: "INIT",
+            products: data,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   }, [auth.user?._id]);
 
   const addProductToFavouriteProducts = useCallback(
     async (productId) => {
       console.log(productId);
-      const updated = await addProductToFavourites(auth.user._id, {
+      const updated = await addProductToFavourites(auth.user?._id, {
         productId,
       });
       console.log(updated);
@@ -60,7 +62,7 @@ export const FavouriteProductsProvider = ({ children }) => {
         products: updated,
       });
     },
-    [auth.user._id]
+    [auth.user?._id]
   );
 
   const ctxValues = {

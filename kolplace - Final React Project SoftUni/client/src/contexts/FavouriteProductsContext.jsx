@@ -9,6 +9,7 @@ import { AuthContext } from "./AuthContext";
 import {
   addProductToFavourites,
   getFavouriteProducts,
+  removeProductFromFavourites,
 } from "../data/services/userService";
 
 export const FavouriteProductsContext = createContext();
@@ -21,6 +22,7 @@ const reducer = (state, action) => {
         favouriteProducts: action.products,
       };
     case "ADD_PRODUCT":
+    case "REMOVE_PRODUCT":
       return {
         ...state,
         favouriteProducts: action.products,
@@ -64,6 +66,21 @@ export const FavouriteProductsProvider = ({ children }) => {
     [auth.user?._id]
   );
 
+  const removeProductFromFavouritesList = useCallback(
+    async (productId) => {
+      console.log(productId);
+      const updated = await removeProductFromFavourites(auth.user?._id, {
+        productId,
+      });
+      console.log(updated);
+      dispatch({
+        type: "REMOVE_PRODUCT",
+        products: updated,
+      });
+    },
+    [auth.user?._id]
+  );
+
   const canAddProduct = useCallback(
     (productId) => {
       const product = favProducts.favouriteProducts.find(
@@ -78,6 +95,7 @@ export const FavouriteProductsProvider = ({ children }) => {
     favProducts,
     addProductToFavouriteProducts,
     canAddProduct,
+    removeProductFromFavouritesList,
   };
 
   return (

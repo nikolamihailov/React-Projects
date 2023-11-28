@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const ShoppingCart = require("../models/ShoppinCart");
+const ShoppingCart = require("../models/ShoppingCart");
 const jwt = require("../utils/jwt");
 const bcrypt = require("bcrypt");
 const SECRET = process.env.JWT_SECRET;

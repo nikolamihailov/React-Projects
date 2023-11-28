@@ -1,4 +1,4 @@
-const ShoppingCart = require("../models/ShoppinCart");
+const ShoppingCart = require("../models/ShoppingCart");
 
 exports.getById = (id) => ShoppingCart.findById(id).populate("products.product");
 

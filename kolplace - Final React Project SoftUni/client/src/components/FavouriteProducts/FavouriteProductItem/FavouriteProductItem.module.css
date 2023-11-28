@@ -1,0 +1,96 @@
+.favourite-product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 450px;
+  /* transition: transform 0.7s ease-in-out; */
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.favourite-product-item a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.favourite-product-item .discount {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  background-color: var(--promo-price-color);
+  color: var(--white-color);
+  padding: 7px 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/*
+.favourite-product-item:hover {
+  transform: scale(1.02) translateY(-30px);
+   box-shadow: 0px 0px 7px 1px var(--background-inverted-color);
+  -webkit-box-shadow: 0px 0px 7px 1px var(--background-inverted-color);
+  -moz-box-shadow: 0px 0px 7px 1px var(--background-inverted-color); 
+}
+*/
+.favourite-product-item h2 {
+  font-size: 21px;
+}
+
+.favourite-product-item img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+.favourite-product-item .prices {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favourite-product-item span {
+  color: var(--white-color);
+  border-radius: 10px;
+  background-color: var(--product-category-background-color);
+  font-weight: bold;
+  padding: 4px 6px;
+  font-size: 15px;
+}
+
+.favourite-product-item p {
+  margin-top: 10px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.favourite-product-item .promo-price {
+  margin-top: 0;
+  margin-left: 10px;
+  background-color: var(--promo-price-color);
+  padding: 3px 5px;
+  border-radius: 50%;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+.favourite-product-item button {
+  all: unset;
+  width: 60%;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

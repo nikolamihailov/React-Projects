@@ -3,8 +3,10 @@ import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContex
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FavouriteProducts.module.css";
 import FavouriteProductItem from "./FavouriteProductItem/FavouriteProductItem";
+import useTitle from "../../hooks/useTitle";
 
 const FavouriteProducts = () => {
+  useTitle("Favourite Products | KolPlace");
   const { favProducts, removeProductFromFavouritesList } = useContext(
     FavouriteProductsContext
   );

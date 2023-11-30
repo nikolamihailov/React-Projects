@@ -6,19 +6,22 @@ const bcrypt = require("bcrypt");
 const SECRET = process.env.JWT_SECRET;
 
 exports.register = async (data) => {
+    const { email } = data;
+    const userEx = await User.findOne({ email });
+    if (userEx) throw new Error("Email already exits!");
 
-    const user = await User.create(data);
+    let user = await User.create(data);
     const shoppingCart = await ShoppingCart.create({});
-    await User.findByIdAndUpdate(user._id, { shoppingCart: shoppingCart._id });
+    user = await User.findByIdAndUpdate(user._id, { shoppingCart: shoppingCart._id }, { new: true });
 
     if (user) {
         const payload = {
-            user,
-            _id: user._id,
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            role: user.role
+            user: {
+                _id: user._id,
+                email: user.email,
+                role: user.role,
+                shoppingCart: user.shoppingCart
+            },
         };
         const token = await generateToken(payload);
         return {
@@ -35,14 +38,13 @@ exports.login = async (email, password) => {
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) throw new Error("Invalid email or password!");
-
     const payload = {
-        user,
-        _id: user._id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        role: user.role
+        user: {
+            _id: user._id,
+            email: user.email,
+            role: user.role,
+            shoppingCart: user.shoppingCart
+        },
     };
     const token = await generateToken(payload);
     return {
@@ -50,6 +52,23 @@ exports.login = async (email, password) => {
         token
     };
 
+};
+
+exports.getUserInfo = (id) => User.findById(id);
+
+// exports.updateUserInfo = (id, data) => User.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+
+exports.updateUserInfo = async (id, data) => {
+    const { email } = data;
+    const obj = new mongoose.Types.ObjectId(id);
+    const userWithNewEmail = await User.findOne({ email, _id: { $ne: obj } });
+    if (userWithNewEmail) {
+        throw new Error("Email already exists!");
+    }
+
+    const user = await User.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+
+    return user;
 };
 
 async function generateToken(data) {

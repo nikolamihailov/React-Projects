@@ -77,7 +77,7 @@
 }
 
 .product-details .product-info p {
-  font-size: 21px;
+  font-size: 20px;
 }
 .product-details .product-info span {
   color: var(--white-color);
@@ -90,23 +90,25 @@
 }
 
 .product-details .product-info .product-prices-buttons {
-  padding: 15px;
+  padding: 10px 15px;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
   border-radius: 15px;
   width: 50%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
-
+.product-prices-buttons .prices p {
+  font-size: 25px;
+}
 .product-details .product-info .product-prices-buttons .btns {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -124,9 +126,13 @@
   background-color: var(--secondary-color);
   font-size: 19px;
   border-radius: 10px;
+  margin-bottom: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
 }
 
+.product-details .product-info .btns p {
+  cursor: pointer;
+}
 .product-details .product-info .btns p > i {
   cursor: pointer;
   background-color: none;

@@ -190,8 +190,8 @@ const ProductDetails = () => {
                       Add To Favourites <i className="fa-regular fa-heart"></i>
                     </p>
                   ) : (
-                    <p title="Product Is In Favourites">
-                      Product Is In Favourites{" "}
+                    <p title="Product is in Favourites">
+                      Product is in Favourites{" "}
                       <i className="fa-solid fa-heart"></i>
                     </p>
                   )}

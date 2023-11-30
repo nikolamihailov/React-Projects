@@ -1,20 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./AdminInfo.module.css";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { getProfile } from "../../../../data/services/userService";
 
 const AdminInfo = () => {
-  const { names, role } = useContext(AuthContext);
-  const [firstName, lastName] = names;
+  const [profile, setProfile] = useState({});
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    getProfile(auth.user?._id)
+      .then((data) => {
+        setProfile(data);
+      })
+      .catch((err) => console.log(err));
+  });
   return (
     <div className={styles["info"]}>
       <Link to={"/admin-panel"}>
-        <img src="/src/assets/avatar.png" alt="" />
+        <img src={profile?.avatar} alt="avatar" />
       </Link>
       <p>
-        {firstName} {lastName}
+        {profile?.firstName} {profile?.lastName}
       </p>
-      <p>Role: {role}</p>
+      <p>Role: {profile?.role}</p>
     </div>
   );
 };

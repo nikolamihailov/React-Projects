@@ -5,7 +5,7 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = useCallback(() => {
-    const scrollvalid = window.scrollY > 700;
+    const scrollvalid = window.scrollY > 600;
     setIsVisible(scrollvalid);
   }, []);
 

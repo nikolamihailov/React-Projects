@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FavouriteProducts.module.css";
@@ -10,6 +10,11 @@ const FavouriteProducts = () => {
   const { favProducts, removeProductFromFavouritesList } = useContext(
     FavouriteProductsContext
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className={styles["favourite-products-section"]}>
       <div>

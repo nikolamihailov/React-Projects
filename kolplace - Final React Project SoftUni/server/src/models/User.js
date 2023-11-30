@@ -21,13 +21,13 @@ const userSchema = new mongoose.Schema({
         maxLength: [25, "Email must not be more than 25 characters!"],
         unique: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Provide a valid email address!'],
-        validate: {
-            validator: async function (email) {
-                const user = await User.findOne({ email });
-                return !user;
-            },
-            message: 'Email already exists!',
-        },
+        /*        validate: {
+                   validator: async function (email) {
+                       const user = await User.findOne({ email });
+                       return !user;
+                   },
+                   message: 'Email already exists!',
+               }, */
     },
     password: {
         type: String,
@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        match: [/^https?:\/\/.+/, "Provide valid image link!"]
+        default: "https://icons-for-free.com/iconfiles/png/512/avatar+circle+male+profile+user+icon-1320196703471638282.png"
     },
     role: {
         type: String,

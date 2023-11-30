@@ -63,6 +63,12 @@ export const ShoppingCartProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    if (!userShoppingCartId) {
+      dispatch({
+        type: "EMPTY_CART",
+        products: [],
+      });
+    }
     if (userShoppingCartId) {
       getCart(userShoppingCartId)
         .then((data) => {
@@ -79,7 +85,6 @@ export const ShoppingCartProvider = ({ children }) => {
     async (product, quantity = 1) => {
       const hasItem = cart.products.find((p) => p.product._id === product._id);
       if (hasItem) quantity = hasItem.quantity + 1;
-
       const updatedProducts = await addToCart(userShoppingCartId, {
         product: product._id,
         quantity,

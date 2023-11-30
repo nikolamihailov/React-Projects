@@ -1,0 +1,62 @@
+.user-profile {
+  min-height: var(--section-min-height);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.user-profile i:nth-child(1) {
+  font-size: 35px;
+  color: var(--secondary-color);
+  margin-right: 25px;
+}
+.user-profile i:nth-child(2) {
+  cursor: pointer;
+  display: block;
+  font-size: 25px;
+  color: var(--white-color);
+  background-color: var(--edit-btn-color);
+  padding: 10px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 4px var(--edit-btn-color));
+}
+
+.user-profile h2 {
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  filter: drop-shadow(0 0 7px var(--secondary-color));
+  color: var(--white-color);
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+.user-profile h1 {
+  font-size: 40px;
+}
+
+.user-profile .info {
+  height: 50vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-profile .info img {
+  border-radius: 50%;
+  height: 190px;
+  width: 190px;
+  object-fit: cover;
+}
+
+.user-profile .info strong {
+  font-size: 24px;
+}
+
+.user-profile .info p {
+  font-size: 22px;
+}

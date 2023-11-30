@@ -1,0 +1,19 @@
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  position: fixed;
+  bottom: 100px;
+  left: 50px;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-size: 27px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}

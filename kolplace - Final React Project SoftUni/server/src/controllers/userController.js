@@ -1,9 +1,10 @@
 const userController = require("express").Router();
 const userService = require("../services/userService");
 const { trimBody } = require("../middlewares/trimBody");
+const { isAuthenticated } = require("../middlewares/isAuthenticated");
 const { extractErrors } = require("../utils/errParse");
 
-userController.post("/login", async (req, res) => {
+userController.post("/login", trimBody, async (req, res) => {
     try {
         const { email, password } = req.body;
         const userData = await userService.login(email, password);
@@ -24,7 +25,28 @@ userController.post("/register", trimBody, async (req, res) => {
     }
 });
 
-userController.get("/:id", async (req, res) => {
+userController.get("/:id", isAuthenticated, async (req, res) => {
+    try {
+        const userData = await userService.getUserInfo(req.params.id);
+        res.status(201).json(userData);
+    } catch (error) {
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
+userController.put("/:id", isAuthenticated, async (req, res) => {
+    try {
+        const userData = await userService.updateUserInfo(req.params.id, { ...req.body });
+        res.status(201).json(userData);
+    } catch (error) {
+        console.log("in");
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
+userController.get("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
         const userData = await userService.getFavouriteProducts(req.params.id);
         res.status(201).json(userData.favouriteProducts);
@@ -34,7 +56,7 @@ userController.get("/:id", async (req, res) => {
     }
 });
 
-userController.post("/:id", async (req, res) => {
+userController.post("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
         const userData = await userService.addProductToFavourites(req.params.id, req.body);
         res.status(201).json(userData.favouriteProducts);
@@ -44,7 +66,7 @@ userController.post("/:id", async (req, res) => {
     }
 });
 
-userController.put("/:id", async (req, res) => {
+userController.put("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
         console.log("in");
         const userData = await userService.removeProductFromFavourites(req.params.id, req.body);

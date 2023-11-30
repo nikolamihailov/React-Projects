@@ -5,7 +5,7 @@
   transform: translateY(-50%);
   margin: 0 auto;
   min-height: 70vh;
-  z-index: 3;
+  z-index: 6;
 
   /* ---------------------------------------- */
   filter: drop-shadow(0 0 9px var(--background-inverted-color));

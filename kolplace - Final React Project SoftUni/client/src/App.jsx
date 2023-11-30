@@ -24,6 +24,7 @@ import { ShoppingCartProvider } from "./contexts/ShoppingCartContext.jsx";
 import { FavouriteProductsProvider } from "./contexts/FavouriteProductsContext.jsx";
 import FavouriteProducts from "./components/FavouriteProducts/FavouriteProducts.jsx";
 import UserProfile from "./components/Profile/UserProfile.jsx";
+import ScrollToTop from "./components/Navigation/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
                   <Route path="/*" element={<Navigate to="/error" />} />
                   <Route path="/error" element={<ErrorPage />} />
                 </Routes>
+                <ScrollToTop />
               </main>
               <Footer />
             </ThemeProvider>

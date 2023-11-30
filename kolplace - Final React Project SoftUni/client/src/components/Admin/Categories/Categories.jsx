@@ -12,10 +12,12 @@ import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 import { getAllWithFilters } from "../../../data/services/categoryService";
 import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCategories";
 import { motion, AnimatePresence } from "framer-motion";
+import Spinner from "../../Spinner/Spinner";
 
 const Categories = () => {
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
     usePagination();
+  const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -36,6 +38,7 @@ const Categories = () => {
         }
         updatePageCount(data.pageCount);
         setCategories(data.categories);
+        setIsLoading(false);
       })
       .catch((error) => {
         updateNotifs([{ text: error, type: "error" }]);
@@ -67,23 +70,27 @@ const Categories = () => {
         </button>
         <FilterCategories onChange={onChange} />
       </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <motion.div layout className={styles["admin-categories-container"]}>
+          <AnimatePresence>
+            {categories?.length > 0 ? (
+              categories.map((c) => (
+                <CategoryItem
+                  key={c._id}
+                  {...c}
+                  openEdit={openEdit}
+                  openDelete={openDelete}
+                />
+              ))
+            ) : (
+              <h2>No categories</h2>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      )}
 
-      <motion.div layout className={styles["admin-categories-container"]}>
-        <AnimatePresence>
-          {categories?.length > 0 ? (
-            categories.map((c) => (
-              <CategoryItem
-                key={c._id}
-                {...c}
-                openEdit={openEdit}
-                openDelete={openDelete}
-              />
-            ))
-          ) : (
-            <h2>No categories</h2>
-          )}
-        </AnimatePresence>
-      </motion.div>
       {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
       {isEditOpen && (
         <EditCategoryItem

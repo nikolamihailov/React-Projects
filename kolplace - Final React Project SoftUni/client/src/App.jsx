@@ -23,6 +23,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext.jsx";
 import { FavouriteProductsProvider } from "./contexts/FavouriteProductsContext.jsx";
 import FavouriteProducts from "./components/FavouriteProducts/FavouriteProducts.jsx";
+import UserProfile from "./components/Profile/UserProfile.jsx";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
                     path="/favourite-products"
                     element={<FavouriteProducts />}
                   ></Route>
+                  <Route path="/my-profile" element={<UserProfile />}></Route>
                   <Route
                     path="/categories/:name"
                     element={<Category />}

@@ -15,12 +15,11 @@ export const AuthProvider = ({ children }) => {
 
   const ctxValues = {
     isAuthenticated: !!auth.token,
-    isAdmin: auth?.role === "admin",
+    isAdmin: auth.user?.role === "admin",
     auth,
+    role: auth.user?.role,
     updateAuth,
-    email: auth?.email,
-    role: auth?.role,
-    names: [auth?.firstName, auth?.lastName],
+    email: auth.user?.email,
   };
   return (
     <AuthContext.Provider value={ctxValues}>{children}</AuthContext.Provider>

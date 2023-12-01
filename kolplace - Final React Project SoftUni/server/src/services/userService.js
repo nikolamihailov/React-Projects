@@ -95,5 +95,7 @@ exports.removeProductFromFavourites = async (id, product) => {
     ).populate("favouriteProducts");
 
     return user;
-}
+};
+
+exports.getAllUsers = () => User.find();
 

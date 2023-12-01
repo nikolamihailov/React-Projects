@@ -7,7 +7,7 @@ const Product = require("../models/Product");
 
 exports.getAllProducts = () => Product.find().populate("category");
 
-exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category, onPromotion) => {
+exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, onPromotion) => {
     let order = "";
     const query = {};
     if (filter) {
@@ -25,7 +25,6 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
     if (category === "all") findQuery = {};
 
     // console.log(typeof onPromotion);
-
     if (onPromotion === "true") {
         findQuery.hasPromoPrice = true;
         if (Object.keys(query).length > 0) {
@@ -34,14 +33,14 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
 
         const productsCount = products.length;
 
-        let pageCount = Math.ceil(productsCount / itemsPerPage);
-        let skip = itemsPerPage * (page - 1);
-        if (productsCount <= itemsPerPage) {
+        let pageCount = Math.ceil(productsCount / Number(itemsPerPage));
+        let skip = Number(itemsPerPage) * (Number(page) - 1);
+        if (productsCount <= Number(itemsPerPage)) {
             skip = 0;
             pageCount = 1;
         }
 
-        products = products.slice(skip, skip + itemsPerPage);
+        products = products.slice(skip, skip + Number(itemsPerPage));
         return { products, pageCount, productsCount };
     }
 
@@ -62,15 +61,23 @@ exports.getAllWithFilters = async (itemsPerPage = 8, page, filter = "", category
     } else products = await Product.find(findQuery).populate("category");
 
     const productsCount = products.length;
+    console.log("products count", productsCount);
+    console.log("items per page", Number(itemsPerPage));
+    let pageCount = Math.ceil(productsCount / Number(itemsPerPage));
+    console.log("page count", pageCount);
+    console.log("page", Number(page));
 
-    let pageCount = Math.ceil(productsCount / itemsPerPage);
-    let skip = itemsPerPage * (page - 1);
-    if (productsCount <= itemsPerPage) {
+    let skip = Number(itemsPerPage) * (Number(page) - 1);
+    console.log("skip", skip);
+
+
+    if (productsCount <= Number(itemsPerPage)) {
         skip = 0;
         pageCount = 1;
     }
 
-    products = products.slice(skip, skip + itemsPerPage);
+    products = products.slice(skip, skip + Number(itemsPerPage));
+    console.log("final", products.length);
     return { products, pageCount, productsCount };
 
 };

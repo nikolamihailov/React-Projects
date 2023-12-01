@@ -14,8 +14,8 @@ export const getAll = async () => {
     return await request.get(productEndpoints.getAll);
 };
 
-export const getAllWithFilters = async (page = "", filter = "", category, onPromotion) => {
-    return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}&onPromotion=${onPromotion}`);
+export const getAllWithFilters = async (page = "", filter = "", category, onPromotion, itemsPerPage = 12) => {
+    return await request.get(productEndpoints.getAll + `?page=${page}&filter=${filter}&category=${category}&onPromotion=${onPromotion}&itemsPerPage=${itemsPerPage}`);
 };
 
 export const getAllFromCategory = async (name) => {

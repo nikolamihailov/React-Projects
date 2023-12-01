@@ -10,6 +10,7 @@ const userEndpoints = {
     getFavouriteProducts: USERS_URL + "/",
     addProductToFavourites: USERS_URL + "/",
     removeProductFromFavourites: USERS_URL + "/",
+    getAllUsers: USERS_URL + "/"
 };
 
 export const register = async (data) => {
@@ -39,4 +40,8 @@ export const addProductToFavourites = async (userId, data) => {
 
 export const removeProductFromFavourites = async (userId, data) => {
     return await request.put(userEndpoints.removeProductFromFavourites + userId + "/favourites", data);
+};
+
+export const getAllUsers = async () => {
+    return await request.get(userEndpoints.getAllUsers);
 };

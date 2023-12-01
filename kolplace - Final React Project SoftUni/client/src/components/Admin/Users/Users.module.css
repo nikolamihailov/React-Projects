@@ -1,3 +1,23 @@
 .admin-users {
+  text-align: center;
   flex: 5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-users h1 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+.admin-users-container {
+  height: 75%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

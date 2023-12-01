@@ -17,6 +17,7 @@ import Spinner from "../../Spinner/Spinner";
 
 const Products = () => {
   const onPromotion = false;
+  const itemsPerPage = 8;
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
     usePagination();
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +34,13 @@ const Products = () => {
   const { updateNotifs } = useContext(NotifContext);
 
   useEffect(() => {
-    getAllWithFilters(page, sortFilter, categoryFilter, onPromotion)
+    getAllWithFilters(
+      page,
+      sortFilter,
+      categoryFilter,
+      onPromotion,
+      itemsPerPage
+    )
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -56,6 +63,7 @@ const Products = () => {
     sortFilter,
     categoryFilter,
     onPromotion,
+    itemsPerPage,
   ]);
 
   const updateProducts = useCallback((data) => setProducts(data), []);

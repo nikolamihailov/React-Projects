@@ -28,7 +28,7 @@ const ProductItem = ({
         </button>
       </div>
       <img src={mainImage} alt={name} />
-      <h2>{name}</h2>
+      <h2>{name.length > 35 ? name.slice(0, 35) + "... " : name}</h2>
       <div className={styles["prices"]}>
         <p
           style={

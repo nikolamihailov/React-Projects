@@ -1,6 +1,7 @@
 .shopFeatures {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin: 0 auto;
   width: 75vw;
   margin-top: 20px;
@@ -22,12 +23,12 @@
 
 .feature p {
   font-size: 18px;
-  margin-top: 15px;
+  margin-top: 10px;
   color: var(--primary-color);
 }
 
 .feature-slash {
-  margin-left: 25px;
+  margin: 0 25px;
   height: 100%;
   width: 2px;
   background-color: var(--secondary-color);

@@ -1,12 +1,45 @@
+import { useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import styles from "./About.module.css";
+import L from "leaflet";
 
 const About = () => {
   useTitle("About Us | KolPlace");
 
+  useEffect(() => {
+    // Sample store data with coordinates
+    const storeData = [
+      { name: "KolPlace (Sofia) Main", coordinates: [42.6977, 23.3219] },
+      { name: "KolPlace (Sofia)", coordinates: [42.6629, 23.3726] },
+      { name: "KolPlace (Plovdiv) Main", coordinates: [42.1354, 24.7453] },
+      { name: "KolPlace (Plovdiv)", coordinates: [42.154, 24.7541] },
+      { name: "KolPlace (Varna)", coordinates: [43.214, 27.9147] },
+      { name: "KolPlace (Burgas)", coordinates: [42.5048, 27.4626] },
+    ];
+
+    const leafletMap = L.map("map").setView([42.6977, 25.2866], 6);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors",
+    }).addTo(leafletMap);
+
+    storeData.forEach((store) => {
+      const marker = L.marker(store.coordinates).addTo(leafletMap);
+      marker.bindPopup(`<b>${store.name}</b>`).openPopup();
+    });
+
+    // Cleanup function
+    return () => {
+      // Optionally, you can clean up resources when the component is unmounted
+      if (leafletMap) {
+        leafletMap.remove();
+      }
+    };
+  }, []); // Empty dependency array to run the effect only once
+
   return (
     <section className={styles["about-us-section"]}>
-      <div>
+      <div className={styles["info"]}>
         <h1>About us</h1>
         <p>
           Welcome to KolPlace, where the joy extends beyond just selecting your
@@ -36,12 +69,7 @@ const About = () => {
           Phone: <a href="tel:+44 20 7946 0443">+44 20 7946 0443</a>
         </p>
       </div>
-      <iframe
-        title="Google Maps"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7220.342447010138!2d55.27434804195275!3d25.19744761881899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682829c85c07%3A0xa5eda9fb3c93b69d!2z0JTRg9Cx0LDQuSDQnNC-0Ls!5e0!3m2!1sbg!2sbg!4v1700751018522!5m2!1sbg!2sbg"
-        allowFullScreen
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <div id="map" className={styles["map"]}></div>
     </section>
   );
 };

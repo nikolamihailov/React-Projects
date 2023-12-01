@@ -8,7 +8,7 @@
   justify-content: space-between;
 }
 
-.about-us-section div:nth-child(1) {
+.about-us-section .info {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -57,8 +57,9 @@
   text-decoration: underline;
 }
 
-.about-us-section iframe {
-  flex: 2;
+.about-us-section .map {
+  z-index: 1;
+  height: 250px;
   width: 100%;
   border: 5px solid var(--main-nav-categories);
 }

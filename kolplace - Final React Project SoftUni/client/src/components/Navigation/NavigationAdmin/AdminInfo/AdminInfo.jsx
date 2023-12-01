@@ -14,7 +14,7 @@ const AdminInfo = () => {
         setProfile(data);
       })
       .catch((err) => console.log(err));
-  });
+  }, [auth.user?._id]);
   return (
     <div className={styles["info"]}>
       <Link to={"/admin-panel"}>

@@ -3,7 +3,7 @@ const { isAdmin } = require("../middlewares/isAdmin");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
 const mongoose = require('mongoose');
-const ITEMS_PER_PAGE = 8;
+// let ITEMS_PER_PAGE = 8;
 
 productController.get("/products", async (req, res) => {
     try {
@@ -11,8 +11,11 @@ productController.get("/products", async (req, res) => {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
         if (Object.keys(req.query).length > 0) {
-            const { page, filter, category, onPromotion } = req.query;
-            const data = await productService.getAllWithFilters(ITEMS_PER_PAGE, page, filter, category, onPromotion);
+            /*  if (req.user?.data.user.role === "admin") ITEMS_PER_PAGE = 8;
+             else ITEMS_PER_PAGE = 12;
+             console.log(ITEMS_PER_PAGE); */
+            const { page, filter, category, onPromotion, itemsPerPage } = req.query;
+            const data = await productService.getAllWithFilters(itemsPerPage, page, filter, category, onPromotion,);
             res.status(200).json(data);
         } else {
             const allProducts = await productService.getAllProducts();

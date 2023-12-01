@@ -54,6 +54,13 @@
   margin-bottom: 5px;
 }
 
+.edit-profile label:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .edit-profile input {
   color: var(--background-color);
   background: none;

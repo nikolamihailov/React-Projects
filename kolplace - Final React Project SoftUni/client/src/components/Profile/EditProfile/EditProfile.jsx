@@ -6,6 +6,7 @@ import { getProfile, updateProfile } from "../../../data/services/userService";
 import { v4 as uuidv4 } from "uuid";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
+import imageCompression from "browser-image-compression";
 
 const FORM_VALUES = {
   FirstName: "firstName",
@@ -42,7 +43,8 @@ const EditProfile = ({ onClose, update }) => {
   const onChange = async (e) => {
     if (e.target.name === "avatar") {
       const file = e.target.files[0];
-      const result = await convertToBase64(file);
+      const compressedFile = await imageCompression(file, { maxSizeMB: 0.5 });
+      const result = await convertToBase64(compressedFile);
       setProfile((state) => ({ ...state, [e.target.name]: result }));
     } else {
       setProfile((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -81,8 +83,7 @@ const EditProfile = ({ onClose, update }) => {
               flexDirection: "column",
             }}
           >
-            {" "}
-            Avatar
+            Avatar (Max Size - 15MB)
             <img
               src={profile.avatar || ""}
               alt="avatar"

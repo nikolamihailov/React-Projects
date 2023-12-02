@@ -20,6 +20,7 @@ const UserProfile = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      whileHover={{ scale: 1.02, y: -10, transition: 0.2 }}
       className={styles["admin-user-profile"]}
     >
       <div>
@@ -35,8 +36,13 @@ const UserProfile = ({
           </p>
         )}
         {role !== "admin" && (
-          <button onClick={() => openDelete(_id)} title={"Delete Item"}>
+          <button onClick={() => openDelete(_id)} title={"Delete User"}>
             <i className="fa-solid fa-trash-can"></i>
+          </button>
+        )}
+        {role === "admin" && auth.user?._id !== _id && (
+          <button disabled={true} title="Admin">
+            <i className="fas fa-user-shield"></i>
           </button>
         )}
       </div>

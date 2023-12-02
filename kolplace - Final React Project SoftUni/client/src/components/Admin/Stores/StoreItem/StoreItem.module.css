@@ -1,0 +1,42 @@
+.admin-store-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-store-item div > button {
+  all: unset;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 8px 12px;
+  background-color: var(--secondary-color);
+  font-size: 17px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+.admin-store-item img {
+  height: 270px;
+  width: 270px;
+  object-fit: cover;
+  margin: 10px 0;
+  filter: drop-shadow(0 0 3px var(--background-inverted-color));
+}
+.admin-store-item p {
+  font-weight: bold;
+}
+
+.admin-store-item h2 {
+  font-size: 25px;
+}
+
+.admin-store-item div > button:nth-child(1) {
+  margin-right: 20px;
+  background-color: var(--edit-btn-color);
+  filter: drop-shadow(0 0 4px var(--edit-btn-color));
+}
+
+.admin-store-item div > button:nth-child(2) {
+  background-color: var(--delete-btn-color);
+  filter: drop-shadow(0 0 4px var(--delete-btn-color));
+}

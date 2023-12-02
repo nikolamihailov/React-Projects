@@ -8,6 +8,7 @@ const CategoryItem = ({ _id, name, categoryImage, openEdit, openDelete }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      whileHover={{ scale: 1.02, y: -10, transition: 0.2 }}
       className={styles["admin-category-item"]}
     >
       <div>

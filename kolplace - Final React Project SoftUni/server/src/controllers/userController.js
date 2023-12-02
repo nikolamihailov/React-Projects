@@ -63,7 +63,7 @@ userController.get("/:id", isAuthenticated, async (req, res) => {
     }
 });
 
-userController.put("/:id", isAuthenticated, async (req, res) => {
+userController.put("/:id", isAuthenticated, trimBody, async (req, res) => {
     try {
         const userData = await userService.updateUserInfo(req.params.id, { ...req.body });
         res.status(201).json(userData);

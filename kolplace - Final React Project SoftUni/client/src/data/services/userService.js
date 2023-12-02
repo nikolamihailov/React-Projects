@@ -10,7 +10,8 @@ const userEndpoints = {
     getFavouriteProducts: USERS_URL + "/",
     addProductToFavourites: USERS_URL + "/",
     removeProductFromFavourites: USERS_URL + "/",
-    getAllUsers: USERS_URL + "/"
+    getAllUsers: USERS_URL + "/",
+    deleteUser: USERS_URL + "/"
 };
 
 export const register = async (data) => {
@@ -29,6 +30,9 @@ export const updateProfile = async (userId, data) => {
     return await request.put(userEndpoints.updateUserInfo + userId, data);
 };
 
+export const deleteUser = async (userId) => {
+    return await request.delete(userEndpoints.deleteUser + userId);
+};
 
 export const getFavouriteProducts = async (userId) => {
     return await request.get(userEndpoints.getFavouriteProducts + userId + "/favourites");
@@ -44,4 +48,8 @@ export const removeProductFromFavourites = async (userId, data) => {
 
 export const getAllUsers = async () => {
     return await request.get(userEndpoints.getAllUsers);
+};
+
+export const getAllWithFilters = async (page = "", filter = "") => {
+    return await request.get(userEndpoints.getAllUsers + `?page=${page}&filter=${filter}`);
 };

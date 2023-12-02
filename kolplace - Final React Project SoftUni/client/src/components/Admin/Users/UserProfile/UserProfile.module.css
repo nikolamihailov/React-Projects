@@ -3,20 +3,20 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 300px;
+  height: 280px;
   width: 300px;
 }
 
 .admin-user-profile img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   filter: drop-shadow(0 0 3px var(--background-inverted-color));
 }
 
 .admin-user-profile h2 {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .admin-user-profile button {
@@ -31,9 +31,9 @@
 }
 
 .admin-user-profile h3 {
-  padding: 10px 15px;
+  padding: 7px 12px;
   background-color: var(--secondary-color);
-  filter: drop-shadow(0 0 7px var(--secondary-color));
+  filter: drop-shadow(0 0 4px var(--secondary-color));
   color: var(--white-color);
   border-radius: 20px;
   font-size: 14px;
@@ -41,7 +41,7 @@
 
 .admin-user-profile span {
   display: block;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: bold;
   font-style: italic;
 }

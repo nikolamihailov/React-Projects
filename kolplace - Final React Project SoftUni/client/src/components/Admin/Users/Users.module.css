@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
 }
 
@@ -20,4 +20,10 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+.admin-users-top {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

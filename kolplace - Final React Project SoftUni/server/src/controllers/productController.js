@@ -1,5 +1,6 @@
 const productController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
+const { trimBody } = require("../middlewares/trimBody");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
 const mongoose = require('mongoose');
@@ -47,7 +48,7 @@ productController.get("/products/:id", async (req, res) => {
     }
 });
 
-productController.post("/products", isAdmin, async (req, res) => {
+productController.post("/products", isAdmin, trimBody, async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
@@ -68,7 +69,7 @@ productController.post("/products", isAdmin, async (req, res) => {
     }
 });
 
-productController.put("/products/:id", isAdmin, async (req, res) => {
+productController.put("/products/:id", isAdmin, trimBody, async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });

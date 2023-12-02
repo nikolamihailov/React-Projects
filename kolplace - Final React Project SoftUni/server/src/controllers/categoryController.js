@@ -1,5 +1,6 @@
 const categoryController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
+const { trimBody } = require("../middlewares/trimBody");
 const categoryService = require("../services/categoryService");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
@@ -49,7 +50,7 @@ categoryController.get("/categories/:id", async (req, res) => {
 });
 
 
-categoryController.post("/categories", isAdmin, async (req, res) => {
+categoryController.post("/categories", isAdmin, trimBody, async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
@@ -66,7 +67,7 @@ categoryController.post("/categories", isAdmin, async (req, res) => {
     }
 });
 
-categoryController.put("/categories/:id", isAdmin, async (req, res) => {
+categoryController.put("/categories/:id", isAdmin, trimBody, async (req, res) => {
     try {
         if (req.decToken) {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });

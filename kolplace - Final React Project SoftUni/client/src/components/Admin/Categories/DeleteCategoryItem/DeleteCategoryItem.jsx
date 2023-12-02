@@ -31,7 +31,7 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
       return;
     }
     if (deletedCategory.error) {
-      updateNotifs([{ text: deleteCategory.error, type: "error" }]);
+      updateNotifs([{ text: deletedCategory.error, type: "error" }]);
     } else {
       updateCategories((categs) =>
         categs.filter((c) => c._id !== deletedCategory._id)

@@ -76,7 +76,15 @@ async function generateToken(data) {
     // return await jwt.sign({ data }, SECRET, { expiresIn: "15s" });
 }
 
-exports.getFavouriteProducts = (id) => User.findById(id).populate("favouriteProducts");
+// exports.getFavouriteProducts = (id) => User.findById(id).populate("favouriteProducts");
+
+exports.getFavouriteProducts = (id) => User.findById(id).populate({
+    path: "favouriteProducts",
+    populate: {
+        path: "category",
+        model: "Category"
+    }
+});
 
 exports.addProductToFavourites = (id, product) => User.findByIdAndUpdate(id, {
     $push: {
@@ -98,4 +106,36 @@ exports.removeProductFromFavourites = async (id, product) => {
 };
 
 exports.getAllUsers = () => User.find();
+
+exports.getAllWithFilters = async (itemsPerPage, page, filter) => {
+    const query = {};
+    if (filter) {
+        if (filter.includes("firstName")) query.firstName = filter.split("-")[1];
+        if (filter.includes("createdAt")) query.createdAt = filter.split("-")[1];
+        if (filter === "admins") query.role = "admin";
+    }
+
+    let users;
+    if (query.role) users = await User.find(query);
+    else if (Object.keys(query).length > 0) users = await User.find().sort(query).collation({ locale: 'en', strength: 3 });
+    else users = await User.find();
+
+    const usersCount = users.length;
+    let pageCount = Math.ceil(usersCount / Number(itemsPerPage));
+    let skip = Number(itemsPerPage) * (Number(page) - 1);
+
+    if (usersCount <= Number(itemsPerPage)) {
+        skip = 0;
+        pageCount = 1;
+    }
+
+    users = users.slice(skip, skip + Number(itemsPerPage));
+    return { users, pageCount, usersCount };
+};
+
+exports.deleteUser = async (id) => {
+    const user = await User.findById(id);
+    await ShoppingCart.findByIdAndDelete(user.shoppingCart);
+    return User.findByIdAndDelete(id);
+}
 

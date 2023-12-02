@@ -61,14 +61,14 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
     } else products = await Product.find(findQuery).populate("category");
 
     const productsCount = products.length;
-    console.log("products count", productsCount);
-    console.log("items per page", Number(itemsPerPage));
+    // console.log("products count", productsCount);
+    // console.log("items per page", Number(itemsPerPage));
     let pageCount = Math.ceil(productsCount / Number(itemsPerPage));
-    console.log("page count", pageCount);
-    console.log("page", Number(page));
+    // console.log("page count", pageCount);
+    // console.log("page", Number(page));
 
     let skip = Number(itemsPerPage) * (Number(page) - 1);
-    console.log("skip", skip);
+    // console.log("skip", skip);
 
 
     if (productsCount <= Number(itemsPerPage)) {
@@ -77,7 +77,7 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
     }
 
     products = products.slice(skip, skip + Number(itemsPerPage));
-    console.log("final", products.length);
+    // console.log("final", products.length);
     return { products, pageCount, productsCount };
 
 };

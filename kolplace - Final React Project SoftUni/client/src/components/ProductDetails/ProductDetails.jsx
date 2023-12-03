@@ -25,12 +25,12 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   useTitle(`${product?.name} | KolPlace`);
   useEffect(() => {
-    window.scrollTo(0, 0);
     getOneProduct(id)
       .then((data) => {
         setProduct(data);
         setActiveImage(data.mainImage);
         setIsLoading(false);
+        window.scrollTo(0, 0);
       })
       .catch((err) => console.log(err));
   }, [id]);

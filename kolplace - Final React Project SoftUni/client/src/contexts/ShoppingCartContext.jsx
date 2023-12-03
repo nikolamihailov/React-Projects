@@ -12,6 +12,8 @@ import {
   emptyCart,
   removeProduct,
 } from "../data/services/shoppingCartService";
+import { NotifContext } from "./NotificationContext";
+import { useNavigate } from "react-router-dom";
 
 export const ShoppingCartContext = createContext();
 
@@ -22,8 +24,8 @@ const reducer = (state, action) => {
         ...state,
         products: action.products,
         totalPrice:
-          action.products.length > 0
-            ? action.products.reduce((total, p) => {
+          action.products?.length > 0
+            ? action.products?.reduce((total, p) => {
                 const price = p.product.hasPromoPrice
                   ? p.product.promoPrice
                   : p.product.price;
@@ -36,7 +38,7 @@ const reducer = (state, action) => {
     case "CHANGE_PRODUCT_QUANTITY":
       return {
         products: action.products,
-        totalPrice: action.products.reduce((total, p) => {
+        totalPrice: action.products?.reduce((total, p) => {
           const price = p.product.hasPromoPrice
             ? p.product.promoPrice
             : p.product.price;
@@ -53,7 +55,9 @@ const reducer = (state, action) => {
   }
 };
 export const ShoppingCartProvider = ({ children }) => {
-  const { auth } = useContext(AuthContext);
+  const { auth, updateAuth } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
 
   const userShoppingCartId = auth.user?.shoppingCart;
 
@@ -89,12 +93,17 @@ export const ShoppingCartProvider = ({ children }) => {
         product: product._id,
         quantity,
       });
+      if (updatedProducts.expMessage) {
+        updateNotifs([{ text: updatedProducts.expMessage, type: "error" }]);
+        navigateTo("/login");
+        updateAuth({});
+      }
       dispatch({
         type: "ADD_TO_CART",
         products: updatedProducts.products,
       });
     },
-    [userShoppingCartId, cart.products]
+    [userShoppingCartId, cart.products, navigateTo, updateAuth, updateNotifs]
   );
 
   const removeCartProduct = useCallback(
@@ -102,21 +111,31 @@ export const ShoppingCartProvider = ({ children }) => {
       const updatedCart = await removeProduct(userShoppingCartId, {
         productId,
       });
+      if (updatedCart.expMessage) {
+        updateNotifs([{ text: updatedCart.expMessage, type: "error" }]);
+        navigateTo("/login");
+        updateAuth({});
+      }
       dispatch({
         type: "REMOVE_CART_PRODUCT",
         products: updatedCart.products,
       });
     },
-    [userShoppingCartId]
+    [userShoppingCartId, navigateTo, updateAuth, updateNotifs]
   );
 
   const emptyCartProducts = useCallback(async () => {
     const emptiedCart = await emptyCart(userShoppingCartId);
+    if (emptiedCart.expMessage) {
+      updateNotifs([{ text: emptiedCart.expMessage, type: "error" }]);
+      navigateTo("/login");
+      updateAuth({});
+    }
     dispatch({
       type: "EMPTY_CART",
       products: emptiedCart.products,
     });
-  }, [userShoppingCartId]);
+  }, [userShoppingCartId, navigateTo, updateAuth, updateNotifs]);
 
   const changeProductQuantity = useCallback(
     async (productId, quantity) => {
@@ -124,10 +143,15 @@ export const ShoppingCartProvider = ({ children }) => {
         product: productId,
         quantity,
       });
+      if (updated.expMessage) {
+        updateNotifs([{ text: updated.expMessage, type: "error" }]);
+        navigateTo("/login");
+        updateAuth({});
+      }
 
       dispatch({ type: "CHANGE_PRODUCT_QUANTITY", products: updated.products });
     },
-    [userShoppingCartId]
+    [userShoppingCartId, navigateTo, updateAuth, updateNotifs]
   );
 
   const ctxValues = {

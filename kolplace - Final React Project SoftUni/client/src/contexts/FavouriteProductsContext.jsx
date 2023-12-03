@@ -11,6 +11,8 @@ import {
   getFavouriteProducts,
   removeProductFromFavourites,
 } from "../data/services/userService";
+import { NotifContext } from "./NotificationContext";
+import { useNavigate } from "react-router-dom";
 
 export const FavouriteProductsContext = createContext();
 
@@ -32,7 +34,9 @@ const reducer = (state, action) => {
   }
 };
 export const FavouriteProductsProvider = ({ children }) => {
-  const { auth } = useContext(AuthContext);
+  const { auth, updateAuth } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
   const [favProducts, dispatch] = useReducer(reducer, {
     favouriteProducts: [],
   });
@@ -42,6 +46,11 @@ export const FavouriteProductsProvider = ({ children }) => {
     if (auth.user?._id) {
       getFavouriteProducts(auth.user?._id)
         .then((data) => {
+          if (data.expMessage) {
+            updateNotifs([{ text: data.expMessage, type: "error" }]);
+            navigateTo("/login");
+            updateAuth({});
+          }
           dispatch({
             type: "INIT",
             products: data,
@@ -49,36 +58,42 @@ export const FavouriteProductsProvider = ({ children }) => {
         })
         .catch((err) => console.log(err));
     }
-  }, [auth.user?._id]);
+  }, [auth.user?._id, navigateTo, updateAuth, updateNotifs]);
 
   const addProductToFavouriteProducts = useCallback(
     async (productId) => {
-      console.log(productId);
       const updated = await addProductToFavourites(auth.user?._id, {
         productId,
       });
-      console.log(updated);
+      if (updated.expMessage) {
+        updateNotifs([{ text: updated.expMessage, type: "error" }]);
+        navigateTo("/login");
+        updateAuth({});
+      }
       dispatch({
         type: "ADD_PRODUCT",
         products: updated,
       });
     },
-    [auth.user?._id]
+    [auth.user?._id, navigateTo, updateAuth, updateNotifs]
   );
 
   const removeProductFromFavouritesList = useCallback(
     async (productId) => {
-      console.log(productId);
       const updated = await removeProductFromFavourites(auth.user?._id, {
         productId,
       });
-      console.log(updated);
+      if (updated.expMessage) {
+        updateNotifs([{ text: updated.expMessage, type: "error" }]);
+        navigateTo("/login");
+        updateAuth({});
+      }
       dispatch({
         type: "REMOVE_PRODUCT",
         products: updated,
       });
     },
-    [auth.user?._id]
+    [auth.user?._id, navigateTo, updateAuth, updateNotifs]
   );
 
   const canAddProduct = useCallback(

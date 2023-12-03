@@ -37,7 +37,7 @@ const ShoppingCartIcon = () => {
         >
           <i className="fa-solid fa-cart-shopping"></i>
           {isAuthenticated && (
-            <span>{cart?.products.length > 0 ? cart?.products.length : 0}</span>
+            <span>{cart.products?.length > 0 ? cart.products?.length : 0}</span>
           )}
         </button>
         {isAuthenticated && isOpen && <ShoppingCartExpanded onClick={onOpen} />}

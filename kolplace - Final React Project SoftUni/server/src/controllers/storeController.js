@@ -29,4 +29,44 @@ storeController.post("/stores", isAdmin, trimBody, async (req, res) => {
     }
 });
 
+
+storeController.get("/stores/:id", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const store = await storeService.getStoreById(req.params.id);
+        res.status(201).json(store);
+    } catch (error) {
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
+storeController.put("/stores/:id", isAdmin, trimBody, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const newStore = await storeService.updateStore(req.params.id, { ...req.body });
+        res.status(201).json(newStore);
+    } catch (error) {
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
+storeController.delete("/stores/:id", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const newStore = await storeService.deleteStore(req.params.id);
+        res.status(201).json(newStore);
+    } catch (error) {
+        const errors = extractErrors(error);
+        res.status(400).json({ errors });
+    }
+});
+
 module.exports = storeController;

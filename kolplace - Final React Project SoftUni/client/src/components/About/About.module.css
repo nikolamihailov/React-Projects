@@ -16,15 +16,16 @@
   align-items: center;
   width: 100%;
   padding: 10px 25px;
+  margin: 10px;
 }
 
 .about-us-section div:nth-child(1) > h1 {
   font-size: 40px;
 }
 .about-us-section div:nth-child(1) > p {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: 450;
-  font-size: 20px;
+  /*font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;*/
+  font-size: 19px;
+  font-weight: 500;
 }
 
 .about-us-section .contact-section {
@@ -63,3 +64,14 @@
   width: 100%;
   border: 5px solid var(--main-nav-categories);
 }
+
+/* .leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 5px;
+  padding-right: 0.6rem;
+}
+
+.store-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--secondary-color);
+} */

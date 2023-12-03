@@ -23,11 +23,6 @@ const DeleteUser = ({ onClose, id, updateUsers }) => {
       navigateTo("/login");
       updateAuth({});
     }
-    if (deletedUser.hasProducts) {
-      updateNotifs([{ text: deletedUser.hasProducts, type: "error" }]);
-      onClose();
-      return;
-    }
     if (deletedUser.error) {
       updateNotifs([{ text: deletedUser.error, type: "error" }]);
     } else {

@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import styles from "./ShoppingCartItem.module.css";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const ShoppingCartItem = ({ onClick, productInfo }) => {
   const { product, quantity } = productInfo;
   const { removeCartProduct, changeProductQuantity } =
     useContext(ShoppingCartContext);
+  const [value, setValue] = useState(quantity);
 
   const onChange = (e) => {
     const { value } = e.target;
-    /* 
-    if (value) {
-      const newValue = Number(Math.min(Math.max(1, value), 25));
-      e.target.value = newValue;
+    if (value.trim() !== "") {
+      const newValue = Number(Math.min(Math.max(1, value), 50));
+      setValue(newValue);
       changeProductQuantity(product._id, newValue);
-    } */
-    changeProductQuantity(product._id, Number(value));
+    } else {
+      setValue(value);
+    }
+    //changeProductQuantity(product._id, Number(value));
   };
   return (
     <div className={styles["cart-item"]}>
@@ -30,7 +32,7 @@ const ShoppingCartItem = ({ onClick, productInfo }) => {
         name="quantity"
         min={1}
         max={25}
-        value={quantity || 1}
+        value={value}
         onChange={onChange}
       />
       <p>

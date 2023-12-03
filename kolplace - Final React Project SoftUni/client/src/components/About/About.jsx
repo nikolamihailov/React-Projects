@@ -1,41 +1,9 @@
-import { useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 import styles from "./About.module.css";
-import L from "leaflet";
+import Map from "./Map/Map";
 
 const About = () => {
   useTitle("About Us | KolPlace");
-
-  useEffect(() => {
-    // Sample store data with coordinates
-    const storeData = [
-      { name: "KolPlace (Sofia) Main", coordinates: [42.6977, 23.3219] },
-      { name: "KolPlace (Sofia)", coordinates: [42.6629, 23.3726] },
-      { name: "KolPlace (Plovdiv) Main", coordinates: [42.1354, 24.7453] },
-      { name: "KolPlace (Plovdiv)", coordinates: [42.154, 24.7541] },
-      { name: "KolPlace (Varna)", coordinates: [43.214, 27.9147] },
-      { name: "KolPlace (Burgas)", coordinates: [42.5048, 27.4626] },
-    ];
-
-    const leafletMap = L.map("map").setView([42.6977, 25.2866], 6);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-    }).addTo(leafletMap);
-
-    storeData.forEach((store) => {
-      const marker = L.marker(store.coordinates).addTo(leafletMap);
-      marker.bindPopup(`<b>${store.name}</b>`).openPopup();
-    });
-
-    // Cleanup function
-    return () => {
-      // Optionally, you can clean up resources when the component is unmounted
-      if (leafletMap) {
-        leafletMap.remove();
-      }
-    };
-  }, []); // Empty dependency array to run the effect only once
 
   return (
     <section className={styles["about-us-section"]}>
@@ -69,7 +37,7 @@ const About = () => {
           Phone: <a href="tel:+44 20 7946 0443">+44 20 7946 0443</a>
         </p>
       </div>
-      <div id="map" className={styles["map"]}></div>
+      <Map />
     </section>
   );
 };

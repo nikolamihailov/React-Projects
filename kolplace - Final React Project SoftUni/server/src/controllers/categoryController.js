@@ -9,9 +9,6 @@ const ITEMS_PER_PAGE = 3;
 
 categoryController.get("/categories", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         if (Object.keys(req.query).length > 0) {
             const { page, filter } = req.query;
             const data = await categoryService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
@@ -27,9 +24,6 @@ categoryController.get("/categories", async (req, res) => {
 
 categoryController.get("/categories/:id", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         const { id } = req.params;
 
         if (!mongoose.isValidObjectId(id)) {

@@ -6,9 +6,6 @@ const { extractErrors } = require("../utils/errParse");
 
 storeController.get("/stores", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         const allStores = await storeService.getAllStores();
         res.status(200).json(allStores);
     } catch (error) {
@@ -30,11 +27,8 @@ storeController.post("/stores", isAdmin, trimBody, async (req, res) => {
 });
 
 
-storeController.get("/stores/:id", isAdmin, async (req, res) => {
+storeController.get("/stores/:id", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         const store = await storeService.getStoreById(req.params.id);
         res.status(201).json(store);
     } catch (error) {

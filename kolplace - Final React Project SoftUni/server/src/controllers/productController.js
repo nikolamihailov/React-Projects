@@ -8,9 +8,6 @@ const mongoose = require('mongoose');
 
 productController.get("/products", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         if (Object.keys(req.query).length > 0) {
             /*  if (req.user?.data.user.role === "admin") ITEMS_PER_PAGE = 8;
              else ITEMS_PER_PAGE = 12;
@@ -29,9 +26,6 @@ productController.get("/products", async (req, res) => {
 
 productController.get("/products/:id", async (req, res) => {
     try {
-        if (req.decToken) {
-            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
-        }
         const { id } = req.params;
         if (!mongoose.isValidObjectId(id)) {
             const categoryName = id.charAt(0).toUpperCase() + id.slice(1);

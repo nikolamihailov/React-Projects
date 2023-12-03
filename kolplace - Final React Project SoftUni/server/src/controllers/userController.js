@@ -39,6 +39,9 @@ userController.post("/register", trimBody, async (req, res) => {
 
 userController.get("/", isAdmin, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         if (Object.keys(req.query).length > 0) {
             const { page, filter } = req.query;
             const data = await userService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
@@ -55,6 +58,9 @@ userController.get("/", isAdmin, async (req, res) => {
 
 userController.get("/:id", isAuthenticated, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.getUserInfo(req.params.id);
         res.status(200).json(userData);
     } catch (error) {
@@ -65,6 +71,9 @@ userController.get("/:id", isAuthenticated, async (req, res) => {
 
 userController.put("/:id", isAuthenticated, trimBody, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.updateUserInfo(req.params.id, { ...req.body });
         res.status(201).json(userData);
     } catch (error) {
@@ -78,6 +87,9 @@ userController.put("/:id", isAuthenticated, trimBody, async (req, res) => {
 
 userController.delete("/:id", isAdmin, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.deleteUser(req.params.id);
         res.status(200).json(userData);
     } catch (error) {
@@ -88,6 +100,9 @@ userController.delete("/:id", isAdmin, async (req, res) => {
 
 userController.get("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.getFavouriteProducts(req.params.id);
         res.status(201).json(userData.favouriteProducts);
     } catch (error) {
@@ -98,6 +113,9 @@ userController.get("/:id/favourites", isAuthenticated, async (req, res) => {
 
 userController.post("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.addProductToFavourites(req.params.id, req.body);
         res.status(201).json(userData.favouriteProducts);
     } catch (error) {
@@ -108,9 +126,10 @@ userController.post("/:id/favourites", isAuthenticated, async (req, res) => {
 
 userController.put("/:id/favourites", isAuthenticated, async (req, res) => {
     try {
-        console.log("in");
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
         const userData = await userService.removeProductFromFavourites(req.params.id, req.body);
-        console.log(userData);
         res.status(201).json(userData.favouriteProducts);
     } catch (error) {
         const errors = extractErrors(error);

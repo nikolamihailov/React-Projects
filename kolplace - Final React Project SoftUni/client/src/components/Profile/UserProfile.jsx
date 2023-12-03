@@ -6,22 +6,31 @@ import EditProfile from "./EditProfile/EditProfile";
 import { useShowHide } from "../../hooks/useShowHide";
 import useTitle from "../../hooks/useTitle";
 import Spinner from "../Spinner/Spinner";
+import { NotifContext } from "../../contexts/NotificationContext";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
   useTitle("My Profile | KolPlace");
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { isOpen, showHide } = useShowHide();
-  const { auth } = useContext(AuthContext);
+  const { auth, updateAuth } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     getProfile(auth.user?._id)
       .then((data) => {
+        if (data.expMessage) {
+          updateNotifs([{ text: data.expMessage, type: "error" }]);
+          navigateTo("/login");
+          updateAuth({});
+        }
         setProfile(data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [auth.user?._id]);
+  }, [auth.user?._id, navigateTo, updateAuth, updateNotifs]);
 
   const update = useCallback((data) => setProfile(data), []);
 

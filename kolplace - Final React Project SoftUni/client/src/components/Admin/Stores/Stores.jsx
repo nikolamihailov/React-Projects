@@ -8,14 +8,16 @@ import { getAll } from "../../../data/services/storeService";
 import { useNavigate } from "react-router-dom";
 import StoreItem from "./StoreItem/StoreItem";
 import AddStore from "./AddStoreItem/AddStore";
+import EditStore from "./EditStore/EditStore";
+import DeleteStore from "./DeleteStore/DeleteStore";
 
 const Stores = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [stores, setStores] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
-  /* const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [selectedStore, setSelecetedStore] = useState(null); */
+  const [selectedStore, setSelecetedStore] = useState(null);
   const { updateAuth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
@@ -36,9 +38,9 @@ const Stores = () => {
       });
   }, [navigateTo, updateAuth, updateNotifs]);
 
-  //  const updateStores = useCallback((data) => setStores(data), []);
+  const updateStores = useCallback((data) => setStores(data), []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
-  /* const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
+  const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
   const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
   const openEdit = useCallback((id) => {
     setIsEditOpen(true);
@@ -47,7 +49,7 @@ const Stores = () => {
   const openDelete = useCallback((id) => {
     setIsDeleteOpen(true);
     setSelecetedStore(id);
-  }, []); */
+  }, []);
 
   return (
     <div className={styles["admin-stores"]}>
@@ -68,8 +70,8 @@ const Stores = () => {
                 <StoreItem
                   key={c._id}
                   {...c}
-                  /*    openEdit={openEdit}
-                  openDelete={openDelete} */
+                  openEdit={openEdit}
+                  openDelete={openDelete}
                 />
               ))
             ) : (
@@ -79,22 +81,24 @@ const Stores = () => {
         </motion.div>
       )}
 
-      {isAddOpen && <AddStore onClose={onCloseAdd} />}
-      {/*{isEditOpen && (
-        <EditCategoryItem
+      {isAddOpen && (
+        <AddStore onClose={onCloseAdd} updateStores={updateStores} />
+      )}
+      {isEditOpen && (
+        <EditStore
           onClose={onCloseEdit}
-          id={selectedCategory}
-          updateCategories={updateCategories}
+          id={selectedStore}
+          updateStores={updateStores}
         />
       )}
-     
+
       {isDeleteOpen && (
-        <DeleteCategoryItem
+        <DeleteStore
           onClose={onCloseDelete}
-          id={selectedCategory}
-          updateCategories={updateCategories}
+          id={selectedStore}
+          updateStores={updateStores}
         />
-      )} */}
+      )}
     </div>
   );
 };

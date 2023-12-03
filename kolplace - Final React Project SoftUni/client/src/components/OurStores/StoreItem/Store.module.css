@@ -1,0 +1,41 @@
+.store-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.store-item img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  border-radius: 28px;
+  margin: 10px 0;
+  filter: drop-shadow(0 0 3px var(--background-inverted-color));
+}
+.store-item p {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.store-item p a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.store-item h2 {
+  font-size: 28px;
+}
+
+.store-item h2 i {
+  font-size: 25px;
+  margin-right: 15px;
+  color: var(--secondary-color);
+}
+
+.store-item p i {
+  font-size: 23px;
+  margin-right: 15px;
+  color: var(--secondary-color);
+}

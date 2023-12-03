@@ -1,0 +1,29 @@
+.our-stores-section {
+  text-align: center;
+  min-height: var(--section-min-height);
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.our-stores-section .info {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+.our-stores-section .stores {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.our-stores-section h1 {
+  font-size: 40px;
+}

@@ -17,7 +17,7 @@ const FORM_VALUES = {
   Coordinates: "coordinates",
 };
 
-const AddStore = ({ onClose }) => {
+const AddStore = ({ onClose, updateStores }) => {
   const [values, setValues] = useState({
     [FORM_VALUES.City]: "",
     [FORM_VALUES.Phone]: "",
@@ -54,6 +54,7 @@ const AddStore = ({ onClose }) => {
     if (store.errors) {
       setErrors(Object.values(store.errors));
     } else {
+      updateStores((stores) => [...stores, store]);
       updateNotifs([
         { text: `Store KolPlace - ${store.city} added!`, type: "success" },
       ]);

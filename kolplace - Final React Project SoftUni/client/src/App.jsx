@@ -28,10 +28,10 @@ import ScrollToTop from "./components/Navigation/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   return (
-    <AuthProvider>
-      <ShoppingCartProvider>
-        <FavouriteProductsProvider>
-          <NotifProvider>
+    <NotifProvider>
+      <AuthProvider>
+        <ShoppingCartProvider>
+          <FavouriteProductsProvider>
             <ThemeProvider>
               <Header />
               <main className="main">
@@ -69,10 +69,10 @@ function App() {
               </main>
               <Footer />
             </ThemeProvider>
-          </NotifProvider>
-        </FavouriteProductsProvider>
-      </ShoppingCartProvider>
-    </AuthProvider>
+          </FavouriteProductsProvider>
+        </ShoppingCartProvider>
+      </AuthProvider>
+    </NotifProvider>
   );
 }
 

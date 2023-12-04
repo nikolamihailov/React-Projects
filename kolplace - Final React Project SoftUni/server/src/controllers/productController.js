@@ -12,7 +12,11 @@ productController.get("/products", async (req, res) => {
             /*  if (req.user?.data.user.role === "admin") ITEMS_PER_PAGE = 8;
              else ITEMS_PER_PAGE = 12;
              console.log(ITEMS_PER_PAGE); */
-            const { page, filter, category, onPromotion, itemsPerPage } = req.query;
+            const { page, filter, category, onPromotion, itemsPerPage, searched } = req.query;
+            if (searched) {
+                const data = await productService.searchedProducts(searched);
+                return res.status(200).json(data);
+            }
             const data = await productService.getAllWithFilters(itemsPerPage, page, filter, category, onPromotion,);
             res.status(200).json(data);
         } else {

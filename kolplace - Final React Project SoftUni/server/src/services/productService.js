@@ -92,3 +92,7 @@ exports.editProduct = (id, data) => Product.findByIdAndUpdate(id, data, { new: t
 
 exports.deleteProduct = (id) => Product.findByIdAndDelete(id);
 
+exports.searchedProducts = (name) => Product.find({ name: { $regex: new RegExp(name, 'i') } })
+    .collation({ locale: 'en', strength: 3 })
+    .populate("category");
+

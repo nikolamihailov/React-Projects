@@ -38,5 +38,10 @@ export const deleteProduct = async (id) => {
     return await request.delete(productEndpoints.deleteProduct + id);
 };
 
+export const searchProducts = async (search) => {
+    return await request.get(productEndpoints.getAll + `?searched=${search}`);
+};
+
+
 
 

@@ -25,6 +25,7 @@ import { FavouriteProductsProvider } from "./contexts/FavouriteProductsContext.j
 import FavouriteProducts from "./components/FavouriteProducts/FavouriteProducts.jsx";
 import UserProfile from "./components/Profile/UserProfile.jsx";
 import ScrollToTop from "./components/Navigation/ScrollToTop/ScrollToTop.jsx";
+import SearchedProducts from "./components/SearchedProducts/SearchedProducts.jsx";
 
 function App() {
   return (
@@ -54,6 +55,10 @@ function App() {
                   <Route
                     path="/products/:id"
                     element={<ProductDetails />}
+                  ></Route>
+                  <Route
+                    path="/products/search/*"
+                    element={<SearchedProducts />}
                   ></Route>
                   <Route path="/promotions" element={<Promotions />}></Route>
                   <Route path="/admin-panel" element={<RouteGuardAdmin />}>

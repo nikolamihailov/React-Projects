@@ -1,0 +1,27 @@
+.dropdown-search-products {
+  list-style: none;
+  background: var(--primary-color);
+  color: var(--background-color);
+  position: absolute;
+  top: 120%;
+  left: -25%;
+  z-index: 999;
+  font-size: 18px;
+  border-radius: 15px;
+  width: 150%;
+  border: 5px solid var(--secondary-color);
+}
+
+.dropdown-search-products .searching-for {
+  padding: 5px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.dropdown-search-products .searching-for span {
+  color: var(--black-color);
+  font-size: 21px;
+}

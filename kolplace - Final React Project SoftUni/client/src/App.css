@@ -109,6 +109,16 @@ body {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
+.backdrop-search {
+  position: fixed; /* or position absolute */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
 .leaflet-popup .leaflet-popup-content-wrapper {
   background-color: var(--primary-color);
   color: var(--background-color);

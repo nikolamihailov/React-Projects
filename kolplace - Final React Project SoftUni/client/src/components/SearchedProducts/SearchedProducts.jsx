@@ -4,22 +4,26 @@ import { useEffect, useState } from "react";
 import { searchProducts } from "../../data/services/productService";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductItem from "../Category/ProductItem/ProductItem";
+import useTitle from "../../hooks/useTitle";
 
 const SearchedProducts = () => {
+  useTitle(`Search Results | KolPlace`);
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const search = searchParams.get("for");
-    searchProducts(search)
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((err) => console.log(err));
+    if (search) {
+      searchProducts(search)
+        .then((data) => {
+          setProducts(data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [searchParams]);
   return (
     <section className={styles["searched-products-section"]}>
-      <h1>Searched Products</h1>
+      <h1>Search For: {searchParams.get("for")}</h1>
       <div className={styles["search-icon"]}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>

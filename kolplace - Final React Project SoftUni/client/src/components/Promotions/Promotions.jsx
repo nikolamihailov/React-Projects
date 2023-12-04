@@ -59,7 +59,7 @@ const Promotions = () => {
           <div className={styles["sort-and-info"]}>
             <FilterProductsByCategory onChange={onCategoryFilterChange} />
             <p>
-              Products in this category: <span>{productsCount}</span>
+              Products on promotion: <span>{productsCount}</span>
             </p>
             {productsCount >= 2 && (
               <FilterProductsBySort onChange={onSortFilterChange} />

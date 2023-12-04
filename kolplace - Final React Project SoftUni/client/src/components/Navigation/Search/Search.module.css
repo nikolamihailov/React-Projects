@@ -1,16 +1,23 @@
+.search-bar-container {
+  position: relative;
+  width: 25vw;
+  z-index: 3;
+}
 .search-bar {
   border: 3px solid var(--primary-color);
   padding: 10px;
   border-radius: 20px;
-  width: 25vw;
+  /*width: 25vw;*/
   overflow: hidden;
   display: flex;
+  z-index: 3;
 }
 .search-bar button {
   flex: 1;
   all: unset;
   cursor: pointer;
   margin-right: 10px;
+  z-index: 3;
 }
 .search-bar input {
   flex: 4;
@@ -19,4 +26,5 @@
   outline: none;
   border: none;
   background-color: var(--background-color);
+  z-index: 3;
 }

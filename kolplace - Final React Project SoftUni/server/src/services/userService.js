@@ -80,10 +80,16 @@ async function generateToken(data) {
 
 exports.getFavouriteProducts = (id) => User.findById(id).populate({
     path: "favouriteProducts",
-    populate: {
-        path: "category",
-        model: "Category"
-    }
+    populate: [
+        {
+            path: "category",
+            model: "Category"
+        },
+        {
+            path: "reviews",
+            model: "Review"
+        }
+    ]
 });
 
 exports.addProductToFavourites = (id, product) => User.findByIdAndUpdate(id, {

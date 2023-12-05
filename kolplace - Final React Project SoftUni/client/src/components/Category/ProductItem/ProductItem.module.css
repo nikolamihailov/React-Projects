@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 300px;
-  height: 450px;
+  height: 510px;
   /* transition: transform 0.7s ease-in-out; */
   margin: 20px;
   padding: 10px 20px;
@@ -93,4 +93,18 @@
   font-size: 19px;
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
+.category-product-item .ratings {
+  margin: 10px;
+}
+.category-product-item .ratings i {
+  font-size: 20px;
+  color: #eba834;
+}
+
+.category-product-item .ratings p {
+  display: inline;
+  font-size: 22px;
+  margin-left: 5px;
 }

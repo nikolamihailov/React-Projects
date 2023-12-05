@@ -110,3 +110,17 @@
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
 }
+
+.favourite-product-item .ratings {
+  margin: 10px;
+}
+.favourite-product-item .ratings i {
+  font-size: 20px;
+  color: #eba834;
+}
+
+.favourite-product-item .ratings p {
+  display: inline;
+  font-size: 22px;
+  margin-left: 5px;
+}

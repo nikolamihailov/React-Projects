@@ -5,7 +5,7 @@
   align-items: center;
   text-align: center;
   width: 300px;
-  height: 400px;
+  height: 460px;
   margin: 5px 15px;
   padding: 0px 20px;
   border-radius: 20px;
@@ -87,4 +87,18 @@
   font-size: 19px;
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
+.carousel-product-item .ratings {
+  margin: 10px;
+}
+.carousel-product-item .ratings i {
+  font-size: 20px;
+  color: #eba834;
+}
+
+.carousel-product-item .ratings p {
+  display: inline;
+  font-size: 22px;
+  margin-left: 5px;
 }

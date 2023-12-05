@@ -166,7 +166,7 @@
   cursor: pointer;
   margin: 15px 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 50%;
 }
@@ -178,8 +178,10 @@
 
 .product-info .ratings-reviews b {
   font-size: 25px;
+  margin-left: 15px;
 }
 
 .product-info .ratings-reviews p {
   font-size: 21px;
+  margin-left: 15px;
 }

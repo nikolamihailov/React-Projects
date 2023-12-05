@@ -13,6 +13,11 @@ const DropDownUser = ({ mouseLeave }) => {
     updateNotifs([{ text: "You successfuly logged out!", type: "success" }]);
     updateAuth({});
     mouseLeave();
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [updateAuth, updateNotifs, mouseLeave]);
 
   return (

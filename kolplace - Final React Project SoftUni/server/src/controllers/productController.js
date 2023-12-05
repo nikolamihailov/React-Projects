@@ -1,6 +1,7 @@
 const productController = require("express").Router();
 const { isAdmin } = require("../middlewares/isAdmin");
 const { trimBody } = require("../middlewares/trimBody");
+const { isAuthenticated } = require("../middlewares/isAuthenticated");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
 const mongoose = require('mongoose');
@@ -100,6 +101,20 @@ productController.delete("/products/:id", isAdmin, async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+productController.put("/products/add-review/:id", isAuthenticated, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+
+        const data = await productService.addReview(req.params.id, req.body.reviewId);
+        res.status(201).json(data);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 
 
 

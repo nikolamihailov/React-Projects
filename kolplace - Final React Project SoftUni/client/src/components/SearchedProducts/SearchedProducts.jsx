@@ -5,11 +5,13 @@ import { searchProducts } from "../../data/services/productService";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductItem from "../Category/ProductItem/ProductItem";
 import useTitle from "../../hooks/useTitle";
+import Spinner from "../Spinner/Spinner";
 
 const SearchedProducts = () => {
   useTitle(`Search Results | KolPlace`);
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const search = searchParams.get("for");
@@ -17,6 +19,7 @@ const SearchedProducts = () => {
       searchProducts(search)
         .then((data) => {
           setProducts(data);
+          setIsLoading(false);
         })
         .catch((err) => console.log(err));
     }
@@ -27,19 +30,23 @@ const SearchedProducts = () => {
       <div className={styles["search-icon"]}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
-      <motion.div layout className={styles["products"]}>
-        <AnimatePresence>
-          {products.length > 0 ? (
-            products.map((p) => {
-              return <ProductItem key={p._id} {...p} />;
-            })
-          ) : (
-            <h2 className={styles["no-products"]}>
-              No products matched the search!
-            </h2>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <motion.div layout className={styles["products"]}>
+          <AnimatePresence>
+            {products.length > 0 ? (
+              products.map((p) => {
+                return <ProductItem key={p._id} {...p} />;
+              })
+            ) : (
+              <h2 className={styles["no-products"]}>
+                No products matched the search!
+              </h2>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      )}
     </section>
   );
 };

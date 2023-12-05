@@ -60,7 +60,7 @@
 
 .about-us-section .map {
   z-index: 1;
-  height: 250px;
+  height: 240px;
   width: 100%;
   border: 5px solid var(--main-nav-categories);
 }

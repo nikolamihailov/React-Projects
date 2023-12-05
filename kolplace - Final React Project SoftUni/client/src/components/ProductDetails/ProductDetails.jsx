@@ -82,7 +82,9 @@ const ProductDetails = () => {
       return (
         <div onClick={scrollToReviews} className={styles["ratings-reviews"]}>
           <div>{stars}</div>
-          <b>{avgRating.toFixed(2)}</b>
+          <b>
+            {avgRating.toFixed(1)}/5 ({reviews.length})
+          </b>
         </div>
       );
     },

@@ -8,6 +8,7 @@ const productEndpoints = {
     createProduct: PRODUCTS_URL + "",
     editProduct: PRODUCTS_URL + "/",
     deleteProduct: PRODUCTS_URL + "/",
+    addReview: PRODUCTS_URL + "/"
 };
 
 export const getAll = async () => {
@@ -42,6 +43,10 @@ export const searchProducts = async (search) => {
     return await request.get(productEndpoints.getAll + `?searched=${search}`);
 };
 
+export const addReview = async (id, data) => {
+    console.log(productEndpoints.addReview + "add-review/" + id, data);
+    return await request.put(productEndpoints.addReview + "add-review/" + id, data);
+};
 
 
 

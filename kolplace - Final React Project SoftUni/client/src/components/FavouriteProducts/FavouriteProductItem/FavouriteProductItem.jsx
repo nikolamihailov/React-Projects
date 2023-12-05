@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import styles from "./FavouriteProductItem.module.css";
 import { motion } from "framer-motion";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const FavouriteProductItem = ({
   _id,
@@ -14,6 +15,7 @@ const FavouriteProductItem = ({
   hasPromoPrice,
   promoPrice,
   category,
+  reviews,
   removeProductFromFavouritesList,
 }) => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -30,6 +32,42 @@ const FavouriteProductItem = ({
     promoPrice,
     category,
   };
+
+  const calculateRating = useCallback((reviews) => {
+    const totalRating = reviews.reduce((acc, rev) => {
+      return acc + rev.rating;
+    }, 0);
+    const avgRating = totalRating / reviews.length;
+
+    const stars = Array.from({ length: Math.round(avgRating) }, () => (
+      <i key={uuidv4()} className="fa-solid fa-star"></i>
+    ));
+
+    for (let i = 0; i < 5 - Math.round(avgRating); i++) {
+      stars.push(<i key={uuidv4()} className="fa-regular fa-star"></i>);
+    }
+
+    if (reviews.length === 0) {
+      const starsNoReviews = Array.from({ length: 5 }, () => (
+        <i key={uuidv4()} className="fa-regular fa-star"></i>
+      ));
+      return (
+        <div className={styles["ratings"]}>
+          <div>
+            {starsNoReviews} <p>(0)</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles["ratings"]}>
+        <div>
+          {stars} <p>({reviews.length})</p>
+        </div>
+      </div>
+    );
+  }, []);
 
   return (
     <>
@@ -75,6 +113,7 @@ const FavouriteProductItem = ({
         <Link to={`/products/${_id}`}>
           <h2>{name.length > 45 ? name.slice(0, 41) + " ..." : name}</h2>
         </Link>
+        {reviews && calculateRating(reviews)}
         <span>{category?.name}</span>
         <div className={styles["prices"]}>
           <p

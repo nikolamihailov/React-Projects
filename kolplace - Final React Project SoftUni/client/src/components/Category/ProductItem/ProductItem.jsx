@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./ProductItem.module.css";
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../../contexts/NotificationContext";
@@ -14,6 +15,7 @@ const ProductItem = ({
   hasPromoPrice,
   promoPrice,
   category,
+  reviews,
 }) => {
   const { isAuthenticated } = useContext(AuthContext);
   const { cart, addProductToCart } = useContext(ShoppingCartContext);
@@ -30,6 +32,42 @@ const ProductItem = ({
     category,
   };
 
+  const calculateRating = useCallback((reviews) => {
+    const totalRating = reviews.reduce((acc, rev) => {
+      return acc + rev.rating;
+    }, 0);
+    const avgRating = totalRating / reviews.length;
+
+    const stars = Array.from({ length: Math.round(avgRating) }, () => (
+      <i key={uuidv4()} className="fa-solid fa-star"></i>
+    ));
+
+    for (let i = 0; i < 5 - Math.round(avgRating); i++) {
+      stars.push(<i key={uuidv4()} className="fa-regular fa-star"></i>);
+    }
+
+    if (reviews.length === 0) {
+      const starsNoReviews = Array.from({ length: 5 }, () => (
+        <i key={uuidv4()} className="fa-regular fa-star"></i>
+      ));
+      return (
+        <div className={styles["ratings"]}>
+          <div>
+            {starsNoReviews} <p>(0)</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles["ratings"]}>
+        <div>
+          {stars} <p>({reviews.length})</p>
+        </div>
+      </div>
+    );
+  }, []);
+
   return (
     <motion.div
       layout
@@ -41,6 +79,7 @@ const ProductItem = ({
         y: -20,
         transition: { duration: 0.6 },
       }}
+      key={_id}
       className={styles["category-product-item"]}
     >
       {hasPromoPrice && (
@@ -54,6 +93,7 @@ const ProductItem = ({
       <Link to={`/products/${_id}`}>
         <h2>{name.length > 40 ? name.slice(0, 32) + " ..." : name}</h2>
       </Link>
+      {reviews && calculateRating(reviews)}
       <span>{category.name}</span>
       <div className={styles["prices"]}>
         <p

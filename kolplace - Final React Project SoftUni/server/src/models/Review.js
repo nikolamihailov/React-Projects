@@ -8,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
         required: [true, "Review text is required!"]
     },
     rating: {
-        type: Numbere,
+        type: Number,
         required: [true, "Rating is required!"],
         validate: {
             validator: function (value) {

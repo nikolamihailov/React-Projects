@@ -15,8 +15,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 25px;
-  margin: 10px;
+  padding: 10px 0;
+  margin: 10px 0;
 }
 
 .about-us-section div:nth-child(1) > h1 {

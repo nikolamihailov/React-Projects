@@ -5,7 +5,7 @@
 const Product = require("../models/Product");
 
 
-exports.getAllProducts = () => Product.find().populate("category");
+exports.getAllProducts = () => Product.find().populate("category").populate("reviews");
 
 exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, onPromotion) => {
     let order = "";
@@ -28,8 +28,8 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
     if (onPromotion === "true") {
         findQuery.hasPromoPrice = true;
         if (Object.keys(query).length > 0) {
-            products = await Product.find(findQuery).sort(query).collation({ locale: 'en', strength: 3 }).populate("category");
-        } else products = await Product.find(findQuery).populate("category");
+            products = await Product.find(findQuery).sort(query).collation({ locale: 'en', strength: 3 }).populate("category").populate("reviews");
+        } else products = await Product.find(findQuery).populate("category").populate("reviews");
 
         const productsCount = products.length;
 
@@ -48,7 +48,7 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
     if (Object.keys(query).length > 0) {
         products = await Product.find(findQuery)
             .sort(query)
-            .collation({ locale: 'en', strength: 3 }).populate("category");
+            .collation({ locale: 'en', strength: 3 }).populate("category").populate("reviews");
         if (query.price) {
             products.sort((a, b) => {
                 const priceA = a.hasPromoPrice ? a.promoPrice : a.price;
@@ -58,7 +58,7 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
             });
         }
 
-    } else products = await Product.find(findQuery).populate("category");
+    } else products = await Product.find(findQuery).populate("category").populate("reviews");
 
     const productsCount = products.length;
     // console.log("products count", productsCount);
@@ -100,7 +100,7 @@ exports.deleteProduct = (id) => Product.findByIdAndDelete(id);
 
 exports.searchedProducts = (name) => Product.find({ name: { $regex: new RegExp(name, 'i') } })
     .collation({ locale: 'en', strength: 3 })
-    .populate("category");
+    .populate("category").populate("reviews");
 
 
 exports.addReview = (id, reviewId) => Product.findByIdAndUpdate(id, { $push: { reviews: reviewId } }, { new: true, runValidators: true })

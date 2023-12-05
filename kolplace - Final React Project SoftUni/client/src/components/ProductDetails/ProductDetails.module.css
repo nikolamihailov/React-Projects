@@ -157,3 +157,29 @@
   font-weight: bold;
   color: var(--white-color);
 }
+
+.product-details b {
+  cursor: pointer;
+}
+
+.product-info .ratings-reviews {
+  cursor: pointer;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+}
+
+.product-info .ratings-reviews i {
+  font-size: 22px;
+  color: #eba834;
+}
+
+.product-info .ratings-reviews b {
+  font-size: 25px;
+}
+
+.product-info .ratings-reviews p {
+  font-size: 21px;
+}

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getOneProduct } from "../../data/services/productService";
 import styles from "./ProductDetails.module.css";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../contexts/NotificationContext";
 import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
+import ReviewsContainer from "./Reviews/ReviewsContainer/ReviewsContainer";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -34,6 +35,59 @@ const ProductDetails = () => {
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  const scrollToReviews = useCallback(() => {
+    const reviews = document.getElementById("reviews");
+
+    if (reviews) {
+      const topPosition = reviews.offsetTop;
+      window.scrollTo({ top: topPosition, behavior: "smooth" });
+    }
+  }, []);
+
+  const updateProduct = useCallback((data) => {
+    setProduct(data);
+  }, []);
+
+  const calculateRating = useCallback(
+    (reviews) => {
+      const totalRating = reviews.reduce((acc, rev) => {
+        return acc + rev.rating;
+      }, 0);
+      const avgRating = totalRating / reviews.length;
+
+      const stars = Array.from(
+        { length: Math.round(avgRating) },
+        (_, index) => <i key={index} className="fa-solid fa-star"></i>
+      );
+
+      for (let i = 0; i < 5 - Math.round(avgRating); i++) {
+        stars.push(
+          <i key={i + Math.round(avgRating)} className="fa-regular fa-star"></i>
+        );
+      }
+
+      if (reviews.length === 0) {
+        const starsNoReviews = Array.from({ length: 5 }, (_, index) => (
+          <i key={index} className="fa-regular fa-star"></i>
+        ));
+        return (
+          <div onClick={scrollToReviews} className={styles["ratings-reviews"]}>
+            <div>{starsNoReviews}</div>
+            <p>No reviews</p>
+          </div>
+        );
+      }
+
+      return (
+        <div onClick={scrollToReviews} className={styles["ratings-reviews"]}>
+          <div>{stars}</div>
+          <b>{avgRating.toFixed(2)}</b>
+        </div>
+      );
+    },
+    [scrollToReviews]
+  );
 
   return (
     <section className={styles["product-details"]}>
@@ -97,6 +151,7 @@ const ProductDetails = () => {
             </div>
             <div className={styles["product-info"]}>
               <h1>{product?.name}</h1>
+              {product && calculateRating(product.reviews)}
               <p>
                 <strong>Category:</strong>
                 <Link
@@ -201,6 +256,11 @@ const ProductDetails = () => {
           </div>
         </>
       )}
+      <ReviewsContainer
+        productId={product?._id}
+        reviews={product?.reviews}
+        updateProduct={updateProduct}
+      />
 
       <CarouselProducts
         items={4}

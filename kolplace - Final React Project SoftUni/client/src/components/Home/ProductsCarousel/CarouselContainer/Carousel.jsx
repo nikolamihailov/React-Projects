@@ -8,28 +8,30 @@ const CarouselProducts = ({ category, items, title, id }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getAll().then((data) => {
-      let filteredProducts;
-      if (id) {
-        filteredProducts = data
-          .filter(
-            (p) =>
-              p.category.name.toLowerCase() === category?.toLowerCase() &&
-              p._id !== id
-          )
-          .sort(() => Math.floor(Math.random() - 0.5))
-          .slice(-items);
-        setProducts(filteredProducts);
-      } else {
-        filteredProducts = data
-          .filter(
-            (p) => p.category.name.toLowerCase() === category?.toLowerCase()
-          )
-          .slice(-items)
-          .reverse();
-        setProducts(filteredProducts);
-      }
-    });
+    getAll()
+      .then((data) => {
+        let filteredProducts;
+        if (id) {
+          filteredProducts = data
+            .filter(
+              (p) =>
+                p.category.name.toLowerCase() === category?.toLowerCase() &&
+                p._id !== id
+            )
+            .sort(() => Math.floor(Math.random() - 0.5))
+            .slice(-items);
+          setProducts(filteredProducts);
+        } else {
+          filteredProducts = data
+            .filter(
+              (p) => p.category.name.toLowerCase() === category?.toLowerCase()
+            )
+            .slice(-items)
+            .reverse();
+          setProducts(filteredProducts);
+        }
+      })
+      .catch((err) => console.log(err));
   }, [category, items, id]);
 
   return (

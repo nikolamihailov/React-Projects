@@ -1,0 +1,107 @@
+.add-review {
+  margin-top: 0;
+  background-color: var(--background-color);
+  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  color: var(--background-color);
+  padding: 20px 25px;
+  background: var(--background-inverted-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.add-review i {
+  z-index: 7;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 25px;
+  color: var(--secondary-color);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.add-review label,
+.add-review input {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-review .form-group {
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.add-review textarea {
+  color: var(--black-color);
+  font-size: 17px;
+  padding: 15px;
+  width: 80%;
+  height: 100px;
+  border-radius: 15px;
+  resize: none;
+}
+
+.add-review select {
+  padding: 12px 15px;
+  font-size: 19px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  font-weight: bold;
+  width: 20%;
+  background-color: var(--background-color);
+  color: var(--background-inverted-color);
+}
+
+.add-review option {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.add-review option:hover {
+  background-color: gray;
+}
+
+.errors-container {
+  position: absolute;
+  top: 150px;
+  right: -50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-review .stars {
+  margin: 25px;
+}
+
+.add-review .stars i {
+  position: static;
+  font-size: 25px;
+  margin: 2px;
+  color: #eba834;
+}
+
+.add-review button {
+  all: unset;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}

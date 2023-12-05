@@ -17,8 +17,8 @@
 }
 
 .review-item .author img {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -53,4 +53,5 @@
 
 .review-item .created {
   flex: 1;
+  font-weight: 500;
 }

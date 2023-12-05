@@ -84,7 +84,13 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
 
 exports.getAllFromCategory = (categoryId) => Product.find({ category: categoryId });
 
-exports.getOneProduct = (id) => Product.findById(id).populate("category");
+exports.getOneProduct = (id) => Product.findById(id).populate("category").populate({
+    path: "reviews",
+    populate: {
+        path: "author",
+        model: "User"
+    }
+});
 
 exports.addProduct = (data) => Product.create(data);
 
@@ -96,3 +102,12 @@ exports.searchedProducts = (name) => Product.find({ name: { $regex: new RegExp(n
     .collation({ locale: 'en', strength: 3 })
     .populate("category");
 
+
+exports.addReview = (id, reviewId) => Product.findByIdAndUpdate(id, { $push: { reviews: reviewId } }, { new: true, runValidators: true })
+    .populate({
+        path: "reviews",
+        populate: {
+            path: "author",
+            model: "User"
+        }
+    }).populate("category");

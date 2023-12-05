@@ -1,0 +1,59 @@
+.reviews-container {
+  margin: 110px 0;
+  width: 80%;
+  padding: 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviews-container .review-title {
+  width: 85%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reviews-container .review-title h3 {
+  font-size: 40px;
+  padding: 0 10px;
+  background-color: var(--background-color);
+  z-index: 2;
+}
+
+.reviews-container .review-title span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--secondary-color);
+}
+
+.reviews-container .want-to-add-review {
+  margin: 15px 0;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.reviews-container .add {
+  all: unset;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+  margin-bottom: 75px;
+}
+
+.reviews-container .all-reviews {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

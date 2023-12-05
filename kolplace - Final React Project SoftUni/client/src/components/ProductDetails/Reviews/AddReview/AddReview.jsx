@@ -5,6 +5,8 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { addReview } from "../../../../data/services/productService";
 import Notification from "../../../Notifications/Notification";
 import { v4 as uuidv4 } from "uuid";
+import { NotifContext } from "../../../../contexts/NotificationContext";
+import { useNavigate } from "react-router-dom";
 
 const FORM_VALUES = {
   Text: "text",
@@ -18,7 +20,9 @@ const AddReview = ({ productId, reviews, onClose, updateProduct }) => {
     [FORM_VALUES.Rating]: 1,
   });
   const [errors, setErrors] = useState([]);
-  const { auth } = useContext(AuthContext);
+  const { auth, isAuthenticated } = useContext(AuthContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
 
   stars = Array.from({ length: values[FORM_VALUES.Rating] }, (_, index) => (
     <i key={index} className="fa-solid fa-star"></i>
@@ -32,26 +36,38 @@ const AddReview = ({ productId, reviews, onClose, updateProduct }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const body = {
-      text: values.text,
-      rating: Number(values.rating),
-      author: auth.user?._id,
-      product: productId,
-    };
-    const hasAddedReview = reviews.find((r) => r.author._id === auth.user?._id);
-    const review = await createReview(body);
-    if (review.errors) {
-      setErrors(Object.values(review.errors));
-    } else {
-      if (hasAddedReview) {
-        setErrors(["You have already written a review on this product!"]);
-        return;
+    if (isAuthenticated) {
+      const body = {
+        text: values.text,
+        rating: Number(values.rating),
+        author: auth.user?._id,
+        product: productId,
+      };
+      const hasAddedReview = reviews.find(
+        (r) => r.author._id === auth.user?._id
+      );
+      const review = await createReview(body);
+      if (review.errors) {
+        setErrors(Object.values(review.errors));
+      } else {
+        if (hasAddedReview) {
+          setErrors(["You have already written a review on this product!"]);
+          return;
+        }
+        const updatedProduct = await addReview(productId, {
+          reviewId: review._id,
+        });
+        updateProduct(updatedProduct);
+        updateNotifs([
+          { text: "Your review has been added!", type: "success" },
+        ]);
+        onClose();
       }
-      const updatedProduct = await addReview(productId, {
-        reviewId: review._id,
-      });
-      updateProduct(updatedProduct);
-      onClose();
+    } else {
+      updateNotifs([
+        { text: "You need to be signed in to add review!", type: "error" },
+      ]);
+      navigateTo("/login");
     }
   };
 

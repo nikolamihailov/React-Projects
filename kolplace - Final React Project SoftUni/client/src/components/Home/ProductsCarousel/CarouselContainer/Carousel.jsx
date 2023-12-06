@@ -36,20 +36,24 @@ const CarouselProducts = ({ category, items, title, id }) => {
 
   return (
     <div className={styles["carousel-products"]}>
-      <div className={styles["carousel-products-heading"]}>
-        <div className={styles["category-name"]}>
-          <h2>{title}</h2>
-          <span></span>
-        </div>
+      {products.length > 0 && (
+        <>
+          <div className={styles["carousel-products-heading"]}>
+            <div className={styles["category-name"]}>
+              <h2>{title}</h2>
+              <span></span>
+            </div>
 
-        {!id && <Link to={`/categories/${category}`}>View All</Link>}
-      </div>
-      <div className={styles["products"]}>
-        {products.length > 0 &&
-          products.map((p) => {
-            return <CaroueselProductItem key={p._id} {...p} />;
-          })}
-      </div>
+            {!id && <Link to={`/categories/${category}`}>View All</Link>}
+          </div>
+          <div className={styles["products"]}>
+            {products.length > 0 &&
+              products.map((p) => {
+                return <CaroueselProductItem key={p._id} {...p} />;
+              })}
+          </div>
+        </>
+      )}
     </div>
   );
 };

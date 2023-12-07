@@ -1,0 +1,174 @@
+.checkout-section {
+  min-height: var(--section-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+.checkout-section a {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-size: 22px;
+  border-radius: 50%;
+  padding: 10px 15px;
+}
+.checkout-section h5 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.checkout-section .page-info h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.checkout-section .page-info img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.checkout-section form {
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  border-radius: 20px;
+  padding: 20px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.checkout-section select {
+  padding: 12px 15px;
+  font-size: 19px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: var(--background-color);
+  color: var(--background-inverted-color);
+  font-weight: bold;
+}
+
+.checkout-section option {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.checkout-section option:hover {
+  background-color: gray;
+}
+
+.checkout-section .without-office {
+  width: 30%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-section .with-office {
+  width: 30%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-section .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.checkout-section label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.checkout-section .delivery-type {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-section .without-office input {
+  color: var(--background-color);
+  background: none;
+  font-size: 16px;
+  border: none;
+  padding: 10px 15px;
+  border-bottom: 3px solid var(--secondary-color);
+  outline: none;
+}
+.checkout-section form button {
+  all: unset;
+  cursor: pointer;
+  color: var(--white-color);
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  font-size: 19px;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
+.checkout-section .checkout-products {
+  width: 70%;
+  text-align: center;
+  margin: 50px 0;
+}
+.checkout-section .checkout-products h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+input[type="radio"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--background-inverted-color);
+  border-radius: 50%;
+  background-color: var(--background-color);
+  transition: background-color 0.3s;
+}
+
+input[type="radio"]:checked + label::before {
+  background-color: var(--secondary-color);
+}
+
+.checkout-section .total-price {
+  font-size: 25px;
+  margin-bottom: 40px;
+}

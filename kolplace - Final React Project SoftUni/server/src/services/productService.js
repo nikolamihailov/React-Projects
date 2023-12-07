@@ -31,6 +31,10 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
             products = await Product.find(findQuery).sort(query).collation({ locale: 'en', strength: 3 }).populate("category").populate("reviews");
         } else products = await Product.find(findQuery).populate("category").populate("reviews");
 
+        if (filter === "reviews") {
+            products.sort((a, b) => b.reviews.length - a.reviews.length);
+        }
+
         const productsCount = products.length;
 
         let pageCount = Math.ceil(productsCount / Number(itemsPerPage));
@@ -58,7 +62,12 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter = "", category, on
             });
         }
 
+
     } else products = await Product.find(findQuery).populate("category").populate("reviews");
+
+    if (filter === "reviews") {
+        products.sort((a, b) => b.reviews.length - a.reviews.length);
+    }
 
     const productsCount = products.length;
     // console.log("products count", productsCount);

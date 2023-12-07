@@ -1,6 +1,12 @@
 const ShoppingCart = require("../models/ShoppingCart");
 
-exports.getById = (id) => ShoppingCart.findById(id).populate("products.product");
+exports.getById = (id) => ShoppingCart.findById(id).populate({
+    path: "products.product",
+    populate: {
+        path: "category",
+        model: "Category"
+    }
+});;
 
 /*exports.addToCart = (id, product) => ShoppingCart.findByIdAndUpdate(id, {
     $push: {
@@ -16,7 +22,13 @@ exports.addToCart = async (id, product) => {
         cart.products.push({ product: product.product, quantity: product.quantity });
     }
     await cart.save();
-    cart = await ShoppingCart.findById(id).populate("products.product");
+    cart = await ShoppingCart.findById(id).populate({
+        path: "products.product",
+        populate: {
+            path: "category",
+            model: "Category"
+        }
+    });
     return cart;
 };
 
@@ -45,7 +57,13 @@ exports.addToCart = async (id, product) => {
 
 
 exports.removeProduct = async (id, product) => {
-    const cart = await ShoppingCart.findById(id).populate("products.product");
+    const cart = await ShoppingCart.findById(id).populate({
+        path: "products.product",
+        populate: {
+            path: "category",
+            model: "Category"
+        }
+    });;
     // console.log(cart.products[0].product._id.toString());
     // console.log(product.productId);
     const productsFiltered = cart.products.filter(p => p.product._id.toString() !== product.productId);

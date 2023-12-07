@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./ShoppingCartItem.module.css";
-import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import { useContext, useState } from "react";
+import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
 
-const ShoppingCartItem = ({ onClick, productInfo }) => {
+const ShoppingCartItem = ({ onClose, productInfo }) => {
   const { product, quantity } = productInfo;
   const { removeCartProduct, changeProductQuantity } =
     useContext(ShoppingCartContext);
@@ -23,7 +23,7 @@ const ShoppingCartItem = ({ onClick, productInfo }) => {
   return (
     <div className={styles["cart-item"]}>
       <img src={product.mainImage} alt={product.name} />
-      <Link to={`/products/${product._id}`} onClick={onClick}>
+      <Link to={`/products/${product._id}`} onClick={onClose}>
         <h4>{product.name}</h4>
       </Link>
       X

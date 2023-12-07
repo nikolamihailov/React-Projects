@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import styles from "./Aside.module.css";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
-import ShoppingCartItem from "../ShoppingCartItem/ShoppingCartItem";
+import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
+import { Link } from "react-router-dom";
 
-const ShoppingCartExpanded = ({ onClick }) => {
+const ShoppingCartExpanded = ({ onClose }) => {
   const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
   return (
     <>
-      <div className="backdrop" onClick={onClick}></div>
+      <div className="backdrop" onClick={onClose}></div>
       <aside className={styles["cart-aside"]}>
-        <div onClick={onClick}>
+        <div onClick={onClose}>
           <i className="fa-solid fa-x"></i>
         </div>
         <div className={styles["cart-item-container"]}>
@@ -28,7 +29,7 @@ const ShoppingCartExpanded = ({ onClick }) => {
               <ShoppingCartItem
                 key={p.product._id}
                 productInfo={p}
-                onClick={onClick}
+                onClose={onClose}
               />
             );
           })}
@@ -39,10 +40,12 @@ const ShoppingCartExpanded = ({ onClick }) => {
               Total price: ${cart?.totalPrice.toFixed(2)}
             </p>
             <div className={styles["btns"]}>
-              <button>
-                View Cart
-                <i className="fa-solid fa-cart-shopping"></i>
-              </button>
+              <Link to={"/shopping-cart"} onClick={() => onClose()}>
+                <button>
+                  View Cart
+                  <i className="fa-solid fa-cart-shopping"></i>
+                </button>
+              </Link>
               <button onClick={() => emptyCartProducts()}>
                 Empty Cart <i className="fa-solid fa-trash-can"></i>
               </button>

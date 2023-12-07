@@ -1,11 +1,11 @@
-const REVIEW_URL = "/reviews";
+const REVIEWS_URL = "/reviews";
 import { request } from "../requester";
 
 const reviewEnpoints = {
-    getAll: REVIEW_URL + "",
-    getOne: REVIEW_URL + "/",
-    createReview: REVIEW_URL + "",
-    deleteReview: REVIEW_URL + "/"
+    getAll: REVIEWS_URL + "",
+    getOne: REVIEWS_URL + "/",
+    createReview: REVIEWS_URL + "",
+    deleteReview: REVIEWS_URL + "/"
 };
 
 export const getOne = async (id) => {

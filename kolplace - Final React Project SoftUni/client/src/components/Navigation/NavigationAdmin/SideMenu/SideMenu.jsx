@@ -36,6 +36,21 @@ const SideMenu = () => {
           </li>
         </NavLink>
         <NavLink
+          to={"/admin-panel/reviews"}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? styles["pending"]
+              : isActive
+              ? styles["active-link"]
+              : ""
+          }
+        >
+          <li>
+            <i className="fas fa-star"></i>
+            <span>Reviews</span>
+          </li>
+        </NavLink>
+        <NavLink
           to={"/admin-panel/users"}
           className={({ isActive, isPending }) =>
             isPending

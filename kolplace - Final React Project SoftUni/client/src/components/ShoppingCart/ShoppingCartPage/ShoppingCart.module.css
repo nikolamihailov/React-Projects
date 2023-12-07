@@ -1,0 +1,133 @@
+.cart-page-section {
+  min-height: var(--section-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.cart-page-section .cart-icon {
+  margin-bottom: 50px;
+}
+.cart-page-section .cart-icon i {
+  font-size: 55px;
+  color: var(--secondary-color);
+}
+.cart-page-section h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.cart-page-section .no-products {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+.cart-page-section .totalPrice {
+  margin-top: 30px;
+  color: var(--primary-color);
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.cart-page-section .no-products p {
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.cart-page-section .no-products strong {
+  margin-left: 10px;
+  font-size: 21px;
+  color: var(--secondary-color);
+}
+
+.cart-page-section .no-products img {
+  height: 250px;
+  width: 250px;
+  object-fit: contain;
+}
+
+.cart-page-section div:nth-child(1) > i {
+  cursor: pointer;
+  color: var(--secondary-color);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+}
+
+.cart-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.cart-item-container .headers {
+  padding: 10px 0;
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: var(--background-inverted-color);
+  color: var(--background-color);
+  border-radius: 15px;
+}
+
+.cart-item-container .headers span:nth-child(1) {
+  width: 15%;
+}
+.cart-item-container .headers span:nth-child(2) {
+  text-align: center;
+  width: 50%;
+}
+.cart-item-container .headers span:nth-child(3) {
+  width: 15%;
+}
+.cart-item-container .headers span:nth-child(4) {
+  width: 15%;
+}
+
+.cart-page-section .btns {
+  margin-top: 30px;
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.cart-page-section .btns button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 15px 20px;
+  font-size: 19px;
+  border-radius: 10px;
+}
+
+.cart-page-section .btns button i {
+  margin-left: 10px;
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30vw;
+  }
+}

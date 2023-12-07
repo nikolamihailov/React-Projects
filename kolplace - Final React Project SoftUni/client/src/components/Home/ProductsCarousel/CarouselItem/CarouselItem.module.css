@@ -60,6 +60,10 @@
   justify-content: center;
 }
 
+.carousel-product-item .prices p {
+  font-size: 21px;
+}
+
 .carousel-product-item p {
   margin-top: 10px;
   font-size: 18px;

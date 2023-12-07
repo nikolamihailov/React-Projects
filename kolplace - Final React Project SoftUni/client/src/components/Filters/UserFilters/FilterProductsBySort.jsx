@@ -10,6 +10,7 @@ const FilterProductsBySort = ({ onChange, value }) => {
         <option value="name-desc">Name (z-a)</option>
         <option value="price-asc">Price asc</option>
         <option value="price-desc">Price desc</option>
+        <option value="reviews">Most commented</option>
       </select>
     </div>
   );

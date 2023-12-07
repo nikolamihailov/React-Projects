@@ -27,6 +27,8 @@ import UserProfile from "./components/Profile/UserProfile.jsx";
 import ScrollToTop from "./components/Navigation/ScrollToTop/ScrollToTop.jsx";
 import SearchedProducts from "./components/SearchedProducts/SearchedProducts.jsx";
 import Reviews from "./components/Admin/Reviews/Reviews.jsx";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCartPage/ShoppingCart.jsx";
+import Checkout from "./components/Order/Checkout/Checkout.jsx";
 
 function App() {
   return (
@@ -62,6 +64,12 @@ function App() {
                     element={<SearchedProducts />}
                   ></Route>
                   <Route path="/promotions" element={<Promotions />}></Route>
+                  <Route
+                    path="/shopping-cart"
+                    element={<ShoppingCart />}
+                  ></Route>
+                  <Route path="/checkout" element={<Checkout />}></Route>
+
                   <Route path="/admin-panel" element={<RouteGuardAdmin />}>
                     <Route path="categories" element={<Categories />}></Route>
                     <Route path="products" element={<Products />}></Route>

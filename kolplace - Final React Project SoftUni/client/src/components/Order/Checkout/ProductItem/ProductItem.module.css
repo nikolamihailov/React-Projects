@@ -1,0 +1,34 @@
+.checkout-item {
+  width: 100%;
+  color: var(--background-color);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.checkout-item a {
+  color: var(--background-color);
+  text-decoration: none;
+  width: 40%;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.checkout-item img {
+  height: 70px;
+  width: 70px;
+  object-fit: contain;
+}
+
+.checkout-item h4 {
+  width: 40%;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.checkout-item p {
+  font-size: 17px;
+  font-weight: bold;
+}

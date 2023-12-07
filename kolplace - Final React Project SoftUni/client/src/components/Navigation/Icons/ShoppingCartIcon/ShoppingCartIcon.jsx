@@ -1,10 +1,10 @@
 import { useCallback, useContext, useState } from "react";
-import ShoppingCartExpanded from "../../../ShoppingCart/ShoppingCartExpanded/ShoppingCartAside";
 import styles from "../Icons.module.css";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartExpanded from "../../../ShoppingCart/ShoppingCartAside/ShoppingCartAside";
 
 const ShoppingCartIcon = () => {
   const [isOpen, setIOpen] = useState(false);
@@ -40,7 +40,7 @@ const ShoppingCartIcon = () => {
             <span>{cart.products?.length > 0 ? cart.products?.length : 0}</span>
           )}
         </button>
-        {isAuthenticated && isOpen && <ShoppingCartExpanded onClick={onOpen} />}
+        {isAuthenticated && isOpen && <ShoppingCartExpanded onClose={onOpen} />}
       </div>
     </>
   );

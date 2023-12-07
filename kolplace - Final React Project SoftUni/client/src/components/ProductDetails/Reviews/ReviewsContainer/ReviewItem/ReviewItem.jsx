@@ -6,6 +6,10 @@ const ReviewItem = ({ text, rating, author, createdAt }) => {
     <i key={index} className="fa-solid fa-star"></i>
   ));
 
+  for (let i = 0; i < 5 - rating; i++) {
+    stars.push(<i key={i + rating} className="fa-regular fa-star"></i>);
+  }
+
   return (
     <div className={styles["review-item"]}>
       <div className={styles["author"]}>

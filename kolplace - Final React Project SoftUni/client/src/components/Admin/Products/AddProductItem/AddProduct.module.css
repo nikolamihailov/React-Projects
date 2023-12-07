@@ -20,6 +20,9 @@
   align-items: center;
   min-width: 45vw;
 }
+.add-product textarea {
+  resize: none;
+}
 
 .add-product button {
   all: unset;

@@ -1,0 +1,81 @@
+.cart-item {
+  width: 95%;
+  color: var(--primary-color);
+  padding: 25px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.cart-item .title-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 50%;
+}
+.cart-item .title-category a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding-left: 40px;
+  font-size: 19px;
+  word-wrap: break-word;
+}
+
+.cart-item .title-category span {
+  color: var(--white-color);
+  border-radius: 10px;
+  background-color: var(--product-category-background-color);
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 4px 6px;
+  font-size: 17px;
+}
+
+.cart-item .image {
+  width: 10%;
+}
+
+.cart-item img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+.cart-item .quantity {
+  width: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.cart-item input {
+  width: 60px;
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-size: 19px;
+  padding: 6px;
+}
+.cart-item p {
+  width: 10%;
+  font-size: 19px;
+  font-weight: bold;
+}
+.cart-item .remove i {
+  cursor: pointer;
+  position: static;
+  color: var(--secondary-color);
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+/* .cart-item button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0px 4px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+} */

@@ -46,14 +46,14 @@ const AddReview = ({ productId, reviews, onClose, updateProduct }) => {
       const hasAddedReview = reviews.find(
         (r) => r.author._id === auth.user?._id
       );
+      if (hasAddedReview) {
+        setErrors(["You have already written a review on this product!"]);
+        return;
+      }
       const review = await createReview(body);
       if (review.errors) {
         setErrors(Object.values(review.errors));
       } else {
-        if (hasAddedReview) {
-          setErrors(["You have already written a review on this product!"]);
-          return;
-        }
         const updatedProduct = await addReview(productId, {
           reviewId: review._id,
         });

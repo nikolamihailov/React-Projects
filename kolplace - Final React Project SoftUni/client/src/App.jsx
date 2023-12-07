@@ -26,6 +26,7 @@ import FavouriteProducts from "./components/FavouriteProducts/FavouriteProducts.
 import UserProfile from "./components/Profile/UserProfile.jsx";
 import ScrollToTop from "./components/Navigation/ScrollToTop/ScrollToTop.jsx";
 import SearchedProducts from "./components/SearchedProducts/SearchedProducts.jsx";
+import Reviews from "./components/Admin/Reviews/Reviews.jsx";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
                     <Route path="products" element={<Products />}></Route>
                     <Route path="users" element={<Users />}></Route>
                     <Route path="stores" element={<Stores />}></Route>
+                    <Route path="reviews" element={<Reviews />}></Route>
                   </Route>
                   <Route path="/*" element={<Navigate to="/error" />} />
                   <Route path="/error" element={<ErrorPage />} />

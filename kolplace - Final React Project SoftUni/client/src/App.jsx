@@ -29,6 +29,8 @@ import SearchedProducts from "./components/SearchedProducts/SearchedProducts.jsx
 import Reviews from "./components/Admin/Reviews/Reviews.jsx";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCartPage/ShoppingCart.jsx";
 import Checkout from "./components/Order/Checkout/Checkout.jsx";
+import MyOrders from "./components/Order/MyOrders/MyOrders.jsx";
+import OrderComplete from "./components/Order/OrderComplete/OrderComplete.jsx";
 
 function App() {
   return (
@@ -69,6 +71,11 @@ function App() {
                     element={<ShoppingCart />}
                   ></Route>
                   <Route path="/checkout" element={<Checkout />}></Route>
+                  <Route path="/my-orders" element={<MyOrders />}></Route>
+                  <Route
+                    path="/order-complete"
+                    element={<OrderComplete />}
+                  ></Route>
 
                   <Route path="/admin-panel" element={<RouteGuardAdmin />}>
                     <Route path="categories" element={<Categories />}></Route>

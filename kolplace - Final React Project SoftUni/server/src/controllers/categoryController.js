@@ -22,6 +22,18 @@ categoryController.get("/categories", async (req, res) => {
     }
 });
 
+categoryController.get("/categories/admin", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const categoriesCount = await categoryService.getAllCount();
+        res.status(200).json(categoriesCount);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 categoryController.get("/categories/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -91,5 +103,9 @@ categoryController.delete("/categories/:id", isAdmin, async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+
+
+
 
 module.exports = categoryController;

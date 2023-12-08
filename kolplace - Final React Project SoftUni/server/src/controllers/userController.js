@@ -37,6 +37,18 @@ userController.post("/register", trimBody, async (req, res) => {
     }
 }); */
 
+userController.get("/admin", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const usersCount = await userService.getAllCount();
+        res.status(200).json(usersCount);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 userController.get("/", isAdmin, async (req, res) => {
     try {
         if (req.decToken) {
@@ -136,6 +148,9 @@ userController.put("/:id/favourites", isAuthenticated, async (req, res) => {
         res.status(400).json({ errors });
     }
 });
+
+
+
 
 
 

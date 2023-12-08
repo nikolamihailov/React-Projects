@@ -29,6 +29,19 @@ productController.get("/products", async (req, res) => {
     }
 });
 
+
+productController.get("/products/admin", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const productsCount = await productService.getAllCount();
+        res.status(200).json(productsCount);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 productController.get("/products/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -114,6 +127,8 @@ productController.put("/products/add-review/:id", isAuthenticated, async (req, r
         res.status(400).json({ error: error.message });
     }
 });
+
+
 
 
 

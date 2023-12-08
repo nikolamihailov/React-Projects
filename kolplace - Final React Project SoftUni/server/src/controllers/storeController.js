@@ -26,6 +26,18 @@ storeController.post("/stores", isAdmin, trimBody, async (req, res) => {
     }
 });
 
+storeController.get("/stores/admin", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const storesCount = await storeService.getAllCount();
+        res.status(200).json(storesCount);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 
 storeController.get("/stores/:id", async (req, res) => {
     try {
@@ -62,5 +74,8 @@ storeController.delete("/stores/:id", isAdmin, async (req, res) => {
         res.status(400).json({ errors });
     }
 });
+
+
+
 
 module.exports = storeController;

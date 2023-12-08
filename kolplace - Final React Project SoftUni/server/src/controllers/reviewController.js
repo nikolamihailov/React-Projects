@@ -18,6 +18,18 @@ reviewController.get("/reviews", isAdmin, async (req, res) => {
     }
 });
 
+reviewController.get("/reviews/admin", isAdmin, async (req, res) => {
+    try {
+        if (req.decToken) {
+            return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
+        }
+        const reviewsCount = await reviewService.getAllCount();
+        res.status(200).json(reviewsCount);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 reviewController.get("/reviews/:id", isAdmin, async (req, res) => {
     try {
         const data = await reviewService.getOneReview(req.params.id);
@@ -51,6 +63,9 @@ reviewController.delete("/reviews/:id", isAdmin, async (req, res) => {
         res.status(400).json({ errors });
     }
 });
+
+
+
 
 
 module.exports = reviewController;

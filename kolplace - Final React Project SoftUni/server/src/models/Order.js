@@ -13,6 +13,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: [true, "Email is required!"]
     },
+    city: {
+        type: String,
+        required: [true, "City is required!"]
+    },
     deliveryType: {
         type: String,
         required: [true, "Delivery is required!"]

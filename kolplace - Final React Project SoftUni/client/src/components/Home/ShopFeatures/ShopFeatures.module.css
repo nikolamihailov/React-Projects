@@ -8,6 +8,9 @@
   position: relative;
   height: 90px;
 }
+.feature a {
+  text-decoration: none;
+}
 
 .feature {
   display: flex;

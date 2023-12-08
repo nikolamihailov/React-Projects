@@ -5,6 +5,7 @@ exports.auth = async (req, res, next) => {
 
     if (token) {
         try {
+            // secret - some secret
             const decToken = await jwt.verify(token, process.env.JWT_SECRET);
             req.user = decToken;
         } catch (error) {

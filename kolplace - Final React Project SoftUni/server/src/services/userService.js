@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ShoppingCart = require("../models/ShoppingCart");
 const jwt = require("../utils/jwt");
 const bcrypt = require("bcrypt");
-const SECRET = process.env.JWT_SECRET;
+const SECRET = process.env.JWT_SECRET; // some secret
 
 exports.register = async (data) => {
     const { email } = data;

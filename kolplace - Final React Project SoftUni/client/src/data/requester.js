@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL; // http://localhost:3030
 
 const requester = async (method, URL, data) => {
 

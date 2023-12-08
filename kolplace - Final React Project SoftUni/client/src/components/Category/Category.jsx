@@ -18,8 +18,15 @@ const Category = () => {
   /*   const [searchParams, setSearchParams] = useSearchParams(); */
   const { name } = useParams();
   useTitle(`${name.at(0).toUpperCase() + name.slice(1)} Category | KolPlace`);
-  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
-    usePagination();
+  const {
+    page,
+    pageCount,
+    prevPage,
+    nextPage,
+    switchToPage,
+    updatePageCount,
+    resetPage,
+  } = usePagination();
   const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
@@ -99,10 +106,11 @@ const Category = () => {
 
   useEffect(() => {
     // clear filter on category change
+    resetPage();
     setSortFilter("");
     setSelectedFilter("createdAt-asc");
     window.scrollTo(0, 0);
-  }, [name]);
+  }, [name, resetPage]);
 
   return (
     <section className={styles["category-section"]}>

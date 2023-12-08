@@ -120,3 +120,5 @@ exports.addReview = (id, reviewId) => Product.findByIdAndUpdate(id, { $push: { r
             model: "User"
         }
     }).populate("category");
+
+exports.getAllCount = () => Product.estimatedDocumentCount();

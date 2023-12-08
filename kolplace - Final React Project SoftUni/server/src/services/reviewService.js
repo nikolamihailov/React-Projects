@@ -46,3 +46,5 @@ exports.deleteReview = async (id) => {
     return deletedReview;
 
 };
+
+exports.getAllCount = () => Review.estimatedDocumentCount();

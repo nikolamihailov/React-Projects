@@ -31,3 +31,9 @@ exports.createCategory = (data) => Category.create(data);
 exports.editCategory = (id, data) => Category.findByIdAndUpdate(id, data, { new: true, runValidators: true });
 
 exports.deleteCategory = (id) => Category.findByIdAndDelete(id);
+
+exports.getAllCount = async () => {
+    const count = await Category.estimatedDocumentCount();
+    return count;
+}
+

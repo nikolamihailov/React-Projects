@@ -13,6 +13,7 @@ const ShoppingCart = ({ onClick }) => {
   const navigateTo = useNavigate();
 
   useEffect(() => {
+    window.scroll(0, 0);
     if (cart?.products.length === 0) {
       updateNotifs([{ text: "You have no items in the cart!", type: "error" }]);
       navigateTo("/");

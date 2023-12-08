@@ -1,0 +1,49 @@
+.order-details {
+  background-color: var(--background-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  min-height: 600px;
+  z-index: 6;
+  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  max-height: 90%;
+  color: var(--background-color);
+  padding: 30px 40px;
+  background: var(--background-inverted-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 45vw;
+  text-align: center;
+}
+
+.order-details div {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.order-details header h2 {
+  font-size: 25px;
+  margin: 0;
+}
+
+.order-details header time {
+  color: var(--accent-color);
+}
+
+.order-details section {
+  margin-bottom: 20px;
+}
+
+.order-details section h3 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.order-details footer {
+  margin-top: auto;
+  text-align: center;
+}

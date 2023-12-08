@@ -34,9 +34,9 @@
   color: var(--background-color);
 }
 
-.categories-dropdown li:last-child() {
+/* .categories-dropdown li:last-child {
   border-bottom: none;
-}
+} */
 
 .categories-dropdown li:hover {
   scale: 1.05;

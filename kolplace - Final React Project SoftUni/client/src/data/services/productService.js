@@ -4,6 +4,7 @@ import { request } from "../requester";
 const productEndpoints = {
     getAll: PRODUCTS_URL + "",
     getAllFromCategory: PRODUCTS_URL + "/",
+    getAllAdmin: PRODUCTS_URL + "/admin",
     getOne: PRODUCTS_URL + "/",
     createProduct: PRODUCTS_URL + "",
     editProduct: PRODUCTS_URL + "/",
@@ -21,6 +22,10 @@ export const getAllWithFilters = async (page = "", filter = "", category, onProm
 
 export const getAllFromCategory = async (name) => {
     return await request.get(productEndpoints.getAllFromCategory + name);
+};
+
+export const getAllProductsAdmin = async () => {
+    return await request.get(productEndpoints.getAllAdmin);
 };
 
 export const getOneProduct = async (id) => {

@@ -3,6 +3,7 @@ import { request } from "../requester";
 
 const storeEndpoints = {
     getAll: STORES_URL + "",
+    getAllAdmin: STORES_URL + "/admin",
     getOne: STORES_URL + "/",
     createStore: STORES_URL + "",
     updateStore: STORES_URL + "/",
@@ -10,6 +11,10 @@ const storeEndpoints = {
 
 export const getAll = async () => {
     return await request.get(storeEndpoints.getAll);
+};
+
+export const getAllStoresAdmin = async () => {
+    return await request.get(storeEndpoints.getAllAdmin);
 };
 
 export const getOne = async (id) => {

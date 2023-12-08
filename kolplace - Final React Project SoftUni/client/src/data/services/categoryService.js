@@ -4,9 +4,10 @@ import { request } from "../requester";
 const categoryEndpoints = {
     getAll: CATEGORIES_URL + "",
     getOne: CATEGORIES_URL + "/",
+    getAllAdmin: CATEGORIES_URL + "/admin",
     createCategory: CATEGORIES_URL + "",
     editCategory: CATEGORIES_URL + "/",
-    deleteCategory: CATEGORIES_URL + "/"
+    deleteCategory: CATEGORIES_URL + "/",
 };
 
 export const getAll = async () => {
@@ -15,6 +16,11 @@ export const getAll = async () => {
 
 export const getAllWithFilters = async (page = "", filter = "") => {
     return await request.get(categoryEndpoints.getAll + `?page=${page}&filter=${filter}`);
+};
+
+export const getAllCategoriesAdmin = async () => {
+    console.log(categoryEndpoints.getAllAdmin);
+    return await request.get(categoryEndpoints.getAllAdmin);
 };
 
 export const getOneCategory = async (id) => {

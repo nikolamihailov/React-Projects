@@ -4,6 +4,7 @@ import { request } from "../requester";
 const reviewEnpoints = {
     getAll: REVIEWS_URL + "",
     getOne: REVIEWS_URL + "/",
+    getAllAdmin: REVIEWS_URL + "/admin",
     createReview: REVIEWS_URL + "",
     deleteReview: REVIEWS_URL + "/"
 };
@@ -18,6 +19,10 @@ export const createReview = async (data) => {
 
 export const getAllWithFilters = async (page = "", filter = "") => {
     return await request.get(reviewEnpoints.getAll + `?page=${page}&filter=${filter}`);
+};
+
+export const getAllReviewsAdmin = async () => {
+    return await request.get(reviewEnpoints.getAllAdmin);
 };
 
 export const deleteReview = async (id) => {

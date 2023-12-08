@@ -11,6 +11,7 @@ const userEndpoints = {
     addProductToFavourites: USERS_URL + "/",
     removeProductFromFavourites: USERS_URL + "/",
     getAllUsers: USERS_URL + "/",
+    getAllAdmin: USERS_URL + "/admin",
     deleteUser: USERS_URL + "/"
 };
 
@@ -52,4 +53,8 @@ export const getAllUsers = async () => {
 
 export const getAllWithFilters = async (page = "", filter = "") => {
     return await request.get(userEndpoints.getAllUsers + `?page=${page}&filter=${filter}`);
+};
+
+export const getAllUsersAdmin = async () => {
+    return await request.get(userEndpoints.getAllAdmin);
 };

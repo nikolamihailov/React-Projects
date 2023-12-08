@@ -2,14 +2,11 @@ import { useState, useEffect } from "react";
 import styles from "./Logo.module.css";
 
 const Logo = () => {
-  const [logoSrc, setLogoSrc] = useState(
-    "/src/assets/logo.svg"
-  );
+  const [logoSrc, setLogoSrc] = useState("/src/assets/logo.svg");
 
   useEffect(() => {
     const updateLogoSrc = () => {
-      if (window.innerWidth <= 700)
-        setLogoSrc("/src/assets/favicon.png");
+      if (window.innerWidth <= 700) setLogoSrc("/src/assets/favicon.png");
       else setLogoSrc("/src/assets/logo.svg");
     };
 
@@ -24,11 +21,7 @@ const Logo = () => {
   }, []);
   return (
     <div className={styles["logo-container"]}>
-      <img
-        src={logoSrc}
-        className={styles.logo}
-        alt="KolPlace logo"
-      />
+      <img src={logoSrc} className={styles.logo} alt="KolPlace logo" />
     </div>
   );
 };

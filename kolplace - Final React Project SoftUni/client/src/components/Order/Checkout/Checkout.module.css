@@ -44,6 +44,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 6px solid var(--secondary-color);
 }
 
 .checkout-section label {
@@ -171,4 +172,12 @@ input[type="radio"]:checked + label::before {
 .checkout-section .total-price {
   font-size: 25px;
   margin-bottom: 40px;
+}
+
+.errors-container {
+  position: fixed;
+  top: 200px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
 }

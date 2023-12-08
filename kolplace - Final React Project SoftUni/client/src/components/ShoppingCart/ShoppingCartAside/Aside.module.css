@@ -99,3 +99,27 @@
     width: 30vw;
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .cart-aside {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cart-aside {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cart-aside {
+    width: 75vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart-aside {
+    width: 90vw;
+  }
+}

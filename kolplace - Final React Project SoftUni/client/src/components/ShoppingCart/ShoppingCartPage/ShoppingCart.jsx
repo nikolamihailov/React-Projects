@@ -1,13 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./ShoppingCart.module.css";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import useTitle from "../../../hooks/useTitle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { NotifContext } from "../../../contexts/NotificationContext";
 
 const ShoppingCart = ({ onClick }) => {
   useTitle("My Shopping Cart | KolPlace");
   const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
+  const { updateNotifs } = useContext(NotifContext);
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    if (cart?.products.length === 0) {
+      updateNotifs([{ text: "You have no items in the cart!", type: "error" }]);
+      navigateTo("/");
+    }
+  }, [cart?.products, updateNotifs, navigateTo]);
+
   return (
     <>
       <section className={styles["cart-page-section"]}>

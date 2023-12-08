@@ -31,6 +31,9 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCartPage/ShoppingCar
 import Checkout from "./components/Order/Checkout/Checkout.jsx";
 import MyOrders from "./components/Order/MyOrders/MyOrders.jsx";
 import OrderComplete from "./components/Order/OrderComplete/OrderComplete.jsx";
+import Stats from "./components/Admin/Stats/Stats.jsx";
+import RouteGuardUser from "./guards/RouteGuardUser.jsx";
+import RouteGuardLoginRegister from "./guards/RouteGuradLoginRegister.jsx";
 
 function App() {
   return (
@@ -44,15 +47,17 @@ function App() {
                 <NotificationContainer />
                 <Routes>
                   <Route path="/" element={<Home />}></Route>
-                  <Route path="/login" element={<Login />}></Route>
-                  <Route path="/register" element={<Register />}></Route>
+                  <Route element={<RouteGuardLoginRegister />}>
+                    <Route path="/login" element={<Login />}></Route>
+                    <Route path="/register" element={<Register />}></Route>
+                  </Route>
                   <Route path="/about-us" element={<About />}></Route>
                   <Route path="/our-stores" element={<OurStores />}></Route>
+                  <Route path="/promotions" element={<Promotions />}></Route>
                   <Route
-                    path="/favourite-products"
-                    element={<FavouriteProducts />}
+                    path="/products/search/*"
+                    element={<SearchedProducts />}
                   ></Route>
-                  <Route path="/my-profile" element={<UserProfile />}></Route>
                   <Route
                     path="/categories/:name"
                     element={<Category />}
@@ -61,21 +66,24 @@ function App() {
                     path="/products/:id"
                     element={<ProductDetails />}
                   ></Route>
-                  <Route
-                    path="/products/search/*"
-                    element={<SearchedProducts />}
-                  ></Route>
-                  <Route path="/promotions" element={<Promotions />}></Route>
-                  <Route
-                    path="/shopping-cart"
-                    element={<ShoppingCart />}
-                  ></Route>
-                  <Route path="/checkout" element={<Checkout />}></Route>
-                  <Route path="/my-orders" element={<MyOrders />}></Route>
-                  <Route
-                    path="/order-complete"
-                    element={<OrderComplete />}
-                  ></Route>
+
+                  <Route element={<RouteGuardUser />}>
+                    <Route
+                      path="/favourite-products"
+                      element={<FavouriteProducts />}
+                    ></Route>
+                    <Route path="/my-profile" element={<UserProfile />}></Route>
+                    <Route
+                      path="/shopping-cart"
+                      element={<ShoppingCart />}
+                    ></Route>
+                    <Route path="/checkout" element={<Checkout />}></Route>
+                    <Route path="/my-orders" element={<MyOrders />}></Route>
+                    <Route
+                      path="/order-complete"
+                      element={<OrderComplete />}
+                    ></Route>
+                  </Route>
 
                   <Route path="/admin-panel" element={<RouteGuardAdmin />}>
                     <Route path="categories" element={<Categories />}></Route>
@@ -83,6 +91,7 @@ function App() {
                     <Route path="users" element={<Users />}></Route>
                     <Route path="stores" element={<Stores />}></Route>
                     <Route path="reviews" element={<Reviews />}></Route>
+                    <Route path="statistics" element={<Stats />}></Route>
                   </Route>
                   <Route path="/*" element={<Navigate to="/error" />} />
                   <Route path="/error" element={<ErrorPage />} />

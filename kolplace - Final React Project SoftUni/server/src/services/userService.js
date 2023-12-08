@@ -106,7 +106,19 @@ exports.removeProductFromFavourites = async (id, product) => {
         id,
         { $pull: { favouriteProducts: obj } },
         { new: true }
-    ).populate("favouriteProducts");
+    ).populate({
+        path: "favouriteProducts",
+        populate: [
+            {
+                path: "category",
+                model: "Category"
+            },
+            {
+                path: "reviews",
+                model: "Review"
+            }
+        ]
+    });
 
     return user;
 };
@@ -143,5 +155,6 @@ exports.deleteUser = async (id) => {
     const user = await User.findById(id);
     await ShoppingCart.findByIdAndDelete(user.shoppingCart);
     return User.findByIdAndDelete(id);
-}
+};
 
+exports.getAllCount = () => User.estimatedDocumentCount();

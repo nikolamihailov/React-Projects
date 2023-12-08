@@ -7,7 +7,6 @@
   min-height: 600px;
   z-index: 6;
   filter: drop-shadow(0 0 9px var(--background-inverted-color));
-  max-height: 90%;
   color: var(--background-color);
   padding: 30px 40px;
   background: var(--background-inverted-color);
@@ -20,6 +19,11 @@
   text-align: center;
 }
 
+.order-details i {
+  color: var(--secondary-color);
+  font-size: 21px;
+  margin-right: 15px;
+}
 .order-details div {
   text-align: center;
   margin-bottom: 20px;
@@ -46,4 +50,9 @@
 .order-details footer {
   margin-top: auto;
   text-align: center;
+}
+
+.order-details .ordered-products {
+  height: 150px;
+  overflow-y: scroll;
 }

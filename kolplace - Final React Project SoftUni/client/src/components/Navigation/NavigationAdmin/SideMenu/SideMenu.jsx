@@ -80,6 +80,21 @@ const SideMenu = () => {
             <span>Stores</span>
           </li>
         </NavLink>
+        <NavLink
+          to={"/admin-panel/statistics"}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? styles["pending"]
+              : isActive
+              ? styles["active-link"]
+              : ""
+          }
+        >
+          <li>
+            <i className="fa-solid fa-chart-simple"></i>
+            <span>Statistics</span>
+          </li>
+        </NavLink>
       </ul>
     </>
   );

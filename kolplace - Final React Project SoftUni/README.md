@@ -26,6 +26,7 @@ The REST API and the design are made entirely from scratch. The only library use
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [Running the Application](#running-the-application)
+- [Testing Data](#testing-data)
 
 ## Project Overview
 
@@ -144,7 +145,14 @@ At KolPlace, our mission is to elevate your online shopping experience and redef
   - navigate to server directory - /client
   - to install dependencies - npm i
   - to start the website - npm run dev
+
+
  
+## Testing Data
+ - when user is created, the app automatically creates a shopping cart for the user so when you register a cart would be attached to your profile
+   
+ - in the link you can find categories, products, stores and reviews ready to use that you can import in the DB
+ - https://drive.google.com/drive/u/0/folders/1mv0y5FLXTsj-SESumJ_5a3te2bgOvJDF
 
 
 

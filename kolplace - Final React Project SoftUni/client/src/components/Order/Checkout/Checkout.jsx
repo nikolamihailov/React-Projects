@@ -35,7 +35,7 @@ const Checkout = () => {
   const [offices, setOffices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
-  const { auth } = useContext(AuthContext);
+  const { auth, updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
 
@@ -89,6 +89,11 @@ const Checkout = () => {
       totalPrice: cart?.totalPrice,
     };
     const order = await createOrder(body);
+    if (order.expMessage) {
+      updateNotifs([{ text: order.expMessage, type: "error" }]);
+      navigateTo("/login");
+      updateAuth({});
+    }
     if (order.errors) {
       window.scroll(0, 0);
       setErrors(order.errors);

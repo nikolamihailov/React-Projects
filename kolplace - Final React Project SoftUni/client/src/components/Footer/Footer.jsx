@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <>
       {!pageURL.startsWith("/admin") && (
-        <footer className={styles["footer"]}>
+        <footer className={styles["footer"]} data-testid="footer">
           <h3>All rights reserved! &copy; 2023</h3>
           <i>
             Design:

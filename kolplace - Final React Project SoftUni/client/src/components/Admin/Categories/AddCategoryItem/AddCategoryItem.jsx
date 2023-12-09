@@ -32,6 +32,14 @@ const AddCategoryItem = ({ onClose }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const category = await createCategory(values);
+    if (values[FORM_VALUES.Name].trim() === "") {
+      updateNotifs([{ text: "Name must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.CategoryImage].trim() === "") {
+      updateNotifs([{ text: "Image must be filled!", type: "error" }]);
+      return;
+    }
     if (category.expMessage) {
       updateNotifs([{ text: category.expMessage, type: "error" }]);
       navigateTo("/login");

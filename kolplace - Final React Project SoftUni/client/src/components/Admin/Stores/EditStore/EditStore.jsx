@@ -58,6 +58,22 @@ const EditStore = ({ onClose, id, updateStores }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (values[FORM_VALUES.City].trim() === "") {
+      updateNotifs([{ text: "City must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.Phone].trim() === "") {
+      updateNotifs([{ text: "Phone must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.StoreImage].trim() === "") {
+      updateNotifs([{ text: "Store Image must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.Coordinates].trim() === "") {
+      updateNotifs([{ text: "Coordinates must be filled!", type: "error" }]);
+      return;
+    }
     const updatedStore = await updateStore(id, values);
     if (updatedStore.expMessage) {
       updateNotifs([{ text: updatedStore.expMessage, type: "error" }]);

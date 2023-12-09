@@ -33,6 +33,14 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (values[FORM_KEYS.Email].trim() === "") {
+      updateNotifs([{ text: "Email must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_KEYS.Password].trim() === "") {
+      updateNotifs([{ text: "Password must be filled!", type: "error" }]);
+      return;
+    }
     const userData = await login(values);
     if (userData.errors) {
       const errs = Object.values(userData.errors);

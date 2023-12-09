@@ -38,6 +38,22 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const userData = await register(values);
+    if (values[FORM_KEYS.FirstName].trim() === "") {
+      updateNotifs([{ text: "First name must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_KEYS.LastName].trim() === "") {
+      updateNotifs([{ text: "Last name must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_KEYS.Email].trim() === "") {
+      updateNotifs([{ text: "Email must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_KEYS.Password].trim() === "") {
+      updateNotifs([{ text: "Password must be filled!", type: "error" }]);
+      return;
+    }
 
     if (userData.errors) {
       setErrors(Object.values(userData.errors));

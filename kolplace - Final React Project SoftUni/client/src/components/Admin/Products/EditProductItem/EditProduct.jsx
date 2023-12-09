@@ -79,6 +79,22 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (values[FORM_VALUES.Name].trim() === "") {
+      updateNotifs([{ text: "Name must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.Image].trim() === "") {
+      updateNotifs([{ text: "Image must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.Description].trim() === "") {
+      updateNotifs([{ text: "Description must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.Price].trim() === "") {
+      updateNotifs([{ text: "Price must be filled!", type: "error" }]);
+      return;
+    }
     const editedProduct = await editProduct(id, values);
     if (editedProduct.expMessage) {
       updateNotifs([{ text: editedProduct.expMessage, type: "error" }]);

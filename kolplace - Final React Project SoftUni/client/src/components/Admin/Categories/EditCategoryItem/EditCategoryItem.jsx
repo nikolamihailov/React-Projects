@@ -40,6 +40,14 @@ const EditCategoryItem = ({ onClose, id, updateCategories }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (values[FORM_VALUES.Name].trim() === "") {
+      updateNotifs([{ text: "Name must be filled!", type: "error" }]);
+      return;
+    }
+    if (values[FORM_VALUES.CategoryImage].trim() === "") {
+      updateNotifs([{ text: "Image must be filled!", type: "error" }]);
+      return;
+    }
     const editedCategory = await editCategory(id, values);
     if (editedCategory.expMessage) {
       updateNotifs([{ text: editedCategory.expMessage, type: "error" }]);

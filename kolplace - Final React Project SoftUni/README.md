@@ -27,6 +27,7 @@ The REST API and the design are made entirely from scratch. The only library use
 - [Features](#features)
 - [Running the Application](#running-the-application)
 - [Testing Data](#testing-data)
+- [Project Demo](#project-demo-video)
 
 ## Project Overview
 
@@ -153,6 +154,11 @@ At KolPlace, our mission is to elevate your online shopping experience and redef
    
  - in the link you can find categories, products, stores and reviews ready to use that you can import in the DB
  - https://drive.google.com/drive/u/0/folders/1mv0y5FLXTsj-SESumJ_5a3te2bgOvJDF
+
+## Project Demo Video
+- Presenting most of the project features
+  
+[![KolPlace](https://i.ibb.co/J2TgbYF/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png)](https://www.youtube.com/watch?v=1duPo8sE_S8)
 
 
 

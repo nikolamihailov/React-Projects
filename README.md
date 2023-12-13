@@ -1,4 +1,4 @@
-# React-Projects
+# React Projects
 
 ## Solar System Planets
 

@@ -23,9 +23,10 @@ const AdminPanel = () => {
           <div className={styles["admin-panel-info"]}>
             <h1>Welcome to Admin Panel!</h1>
             <p>
-              Here you can manage categories, products, users and stores! From
-              the navigation aside you can choose what to manage. To go back to
-              the webiste click the logo.
+              Here you can manage categories, products, reviews, users and
+              stores!You can also check store statistics. From the navigation
+              aside you can choose what to manage. To go back to the webiste
+              click the logo.
             </p>
           </div>
         ) : (

@@ -16,7 +16,7 @@ const FORM_KEYS = {
 };
 
 const Register = () => {
-  useTitle("Register Page");
+  useTitle("Register Page | KolPlace");
   const { updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();

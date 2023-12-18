@@ -14,7 +14,7 @@ const FORM_KEYS = {
 };
 
 const Login = () => {
-  useTitle("Login Page");
+  useTitle("Login Page | KolPlace");
   const { updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();

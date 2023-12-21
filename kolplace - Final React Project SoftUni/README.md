@@ -5,7 +5,7 @@ Welcome to KolPlace, a modern e-commerce shop designed for customer satisfaction
 
 ## Technologies Used
 
-The REST API and the design are made entirely from scratch. The only library used is for animations - Framer Motion
+The REST API and the design are made entirely from scratch. The only library for UI/UX used, is for animations - Framer Motion
 
 ### Backend Stack
 - [![Node.js](https://img.shields.io/badge/Node.js-✓-green)](https://nodejs.org/)

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import styles from "./Logo.module.css";
+import logo from "../../../assets/logo.svg";
+import favicon from "../../../assets/favicon.png";
 
 const Logo = () => {
-  const [logoSrc, setLogoSrc] = useState("/src/assets/logo.svg");
+  const [logoSrc, setLogoSrc] = useState(logo);
 
   useEffect(() => {
     const updateLogoSrc = () => {
-      if (window.innerWidth <= 700) setLogoSrc("/src/assets/favicon.png");
-      else setLogoSrc("/src/assets/logo.svg");
+      if (window.innerWidth <= 700) setLogoSrc(favicon);
+      else setLogoSrc(logo);
     };
 
     updateLogoSrc();

@@ -15,6 +15,7 @@ import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
 import { v4 as uuidv4 } from "uuid";
 import Spinner from "../../Spinner/Spinner";
+import checkoutCart from "../../../assets/checkout.png";
 
 const FORM_VALUES = {
   City: "city",
@@ -113,7 +114,7 @@ const Checkout = () => {
       </Link>
       <div className={styles["page-info"]}>
         <h1>Checkout</h1>
-        <img src="/src/assets/checkout.png" alt="checkout" />
+        <img src={checkoutCart} alt="checkout" />
       </div>
       {isLoading ? (
         <Spinner />

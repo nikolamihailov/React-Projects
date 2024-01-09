@@ -2,6 +2,7 @@ import L from "leaflet";
 import styles from "../About.module.css";
 import { useEffect } from "react";
 import { getAll } from "../../../data/services/storeService";
+import mapIcon from "../../../assets/favicon.png";
 
 const Map = () => {
   useEffect(() => {
@@ -37,7 +38,7 @@ const Map = () => {
             <div id="popup-con">
             <img
               id="popup-image"
-              src="/src/assets/favicon.png"
+              src=${mapIcon}
               alt="Store Image"
             />
               <b>${store.name}</b>

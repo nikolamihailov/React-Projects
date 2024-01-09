@@ -9,6 +9,7 @@ import FilterProductsByCategory from "../Filters/UserFilters/FilterProductsByCat
 import ProductItem from "../Category/ProductItem/ProductItem";
 import { motion, AnimatePresence } from "framer-motion";
 import FilterProductsBySort from "../Filters/UserFilters/FilterProductsBySort";
+import promotionsBanner from "../../assets/promotions-banner.png";
 
 const Promotions = () => {
   const onPromotion = true;
@@ -51,7 +52,7 @@ const Promotions = () => {
             <h1>Products On Promotion</h1>
             <img
               className={styles["promotion-banner-image"]}
-              src="/src/assets/promotions-banner.png"
+              src={promotionsBanner}
               alt="promotions-banner"
             />
           </div>

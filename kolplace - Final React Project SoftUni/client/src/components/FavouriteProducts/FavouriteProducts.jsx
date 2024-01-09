@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FavouriteProducts.module.css";
 import FavouriteProductItem from "./FavouriteProductItem/FavouriteProductItem";
 import useTitle from "../../hooks/useTitle";
+import favouritesBanner from "../../assets/favourites.png";
 
 const FavouriteProducts = () => {
   useTitle("Favourite Products | KolPlace");
@@ -21,7 +22,7 @@ const FavouriteProducts = () => {
         <h1>Favourite Products</h1>
         <img
           className={styles["promotion-banner-image"]}
-          src="/src/assets/favourites.png"
+          src={favouritesBanner}
           alt="promotions-banner"
         />
       </div>

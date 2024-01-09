@@ -3,6 +3,7 @@ import styles from "./Aside.module.css";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import { Link } from "react-router-dom";
+import emptyCart from "../../../assets/emptyCart.png";
 
 const ShoppingCartExpanded = ({ onClose }) => {
   const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
@@ -16,7 +17,7 @@ const ShoppingCartExpanded = ({ onClose }) => {
         <div className={styles["cart-item-container"]}>
           {cart.products.length === 0 && (
             <div className={styles["no-products"]}>
-              <img src="/src/assets/emptyCart.png" alt="empty-cart" />
+              <img src={emptyCart} alt="empty-cart" />
               <p>Your cart is empty!</p>
               <span>
                 Please add something to make me happy!

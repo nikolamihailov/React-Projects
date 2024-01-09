@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
-import styles from "./OrderComplete.module.css"; // Import your CSS module for styling
+import styles from "./OrderComplete.module.css";
+import thankYouImage from "../../../assets/thank-you.png";
 
 const OrderComplete = () => {
   useTitle("Order Complete | KolPlace");
   return (
     <section className={styles["order-complete-section"]}>
       <h1>Thank you for choosing us!</h1>
-      <img src="/src/assets/thank-you.png" alt="thank you" />
+      <img src={thankYouImage} alt="thank you" />
       <div>
         _ _ _ <i className="fa-solid fa-truck"></i>
       </div>

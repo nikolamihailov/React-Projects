@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "https://kolplace.onrender.com/index.html"
   status = 200

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import L from "leaflet";
 import { getOne } from "../../../data/services/storeService";
 import styles from "./StoreMap.module.css";
+import mapIcon from "../../../assets/favicon.png";
 
 const StoreMap = ({ id, onClose }) => {
   const [store, setStore] = useState(null);
@@ -34,7 +35,7 @@ const StoreMap = ({ id, onClose }) => {
             <div id="popup-con">
             <img
               id="popup-image"
-              src="/src/assets/favicon.png"
+              src=${mapIcon}
               alt="Store Image"
             />
               <b>${name}</b>

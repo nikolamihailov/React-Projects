@@ -1,5 +1,6 @@
 import { formatDate } from "../../../../../utils/dateFormatter";
 import styles from "./ReviewItem.module.css";
+import avatar from "../../../../../assets/avatar.png";
 
 const ReviewItem = ({ text, rating, author, createdAt }) => {
   const stars = Array.from({ length: rating }, (_, index) => (
@@ -13,7 +14,10 @@ const ReviewItem = ({ text, rating, author, createdAt }) => {
   return (
     <div className={styles["review-item"]}>
       <div className={styles["author"]}>
-        <img src={author.avatar} alt={author.firstName} />
+        <img
+          src={author.avatar ? author.avatar : avatar}
+          alt={author.firstName}
+        />
         <span>
           {author.firstName} {author.lastName}
         </span>

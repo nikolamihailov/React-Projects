@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
 import imageCompression from "browser-image-compression";
+import avatar from "../../../assets/avatar.png";
 
 const FORM_VALUES = {
   FirstName: "firstName",
@@ -85,7 +86,7 @@ const EditProfile = ({ onClose, update }) => {
           >
             Avatar (Max Size - 15MB)
             <img
-              src={profile.avatar || ""}
+              src={profile.avatar || avatar}
               alt="avatar"
               accept=".jpeg, .png, .jpg"
             />

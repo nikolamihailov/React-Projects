@@ -8,6 +8,7 @@ import useTitle from "../../hooks/useTitle";
 import Spinner from "../Spinner/Spinner";
 import { NotifContext } from "../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
+import avatar from "../../assets/avatar.png";
 
 const UserProfile = () => {
   useTitle("My Profile | KolPlace");
@@ -49,7 +50,7 @@ const UserProfile = () => {
         <Spinner />
       ) : (
         <div className={styles["info"]}>
-          <img src={profile?.avatar} alt="avatar" />
+          <img src={profile?.avatar ? profile?.avatar : avatar} alt="avatar" />
           <h2>Role: {profile?.role}</h2>
           <p>
             <strong>First Name: </strong>

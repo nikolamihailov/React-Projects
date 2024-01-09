@@ -24,7 +24,7 @@ const ProductDetails = () => {
   const navigateTo = useNavigate();
 
   const [product, setProduct] = useState(null);
-  useTitle(`${product?.name} | KolPlace`);
+  useTitle(`${product?.name ? product.name : "Product Details"} | KolPlace`);
   useEffect(() => {
     getOneProduct(id)
       .then((data) => {
@@ -256,20 +256,20 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
+          <ReviewsContainer
+            productId={product?._id}
+            reviews={product?.reviews}
+            updateProduct={updateProduct}
+          />
+
+          <CarouselProducts
+            items={4}
+            category={product?.category.name}
+            title={`People Also Viewed`}
+            id={product?._id}
+          />
         </>
       )}
-      <ReviewsContainer
-        productId={product?._id}
-        reviews={product?.reviews}
-        updateProduct={updateProduct}
-      />
-
-      <CarouselProducts
-        items={4}
-        category={product?.category.name}
-        title={`People Also Viewed`}
-        id={product?._id}
-      />
     </section>
   );
 };

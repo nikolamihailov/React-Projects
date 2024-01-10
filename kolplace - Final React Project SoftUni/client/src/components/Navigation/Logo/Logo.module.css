@@ -8,3 +8,9 @@
   scale: 1.05;
   filter: drop-shadow(0 0 0.5em var(--dropshadow-color));
 }
+
+@media screen and (max-width: 500px) {
+  .logo {
+    height: 1.9rem;
+  }
+}

@@ -52,3 +52,14 @@
     transform: rotateY(360deg);
   }
 }
+
+@media screen and (max-width: 700px) {
+  .icon-btn i {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .icon-btn i {
+    font-size: 24px;
+  }
+}

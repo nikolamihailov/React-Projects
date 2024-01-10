@@ -61,7 +61,7 @@
 .links li {
   cursor: pointer;
   display: inline-block;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: bold;
   color: var(--background-color-inverted);
   padding: 5px;
@@ -69,6 +69,18 @@
 
 .links a:hover {
   color: var(--secondary-color);
+}
+
+.side-menu-mobile button {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  top: 20px;
+  left: 20px;
+}
+
+.side-menu-mobile button i {
+  margin-top: -15px;
 }
 
 @media screen and (max-width: 950px) {

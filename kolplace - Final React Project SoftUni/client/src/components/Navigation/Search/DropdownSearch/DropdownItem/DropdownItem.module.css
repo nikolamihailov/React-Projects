@@ -50,3 +50,21 @@
   font-weight: bold;
   color: var(--white-color);
 }
+
+@media screen and (max-width: 700px) {
+  .dropdown-search-item {
+    padding: 12px;
+  }
+  .dropdown-search-item h3 {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .dropdown-search-item img {
+    width: 40px;
+    height: 40px;
+  }
+  .dropdown-search-item .promo-price {
+    font-size: 15px;
+  }
+}

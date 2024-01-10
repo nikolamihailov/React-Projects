@@ -78,6 +78,9 @@ body {
 .light {
   position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
@@ -91,6 +94,9 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   --background-color: #23272f;
   --background-inverted-color: whitesmoke;
   --primary-color: whitesmoke;

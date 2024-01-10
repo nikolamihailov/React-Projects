@@ -25,3 +25,13 @@
   color: var(--black-color);
   font-size: 21px;
 }
+
+@media screen and (max-width: 700px) {
+  .dropdown-search-products {
+    left: 0%;
+    z-index: 999;
+    font-size: 16px;
+    border-radius: 15px;
+    width: 100%;
+  }
+}

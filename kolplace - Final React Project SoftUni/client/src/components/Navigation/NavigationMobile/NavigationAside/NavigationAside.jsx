@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getAll } from "../../../../data/services/categoryService";
 import CategoriesDropdownMobile from "../../Categories/CategoriesDropdownMobile/CategoriesDropdownMobile";
 import { useShowHide } from "../../../../hooks/useShowHide";
+import ThemeButtonMobile from "../../../ThemeToggler/ThemeButtonMobile/ThemeButtonMobile";
 
 const NavigationAside = ({ onClose }) => {
   const [categories, setCategories] = useState([]);
@@ -23,6 +24,7 @@ const NavigationAside = ({ onClose }) => {
       <div className="backdrop" onClick={onClose}></div>
       <aside className={styles["side-menu-mobile"]}>
         <i className="fa-solid fa-x" onClick={onClose}></i>
+        <ThemeButtonMobile />
         <ul className={styles["links"]}>
           <NavLink
             to="/promotions"

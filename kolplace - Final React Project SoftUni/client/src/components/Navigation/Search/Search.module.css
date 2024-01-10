@@ -28,3 +28,15 @@
   background-color: var(--background-color);
   z-index: 3;
 }
+
+@media screen and (max-width: 900px) {
+  .search-bar-container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .search-bar-container {
+    width: 85%;
+  }
+}

@@ -114,8 +114,8 @@
 @media screen and (max-width: 600px) {
   .login-section form,
   .register-section form {
-    min-height: 40%;
-    max-height: 70%;
+    min-height: 50%;
+    max-height: 90%;
     min-width: 20%;
     padding: 15px 25px;
     width: 270px;

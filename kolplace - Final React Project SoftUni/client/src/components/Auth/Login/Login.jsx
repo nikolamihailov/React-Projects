@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
-import styles from "../Auth.module.css";
+import styles from "../LoginRegister.module.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Notification from "../../Notifications/Notification";

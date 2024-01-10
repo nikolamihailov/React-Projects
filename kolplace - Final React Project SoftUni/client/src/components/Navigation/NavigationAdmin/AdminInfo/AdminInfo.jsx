@@ -3,6 +3,7 @@ import styles from "./AdminInfo.module.css";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { getProfile } from "../../../../data/services/userService";
+import avatar from "../../../../assets/avatar.png";
 
 const AdminInfo = () => {
   const [profile, setProfile] = useState({});
@@ -18,7 +19,7 @@ const AdminInfo = () => {
   return (
     <div className={styles["info"]}>
       <Link to={"/admin-panel"}>
-        <img src={profile?.avatar} alt="avatar" />
+        <img src={profile?.avatar ? profile.avatar : avatar} alt="avatar" />
       </Link>
       <p>
         {profile?.firstName} {profile?.lastName}

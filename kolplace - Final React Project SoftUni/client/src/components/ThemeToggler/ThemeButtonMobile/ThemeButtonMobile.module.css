@@ -1,0 +1,16 @@
+.theme-btn {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  padding: 2px 10px;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.theme-btn i,
+.theme-btn svg {
+  font-size: 24px;
+  color: var(--secondary-color);
+  filter: drop-shadow(0 0 1px var(--dropshadow-color));
+  transition: all 0.8s ease-in-out;
+}

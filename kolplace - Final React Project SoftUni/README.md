@@ -3,11 +3,11 @@
 ## KolPlace
 Welcome to KolPlace, a modern e-commerce shop designed for customer satisfaction. It revolutionizes online retail, offering businesses a user-friendly hub for product management, personalized customer engagement, and powerful analytics. KolPlace is your gateway to a more efficient and impactful online retail presence.
 
-## Technologies Used
+## Technologies Used:
 
 The REST API and the design are made entirely from scratch. The only library for UI/UX used, is for animations - Framer Motion
 
-### Backend Stack
+### Backend Stack:
 - [![Node.js](https://img.shields.io/badge/Node.js-✓-green)](https://nodejs.org/)
 - [![Express.js](https://img.shields.io/badge/Express.js-✓-lightgrey)](https://expressjs.com/)
 - [![MongoDB Compass](https://img.shields.io/badge/MongoDB_Compass-4DB33D)](https://www.mongodb.com/products/compass)
@@ -15,13 +15,13 @@ The REST API and the design are made entirely from scratch. The only library for
 - [![JWT](https://img.shields.io/badge/JWT-✓-blue)](https://jwt.io/)
 - [![Bcrypt](https://img.shields.io/badge/Bcrypt-✓-blueviolet)](https://www.npmjs.com/package/bcrypt)
 
-### Frontend Stack
+### Frontend Stack:
 - [![React](https://img.shields.io/badge/React-✓-blue)](https://reactjs.org/)
 - [![Framer Motion](https://img.shields.io/badge/Framer_Motion-✓-brightgreen)](https://www.framer.com/motion/)
 - [![React Router DOM](https://img.shields.io/badge/React_Router_DOM-✓-brightgreen)](https://reactrouter.com/web/guides/quick-start)
 
 
-## Table of Contents
+## Table of Contents:
 
 - [Project Overview](#project-overview)
 - [Features](#features)
@@ -29,7 +29,7 @@ The REST API and the design are made entirely from scratch. The only library for
 - [Testing Data](#testing-data)
 - [Project Demo Video](#project-demo-video)
 
-## Project Overview
+## Project Overview:
 
 At KolPlace, our mission is to elevate your online shopping experience and redefine e-commerce convenience. Explore your favorite products, discover top-rated items with an incredible product details page with detailed reviews, a large variety of images and options, and enjoy a seamless and personalized shopping journey. Our commitment to excellence extends to every facet, from effortless order management to a premium shopping experience that goes beyond the ordinary.
 

@@ -38,3 +38,40 @@
   background-color: var(--secondary-color);
   transform: rotate(40deg);
 }
+
+@media screen and (max-width: 1200px) {
+  .shopFeatures {
+    width: 90vw;
+  }
+  .feature {
+    text-align: center;
+  }
+  .feature i {
+    font-size: 35px;
+  }
+
+  .feature p {
+    font-size: 16px;
+  }
+  .feature-slash {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .shopFeatures {
+    width: 95vw;
+  }
+  .feature i {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .feature i {
+    font-size: 20px;
+  }
+  .feature p {
+    font-size: 14px;
+  }
+}

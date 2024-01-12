@@ -75,3 +75,12 @@
 .store-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--secondary-color);
 } */
+
+@media screen and (max-width: 700px) {
+  .about-us-section div:nth-child(1) > h1 {
+    font-size: 25px;
+  }
+  .about-us-section div:nth-child(1) > p {
+    font-size: 16px;
+  }
+}

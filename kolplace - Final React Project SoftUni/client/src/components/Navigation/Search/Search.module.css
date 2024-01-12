@@ -29,14 +29,20 @@
   z-index: 3;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
   .search-bar-container {
-    width: 70%;
+    width: 40vw;
   }
 }
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .search-bar-container {
-    width: 85%;
+    width: 90%;
+  }
+  .search-bar {
+    padding: 6px;
+    border-radius: 15px;
+  }
+  .search-bar input {
+    font-size: 15px;
   }
 }

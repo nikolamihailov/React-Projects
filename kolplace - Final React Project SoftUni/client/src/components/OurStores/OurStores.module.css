@@ -27,3 +27,12 @@
 .our-stores-section h1 {
   font-size: 40px;
 }
+
+@media screen and (max-width: 700px) {
+  .our-stores-section h1 {
+    font-size: 25px;
+  }
+  .our-stores-section .info {
+    font-size: 16px;
+  }
+}

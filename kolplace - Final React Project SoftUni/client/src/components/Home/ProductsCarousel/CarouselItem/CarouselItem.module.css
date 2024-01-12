@@ -110,7 +110,7 @@
 @media screen and (max-width: 1200px) {
   .carousel-product-item {
     width: 200px;
-    height: 400px;
+    height: 380px;
     margin: 5px;
     padding: 0px 10px;
     border-radius: 15px;
@@ -153,5 +153,11 @@
   }
   .carousel-product-item span {
     margin: 0px;
+  }
+  .carousel-product-item .ratings {
+    margin: 0px;
+  }
+  .carousel-product-item .prices {
+    margin: 5px 0;
   }
 }

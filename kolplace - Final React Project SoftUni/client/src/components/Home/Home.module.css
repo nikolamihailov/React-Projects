@@ -27,3 +27,18 @@
   font-size: 20px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 700px) {
+  .short-about-section {
+    padding: 20px 10px;
+    width: 85vw;
+  }
+
+  .short-about-section h3 {
+    font-size: 25px;
+  }
+
+  .short-about-section p {
+    font-size: 16px;
+  }
+}

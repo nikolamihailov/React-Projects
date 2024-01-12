@@ -8,7 +8,7 @@ const Logo = () => {
 
   useEffect(() => {
     const updateLogoSrc = () => {
-      if (window.innerWidth <= 700) setLogoSrc(favicon);
+      if (window.innerWidth <= 1000) setLogoSrc(favicon);
       else setLogoSrc(logo);
     };
 

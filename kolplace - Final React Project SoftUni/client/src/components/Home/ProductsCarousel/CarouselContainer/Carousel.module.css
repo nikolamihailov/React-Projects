@@ -60,3 +60,24 @@
   align-items: center;
   width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+  .carousel-products {
+    width: 90vw;
+  }
+  .carousel-products .products::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-products .category-name h2 {
+    font-size: 25px;
+  }
+
+  .carousel-products .products {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .carousel-products .products {
+    overflow-x: scroll;
+    justify-content: flex-start;
+  }
+}

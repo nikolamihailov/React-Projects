@@ -106,3 +106,52 @@
   font-size: 22px;
   margin-left: 5px;
 }
+
+@media screen and (max-width: 1200px) {
+  .carousel-product-item {
+    width: 200px;
+    height: 400px;
+    margin: 5px;
+    padding: 0px 10px;
+    border-radius: 15px;
+  }
+  .carousel-product-item h2 {
+    font-size: 15px;
+  }
+  .carousel-product-item .discount {
+    font-size: 15px;
+  }
+
+  .carousel-product-item img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .carousel-product-item .prices p {
+    font-size: 17px;
+  }
+
+  .carousel-product-item p {
+    font-size: 16px;
+  }
+
+  .carousel-product-item .promo-price {
+    font-size: 16px;
+  }
+
+  .carousel-product-item button {
+    padding: 8px 12px;
+    font-size: 17px;
+  }
+
+  .carousel-product-item .ratings i {
+    font-size: 14px;
+  }
+
+  .carousel-product-item .ratings p {
+    font-size: 16px;
+  }
+  .carousel-product-item span {
+    margin: 0px;
+  }
+}

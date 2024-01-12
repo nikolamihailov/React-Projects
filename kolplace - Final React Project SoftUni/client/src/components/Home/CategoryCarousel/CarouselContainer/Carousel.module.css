@@ -47,3 +47,16 @@
   right: 10px;
   z-index: 1;
 }
+
+@media screen and (max-width: 700px) {
+  .left-btn {
+    padding: 8px 12px;
+    font-size: 17px;
+    left: 0px;
+  }
+  .right-btn {
+    padding: 8px 12px;
+    font-size: 17px;
+    right: 0px;
+  }
+}

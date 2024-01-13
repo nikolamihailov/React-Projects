@@ -55,3 +55,54 @@
   flex: 1;
   font-weight: 500;
 }
+
+@media screen and (max-width: 750px) {
+  .review-item {
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+
+  .review-item .author img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .review-item .author span {
+    font-size: 14px;
+    word-break: break-all;
+    font-weight: bold;
+    margin-bottom: 0;
+    width: 50px;
+  }
+
+  .review-item .content {
+    padding-left: 20px;
+  }
+
+  .review-item .content p {
+    font-size: 15px;
+  }
+  .review-item span {
+    margin: 0 0 20px;
+  }
+
+  .review-item .content i {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .review-item .content p {
+    font-size: 12px;
+  }
+  .review-item span {
+    margin: 0 0 15px;
+  }
+
+  .review-item .content i {
+    font-size: 14px;
+  }
+  .review-item .content {
+    padding-left: 10px;
+  }
+}

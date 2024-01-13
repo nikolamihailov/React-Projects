@@ -57,3 +57,25 @@
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 750px) {
+  .reviews-container {
+    width: 100%;
+    padding: 0;
+  }
+  .reviews-container .review-title h3 {
+    font-size: 25px;
+  }
+
+  .reviews-container .all-reviews {
+    width: 85%;
+  }
+  .reviews-container .add {
+    padding: 8px 12px;
+    font-size: 17px;
+    margin-bottom: 65px;
+  }
+  .reviews-container .want-to-add-review {
+    font-size: 17px;
+  }
+}

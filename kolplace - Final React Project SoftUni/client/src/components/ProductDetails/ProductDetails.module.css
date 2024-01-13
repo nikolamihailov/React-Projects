@@ -232,6 +232,10 @@
   .product-details .product-images .main-image img {
     height: 300px;
   }
+  .product-details .product-info {
+    text-align: center;
+    height: auto;
+  }
   .product-details .product-info h1 {
     font-size: 30px;
   }
@@ -240,9 +244,32 @@
     width: 75px;
     height: 75px;
   }
+
+  .product-info .ratings-reviews i {
+    font-size: 20px;
+  }
+
+  .product-info .ratings-reviews b {
+    font-size: 21px;
+  }
+  .product-info .ratings-reviews {
+    width: 90%;
+  }
+  .product-info p {
+    margin-bottom: 10px;
+  }
+  .product-details .product-info p {
+    font-size: 17px;
+  }
+  .product-details .product-info .product-prices-buttons {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 500px) {
+  .product-details .product {
+    width: 95vw;
+  }
   .product-details .product-info h1 {
     font-size: 25px;
   }

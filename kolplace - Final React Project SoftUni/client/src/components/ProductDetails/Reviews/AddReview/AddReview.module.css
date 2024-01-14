@@ -105,3 +105,42 @@
   border-radius: 10px;
   filter: drop-shadow(0 0 3px var(--secondary-color));
 }
+
+@media screen and (max-width: 700px) {
+  .add-review {
+    padding: 10px 15px;
+    width: 88%;
+  }
+
+  .add-review i {
+    font-size: 15px;
+  }
+  .add-review textarea {
+    color: var(--black-color);
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .add-review select {
+    padding: 6px 8px;
+    font-size: 15px;
+    width: 50%;
+  }
+
+  .add-review option {
+    font-size: 14px;
+  }
+
+  .add-review .stars {
+    margin: 15px;
+  }
+
+  .add-review .stars i {
+    font-size: 17px;
+  }
+
+  .add-review button {
+    padding: 5px 7px;
+    font-size: 15px;
+  }
+}

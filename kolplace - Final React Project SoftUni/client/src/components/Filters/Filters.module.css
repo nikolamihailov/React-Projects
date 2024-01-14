@@ -26,3 +26,14 @@
 .filters option:hover {
   background-color: gray;
 }
+
+@media screen and (max-width: 700px) {
+  .filters select {
+    padding: 6px 7px;
+    font-size: 15px;
+  }
+
+  .filters option {
+    font-size: 14px;
+  }
+}

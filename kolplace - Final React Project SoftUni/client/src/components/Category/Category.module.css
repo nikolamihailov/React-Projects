@@ -66,3 +66,26 @@
   margin-top: 50px;
   margin-bottom: 100px;
 }
+@media screen and (max-width: 700px) {
+  .category-section h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  .category-section .sort-and-info {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+  }
+  .category-section .products {
+    width: 85vw;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .category-section .sort-and-info p {
+    padding: 4px 7px;
+    font-size: 15px;
+  }
+  .category-section .sort-and-info span {
+    font-size: 16px;
+  }
+}

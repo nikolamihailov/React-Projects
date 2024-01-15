@@ -63,6 +63,7 @@
   background-color: var(--background-color);
   color: var(--background-inverted-color);
   font-weight: bold;
+  width: 100%;
 }
 
 .checkout-section option {
@@ -180,4 +181,39 @@ input[type="radio"]:checked + label::before {
   right: 15px;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+  .checkout-section .page-info h1 {
+    font-size: 30px;
+  }
+
+  .checkout-section .page-info img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+  }
+
+  .checkout-section form {
+    padding: 15px;
+    width: 90%;
+  }
+  .checkout-section .without-office {
+    width: 70%;
+  }
+
+  .checkout-section .with-office {
+    width: 70%;
+  }
+  .checkout-section .checkout-products {
+    width: 90%;
+  }
+  .checkout-section a {
+    font-size: 17px;
+    padding: 5px 8px;
+  }
+  .checkout-section form button {
+    padding: 6px 8px;
+    font-size: 17px;
+  }
 }

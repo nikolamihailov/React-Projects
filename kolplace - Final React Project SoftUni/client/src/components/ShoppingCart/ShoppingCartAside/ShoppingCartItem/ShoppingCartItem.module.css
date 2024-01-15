@@ -58,3 +58,39 @@
   background-color: var(--secondary-color);
   color: var(--white-color);
 }
+
+@media screen and (max-width: 700px) {
+  .cart-item {
+    padding: 15px 10px;
+  }
+  .cart-item a {
+    font-size: 14px;
+  }
+  .cart-item img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .cart-item input {
+    width: 30px;
+    font-size: 14px;
+  }
+  .cart-item p {
+    font-size: 15px;
+  }
+  .cart-item .remove i {
+    font-size: 15px;
+  }
+
+  .cart-item button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    margin: 0px 4px;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+  }
+}

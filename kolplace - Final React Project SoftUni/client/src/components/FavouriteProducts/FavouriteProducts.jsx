@@ -21,9 +21,9 @@ const FavouriteProducts = () => {
       <div>
         <h1>Favourite Products</h1>
         <img
-          className={styles["promotion-banner-image"]}
+          className={styles["favourites-banner-image"]}
           src={favouritesBanner}
-          alt="promotions-banner"
+          alt="favourites-banner"
         />
       </div>
       <hr />

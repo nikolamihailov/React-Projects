@@ -44,7 +44,7 @@
 @media screen and (max-width: 600px) {
   .user-dropdown {
     font-size: 15px;
-    width: 250%;
+    width: 300%;
   }
 
   .user-dropdown i {

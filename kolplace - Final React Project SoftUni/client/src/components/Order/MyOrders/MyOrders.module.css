@@ -30,3 +30,12 @@
   font-size: 22px;
   margin-top: 150px;
 }
+
+@media screen and (max-width: 700px) {
+  .my-orders-section .orders-icon i {
+    font-size: 35px;
+  }
+  .my-orders-section h1 {
+    font-size: 25px;
+  }
+}

@@ -27,7 +27,7 @@ The REST API and the design are made entirely from scratch. The only library for
 - [Features](#features)
 - [Running the Application](#running-the-application)
 - [Testing Data](#testing-data)
-- [Project Demo Video](#project-demo-video)
+- [Project Demo Adn Video](#project-demo-video)
 
 ## Project Overview:
 
@@ -156,6 +156,14 @@ At KolPlace, our mission is to elevate your online shopping experience and redef
  - https://drive.google.com/drive/u/0/folders/1mv0y5FLXTsj-SESumJ_5a3te2bgOvJDF
 
 ## Project Demo Video
+ - The server is deployed on Render.
+ - The frontend is deployed on Netlify.
+
+*** Keep in mind that the app uses free server and the initial loading may took longer, because Render free plan will spin down after 15 minutes of inactivity 
+### Live Demo: 
+
+[<img alt="Play Button" src="https://user-images.githubusercontent.com/114406139/211439129-37c7a037-dde4-49d6-bf62-4ffc4f315fa9.PNG" />](https://kolplace.netlify.app/)
+
 - Presenting most of the project features
   
 [![KolPlace](https://i.ibb.co/J2TgbYF/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png)](https://www.youtube.com/watch?v=3UA_EBMePz8)

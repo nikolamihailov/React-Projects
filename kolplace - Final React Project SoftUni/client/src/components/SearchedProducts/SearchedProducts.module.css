@@ -33,3 +33,12 @@
 .searched-products-section .no-products {
   margin-top: 100px;
 }
+
+@media screen and (max-width: 700px) {
+  .searched-products-section .orders-icon i {
+    font-size: 35px;
+  }
+  .searched-products-section h1 {
+    font-size: 25px;
+  }
+}

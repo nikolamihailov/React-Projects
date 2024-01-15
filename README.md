@@ -9,4 +9,4 @@
 
 ## KolPlace: E-commerce MERN App
 
-[![KolPlace](https://i.ibb.co/J2TgbYF/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png)](https://www.youtube.com/watch?v=3UA_EBMePz8)
+[![KolPlace](https://i.ibb.co/J2TgbYF/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png)](https://kolplace.netlify.app)

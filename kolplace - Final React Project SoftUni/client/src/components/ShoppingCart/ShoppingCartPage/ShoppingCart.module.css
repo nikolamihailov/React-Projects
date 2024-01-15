@@ -131,3 +131,60 @@
     width: 30vw;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .cart-page-section {
+    width: 95vw;
+    padding: 10px 0;
+  }
+  .cart-page-section .totalPrice {
+    font-size: 19px;
+  }
+
+  .cart-page-section .no-products p {
+    font-size: 19px;
+  }
+
+  .cart-page-section .no-products img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .cart-page-section div:nth-child(1) > i {
+    cursor: pointer;
+    color: var(--secondary-color);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+  }
+
+  .cart-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .cart-item-container .headers {
+    font-size: 15px;
+  }
+
+  .cart-page-section .btns button {
+    padding: 8px 10px;
+    font-size: 16px;
+  }
+
+  .cart-page-section .btns button i {
+    margin-left: 10px;
+  }
+  .cart-page-section .orders-icon i {
+    font-size: 35px;
+  }
+  .cart-page-section h1 {
+    font-size: 25px;
+  }
+  .cart-page-section .btns {
+    width: 80%;
+    gap: 10px;
+  }
+}

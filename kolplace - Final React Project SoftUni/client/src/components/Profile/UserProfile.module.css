@@ -61,3 +61,34 @@
 .user-profile .info p {
   font-size: 21px;
 }
+
+@media screen and (max-width: 700px) {
+  .user-profile i:nth-child(1) {
+    font-size: 25px;
+  }
+  .user-profile i:nth-child(2) {
+    font-size: 21px;
+  }
+
+  .user-profile h2 {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .user-profile h1 {
+    font-size: 25px;
+  }
+
+  .user-profile .info img {
+    height: 160px;
+    width: 160px;
+  }
+
+  .user-profile .info strong {
+    font-size: 18px;
+  }
+
+  .user-profile .info p {
+    font-size: 16px;
+  }
+}

@@ -14,7 +14,7 @@
   margin-bottom: 20px;
 }
 
-.category-banner-image {
+.favourites-banner-image {
   width: 75vw;
   height: 35vh;
   object-fit: contain;
@@ -66,4 +66,30 @@
 .pagination {
   margin-top: 50px;
   margin-bottom: 100px;
+}
+
+@media screen and (max-width: 700px) {
+  .favourites-banner-image {
+    width: 95vw;
+    height: 35vh;
+    object-fit: contain;
+    margin-bottom: 50px;
+  }
+  .favourite-products-section .sort-and-info {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+  }
+  .favourite-products-section .products {
+    width: 85vw;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .favourite-products-section .sort-and-info p {
+    padding: 4px 7px;
+    font-size: 15px;
+  }
+  .favourite-products-section .sort-and-info span {
+    font-size: 16px;
+  }
 }

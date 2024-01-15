@@ -65,4 +65,11 @@
   .icon-btn i {
     font-size: 21px;
   }
+  .icon-btn i:nth-child(2) {
+    font-size: 12px;
+  }
+  .icon-btn span {
+    padding: 0 4px;
+    font-size: 12px;
+  }
 }

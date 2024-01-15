@@ -124,3 +124,93 @@
   font-size: 22px;
   margin-left: 5px;
 }
+
+@media screen and (max-width: 1200px) {
+  .favourite-product-item {
+    width: 200px;
+    height: 380px;
+    margin: 15px 5px;
+    padding: 0px 10px;
+    border-radius: 15px;
+  }
+  .favourite-product-item h2 {
+    font-size: 15px;
+  }
+  .favourite-product-item .discount {
+    font-size: 15px;
+  }
+
+  .favourite-product-item img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .favourite-product-item .prices p {
+    font-size: 17px;
+  }
+
+  .favourite-product-item p {
+    font-size: 16px;
+  }
+
+  .favourite-product-item .promo-price {
+    font-size: 16px;
+  }
+
+  .favourite-product-item button {
+    padding: 8px 12px;
+    font-size: 17px;
+  }
+
+  .favourite-product-item .ratings i {
+    font-size: 14px;
+  }
+
+  .favourite-product-item .ratings p {
+    font-size: 16px;
+  }
+  .favourite-product-item span {
+    margin: 0px;
+  }
+  .favourite-product-item .ratings {
+    margin: 0px;
+  }
+  .favourite-product-item .prices {
+    margin: 5px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .favourite-product-item {
+    width: 120px;
+    height: 370px;
+    margin: 15px 5px;
+    padding: 0px 10px;
+    border-radius: 15px;
+  }
+  .favourite-product-item h2 {
+    font-size: 13px;
+  }
+  .favourite-product-item .discount {
+    font-size: 13px;
+  }
+  .favourite-product-item img {
+    width: 100px;
+    height: 100px;
+  }
+  .favourite-product-item button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .favourite-product-item .prices p {
+    font-size: 14px;
+  }
+  .favourite-product-item .discount {
+    top: 45px;
+    left: 5px;
+    padding: 5px 7px;
+  }
+  .favourite-product-item .icons-top i:nth-child(2) {
+    font-size: 20px;
+  }
+}

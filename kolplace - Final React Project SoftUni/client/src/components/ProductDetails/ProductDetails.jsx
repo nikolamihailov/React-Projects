@@ -10,6 +10,7 @@ import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { NotifContext } from "../../contexts/NotificationContext";
 import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
 import ReviewsContainer from "./Reviews/ReviewsContainer/ReviewsContainer";
+import ProductRating from "./Reviews/ProductRating/ProductRating";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -48,48 +49,6 @@ const ProductDetails = () => {
   const updateProduct = useCallback((data) => {
     setProduct(data);
   }, []);
-
-  const calculateRating = useCallback(
-    (reviews) => {
-      const totalRating = reviews.reduce((acc, rev) => {
-        return acc + rev.rating;
-      }, 0);
-      const avgRating = totalRating / reviews.length;
-
-      const stars = Array.from(
-        { length: Math.round(avgRating) },
-        (_, index) => <i key={index} className="fa-solid fa-star"></i>
-      );
-
-      for (let i = 0; i < 5 - Math.round(avgRating); i++) {
-        stars.push(
-          <i key={i + Math.round(avgRating)} className="fa-regular fa-star"></i>
-        );
-      }
-
-      if (reviews.length === 0) {
-        const starsNoReviews = Array.from({ length: 5 }, (_, index) => (
-          <i key={index} className="fa-regular fa-star"></i>
-        ));
-        return (
-          <div onClick={scrollToReviews} className={styles["ratings-reviews"]}>
-            <div>{starsNoReviews}</div>
-            <p>No reviews</p>
-          </div>
-        );
-      }
-
-      return (
-        <div onClick={scrollToReviews} className={styles["ratings-reviews"]}>
-          <div>{stars}</div>
-          <b>
-            {avgRating.toFixed(1)}/5 ({reviews.length})
-          </b>
-        </div>
-      );
-    },
-    [scrollToReviews]
-  );
 
   return (
     <section className={styles["product-details"]}>
@@ -153,7 +112,12 @@ const ProductDetails = () => {
             </div>
             <div className={styles["product-info"]}>
               <h1>{product?.name}</h1>
-              {product && calculateRating(product.reviews)}
+              {product && (
+                <ProductRating
+                  reviews={product.reviews}
+                  scrollToReviews={scrollToReviews}
+                />
+              )}
               <p>
                 <strong>Category:</strong>
                 <Link

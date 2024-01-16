@@ -1,4 +1,4 @@
-const ECONT_URL = 'http://ee.econt.com/services/Nomenclatures/NomenclaturesService';
+const ECONT_URL = 'https://ee.econt.com/services/Nomenclatures/NomenclaturesService';
 
 const econtEndpoints = {
     getCities: ".getCities.json",

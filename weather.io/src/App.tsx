@@ -1,13 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { ChangeEvent, useState } from "react";
 
-function App() {
+function App(): JSX.Element {
+  const [city, setCity] = useState<string>("");
+
+  const onCityInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+  };
   return (
     <>
       <main className="flex w-screen h-screen items-center justify-evenly bg-gradient-to-br from-blue-700 to-blue-900">
         <section className="md:max-w-3xl flex flex-col items-center text-center justify-center bg-white backdrop-blur-xlg drop-shadow-xlg bg-opacity-15 w-4/5 h-3/5 rounded p-8">
           <h1 className="font-thin text-4xl md:text-5xl xl:text-6xl">
-            <span className="font-black bg-gradient-to-br  from-orange-600 via-red-600 to-white text-transparent bg-clip-text">
+            <span className="font-black bg-gradient-to-br  from-white via-orange-600 to-red-700 text-transparent bg-clip-text">
               Weather
             </span>
             <span className="font-black bg-gradient-to-br from-blue-500 via-blue-400 to-white text-transparent bg-clip-text">
@@ -23,6 +29,8 @@ function App() {
               className=" bg-transparent text-white text-xl mr-3"
               type="text"
               placeholder="London..."
+              value={city}
+              onChange={onCityInputChange}
             />
             <FontAwesomeIcon icon={faSearch} className="text-white" />
           </div>

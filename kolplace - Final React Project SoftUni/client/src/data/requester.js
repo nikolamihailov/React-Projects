@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL; // http://localhost:3030
+// const BASE_URL = import.meta.env.VITE_REST_API_BASE_URL; deployed server endpoint
+const BASE_URL = "http://localhost:3030";  // local test server endpoint
+
 
 const requester = async (method, URL, data) => {
 

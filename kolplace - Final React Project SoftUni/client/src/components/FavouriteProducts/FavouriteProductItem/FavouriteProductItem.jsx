@@ -156,7 +156,7 @@ const FavouriteProductItem = ({
             }
           }}
         >
-          Buy <i className="fa-solid fa-cart-shopping"></i>
+          Add to cart <i className="fa-solid fa-cart-shopping"></i>
         </button>
       </motion.div>
     </>

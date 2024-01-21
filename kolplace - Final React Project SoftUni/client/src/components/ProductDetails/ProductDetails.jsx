@@ -184,27 +184,31 @@ const ProductDetails = () => {
                     Buy <i className="fa-solid fa-cart-shopping"></i>
                   </button>
 
-                  {/* <i className="fa-solid fa-heart"></i> */}
-                  {canAddProduct(product?._id) ? (
+                  {!isAuthenticated ? (
                     <p
                       onClick={() => {
-                        if (isAuthenticated) {
-                          addProductToFavouriteProducts(product._id);
-                          updateNotifs([
-                            {
-                              text: `${product?.name} added to favourites!`,
-                              type: "success",
-                            },
-                          ]);
-                        } else {
-                          updateNotifs([
-                            {
-                              text: "You need to be signed in to add to favourite products!",
-                              type: "error",
-                            },
-                          ]);
-                          navigateTo("/login");
-                        }
+                        updateNotifs([
+                          {
+                            text: "You need to be signed in to add to favourite products!",
+                            type: "error",
+                          },
+                        ]);
+                        navigateTo("/login");
+                      }}
+                      title="Add To Favourite Products"
+                    >
+                      Add To Favourites <i className="fa-regular fa-heart"></i>
+                    </p>
+                  ) : isAuthenticated && canAddProduct(product?._id) ? (
+                    <p
+                      onClick={() => {
+                        addProductToFavouriteProducts(product._id);
+                        updateNotifs([
+                          {
+                            text: `${product?.name} added to favourites!`,
+                            type: "success",
+                          },
+                        ]);
                       }}
                       title="Add To Favourite Products"
                     >

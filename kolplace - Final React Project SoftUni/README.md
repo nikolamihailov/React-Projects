@@ -27,7 +27,7 @@ The REST API and the design are made entirely from scratch. The only library for
 - [Features](#features)
 - [Running the Application](#running-the-application)
 - [Testing Data](#testing-data)
-- [Project Demo Adn Video](#project-demo-video)
+- [Project Demo And Video](#project-demo-video)
 
 ## Project Overview:
 

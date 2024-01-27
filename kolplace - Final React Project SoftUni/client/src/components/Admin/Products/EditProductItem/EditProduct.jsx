@@ -45,28 +45,30 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
   const { updateAuth } = useContext(AuthContext);
 
   useEffect(() => {
-    getAll()
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((err) => console.log(err));
+    const fetchData = async () => {
+      try {
+        const categories = await getAll();
+        setCategories(categories);
 
-    getOneProduct(id)
-      .then((product) =>
+        const product = await getOneProduct(id);
         setValues({
-          [FORM_VALUES.Name]: product.name || "",
-          [FORM_VALUES.Price]: product.price || "",
-          [FORM_VALUES.HasPromoPrice]: product.hasPromoPrice || false,
-          [FORM_VALUES.PromoPrice]: product.promoPrice || "",
-          [FORM_VALUES.Category]: product.category ? product.category : "",
-          [FORM_VALUES.Description]: product.description || "",
-          [FORM_VALUES.Image]: product.mainImage || "",
-          [FORM_VALUES.ImageTwo]: product.imageTwo || "",
-          [FORM_VALUES.ImageThree]: product.imageThree || "",
-          [FORM_VALUES.ImageFour]: product.imageFour || "",
-        })
-      )
-      .catch((err) => console.log(err));
+          [FORM_VALUES.Name]: product.name,
+          [FORM_VALUES.Price]: product.price,
+          [FORM_VALUES.HasPromoPrice]: product.hasPromoPrice,
+          [FORM_VALUES.PromoPrice]: product.promoPrice,
+          [FORM_VALUES.Category]: product.category._id,
+          [FORM_VALUES.Description]: product.description,
+          [FORM_VALUES.Image]: product.mainImage,
+          [FORM_VALUES.ImageTwo]: product.imageTwo,
+          [FORM_VALUES.ImageThree]: product.imageThree,
+          [FORM_VALUES.ImageFour]: product.imageFour,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const onChange = (e) => {
@@ -91,10 +93,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
       updateNotifs([{ text: "Description must be filled!", type: "error" }]);
       return;
     }
-    if (values[FORM_VALUES.Price].trim() === "") {
-      updateNotifs([{ text: "Price must be filled!", type: "error" }]);
-      return;
-    }
+    console.log(values);
     const editedProduct = await editProduct(id, values);
     if (editedProduct.expMessage) {
       updateNotifs([{ text: editedProduct.expMessage, type: "error" }]);
@@ -181,7 +180,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                 name={FORM_VALUES.Category}
                 id={FORM_VALUES.Category}
                 onChange={onChange}
-                value={values[FORM_VALUES.Category] || ""}
+                value={values[FORM_VALUES.Category]}
               >
                 {categories?.map((c) => (
                   <option key={c._id} value={c._id}>

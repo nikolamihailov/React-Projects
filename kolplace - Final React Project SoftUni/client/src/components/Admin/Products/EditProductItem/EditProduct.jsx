@@ -10,6 +10,7 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Notification from "../../../Notifications/Notification";
 import { v4 as uuidv4 } from "uuid";
+import noImage from "../../../../assets/no-image.jpg";
 
 const FORM_VALUES = {
   Name: "name",
@@ -214,10 +215,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                 onChange={onChange}
               />
               {values[FORM_VALUES.Image] === "" ? (
-                <img
-                  src="/src/assets/no-image.jpg"
-                  alt={values[FORM_VALUES.Name]}
-                />
+                <img src={noImage} alt={values[FORM_VALUES.Name]} />
               ) : (
                 <img
                   src={values[FORM_VALUES.Image]}
@@ -238,10 +236,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                 onChange={onChange}
               />
               {values[FORM_VALUES.ImageTwo] === "" ? (
-                <img
-                  src="/src/assets/no-image.jpg"
-                  alt={values[FORM_VALUES.Name]}
-                />
+                <img src={noImage} alt={values[FORM_VALUES.Name]} />
               ) : (
                 <img
                   src={values[FORM_VALUES.ImageTwo]}
@@ -262,10 +257,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                 onChange={onChange}
               />
               {values[FORM_VALUES.ImageThree] === "" ? (
-                <img
-                  src="/src/assets/no-image.jpg"
-                  alt={values[FORM_VALUES.Name]}
-                />
+                <img src={noImage} alt={values[FORM_VALUES.Name]} />
               ) : (
                 <img
                   src={values[FORM_VALUES.ImageThree]}
@@ -286,10 +278,7 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                 onChange={onChange}
               />
               {values[FORM_VALUES.ImageFour] === "" ? (
-                <img
-                  src="/src/assets/no-image.jpg"
-                  alt={values[FORM_VALUES.Name]}
-                />
+                <img src={noImage} alt={values[FORM_VALUES.Name]} />
               ) : (
                 <img
                   src={values[FORM_VALUES.ImageFour]}

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { formatDate } from "../../../../utils/dateFormatter";
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import defaultAvatar from "../../../../assets/avatar.png";
 
 const UserProfile = ({
   _id,
@@ -46,7 +47,7 @@ const UserProfile = ({
           </button>
         )}
       </div>
-      <img src={avatar} alt="avatar" />
+      <img src={avatar ? avatar : defaultAvatar} alt="avatar" />
       <h2>{firstName + " " + lastName}</h2>
       <h3>{role}</h3>
       <span>

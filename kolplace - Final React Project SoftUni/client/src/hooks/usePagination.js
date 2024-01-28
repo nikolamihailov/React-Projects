@@ -6,17 +6,31 @@ const usePagination = () => {
 
     const nextPage = useCallback(() =>
         setPage((p) => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
             if (p === pageCount) return p;
             return (p += 1);
         }), [pageCount]);
 
     const prevPage = useCallback(() =>
         setPage((p) => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
             if (p === 1) return p;
             return (p -= 1);
         }), []);
 
-    const switchToPage = useCallback((page) => setPage(page), []);
+    const switchToPage = useCallback((page) => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        setPage(page);
+    }, []);
 
     const updatePageCount = useCallback((pC) => setPageCount(pC), []);
 

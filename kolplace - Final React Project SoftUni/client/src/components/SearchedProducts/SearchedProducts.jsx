@@ -15,6 +15,7 @@ const SearchedProducts = () => {
 
   useEffect(() => {
     const search = searchParams.get("for");
+    if (search.trim() === "") setIsLoading(false);
     if (search) {
       searchProducts(search)
         .then((data) => {

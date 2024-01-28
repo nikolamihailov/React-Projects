@@ -28,7 +28,7 @@ const DropDownUser = ({ mouseLeave }) => {
             <li>{email}</li>
             <Link to={"/my-profile"} onClick={mouseLeave}>
               <li>
-                <i className="fa-regular fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 <span>My Profile</span>
               </li>
             </Link>
@@ -41,7 +41,7 @@ const DropDownUser = ({ mouseLeave }) => {
 
             <Link to={"/favourite-products"} onClick={mouseLeave}>
               <li>
-                <i className="fa-regular fa-heart"></i>
+                <i className="fa-solid fa-heart"></i>
                 <span>Favourite Products</span>
               </li>
             </Link>

@@ -1,6 +1,7 @@
 import { formatDate } from "../../../../utils/dateFormatter";
 import styles from "./ReviewItem.module.css";
 import { motion } from "framer-motion";
+import avatar from "../../../../assets/avatar.png";
 
 const ReviewItem = ({
   _id,
@@ -29,7 +30,7 @@ const ReviewItem = ({
       className={styles["review-item"]}
     >
       <div className={styles["author"]}>
-        <img src={author.avatar} alt="avatar" />
+        <img src={author.avatar ? author.avatar : avatar} alt="avatar" />
         <span>{author.firstName}</span>
       </div>
       <div className={styles["content"]}>

@@ -13,7 +13,7 @@ const Footer = () => {
     <>
       {!pageURL.startsWith("/admin") && (
         <footer className={styles["footer"]} data-testid="footer">
-          <h3>All rights reserved! &copy; 2024</h3>
+          <h3>All rights reserved! &copy; {new Date().getFullYear()}</h3>
           <i>
             Design:
             <a

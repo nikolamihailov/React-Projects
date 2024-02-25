@@ -40,29 +40,34 @@ const UserProfile = () => {
       <h1>
         <i className="fa-regular fa-user"></i>My Profile{" "}
       </h1>
-      <i
-        className="fa-solid fa-pen-to-square"
-        onClick={showHide}
-        title="Edit Profile"
-      ></i>
 
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className={styles["info"]}>
-          <img src={profile?.avatar ? profile?.avatar : avatar} alt="avatar" />
-          <h2>Role: {profile?.role}</h2>
-          <p>
-            <strong>First Name: </strong>
-            {profile?.firstName}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {profile?.lastName}
-          </p>
-          <p>
-            <strong>Email:</strong> {profile?.email}
-          </p>
-        </div>
+        <>
+          <i
+            className="fa-solid fa-pen-to-square"
+            onClick={showHide}
+            title="Edit Profile"
+          ></i>
+          <div className={styles["info"]}>
+            <img
+              src={profile?.avatar ? profile?.avatar : avatar}
+              alt="avatar"
+            />
+            <h2>Role: {profile?.role}</h2>
+            <p>
+              <strong>First Name: </strong>
+              {profile?.firstName}
+            </p>
+            <p>
+              <strong>Last Name:</strong> {profile?.lastName}
+            </p>
+            <p>
+              <strong>Email:</strong> {profile?.email}
+            </p>
+          </div>
+        </>
       )}
 
       {isOpen && <EditProfile onClose={showHide} update={update} />}

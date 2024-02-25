@@ -8,6 +8,7 @@ import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
 import imageCompression from "browser-image-compression";
 import avatar from "../../../assets/avatar.png";
+import Spinner from "../../Spinner/Spinner";
 
 const FORM_VALUES = {
   FirstName: "firstName",
@@ -18,6 +19,7 @@ const FORM_VALUES = {
 
 const EditProfile = ({ onClose, update }) => {
   const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [profile, setProfile] = useState({
     [FORM_VALUES.FirstName]: "",
     [FORM_VALUES.LastName]: "",
@@ -37,6 +39,7 @@ const EditProfile = ({ onClose, update }) => {
           [FORM_VALUES.PhoneNumber]: user.phoneNumber || "",
           [FORM_VALUES.Avatar]: user.avatar || "",
         });
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, [auth.user?._id]);
@@ -75,64 +78,70 @@ const EditProfile = ({ onClose, update }) => {
     <>
       <div className="backdrop" onClick={onClose}></div>
       <form className={styles["edit-profile"]} onSubmit={onSubmit}>
-        <div className={styles["form-group"]}>
-          <label
-            htmlFor={FORM_VALUES.Avatar}
-            style={{
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            Avatar (Max Size - 15MB)
-            <img
-              src={profile.avatar || avatar}
-              alt="avatar"
-              accept=".jpeg, .png, .jpg"
-            />
-          </label>
-          <input
-            type="file"
-            onChange={onChange}
-            name={FORM_VALUES.Avatar}
-            id={FORM_VALUES.Avatar}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.FirstName}>First Name</label>
-          <input
-            type="text"
-            name={FORM_VALUES.FirstName}
-            id={FORM_VALUES.FirstName}
-            placeholder="John"
-            value={profile[FORM_VALUES.FirstName]}
-            onChange={onChange}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.LastName}>Last Name</label>
-          <input
-            type="text"
-            name={FORM_VALUES.LastName}
-            id={FORM_VALUES.LastName}
-            placeholder="Doe"
-            value={profile[FORM_VALUES.LastName]}
-            onChange={onChange}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.Email}>Email</label>
-          <input
-            type="text"
-            name={FORM_VALUES.Email}
-            id={FORM_VALUES.Email}
-            placeholder="john_doe@gmail.com"
-            value={profile[FORM_VALUES.Email]}
-            onChange={onChange}
-          />
-        </div>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles["form-group"]}>
+              <label
+                htmlFor={FORM_VALUES.Avatar}
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                Avatar (Max Size - 15MB)
+                <img
+                  src={profile.avatar || avatar}
+                  alt="avatar"
+                  accept=".jpeg, .png, .jpg"
+                />
+              </label>
+              <input
+                type="file"
+                onChange={onChange}
+                name={FORM_VALUES.Avatar}
+                id={FORM_VALUES.Avatar}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.FirstName}>First Name</label>
+              <input
+                type="text"
+                name={FORM_VALUES.FirstName}
+                id={FORM_VALUES.FirstName}
+                placeholder="John"
+                value={profile[FORM_VALUES.FirstName]}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.LastName}>Last Name</label>
+              <input
+                type="text"
+                name={FORM_VALUES.LastName}
+                id={FORM_VALUES.LastName}
+                placeholder="Doe"
+                value={profile[FORM_VALUES.LastName]}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.Email}>Email</label>
+              <input
+                type="text"
+                name={FORM_VALUES.Email}
+                id={FORM_VALUES.Email}
+                placeholder="john_doe@gmail.com"
+                value={profile[FORM_VALUES.Email]}
+                onChange={onChange}
+              />
+            </div>
 
-        <button>Edit</button>
+            <button>Edit</button>
+          </>
+        )}
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

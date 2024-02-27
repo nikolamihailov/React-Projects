@@ -70,7 +70,6 @@
 }
 
 .category-product-item p {
-  margin-top: 10px;
   font-size: 19px;
   font-weight: bold;
 }
@@ -169,7 +168,7 @@
 
 @media screen and (max-width: 500px) {
   .category-product-item {
-    width: 120px;
+    width: 130px;
     height: 370px;
     margin: 15px 5px;
     padding: 0px 10px;
@@ -191,6 +190,9 @@
   }
   .category-product-item .prices p {
     font-size: 14px;
+  }
+  .category-product-item .promo-price {
+    margin-left: 4px;
   }
   .category-product-item .discount {
     top: 5px;

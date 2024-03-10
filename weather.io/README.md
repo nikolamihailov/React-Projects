@@ -1,1 +1,1 @@
-# React, TypeScript and TailWind CSS simple project
+# React, TypeScript and TailWind CSS simple app

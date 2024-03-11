@@ -11,7 +11,7 @@ function App(): JSX.Element {
   return (
     <>
       <main className="flex h-screen w-screen items-center justify-evenly bg-gradient-to-br from-blue-700 to-blue-900">
-        <section className="backdrop-blur-xlg drop-shadow-xlg flex h-3/5 w-4/5 flex-col items-center justify-center rounded bg-white bg-opacity-15 p-8 text-center md:max-w-3xl">
+        <section className="backdrop-blur-xlg drop-shadow-xlg flex h-full flex-col items-center justify-center rounded bg-white bg-opacity-15 p-8 text-center md:h-3/5 md:max-w-3xl">
           <h1 className="text-4xl font-thin md:text-5xl xl:text-6xl">
             <span className="bg-gradient-to-br from-white  via-orange-600 to-red-700 bg-clip-text font-black text-transparent">
               Weather
@@ -26,7 +26,7 @@ function App(): JSX.Element {
           </p>
           <div className="relative flex items-center text-white">
             <input
-              className="rounded-full border  border-blue-400 bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3"
+              className="rounded-full border border-blue-400  bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg "
               type="text"
               placeholder="London..."
               value={city}
@@ -34,7 +34,7 @@ function App(): JSX.Element {
             />
             <FontAwesomeIcon
               icon={faSearch}
-              className="absolute right-3 text-white"
+              className="absolute right-3 h-4 text-white md:h-6"
             />
           </div>
         </section>

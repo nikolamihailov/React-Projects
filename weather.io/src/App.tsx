@@ -2,8 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { ChangeEvent, useState } from "react";
 
-function App(): JSX.Element {
-  const [city, setCity] = useState<string>("");
+function App() {
+  const [city, setCity] = useState("");
 
   const onCityInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);

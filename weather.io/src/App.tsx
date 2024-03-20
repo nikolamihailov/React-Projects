@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from "react";
 const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 const BASE_URL = import.meta.env.VITE_OPEN_WEATHER_BASE_URL;
 const GEO_API = import.meta.env.VITE_OPEN_WEATHER_GEO_API;
+const LIMIT = import.meta.env.VITE_CITY_DROPDOWN_LIMIT;
 
 type City = {
   name: string;
@@ -21,7 +22,7 @@ function App() {
   const fetchCitities = async (city: string) => {
     if (city === "") return;
     const res = await fetch(
-      `${BASE_URL}${GEO_API}?q=${city}&limit=${3}&appid=${API_KEY}`
+      `${BASE_URL}${GEO_API}?q=${city}&limit=${LIMIT}&appid=${API_KEY}`
     );
     const data = await res.json();
     const uniqueCities: City[] = [];

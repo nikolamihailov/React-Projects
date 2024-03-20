@@ -31,12 +31,10 @@ function App() {
     const uniqueCities: City[] = [];
 
     data.forEach((item: City) => {
-      console.log(item.name, data);
       if (!uniqueCities?.map((city: City) => city.name).includes(item.name))
         uniqueCities.push(item);
     });
 
-    console.log(uniqueCities);
     setFetchedCities(uniqueCities);
   };
   const onCityInputChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -80,14 +78,14 @@ function App() {
                   {fetchedCities?.map((city) => {
                     return (
                       <li
-                        className="my-2 flex justify-around border-b-2 border-b-blue-400 p-2"
+                        className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2"
                         key={Date.now() + city.lat}
                       >
-                        <span>{city.name}, </span>
+                        <span>{city.name},</span>
                         <img
                           src={`${FLAGS_API}/${city.country}/${FLAGS_STYLE}/${FLAGS_SIZE}.png`}
                           alt={city.country}
-                          className=" h-7 w-7"
+                          className=" mx-2 h-7 w-7"
                         />
                       </li>
                     );

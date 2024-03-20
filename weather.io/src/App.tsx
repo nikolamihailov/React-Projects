@@ -6,6 +6,7 @@ const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 const BASE_URL = import.meta.env.VITE_OPEN_WEATHER_BASE_URL;
 const GEO_API = import.meta.env.VITE_OPEN_WEATHER_GEO_API;
 const LIMIT = import.meta.env.VITE_CITY_DROPDOWN_LIMIT;
+const FLAGS_API = import.meta.env.VITE_FLAGS_API;
 
 type City = {
   name: string;
@@ -82,7 +83,7 @@ function App() {
                       >
                         <span>{city.name}, </span>
                         <img
-                          src={`https://flagsapi.com/${city.country}/flat/64.png`}
+                          src={`${FLAGS_API}/${city.country}/flat/64.png`}
                           alt={city.country}
                           className=" h-7 w-7"
                         />

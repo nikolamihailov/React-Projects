@@ -60,10 +60,10 @@ function App() {
             Welcome to your friendly weather teller. Enter your city name for
             more information.
           </p>
-          <div>
+          <div className="flex flex-col">
             <form className="relative flex items-center text-white">
               <input
-                className="rounded-full border border-blue-400  bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg "
+                className="w-full rounded-full border  border-blue-400 bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg "
                 type="text"
                 placeholder="London..."
                 value={city}
@@ -74,13 +74,13 @@ function App() {
                 className="absolute right-3 h-4 text-white md:h-6"
               />
             </form>
-            <div>
-              <ul className=" list-none text-xl text-white">
-                {city.length > 0 &&
-                  fetchedCities?.map((city) => {
+            <div className="my-4 flex items-center justify-center text-center">
+              {city.length > 0 && fetchedCities.length > 0 && (
+                <ul className=" w-4/5 list-none text-xl text-white">
+                  {fetchedCities?.map((city) => {
                     return (
                       <li
-                        className="my-2 flex justify-around border-b-2 border-b-blue-400"
+                        className="my-2 flex justify-around border-b-2 border-b-blue-400 p-2"
                         key={Date.now() + city.lat}
                       >
                         <span>{city.name}, </span>
@@ -92,7 +92,13 @@ function App() {
                       </li>
                     );
                   })}
-              </ul>
+                </ul>
+              )}
+              {city.length > 0 && fetchedCities.length === 0 && (
+                <p className="w-4/5 text-stone-100">
+                  No cities found with this name!
+                </p>
+              )}
             </div>
           </div>
         </section>

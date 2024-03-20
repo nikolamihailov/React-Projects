@@ -3,6 +3,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { ChangeEvent, useState } from "react";
 
 const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
+const BASE_URL = import.meta.env.VITE_OPEN_WEATHER_BASE_URL;
+const GEO_API = import.meta.env.VITE_OPEN_WEATHER_GEO_API;
 
 type City = {
   name: string;
@@ -19,7 +21,7 @@ function App() {
   const fetchCitities = async (city: string) => {
     if (city === "") return;
     const res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${3}&appid=${API_KEY}`
+      `${BASE_URL}${GEO_API}?q=${city}&limit=${3}&appid=${API_KEY}`
     );
     const data = await res.json();
     const uniqueCities: City[] = [];
@@ -38,7 +40,6 @@ function App() {
     fetchCitities(e.target.value.trim());
   };
 
-  // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
   return (
     <>
       <main className="box-border flex h-screen w-screen items-center justify-evenly bg-gradient-to-br from-blue-700 to-blue-900">

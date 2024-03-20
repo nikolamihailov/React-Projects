@@ -74,11 +74,11 @@ function App() {
             </form>
             <div className="my-4 flex items-center justify-center text-center">
               {city.length > 0 && fetchedCities.length > 0 && (
-                <ul className=" w-4/5 list-none text-xl text-white">
+                <ul className=" w-full list-none text-xl text-white">
                   {fetchedCities?.map((city) => {
                     return (
                       <li
-                        className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2"
+                        className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2 transition-all duration-500 ease-in hover:cursor-pointer hover:rounded-full hover:bg-blue-300 hover:text-stone-900 hover:shadow-sm hover:shadow-blue-50"
                         key={Date.now() + city.lat}
                       >
                         <span>{city.name},</span>

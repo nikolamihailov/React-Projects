@@ -9,6 +9,7 @@ const LIMIT: string = import.meta.env.VITE_CITY_DROPDOWN_LIMIT;
 const FLAGS_API: string = import.meta.env.VITE_FLAGS_API;
 const FLAGS_STYLE: string = import.meta.env.VITE_FLAGS_STYLE;
 const FLAGS_SIZE: string = import.meta.env.VITE_FLAGS_SIZE;
+const WEATHER_API: string = import.meta.env.VITE_OPEN_WEATHER_WEATHER_API;
 
 type City = {
   name: string;
@@ -37,9 +38,22 @@ function App() {
 
     setFetchedCities(uniqueCities);
   };
+
+  const fetchCityDetails = async (lat: number, lon: number) => {
+    const res = await fetch(
+      `${BASE_URL}${WEATHER_API}?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+    );
+    const data = await res.json();
+    console.log(data);
+  };
+
   const onCityInputChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
     fetchCitities(e.target.value.trim());
+  };
+
+  const onCityClicked = (lat: number, lon: number) => {
+    fetchCityDetails(lat, lon);
   };
 
   return (
@@ -80,6 +94,7 @@ function App() {
                       <li
                         className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2 transition-all duration-500 ease-in hover:cursor-pointer hover:rounded-full hover:bg-blue-300 hover:text-stone-900 hover:shadow-sm hover:shadow-blue-50"
                         key={Date.now() + city.lat}
+                        onClick={() => onCityClicked(city.lat, city.lon)}
                       >
                         <span>{city.name},</span>
                         <img

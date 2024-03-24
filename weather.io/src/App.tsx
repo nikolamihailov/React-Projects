@@ -84,7 +84,7 @@ function App() {
             Welcome to your friendly weather teller. Enter your city name for
             more information.
           </p>
-          <div className="flex flex-col">
+          <div className="my-2 flex flex-col">
             <form className="relative flex items-center text-white">
               <input
                 className="w-full rounded-full border  border-blue-400 bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg "

@@ -72,7 +72,7 @@ function App() {
       )}
       {!selectedCity && (
         <section className="backdrop-blur-xlg drop-shadow-xlg flex h-full flex-col items-center justify-center rounded bg-white bg-opacity-15 p-8 text-center md:h-3/5 md:max-w-3xl">
-          <h1 className="text-4xl font-thin md:text-5xl xl:text-6xl">
+          <h1 className="-mt-8 text-4xl font-thin md:text-5xl xl:text-6xl">
             <span className="bg-gradient-to-br from-white  via-orange-600 to-red-700 bg-clip-text font-black text-transparent">
               Weather
             </span>
@@ -84,10 +84,10 @@ function App() {
             Welcome to your friendly weather teller. Enter your city name for
             more information.
           </p>
-          <div className="my-2 flex flex-col">
+          <div className="relative my-2 flex flex-col">
             <form className="relative flex items-center text-white">
               <input
-                className="w-full rounded-full border  border-blue-400 bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg "
+                className="w-full rounded-full  border border-blue-400 bg-transparent px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-blue-400 md:px-6 md:py-3 md:text-lg"
                 type="text"
                 placeholder="London..."
                 value={city}
@@ -98,13 +98,13 @@ function App() {
                 className="absolute right-3 h-4 text-white md:h-6"
               />
             </form>
-            <div className="my-4 flex items-center justify-center text-center">
+            <div className="absolute left-0 right-0 top-9 my-4 flex items-center justify-center text-center">
               {city.length > 0 && fetchedCities.length > 0 && (
                 <ul className=" w-full list-none text-xl text-white">
                   {fetchedCities?.map((city) => {
                     return (
                       <li
-                        className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2 transition-all duration-500 ease-in hover:cursor-pointer hover:rounded-full hover:bg-blue-300 hover:text-stone-900 hover:shadow-sm hover:shadow-blue-50"
+                        className="my-2 flex justify-center border-b-2 border-b-blue-400 p-2 transition-all duration-300 ease-in hover:cursor-pointer hover:rounded-full hover:bg-blue-300 hover:text-stone-900 hover:shadow-sm hover:shadow-blue-50"
                         key={Date.now() + city.lat}
                         onClick={() => onCityClicked(city.lat, city.lon)}
                       >
@@ -120,7 +120,7 @@ function App() {
                 </ul>
               )}
               {city.length > 0 && fetchedCities.length === 0 && (
-                <p className="w-4/5 text-stone-100">
+                <p className="mt-2 w-4/5 text-stone-100">
                   No cities found with this name!
                 </p>
               )}

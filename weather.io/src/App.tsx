@@ -80,7 +80,7 @@ function App() {
               Forecast
             </span>
           </h1>
-          <p className=" my-8 text-xl text-white md:my-6">
+          <p className="my-8 text-xl text-white md:my-6">
             Welcome to your friendly weather teller. Enter your city name for
             more information.
           </p>

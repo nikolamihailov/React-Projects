@@ -9,6 +9,7 @@ import { convertToBase64 } from "../../../../utils/convertToBase64";
 import imageCompression from "browser-image-compression";
 import { getOne, updateStore } from "../../../../data/services/storeService";
 import { useShowHide } from "../../../../hooks/useShowHide";
+import Spinner from "../../../Spinner/Spinner";
 
 const FORM_VALUES = {
   City: "city",
@@ -24,8 +25,10 @@ const EditStore = ({ onClose, id, updateStores }) => {
     [FORM_VALUES.StoreImage]: "",
     [FORM_VALUES.Coordinates]: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getOne(id)
       .then((store) =>
         setValues({
@@ -35,7 +38,8 @@ const EditStore = ({ onClose, id, updateStores }) => {
           [FORM_VALUES.Coordinates]: store.coordinates,
         })
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [id]);
   const { showHide, isOpen } = useShowHide();
 
@@ -83,9 +87,7 @@ const EditStore = ({ onClose, id, updateStores }) => {
     if (updatedStore.errors) {
       setErrors(Object.values(updatedStore.errors));
     } else {
-      updateStores((stores) =>
-        stores.map((s) => (s._id === updatedStore._id ? updatedStore : s))
-      );
+      updateStores((stores) => stores.map((s) => (s._id === updatedStore._id ? updatedStore : s)));
       updateNotifs([
         {
           text: `Store KolPlace - ${updatedStore.city} updated!`,
@@ -102,72 +104,77 @@ const EditStore = ({ onClose, id, updateStores }) => {
     <>
       <div className="backdrop" onClick={onClose}></div>
       <form onSubmit={onSubmit} className={styles["add-store"]}>
-        <div className={styles["form-group"]}>
-          <label
-            htmlFor={FORM_VALUES.StoreImage}
-            style={{
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            StoreImage (Max Size - 15MB)
-            <img
-              src={values[FORM_VALUES.StoreImage] || "/src/assets/store.jpg"}
-              alt="StoreImage"
-              accept=".jpeg, .png, .jpg"
-            />
-          </label>
-          <input
-            type="file"
-            onChange={onChange}
-            name={FORM_VALUES.StoreImage}
-            id={FORM_VALUES.StoreImage}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.City}>Store City</label>
-          <input
-            type="text"
-            name={FORM_VALUES.City}
-            id={FORM_VALUES.City}
-            placeholder="Sofia"
-            value={values[FORM_VALUES.City]}
-            onChange={onChange}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.Phone}>Phone</label>
-          <input
-            type="text"
-            name={FORM_VALUES.Phone}
-            id={FORM_VALUES.Phone}
-            placeholder="0876543210"
-            value={values[FORM_VALUES.Phone]}
-            onChange={onChange}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.Coordinates}>Coordinates</label>
-          <i className="fa-solid fa-circle-info" onClick={showHide}></i>
-          <input
-            type="text"
-            name={FORM_VALUES.Coordinates}
-            id={FORM_VALUES.Coordinates}
-            placeholder="42.02385777554838, 24.866073294743014"
-            value={values[FORM_VALUES.Coordinates]}
-            onChange={onChange}
-          />
-        </div>
-        {isOpen && (
-          <div className={styles["info-co"]}>
-            Coordinates Info: On your computer, open Google Maps. Right-click
-            the place or area on the map. This will open a pop-up window. You
-            can find your latitude and longitude in decimal format at the top.
-          </div>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles["form-group"]}>
+              <label
+                htmlFor={FORM_VALUES.StoreImage}
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                StoreImage (Max Size - 15MB)
+                <img
+                  src={values[FORM_VALUES.StoreImage] || "/src/assets/store.jpg"}
+                  alt="StoreImage"
+                  accept=".jpeg, .png, .jpg"
+                />
+              </label>
+              <input
+                type="file"
+                onChange={onChange}
+                name={FORM_VALUES.StoreImage}
+                id={FORM_VALUES.StoreImage}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.City}>Store City</label>
+              <input
+                type="text"
+                name={FORM_VALUES.City}
+                id={FORM_VALUES.City}
+                placeholder="Sofia"
+                value={values[FORM_VALUES.City]}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.Phone}>Phone</label>
+              <input
+                type="text"
+                name={FORM_VALUES.Phone}
+                id={FORM_VALUES.Phone}
+                placeholder="0876543210"
+                value={values[FORM_VALUES.Phone]}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor={FORM_VALUES.Coordinates}>Coordinates</label>
+              <i className="fa-solid fa-circle-info" onClick={showHide}></i>
+              <input
+                type="text"
+                name={FORM_VALUES.Coordinates}
+                id={FORM_VALUES.Coordinates}
+                placeholder="42.02385777554838, 24.866073294743014"
+                value={values[FORM_VALUES.Coordinates]}
+                onChange={onChange}
+              />
+            </div>
+            {isOpen && (
+              <div className={styles["info-co"]}>
+                Coordinates Info: On your computer, open Google Maps. Right-click the place or area
+                on the map. This will open a pop-up window. You can find your latitude and longitude
+                in decimal format at the top.
+              </div>
+            )}
+            <button type="submit">Edit</button>
+          </>
         )}
-
-        <button type="submit">Edit</button>
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

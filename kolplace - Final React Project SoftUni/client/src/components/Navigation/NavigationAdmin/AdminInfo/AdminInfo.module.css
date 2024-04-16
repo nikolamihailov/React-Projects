@@ -1,4 +1,5 @@
 .info {
+  position: relative;
   padding: 15px;
   border-bottom: 3px solid var(--background-color);
   display: flex;

@@ -7,6 +7,7 @@ import { NotifContext } from "../../../../contexts/NotificationContext";
 import Notification from "../../../Notifications/Notification";
 import { getOneCategory } from "../../../../data/services/categoryService";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import Spinner from "../../../Spinner/Spinner";
 
 const FORM_VALUES = {
   Name: "name",
@@ -16,6 +17,7 @@ const FORM_VALUES = {
 const EditCategoryItem = ({ onClose, id, updateCategories }) => {
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
@@ -24,12 +26,16 @@ const EditCategoryItem = ({ onClose, id, updateCategories }) => {
     [FORM_VALUES.CategoryImage]: "",
   });
   useEffect(() => {
-    getOneCategory(id).then((data) =>
-      setValues({
-        [FORM_VALUES.Name]: data.name,
-        [FORM_VALUES.CategoryImage]: data.categoryImage,
-      })
-    );
+    setIsLoading(true);
+    getOneCategory(id)
+      .then((data) =>
+        setValues({
+          [FORM_VALUES.Name]: data.name,
+          [FORM_VALUES.CategoryImage]: data.categoryImage,
+        })
+      )
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [id]);
 
   const onChange = (e) => {
@@ -58,9 +64,7 @@ const EditCategoryItem = ({ onClose, id, updateCategories }) => {
       setErrors(Object.values(editedCategory.errors));
     } else {
       updateCategories((categs) =>
-        categs.map((category) =>
-          category._id === editedCategory._id ? editedCategory : category
-        )
+        categs.map((category) => (category._id === editedCategory._id ? editedCategory : category))
       );
       updateNotifs([
         {
@@ -77,38 +81,41 @@ const EditCategoryItem = ({ onClose, id, updateCategories }) => {
     <>
       <div className="backdrop" onClick={onClose}></div>
       <form onSubmit={onSubmit} className={styles["add-category"]}>
-        <div className={styles["form-group"]}>
-          <label htmlFor="name">Category Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Games"
-            value={values[FORM_VALUES.Name] || ""}
-            onChange={onChange}
-          />
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor="name">Category Image</label>
-          <input
-            type="text"
-            name="categoryImage"
-            placeholder="https://games..."
-            id="categoryImage"
-            value={values[FORM_VALUES.CategoryImage] || ""}
-            onChange={onChange}
-          />
-        </div>
-        {values[FORM_VALUES.CategoryImage] === "" ? (
-          <img src="/src/assets/no-image.jpg" alt={values[FORM_VALUES.Name]} />
+        {isLoading ? (
+          <Spinner />
         ) : (
-          <img
-            src={values[FORM_VALUES.CategoryImage]}
-            alt={values[FORM_VALUES.Name]}
-          />
-        )}
+          <>
+            <div className={styles["form-group"]}>
+              <label htmlFor="name">Category Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Games"
+                value={values[FORM_VALUES.Name] || ""}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles["form-group"]}>
+              <label htmlFor="name">Category Image</label>
+              <input
+                type="text"
+                name="categoryImage"
+                placeholder="https://games..."
+                id="categoryImage"
+                value={values[FORM_VALUES.CategoryImage] || ""}
+                onChange={onChange}
+              />
+            </div>
+            {values[FORM_VALUES.CategoryImage] === "" ? (
+              <img src="/src/assets/no-image.jpg" alt={values[FORM_VALUES.Name]} />
+            ) : (
+              <img src={values[FORM_VALUES.CategoryImage]} alt={values[FORM_VALUES.Name]} />
+            )}
 
-        <button type="submit">Edit</button>
+            <button type="submit">Edit</button>
+          </>
+        )}
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

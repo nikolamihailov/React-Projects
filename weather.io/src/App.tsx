@@ -17,11 +17,14 @@ type City = {
   lat: number;
   lon: number;
   ["local_names"]: object;
+  sys: {
+    country: string;
+  };
 };
 
 function App() {
   const [city, setCity] = useState("");
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const [fetchedCities, setFetchedCities] = useState(Array<City>);
 
   const fetchCitities = async (city: string) => {

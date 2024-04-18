@@ -4,15 +4,20 @@ import { useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { deleteUser, getProfile } from "../../../../data/services/userService";
+import Spinner from "../../../Spinner/Spinner";
 
 const DeleteUser = ({ onClose, id, updateUsers }) => {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
   useEffect(() => {
-    getProfile(id).then((data) => setUser(data));
+    setIsLoading(true);
+    getProfile(id)
+      .then((data) => setUser(data))
+      .finally(() => setIsLoading(false));
   }, [id]);
 
   const onDelete = async () => {
@@ -41,17 +46,23 @@ const DeleteUser = ({ onClose, id, updateUsers }) => {
     <>
       <div className="backdrop" onClick={onClose}></div>
       <div className={styles["delete-user"]}>
-        <p>
-          Are you sure you want to delete{" "}
-          <span>
-            {user?.firstName} {user?.lastName}
-          </span>
-          ?
-        </p>
-        <div className={styles["btns"]}>
-          <button onClick={onDelete}>Ok</button>
-          <button onClick={onClose}>Cancel</button>
-        </div>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <p>
+              Are you sure you want to delete{" "}
+              <span>
+                {user?.firstName} {user?.lastName}
+              </span>
+              ?
+            </p>
+            <div className={styles["btns"]}>
+              <button onClick={onDelete}>Ok</button>
+              <button onClick={onClose}>Cancel</button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

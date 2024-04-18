@@ -1,21 +1,23 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  getOneCategory,
-  deleteCategory,
-} from "../../../../data/services/categoryService";
+import { getOneCategory, deleteCategory } from "../../../../data/services/categoryService";
 import styles from "./DeleteCategory.module.css";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import Spinner from "../../../Spinner/Spinner";
 
 const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
   const [category, setCategory] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
   useEffect(() => {
-    getOneCategory(id).then((data) => setCategory(data));
+    setIsLoading(true);
+    getOneCategory(id)
+      .then((data) => setCategory(data))
+      .finally(setIsLoading(false));
   }, [id]);
 
   const onDelete = async () => {
@@ -33,9 +35,7 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
     if (deletedCategory.error) {
       updateNotifs([{ text: deletedCategory.error, type: "error" }]);
     } else {
-      updateCategories((categs) =>
-        categs.filter((c) => c._id !== deletedCategory._id)
-      );
+      updateCategories((categs) => categs.filter((c) => c._id !== deletedCategory._id));
       updateNotifs([
         {
           text: `Category - ${deletedCategory.name} deleted!`,
@@ -50,14 +50,19 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
     <>
       <div className="backdrop" onClick={onClose}></div>
       <div className={styles["delete-category"]}>
-        <p>
-          Are you sure you want to delete <span>{category?.name}</span>{" "}
-          category?
-        </p>
-        <div>
-          <button onClick={onDelete}>Ok</button>
-          <button onClick={onClose}>Cancel</button>
-        </div>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <p>
+              Are you sure you want to delete <span>{category?.name}</span> category?
+            </p>
+            <div>
+              <button onClick={onDelete}>Ok</button>
+              <button onClick={onClose}>Cancel</button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

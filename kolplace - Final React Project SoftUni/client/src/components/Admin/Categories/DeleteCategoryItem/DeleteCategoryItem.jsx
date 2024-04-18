@@ -17,7 +17,7 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
     setIsLoading(true);
     getOneCategory(id)
       .then((data) => setCategory(data))
-      .finally(setIsLoading(false));
+      .finally(() => setIsLoading(false));
   }, [id]);
 
   const onDelete = async () => {

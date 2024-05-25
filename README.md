@@ -1,6 +1,6 @@
 # React Projects live demos:
 
-## Solar System Planets: React only
+## Solar System Planets: React only app
 
 ### Live Demo: 
 

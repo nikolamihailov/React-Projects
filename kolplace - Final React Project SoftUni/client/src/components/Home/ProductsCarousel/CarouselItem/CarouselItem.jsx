@@ -78,11 +78,7 @@ const CaroueselProductItem = ({
       }}
       className={styles["carousel-product-item"]}
     >
-      {hasPromoPrice && (
-        <span className={styles["discount"]}>
-          {`-${discountInPercentage}%`}
-        </span>
-      )}
+      {hasPromoPrice && <span className={styles["discount"]}>{`-${discountInPercentage}%`}</span>}
       <Link to={`/products/${_id}`}>
         <img src={mainImage} alt={name} />
       </Link>
@@ -90,7 +86,9 @@ const CaroueselProductItem = ({
         <h2>{name.length > 45 ? name.slice(0, 41) + " ..." : name}</h2>
       </Link>
       {reviews && calculateRating(reviews)}
-      <span>{category.name}</span>
+      <Link to={`/categories/${category.name.toLowerCase()}`}>
+        <span>{category.name}</span>
+      </Link>
       <div className={styles["prices"]}>
         <p
           style={
@@ -101,9 +99,7 @@ const CaroueselProductItem = ({
         >
           ${price.toFixed(2)}
         </p>
-        {hasPromoPrice && (
-          <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
-        )}
+        {hasPromoPrice && <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>}
       </div>
       <button
         onClick={() => {
@@ -117,10 +113,7 @@ const CaroueselProductItem = ({
                   type: "success",
                 },
               ]);
-            else
-              updateNotifs([
-                { text: `${name} added to cart!`, type: "success" },
-              ]);
+            else updateNotifs([{ text: `${name} added to cart!`, type: "success" }]);
           } else {
             updateNotifs([
               {

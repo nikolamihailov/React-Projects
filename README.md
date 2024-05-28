@@ -1,4 +1,4 @@
-# React Projects live demos:
+# React Projects live demos: 
 
 ## Solar System Planets: React only app
 

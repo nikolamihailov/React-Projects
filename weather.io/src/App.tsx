@@ -2,14 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { ChangeEvent, useState } from "react";
 
-const API_KEY: string = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
-const BASE_URL: string = import.meta.env.VITE_OPEN_WEATHER_BASE_URL;
-const GEO_API: string = import.meta.env.VITE_OPEN_WEATHER_GEO_API;
-const LIMIT: string = import.meta.env.VITE_CITY_DROPDOWN_LIMIT;
-const FLAGS_API: string = import.meta.env.VITE_FLAGS_API;
-const FLAGS_STYLE: string = import.meta.env.VITE_FLAGS_STYLE;
-const FLAGS_SIZE: string = import.meta.env.VITE_FLAGS_SIZE;
-const WEATHER_API: string = import.meta.env.VITE_OPEN_WEATHER_WEATHER_API;
+const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
+const BASE_URL = import.meta.env.VITE_OPEN_WEATHER_BASE_URL;
+const GEO_API = import.meta.env.VITE_OPEN_WEATHER_GEO_API;
+const LIMIT = import.meta.env.VITE_CITY_DROPDOWN_LIMIT;
+const FLAGS_API = import.meta.env.VITE_FLAGS_API;
+const FLAGS_STYLE = import.meta.env.VITE_FLAGS_STYLE;
+const FLAGS_SIZE = import.meta.env.VITE_FLAGS_SIZE;
+const WEATHER_API = import.meta.env.VITE_OPEN_WEATHER_WEATHER_API;
 
 type City = {
   name: string;

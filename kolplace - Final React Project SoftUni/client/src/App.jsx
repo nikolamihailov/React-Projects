@@ -34,6 +34,7 @@ import OrderComplete from "./components/Order/OrderComplete/OrderComplete.jsx";
 import Stats from "./components/Admin/Stats/Stats.jsx";
 import RouteGuardUser from "./guards/RouteGuardUser.jsx";
 import RouteGuardLoginRegister from "./guards/RouteGuradLoginRegister.jsx";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
   return (
@@ -45,57 +46,41 @@ function App() {
               <Header />
               <main className="main">
                 <NotificationContainer />
-                <Routes>
-                  <Route path="/" element={<Home />}></Route>
-                  <Route element={<RouteGuardLoginRegister />}>
-                    <Route path="/login" element={<Login />}></Route>
-                    <Route path="/register" element={<Register />}></Route>
-                  </Route>
-                  <Route path="/about-us" element={<About />}></Route>
-                  <Route path="/our-stores" element={<OurStores />}></Route>
-                  <Route path="/promotions" element={<Promotions />}></Route>
-                  <Route
-                    path="/products/search/*"
-                    element={<SearchedProducts />}
-                  ></Route>
-                  <Route
-                    path="/categories/:name"
-                    element={<Category />}
-                  ></Route>
-                  <Route
-                    path="/products/:id"
-                    element={<ProductDetails />}
-                  ></Route>
+                <SkeletonTheme baseColor={"#767c85"} highlightColor={"whitesmoke"}>
+                  <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route element={<RouteGuardLoginRegister />}>
+                      <Route path="/login" element={<Login />}></Route>
+                      <Route path="/register" element={<Register />}></Route>
+                    </Route>
+                    <Route path="/about-us" element={<About />}></Route>
+                    <Route path="/our-stores" element={<OurStores />}></Route>
+                    <Route path="/promotions" element={<Promotions />}></Route>
+                    <Route path="/products/search/*" element={<SearchedProducts />}></Route>
+                    <Route path="/categories/:name" element={<Category />}></Route>
+                    <Route path="/products/:id" element={<ProductDetails />}></Route>
 
-                  <Route element={<RouteGuardUser />}>
-                    <Route
-                      path="/favourite-products"
-                      element={<FavouriteProducts />}
-                    ></Route>
-                    <Route path="/my-profile" element={<UserProfile />}></Route>
-                    <Route
-                      path="/shopping-cart"
-                      element={<ShoppingCart />}
-                    ></Route>
-                    <Route path="/checkout" element={<Checkout />}></Route>
-                    <Route path="/my-orders" element={<MyOrders />}></Route>
-                    <Route
-                      path="/order-complete"
-                      element={<OrderComplete />}
-                    ></Route>
-                  </Route>
+                    <Route element={<RouteGuardUser />}>
+                      <Route path="/favourite-products" element={<FavouriteProducts />}></Route>
+                      <Route path="/my-profile" element={<UserProfile />}></Route>
+                      <Route path="/shopping-cart" element={<ShoppingCart />}></Route>
+                      <Route path="/checkout" element={<Checkout />}></Route>
+                      <Route path="/my-orders" element={<MyOrders />}></Route>
+                      <Route path="/order-complete" element={<OrderComplete />}></Route>
+                    </Route>
 
-                  <Route path="/admin-panel" element={<RouteGuardAdmin />}>
-                    <Route path="categories" element={<Categories />}></Route>
-                    <Route path="products" element={<Products />}></Route>
-                    <Route path="users" element={<Users />}></Route>
-                    <Route path="stores" element={<Stores />}></Route>
-                    <Route path="reviews" element={<Reviews />}></Route>
-                    <Route path="statistics" element={<Stats />}></Route>
-                  </Route>
-                  <Route path="/*" element={<Navigate to="/error" />} />
-                  <Route path="/error" element={<ErrorPage />} />
-                </Routes>
+                    <Route path="/admin-panel" element={<RouteGuardAdmin />}>
+                      <Route path="categories" element={<Categories />}></Route>
+                      <Route path="products" element={<Products />}></Route>
+                      <Route path="users" element={<Users />}></Route>
+                      <Route path="stores" element={<Stores />}></Route>
+                      <Route path="reviews" element={<Reviews />}></Route>
+                      <Route path="statistics" element={<Stats />}></Route>
+                    </Route>
+                    <Route path="/*" element={<Navigate to="/error" />} />
+                    <Route path="/error" element={<ErrorPage />} />
+                  </Routes>
+                </SkeletonTheme>
                 <ScrollToTop />
               </main>
               <Footer />

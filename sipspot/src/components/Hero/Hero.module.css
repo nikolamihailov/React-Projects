@@ -39,3 +39,13 @@
     transform: translateY(0) rotate(0);
   }
 }
+
+@media (max-width: 600px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    column-gap: 4.8rem;
+  }
+  .hero-section img {
+    width: 100%;
+  }
+}

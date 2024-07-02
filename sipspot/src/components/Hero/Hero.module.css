@@ -1,0 +1,25 @@
+.hero-section {
+  max-width: 130rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 3.2rem;
+}
+
+.hero-section img {
+  width: 75%;
+  animation: bounce 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 0.5rem crimson);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(1.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

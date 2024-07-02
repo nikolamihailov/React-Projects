@@ -18,7 +18,6 @@ html {
 }
 body {
   font-family: "Nunito", sans-serif;
-}
-h1 {
-  font-size: 4.4rem;
+  background-color: #000000;
+  color: #dee2e6;
 }

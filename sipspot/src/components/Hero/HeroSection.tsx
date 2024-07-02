@@ -6,14 +6,15 @@ function HeroSection() {
   return (
     <section className={styles["hero-section"]}>
       <div className={styles["text-box"]}>
-        <h1>SipSpot - Best Cocktails!</h1>
-        <p>
-          Sip, savor, and celebrate! Discover the art of cocktails where every drink tells a story
+        <h1 className={styles["hero-heading"]}>Discover the Ultimate Cocktail Experience</h1>
+        <p className={styles["hero-desc"]}>
+          Crafting the finest cocktails for your delight. Every sip, a new story. Cheers to
+          unforgettable moments!
         </p>
-        <Button>Browse Cocktails</Button>
+        <Button>Explore Our Cocktails</Button>
       </div>
       <div className={styles["img-box"]}>
-        <img src={heroImg} alt="" />
+        <img src={heroImg} alt="Delicious cocktails" />
       </div>
     </section>
   );

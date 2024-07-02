@@ -1,10 +1,11 @@
 import "./index.css";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
-      <h1>SipSpot - Best Cocktails!</h1>
-    </>
+    <main>
+      <Home />
+    </main>
   );
 }
 

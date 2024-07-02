@@ -37,24 +37,16 @@ const UserProfile = () => {
 
   return (
     <section className={styles["user-profile"]}>
-      <h1>
-        <i className="fa-regular fa-user"></i>My Profile{" "}
-      </h1>
-
       {isLoading ? (
         <Spinner />
       ) : (
         <>
-          <i
-            className="fa-solid fa-pen-to-square"
-            onClick={showHide}
-            title="Edit Profile"
-          ></i>
+          <h1>
+            <i className="fa-regular fa-user"></i>My Profile{" "}
+          </h1>
+          <i className="fa-solid fa-pen-to-square" onClick={showHide} title="Edit Profile"></i>
           <div className={styles["info"]}>
-            <img
-              src={profile?.avatar ? profile?.avatar : avatar}
-              alt="avatar"
-            />
+            <img src={profile?.avatar ? profile?.avatar : avatar} alt="avatar" />
             <h2>Role: {profile?.role}</h2>
             <p>
               <strong>First Name: </strong>

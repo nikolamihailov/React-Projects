@@ -27,6 +27,11 @@
   line-height: 1.6;
   margin-bottom: 3.2rem;
 }
+.img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @keyframes bounce {
   0% {

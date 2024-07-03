@@ -1,14 +1,4 @@
-.hero-section {
-  margin: 0 auto;
-  max-width: 130rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 9.6rem;
-  align-items: center;
-  padding: 3.2rem;
-}
-
-.hero-section img {
+.img-box img {
   width: 75%;
   animation: bounce 3s infinite ease-in-out;
   filter: drop-shadow(0 0 0.5rem crimson);
@@ -46,11 +36,7 @@
 }
 
 @media (max-width: 600px) {
-  .hero-section {
-    grid-template-columns: 1fr;
-    column-gap: 4.8rem;
-  }
-  .hero-section img {
+  .img-box img {
     width: 100%;
   }
 }

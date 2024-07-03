@@ -12,7 +12,7 @@ function HeroSection() {
           Crafting the finest cocktails for your delight. Every sip, a new story. Cheers to
           unforgettable moments!
         </p>
-        <Button bgColor="#f59f00" color="white">
+        <Button bgColor="#f59f00" color="#fff">
           Explore Our Cocktails
         </Button>
       </div>

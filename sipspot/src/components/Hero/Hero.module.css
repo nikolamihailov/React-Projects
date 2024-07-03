@@ -4,6 +4,9 @@
   filter: drop-shadow(0 0 0.5rem crimson);
 }
 
+.text-box {
+  color: #000;
+}
 .hero-heading {
   font-size: 4.4rem;
   margin-bottom: 3.2rem;

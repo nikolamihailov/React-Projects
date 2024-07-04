@@ -8,6 +8,7 @@ Pages:
 Home Sections:
 - Logo + Navigation
 - Hero
+- Partners 
 - Few Cocktails examples
 - Testimonials + Gallery
 - Book Reservation(CTA)

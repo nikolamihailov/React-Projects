@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Logo from "../UI/Logo/Logo";
 import Nav from "../UI/Nav/Nav";
 import styles from "./Navigation.module.css";
@@ -7,17 +8,17 @@ function Navigation() {
     <Nav bgColor="#ffe066">
       <ul className={styles["main-nav"]}>
         <li>
-          <a href="#">Home</a>
+          <NavLink to={"/"}>Home</NavLink>
         </li>
         <li>
-          <a href="#">Recipes</a>
+          <NavLink to={"/recipes"}>Recipes</NavLink>
         </li>
         <Logo />
         <li>
-          <a href="#">About us</a>
+          <NavLink to={"/gallery"}>Gallery</NavLink>
         </li>
         <li>
-          <a href="#">Gallery</a>
+          <NavLink to={"/about-us"}>About us</NavLink>
         </li>
       </ul>
     </Nav>

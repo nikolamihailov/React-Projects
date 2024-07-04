@@ -1,10 +1,12 @@
-import logo from "../../../../public/logo-icon.png";
-
-function Logo() {
+type LogoProps = {
+  width: number;
+  src: string;
+};
+function Logo({ width, src }: LogoProps) {
   return (
-    <div>
-      <img src={logo} alt="logo for sipspot bar" height={60} width={60} />
-    </div>
+    <>
+      <img src={src} alt="logo for sipspot bar" width={width} />
+    </>
   );
 }
 

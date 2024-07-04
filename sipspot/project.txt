@@ -1,0 +1,14 @@
+
+Pages:
+- Home
+- About us
+- Recipes
+- Gallery
+
+Home Sections:
+- Logo + Navigation
+- Hero
+- Few Cocktails examples
+- Testimonials + Gallery
+- Book Reservation(CTA)
+- Footer

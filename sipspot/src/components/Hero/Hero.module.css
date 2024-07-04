@@ -9,7 +9,7 @@
 }
 
 .img-box img {
-  width: 85%;
+  width: 90%;
   animation: bounce 3s infinite ease-in-out;
   filter: drop-shadow(0 0 1rem #8b0401);
 }
@@ -19,7 +19,7 @@
 }
 
 .text-box button {
-  margin-right: 1.6rem;
+  margin: 1.6rem 1.6rem 0 0;
 }
 .text-box h1 {
   font-size: 4.4rem;

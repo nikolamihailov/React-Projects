@@ -8,15 +8,15 @@ function HeroSection() {
     <Section bgColor="#ffe066">
       <div className={styles["hero"]}>
         <div className={styles["text-box"]}>
-          <h1 className={styles["hero-heading"]}>Discover the Ultimate Cocktail Experience</h1>
-          <p className={styles["hero-desc"]}>
+          <h1>Discover the Ultimate Cocktail Experience</h1>
+          <p>
             Crafting the finest cocktails for your delight. Every sip, a new story. Cheers to
-            unforgettable moments!
+            unforgettable moments! Elevate your evenings with our masterfully crafted drinks.
           </p>
           <Button bgColor="#8B0401" color="#fff">
             Explore Cocktails
           </Button>
-          <Button bgColor="#f08c00" color="#fff">
+          <Button bgColor="#e67700" color="#fff">
             Book Reservation
           </Button>
         </div>

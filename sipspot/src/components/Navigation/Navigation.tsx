@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../UI/Logo/Logo";
 import Nav from "../UI/Nav/Nav";
 import styles from "./Navigation.module.css";
+import logo from "../../../public/logo-icon.png";
 
 function Navigation() {
   return (
@@ -13,7 +14,11 @@ function Navigation() {
         <li>
           <NavLink to={"/recipes"}>Recipes</NavLink>
         </li>
-        <Logo />
+        <li>
+          <NavLink to={"/"}>
+            <Logo src={logo} width={60} />
+          </NavLink>
+        </li>
         <li>
           <NavLink to={"/gallery"}>Gallery</NavLink>
         </li>

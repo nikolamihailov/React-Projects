@@ -11,3 +11,9 @@
 ### Live Demo: 
 
 [<img alt="kolplace screenshot" src="https://i.ibb.co/x2tSzXB/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png"/>](https://kolplace.netlify.app/)
+
+## SipSPot: React, React Router, Redux (In Progress)
+
+### Live Demo:
+
+[<img alt="sipspot screenshot" src="https://i.ibb.co/TcYtzcN/Screenshot-2024-07-05-at-20-06-25-Sip-Spot-Best-Bar-for-Cocktails.png"/>](https://sipspot.netlify.app/)

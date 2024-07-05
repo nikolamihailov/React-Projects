@@ -1,3 +1,5 @@
+Project:
+- website (SPA) for luxury cocktail bar
 
 Pages:
 - Home
@@ -5,11 +7,16 @@ Pages:
 - Recipes
 - Gallery
 
-Home Sections:
-- Logo + Navigation
+- Common components for all pages: 
+  - Header
+    - Logo + Navigation
+  - Footer 
+    - Logo + Navigation
+    - all rights reserved + socials
+
+Home Section:
 - Hero
 - Partners 
-- Few Cocktails examples
+- Few Cocktails examples with cards
 - Testimonials + Gallery
 - Book Reservation(CTA)
-- Footer

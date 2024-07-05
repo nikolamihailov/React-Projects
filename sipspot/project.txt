@@ -7,6 +7,16 @@ Pages:
 - Recipes
 - Gallery
 
+Typography:
+- font-family: Nunito
+
+Colors:
+- shades and tints of yellow and orange from Open Colors pallete, as well as white
+- #8b0401
+- #ffe066
+- #e67700
+- #fff
+
 - Common components for all pages: 
   - Header
     - Logo + Navigation

@@ -6,7 +6,7 @@ type SectionProps = {
   children: ReactNode;
 };
 
-function Section({ bgColor = "#000", children }: SectionProps) {
+function Section({ bgColor = "#fff", children }: SectionProps) {
   return (
     <section style={{ backgroundColor: bgColor }} className={styles["section"]}>
       {children}

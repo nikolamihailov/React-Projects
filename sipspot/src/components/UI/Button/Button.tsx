@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import stylesBtn from "./Button.module.css";
+import { Link } from "react-router-dom";
 
 type ButtonProps = {
   el: "button";
@@ -19,7 +20,7 @@ type LinksProps = {
   color: string;
   hoverBgColor?: string;
   hoverColor?: string;
-  onClickFunc?: () => void;
+  href: string;
   children: ReactNode;
 } & ComponentPropsWithoutRef<"a">;
 
@@ -45,18 +46,32 @@ function Button(props: ButtonProps | LinksProps) {
     target.style.color = color;
   };
 
-  if (el === "link") {
+  if (el === "link" && props.href.includes("#")) {
     return (
       <a
         style={styles}
         className={className}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={props.onClickFunc}
         {...(otherProps as LinksProps)}
       >
         {children}
       </a>
+    );
+  }
+
+  if (el === "link") {
+    return (
+      <Link
+        style={styles}
+        className={className}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        to={props.href}
+        {...(otherProps as LinksProps)}
+      >
+        {children}
+      </Link>
     );
   }
 

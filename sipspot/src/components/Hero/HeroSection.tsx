@@ -26,10 +26,10 @@ function HeroSection() {
           <Button
             bgColor="#e67700"
             color="#fff"
-            el="button"
-            onClickFunc={() => alert("clicked")}
+            el="link"
             hoverBgColor="#fff"
             hoverColor="#000"
+            href="#reservation"
           >
             Book Reservation
           </Button>

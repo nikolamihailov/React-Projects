@@ -18,7 +18,8 @@
   color: #8b0401;
 }
 
-.text-box button {
+.text-box a:link {
+  display: inline-block;
   margin: 1.6rem 1.6rem 0 0;
 }
 .text-box h1 {

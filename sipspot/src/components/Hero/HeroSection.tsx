@@ -1,6 +1,6 @@
-import heroImg from "../../../public/hero-img.png";
 import Button from "../UI/Button/Button";
 import Section from "../UI/Section/Section";
+import heroImg from "../../../public/hero-img.png";
 import styles from "./Hero.module.css";
 
 function HeroSection() {
@@ -13,10 +13,24 @@ function HeroSection() {
             Crafting the finest cocktails for your delight. Every sip, a new story. Cheers to
             unforgettable moments! Elevate your evenings with our masterfully crafted drinks.
           </p>
-          <Button bgColor="#8B0401" color="#fff">
+          <Button
+            bgColor="#8B0401"
+            color="#fff"
+            el="link"
+            hoverBgColor="#fff"
+            hoverColor="#000"
+            href="/recipes"
+          >
             Explore Cocktails
           </Button>
-          <Button bgColor="#e67700" color="#fff">
+          <Button
+            bgColor="#e67700"
+            color="#fff"
+            el="button"
+            onClickFunc={() => alert("clicked")}
+            hoverBgColor="#fff"
+            hoverColor="#000"
+          >
             Book Reservation
           </Button>
         </div>

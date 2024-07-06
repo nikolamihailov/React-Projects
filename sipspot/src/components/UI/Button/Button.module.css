@@ -1,10 +1,17 @@
-.btn {
+.btn-link,
+.btn-link:link,
+.btn-link:visited {
   border: none;
   outline: none;
-  font-weight: 600;
-  padding: 1.6rem 3.2rem;
+  font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-link:active {
+  scale: 1.05;
 }
 
 .small {

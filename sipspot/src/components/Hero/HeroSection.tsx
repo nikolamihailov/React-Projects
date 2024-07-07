@@ -1,6 +1,6 @@
 import Button from "../UI/Button/Button";
 import Section from "../UI/Section/Section";
-import heroImg from "../../../public/hero-img.png";
+import heroImg from "/hero-img.png";
 import styles from "./Hero.module.css";
 
 function HeroSection() {

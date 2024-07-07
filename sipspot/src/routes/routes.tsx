@@ -9,12 +9,14 @@ import ErrorPage from "../pages/ErrorPage";
 
 export const appRouter = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage />, // Use the component directly
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
+        index: true,
       },
       {
         path: "/recipes",
@@ -29,7 +31,7 @@ export const appRouter = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/*",
+        path: "*",
         element: <ErrorPage />,
       },
     ],

@@ -1,0 +1,42 @@
+name: nikola-flow-be
+
+services:
+  db:
+    image: mysql:8.4.2
+    environment:
+      MYSQL_DATABASE: flow-db
+      MYSQL_USER: flow-user
+      MYSQL_PASSWORD: flow-password
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - my-db:/data/db
+    ports:
+      - "3306:3306"
+    networks:
+      - nikola-flow-network
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+  app:
+    build:
+      context: .
+      dockerfile: local.Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - spring.datasource.url=jdbc:mysql://db:3306/flow-db
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - nikola-flow-network
+
+volumes:
+  my-db:
+
+networks:
+  nikola-flow-network:

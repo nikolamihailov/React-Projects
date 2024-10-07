@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-color: var(--color-secondary-main) var(--color-primary-dark);
+  scrollbar-width: thin;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-secondary-dark);
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main {
+  position: relative;
+}
+
+.heading-primary,
+.heading-secondary {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+}
+
+@media only screen and (max-width: 480px) {
+  .heading-primary {
+    font-size: 4.2rem;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  body .Toastify__toast-container {
+    width: auto;
+    padding: initial;
+    left: initial;
+    margin: initial;
+  }
+}

@@ -1,0 +1,9 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(25),
+    age SMALLINT NOT NULL CHECK (age >= 0 AND age <= 120)
+);

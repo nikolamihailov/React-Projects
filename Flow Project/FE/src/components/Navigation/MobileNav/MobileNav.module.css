@@ -1,0 +1,23 @@
+.mobile-nav {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3.2rem;
+}
+
+.mobile-nav li {
+  list-style-type: none;
+}
+
+.mobile-nav a {
+  text-decoration: none;
+  color: var(--color-primary-main);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.mobile-nav li a.active {
+  color: var(--color-secondary-dark) !important;
+}

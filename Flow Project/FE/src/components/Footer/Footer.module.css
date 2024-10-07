@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  padding: 1.6rem;
+  margin-top: 0;
+  width: 100%;
+  background-color: var(--color-primary-light);
+  color: var(--color-secondary-main);
+  gap: 1.6rem;
+}
+
+.footer p {
+  font-size: 1.8rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}

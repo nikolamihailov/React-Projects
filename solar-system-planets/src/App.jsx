@@ -33,7 +33,6 @@ function App() {
         <Spinner />
       ) : (
         <>
-          <AudioPlayer />
           <Nav planets={planets} />
           <PlanetList planets={planets} />
           <Footer />

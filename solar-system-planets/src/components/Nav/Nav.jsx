@@ -1,3 +1,4 @@
+import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import styles from "./nav.module.css";
 
 const Nav = () => {
@@ -8,6 +9,7 @@ const Nav = () => {
           <img src="/lg.png" alt="logo" />
         </li>
       </ul>
+      <AudioPlayer />
     </nav>
   );
 };

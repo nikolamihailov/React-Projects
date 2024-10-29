@@ -35,7 +35,7 @@ function EditFormStaff({ id, handleClose, onSubmit }: EditFormStaffProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
     setValue,
     clearErrors,
   } = useForm<UserFormFields>({
@@ -253,7 +253,7 @@ function EditFormStaff({ id, handleClose, onSubmit }: EditFormStaffProps) {
       </FormControl>
 
       <Box sx={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" disabled={!isDirty}>
           Save Changes
         </Button>
         <Button onClick={handleClose} variant="outlined">

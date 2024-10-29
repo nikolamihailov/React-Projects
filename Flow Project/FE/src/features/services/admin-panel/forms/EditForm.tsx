@@ -17,7 +17,7 @@ function EditForm({ handleClose, onSubmit, serviceId }: EditFormProps) {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<ServiceFormFields>({
     defaultValues: {
       name: "",
@@ -123,10 +123,11 @@ function EditForm({ handleClose, onSubmit, serviceId }: EditFormProps) {
           error={!!errors.durationMinutes}
           helperText={errors.durationMinutes?.message}
           fullWidth
+          disabled={true}
         />
 
         <Box sx={serviceFormButtons}>
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="contained" color="primary" disabled={!isDirty}>
             Save Changes
           </Button>
           <Button onClick={handleClose} variant="outlined">

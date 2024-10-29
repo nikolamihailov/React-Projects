@@ -15,7 +15,7 @@ function EditForm({ id, handleClose, onSubmit }: EditFormProps) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
     setValue,
   } = useForm<UserFormFields>({
     defaultValues: {
@@ -140,7 +140,7 @@ function EditForm({ id, handleClose, onSubmit }: EditFormProps) {
       />
 
       <Box sx={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" disabled={!isDirty}>
           Save Changes
         </Button>
         <Button onClick={handleClose} variant="outlined">

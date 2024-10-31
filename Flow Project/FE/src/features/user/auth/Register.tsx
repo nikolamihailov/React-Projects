@@ -87,6 +87,7 @@ function Register() {
             error={!!errors.email}
             helperText={errors.email?.message}
             type="email"
+            required
           />
           <TextField
             id="input-first-name"
@@ -107,6 +108,7 @@ function Register() {
             error={!!errors.firstName}
             helperText={errors.firstName?.message}
             type="text"
+            required
           />
           <TextField
             id="input-last-name"
@@ -127,6 +129,7 @@ function Register() {
             error={!!errors.lastName}
             helperText={errors.lastName?.message}
             type="text"
+            required
           />
           <FormControl variant="outlined" fullWidth error={!!errors.password}>
             <InputLabel htmlFor="outlined-adornment-password" error={!!errors.password}>
@@ -164,6 +167,7 @@ function Register() {
                 },
               })}
               error={!!errors.password}
+              required
             />
             <FormHelperText error={!!errors.password}>{errors.password?.message}</FormHelperText>
           </FormControl>
@@ -202,6 +206,7 @@ function Register() {
             error={!!errors.age}
             helperText={errors.age?.message}
             type="number"
+            required
           />
           <Typography variant="body1" sx={{ textAlign: "center", gridColumn: "1/-1" }}>
             Already have an account?

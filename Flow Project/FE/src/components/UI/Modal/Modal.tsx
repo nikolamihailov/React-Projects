@@ -25,6 +25,7 @@ function Modal({ open, handleClose, title, children, maxWidth }: ModalProps) {
           width: "100%",
         },
       }}
+      closeAfterTransition={false}
     >
       {title && (
         <DialogTitle sx={dialogTitleSx}>

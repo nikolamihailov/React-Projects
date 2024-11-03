@@ -2,6 +2,7 @@ import { Box, Dialog, DialogTitle, DialogContent, IconButton, useTheme } from "@
 import CloseIcon from "@mui/icons-material/Close";
 import { ReactNode } from "react";
 import { dialogTitleSx, modalSX } from "../../../utils/StylesHelper/Modal";
+import { useIsMutating } from "@tanstack/react-query";
 
 type ModalProps = {
   open: boolean;
@@ -13,11 +14,12 @@ type ModalProps = {
 
 function Modal({ open, handleClose, title, children, maxWidth }: ModalProps) {
   const theme = useTheme();
+  const isMutating = useIsMutating() > 0;
 
   return (
     <Dialog
       open={open}
-      onClose={handleClose}
+      onClose={isMutating ? () => {} : handleClose}
       PaperProps={{
         sx: {
           ...modalSX(theme),

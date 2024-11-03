@@ -128,10 +128,10 @@ function AddForm({ handleClose, refetchServices }: AddFormProps) {
           />
 
           <Box sx={serviceFormButtons}>
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary" disabled={isPending}>
               {isPending ? <CircularProgress size={24} color="inherit" /> : "Add"}
             </Button>
-            <Button onClick={handleClose} variant="outlined">
+            <Button onClick={handleClose} variant="outlined" disabled={isPending}>
               Cancel
             </Button>
           </Box>

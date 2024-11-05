@@ -142,6 +142,11 @@ function MakeAppointmentForm({ staff, service, handleClose }: MakeAppointmentFor
                   value={date}
                   onChange={(newValue) => setDate(newValue)}
                   minDate={dayjs()}
+                  slotProps={{
+                    dialog: {
+                      closeAfterTransition: false,
+                    },
+                  }}
                 />
               </Box>
             </DemoContainer>

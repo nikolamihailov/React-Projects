@@ -1,5 +1,5 @@
 .product-details {
-  min-height: var(--section-min-height);
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .product-details .product {
   width: 85vw;
-  min-height: var(--section-min-height);
+  min-height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

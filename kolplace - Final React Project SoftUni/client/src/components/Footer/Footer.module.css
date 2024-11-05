@@ -1,6 +1,5 @@
 .footer {
   margin-top: 0;
-  height: var(--footer-height);
   clear: both;
   display: flex;
   justify-content: center;
@@ -9,6 +8,7 @@
   color: var(--white-color);
   width: 100%;
   background-color: var(--footer-color);
+  padding: 16px;
 }
 
 .footer a {

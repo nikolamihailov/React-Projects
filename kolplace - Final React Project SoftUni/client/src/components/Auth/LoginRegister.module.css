@@ -1,6 +1,6 @@
 .login-section,
 .register-section {
-  height: var(--section-min-height);
+  height: 100%;
   width: 100%;
   position: relative;
   display: flex;
@@ -96,11 +96,7 @@
   color: var(--white-color);
   font-weight: bold;
   border-radius: 15px;
-  background: linear-gradient(
-    to bottom right,
-    var(--secondary-color),
-    var(--black-color)
-  );
+  background: linear-gradient(to bottom right, var(--secondary-color), var(--black-color));
 }
 
 .errors-container {

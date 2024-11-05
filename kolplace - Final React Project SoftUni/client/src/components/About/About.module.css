@@ -1,6 +1,5 @@
 .about-us-section {
   text-align: center;
-  min-height: var(--section-min-height);
   width: 100%;
   position: relative;
   display: flex;

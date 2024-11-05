@@ -18,15 +18,6 @@
   --promo-price-color: rgb(185, 0, 0);
   --edit-btn-color: rgb(34, 211, 34);
   --delete-btn-color: rgb(195, 0, 0);
-  --header-height: 17.5vh;
-  --header-admin-height: 10vh;
-  --aside-admin-height: calc(100vh - var(--header-admin-height));
-  --footer-height: 7.5vh;
-  /* --footer-height: 10%; */
-  /* --main-height: calc(100vh - var(--header-height)); */
-  --section-min-height: calc(
-    100vh - (var(--header-height) + var(--footer-height))
-  );
   --white-color: whitesmoke;
   --black-color: #23272f;
 }
@@ -69,19 +60,10 @@ body {
   background-color: var(--secondary-color);
 }
 
-/* s */
-
-/* *::-webkit-scrollbar-thumb:active {
-  background-color: rgb(162, 22, 1);
-} */
-
 .light {
-  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
   --primary-color: #23272f;
@@ -91,12 +73,9 @@ body {
 }
 
 .dark {
-  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   --background-color: #23272f;
   --background-inverted-color: whitesmoke;
   --primary-color: whitesmoke;

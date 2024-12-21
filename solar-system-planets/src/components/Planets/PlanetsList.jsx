@@ -1,20 +1,20 @@
 import { useState } from "react";
 import Planet from "./PlanetSmall";
 import PlanetBig from "./PlanetBig";
-//import Spinner from "./components/Spinner/Spinner";
 import styles from "./planets.module.css";
 import { planetService } from "../../services/api";
 import Spinner from "../Spinner/Spinner";
 
 const PlanetList = ({ planets }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isPlanetSelected, setIsPlanetSelected] = useState(false);
+  const [planetSelected, setPlanetSelected] = useState(null);
 
-  const onPlanetClick = async (planetId) => {
+  const onPlanetClick = async (planetName) => {
     try {
       setIsLoading(true);
-      const planet = await planetService.getPlanet(planetId);
-      setIsPlanetSelected(planet);
+      console.log(planetName);
+      const planet = await planetService.getPlanet(planetName);
+      setPlanetSelected(planet);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -22,23 +22,23 @@ const PlanetList = ({ planets }) => {
   };
 
   const onBackClick = () => {
-    setIsPlanetSelected(false);
+    setPlanetSelected(false);
   };
 
   return (
-    <div className={styles.planetsContainer}>
+    <>
       {isLoading && <Spinner />}
+      {!isLoading && planetSelected ? (
+        <PlanetBig {...planetSelected} onBackClick={onBackClick} />
+      ) : (
+        <div className={styles.planetsContainer}>
 
-      {!isLoading &&
-        !isPlanetSelected &&
-        planets.map((p) => {
-          return <Planet key={p.id} {...p} onPlanetClick={onPlanetClick} />;
-        })}
-
-      {!isLoading && isPlanetSelected && (
-        <PlanetBig {...isPlanetSelected} onBackClick={onBackClick} />
+          {!isLoading &&
+            !planetSelected &&
+              planets.map((p) => <Planet key={p.name} {...p} onPlanetClick={onPlanetClick} />)}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

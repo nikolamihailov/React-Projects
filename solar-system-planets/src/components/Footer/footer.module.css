@@ -4,8 +4,8 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   color: white;
-  padding-bottom: 10px;
   animation: fade 6s ease-in-out;
+  padding: 10px;
 }
 
 .footer p {

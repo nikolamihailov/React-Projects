@@ -2,12 +2,11 @@
   animation: fade 2s linear;
   max-width: 80vw;
   margin: 0 auto;
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
 }
 
 .planetSmall {
@@ -24,6 +23,8 @@
   border-radius: 50%;
   padding: 15px;
   transition: 0.7s ease-in-out;
+  justify-self: center;
+  align-self: center;
 }
 
 .planetSmall img {
@@ -42,10 +43,7 @@
   scale: 1.1;
   cursor: pointer;
 }
-.planetsContainer > div:nth-child(6) img {
-  height: 55%;
-  width: 100%;
-}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -67,6 +65,7 @@
   border-radius: 50px;
   width: 70vw;
   height: 70vh;
+  margin: 0 auto;
 }
 .planetBig i {
   margin-bottom: 30px;
@@ -101,22 +100,29 @@
   font-weight: bold;
 }
 
-.planetBig button {
+ .planetBig button {
   all: unset;
   cursor: pointer;
   margin: 10px 0;
   text-decoration: none;
-  background-color: white;
-  color: black;
-  padding: 15px;
+  background-color: none;
+  color: white;
   font-size: 17px;
-  border-radius: 20px;
+  padding: 8px 12px;
+  border-radius: 50%;
   font-weight: bold;
+    position: absolute;
+  top: 15px;
+  left: 15px;
+  border: 2px solid white;
+} 
+.planetBig button i{
+  margin: 0;
 }
+
 
 @media only screen and (max-width: 1500px) {
   .planetSmall {
-    margin: 15px;
     height: 210px;
     width: 210px;
   }
@@ -125,13 +131,15 @@
     font-size: 15px;
   }
 
-  .planetBig button {
+  /* .planetBig button {
     padding: 12px;
     font-size: 15px;
-  }
+  } */
 }
 @media only screen and (max-width: 1200px) {
   .planetsContainer {
+    grid-template-columns: repeat(3, 1fr);
+
     width: 90vw;
   }
   .planetSmall {
@@ -166,6 +174,9 @@
 }
 
 @media only screen and (max-width: 650px) {
+  .planetsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .planetBig img {
     height: 25%;
   }
@@ -185,6 +196,9 @@
 }
 
 @media only screen and (max-width: 430px) {
+  .planetsContainer {
+    grid-template-columns: 1fr;
+  }
   .planetBig {
     height: 60vh;
   }
@@ -224,10 +238,10 @@
     font-size: 12px;
   }
 
-  .planetBig button {
+  /* .planetBig button {
     padding: 10px;
     font-size: 12px;
-  }
+  } */
 }
 @media only screen and (max-width: 320px) {
   .planetBig {

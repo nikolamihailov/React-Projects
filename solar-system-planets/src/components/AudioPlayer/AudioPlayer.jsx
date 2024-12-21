@@ -21,15 +21,8 @@ const AudioPlayer = () => {
         <source src="/space-audio.mp3" />
         Your browser doesn't support audio.
       </audio>
-      <button
-        onClick={startStopAudio}
-        className={styles.btn}
-      >
-        <i
-          className={`fa ${
-            isPlaying ? "fa-pause" : "fa-play"
-          }`}
-        ></i>
+      <button onClick={startStopAudio} className={styles.btn}>
+        <i className={`fa ${isPlaying ? "fa-pause" : "fa-play"}`}></i>
       </button>
     </div>
   );

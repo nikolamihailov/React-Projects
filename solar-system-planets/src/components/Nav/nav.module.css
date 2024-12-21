@@ -1,5 +1,5 @@
 .navigation {
-  padding: 15px;
+  padding: 15px 0 0;
   position: relative;
   width: 100%;
   display: flex;
@@ -13,8 +13,8 @@
 }
 
 .navigation img {
-  height: 8rem;
-  width: 6rem;
+  height: 7rem;
+  width: 5rem;
 }
 
 @keyframes fade {

@@ -10,28 +10,26 @@ import Footer from "./components/Footer/Footer";
 function App() {
   const [planets, setPlanets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  //const [haveError, setHaveError] = useState(false);
 
   useEffect(() => {
     planetService
       .getAllPlanets()
       .then((data) => {
-        // console.log(data);
         setPlanets(data);
-        setTimeout(() => setIsLoading(false), 1000);
+        setIsLoading(false)
       })
       .catch((err) => {
-        //   setHaveError(true);
         console.log(err);
       });
   }, []);
 
   return (
     <>
-      {/* {haveError ? <Error /> : null} */}
       {isLoading ? (
-        <Spinner />
-      ) : (
+        <div style={{minHeight: "100vh"}}>
+          <Spinner />
+        </div>
+      )  : (
         <>
           <Nav planets={planets} />
           <PlanetList planets={planets} />

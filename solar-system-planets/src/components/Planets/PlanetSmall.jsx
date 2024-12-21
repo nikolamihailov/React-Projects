@@ -1,17 +1,10 @@
 import styles from "./planets.module.css";
 
-const Planet = ({ id, name, imgSrc, onPlanetClick }) => {
+const Planet = ({ name, picture, onPlanetClick }) => {
   return (
-    <div
-      className={styles.planetSmall}
-      onClick={onPlanetClick}
-    >
+    <div className={styles.planetSmall} onClick={() => onPlanetClick(name)}>
       <h2>{name}</h2>
-      <img
-        src={imgSrc.img}
-        alt={name}
-        onClick={() => onPlanetClick(id)}
-      />
+      <img src={picture} alt={name} onClick={() => onPlanetClick(name)} />
     </div>
   );
 };

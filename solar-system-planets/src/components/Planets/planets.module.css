@@ -100,7 +100,7 @@
   font-weight: bold;
 }
 
- .planetBig button {
+.planetBig button {
   all: unset;
   cursor: pointer;
   margin: 10px 0;
@@ -111,15 +111,14 @@
   padding: 8px 12px;
   border-radius: 50%;
   font-weight: bold;
-    position: absolute;
+  position: absolute;
   top: 15px;
   left: 15px;
   border: 2px solid white;
-} 
-.planetBig button i{
+}
+.planetBig button i {
   margin: 0;
 }
-
 
 @media only screen and (max-width: 1500px) {
   .planetSmall {

@@ -32,10 +32,9 @@ const PlanetList = ({ planets }) => {
         <PlanetBig {...planetSelected} onBackClick={onBackClick} />
       ) : (
         <div className={styles.planetsContainer}>
-
           {!isLoading &&
             !planetSelected &&
-              planets.map((p) => <Planet key={p.name} {...p} onPlanetClick={onPlanetClick} />)}
+            planets.map((p) => <Planet key={p.name} {...p} onPlanetClick={onPlanetClick} />)}
         </div>
       )}
     </>

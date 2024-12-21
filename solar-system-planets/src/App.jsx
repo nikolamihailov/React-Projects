@@ -16,7 +16,7 @@ function App() {
       .getAllPlanets()
       .then((data) => {
         setPlanets(data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -26,10 +26,10 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <div style={{minHeight: "100vh"}}>
+        <div style={{ minHeight: "100vh" }}>
           <Spinner />
         </div>
-      )  : (
+      ) : (
         <>
           <Nav planets={planets} />
           <PlanetList planets={planets} />

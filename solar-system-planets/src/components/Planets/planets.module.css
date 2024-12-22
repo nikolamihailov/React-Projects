@@ -68,9 +68,11 @@
   margin: 0 auto;
   gap: 24px;
 }
+
 .planetBig i {
   font-size: 14px;
 }
+
 .planetBig table {
   border-spacing: 15px;
 }
@@ -79,6 +81,7 @@
   margin: 8px;
   font-size: 15px;
 }
+
 .planetBig p strong {
   font-size: 18px;
 }
@@ -124,6 +127,7 @@
   background-color: white;
   color: black;
 }
+
 .planetBig button i {
   margin: 0;
 }
@@ -133,6 +137,7 @@
     height: 210px;
     width: 210px;
   }
+
   .planetBig a {
     padding: 12px;
     font-size: 15px;
@@ -143,6 +148,7 @@
     grid-template-columns: repeat(3, 1fr);
     width: 90vw;
   }
+
   .planetSmall {
     height: 200px;
     width: 200px;
@@ -152,12 +158,15 @@
   .planetsContainer {
     width: 95vw;
   }
+
   .planetBig i {
     font-size: 13px;
   }
+
   .planetBig img {
     max-width: 200px;
   }
+
   .planetBig table {
     border-spacing: 12px;
   }
@@ -166,6 +175,7 @@
     margin: 8px;
     font-size: 14px;
   }
+
   .planetBig p strong {
     font-size: 16px;
   }
@@ -184,6 +194,7 @@
   .planetsContainer {
     width: 100vw;
   }
+
   .planetBig {
     width: 90vw;
     height: auto;
@@ -192,6 +203,7 @@
   .planetBig img {
     max-width: 125px;
   }
+
   .planetSmall {
     padding: 10px;
     margin: 10px;
@@ -204,9 +216,11 @@
   .planetBig i {
     font-size: 11px;
   }
+
   .planetBig table {
     border-spacing: 5px;
   }
+
   .planetBig table td,
   th {
     font-size: 12px;
@@ -216,18 +230,22 @@
     margin: 6px;
     font-size: 13px;
   }
+
   .planetBig p strong {
     font-size: 14px;
   }
+
   .planetSmall {
     padding: 5px;
     margin: 7px;
     height: 110px;
     width: 110px;
   }
+
   .planetSmall h2 {
     font-size: 14px;
   }
+
   .planetBig a {
     padding: 10px;
     font-size: 12px;

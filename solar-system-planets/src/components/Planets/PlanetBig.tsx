@@ -1,28 +1,34 @@
+import { Planet } from "../../types/Planet";
 import styles from "./planets.module.css";
 
-const PlanetBig = ({ name, tagline, description, picture, numberOfMoons, yearLength, onBackClick }) => {
+type PlanetBigProps = {
+  planetData: Planet;
+  onBackClick: () => void;
+};
+
+const PlanetBig = ({ planetData, onBackClick }: PlanetBigProps) => {
   return (
     <div className={styles.planetBig}>
-      <h2>{name}</h2>
-      <img src={picture} alt="" />
-      <i>{tagline}</i>
+      <h2>{planetData.name}</h2>
+      <img src={planetData.picture} alt="" />
+      <i>{planetData.tagline}</i>
       <table>
         <tbody>
           <tr>
             <th>Description:</th>
-            <td>{description}</td>
+            <td>{planetData.description}</td>
           </tr>
           <tr>
             <th>Year Length:</th>
-            <td>{yearLength} days</td>
+            <td>{planetData.yearLength} days</td>
           </tr>
           <tr>
             <th>Number of moons:</th>
-            <td>{numberOfMoons}</td>
+            <td>{planetData.numberOfMoons}</td>
           </tr>
         </tbody>
       </table>
-      <a href={`https://en.wikipedia.org/wiki/${name}`} target="_blank">
+      <a href={`https://en.wikipedia.org/wiki/${planetData.name}`} target="_blank">
         MORE INFO
       </a>
       <button className="back-btn" onClick={onBackClick}>

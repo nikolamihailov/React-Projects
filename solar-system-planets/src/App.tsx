@@ -4,11 +4,11 @@ import Nav from "./components/Nav/Nav";
 import { planetService } from "./services/api";
 import Spinner from "./components/Spinner/Spinner";
 import PlanetList from "./components/Planets/PlanetsList";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import Footer from "./components/Footer/Footer";
+import { Planet } from "./types/Planet";
 
 function App() {
-  const [planets, setPlanets] = useState([]);
+  const [planets, setPlanets] = useState<Planet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
         </div>
       ) : (
         <>
-          <Nav planets={planets} />
+          <Nav />
           <PlanetList planets={planets} />
           <Footer />
         </>

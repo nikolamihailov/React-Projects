@@ -1,11 +1,12 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./audio.module.css";
 
 const AudioPlayer = () => {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const startStopAudio = () => {
+    if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;

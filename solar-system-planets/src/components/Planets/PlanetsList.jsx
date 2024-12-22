@@ -12,7 +12,6 @@ const PlanetList = ({ planets }) => {
   const onPlanetClick = async (planetName) => {
     try {
       setIsLoading(true);
-      console.log(planetName);
       const planet = await planetService.getPlanet(planetName);
       setPlanetSelected(planet);
       setIsLoading(false);

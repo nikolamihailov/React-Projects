@@ -22,14 +22,12 @@ const PlanetBig = ({ name, tagline, description, picture, numberOfMoons, yearLen
           </tr>
         </tbody>
       </table>
-      <div>
-        <a href={`https://en.wikipedia.org/wiki/${name}`} target="_blank">
-          MORE INFO
-        </a>
-        <button className="back-btn" onClick={onBackClick}>
-          <i className="fa-solid fa-arrow-left"></i>
-        </button>
-      </div>
+      <a href={`https://en.wikipedia.org/wiki/${name}`} target="_blank">
+        MORE INFO
+      </a>
+      <button className="back-btn" onClick={onBackClick}>
+        <i className="fa-solid fa-arrow-left"></i>
+      </button>
     </div>
   );
 };

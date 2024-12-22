@@ -64,11 +64,11 @@
   padding: 20px;
   border-radius: 50px;
   width: 70vw;
-  height: 70vh;
+  max-height: 80vh;
   margin: 0 auto;
+  gap: 24px;
 }
 .planetBig i {
-  margin-bottom: 30px;
   font-size: 14px;
 }
 .planetBig table {
@@ -86,18 +86,19 @@
 .planetBig img {
   position: relative;
   width: auto;
-  height: 40%;
+  max-height: 200px;
 }
 
 .planetBig a {
-  margin: 10px;
   text-decoration: none;
-  background-color: white;
-  color: black;
+  background-color: none;
+  color: white;
   padding: 15px;
   font-size: 17px;
   border-radius: 20px;
   font-weight: bold;
+  border: 2.5px solid white;
+  transition: 0.5s ease-in-out;
 }
 
 .planetBig button {
@@ -114,7 +115,14 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  border: 2px solid white;
+  border: 2.5px solid white;
+  transition: 0.5s ease-in-out;
+}
+
+.planetBig button:hover,
+.planetBig a:hover {
+  background-color: white;
+  color: black;
 }
 .planetBig button i {
   margin: 0;
@@ -129,16 +137,10 @@
     padding: 12px;
     font-size: 15px;
   }
-
-  /* .planetBig button {
-    padding: 12px;
-    font-size: 15px;
-  } */
 }
 @media only screen and (max-width: 1200px) {
   .planetsContainer {
     grid-template-columns: repeat(3, 1fr);
-
     width: 90vw;
   }
   .planetSmall {
@@ -151,8 +153,10 @@
     width: 95vw;
   }
   .planetBig i {
-    margin-bottom: 20px;
     font-size: 13px;
+  }
+  .planetBig img {
+    max-width: 200px;
   }
   .planetBig table {
     border-spacing: 12px;
@@ -176,15 +180,17 @@
   .planetsContainer {
     grid-template-columns: repeat(2, 1fr);
   }
-  .planetBig img {
-    height: 25%;
-  }
+
   .planetsContainer {
     width: 100vw;
   }
   .planetBig {
-    width: 80vw;
-    height: 70vh;
+    width: 90vw;
+    height: auto;
+  }
+
+  .planetBig img {
+    max-width: 125px;
   }
   .planetSmall {
     padding: 10px;
@@ -195,11 +201,7 @@
 }
 
 @media only screen and (max-width: 430px) {
-  .planetBig {
-    height: 60vh;
-  }
   .planetBig i {
-    margin-bottom: 12px;
     font-size: 11px;
   }
   .planetBig table {
@@ -217,9 +219,6 @@
   .planetBig p strong {
     font-size: 14px;
   }
-  .planetBig img {
-    height: 20%;
-  }
   .planetSmall {
     padding: 5px;
     margin: 7px;
@@ -233,11 +232,6 @@
     padding: 10px;
     font-size: 12px;
   }
-
-  /* .planetBig button {
-    padding: 10px;
-    font-size: 12px;
-  } */
 }
 @media only screen and (max-width: 320px) {
   .planetBig {

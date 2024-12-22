@@ -14,10 +14,10 @@ const PlanetBig = ({ name, tagline, description, picture, numberOfMoons, yearLen
           </tr>
           <tr>
             <th>Year Length:</th>
-            <td>{yearLength}</td>
+            <td>{yearLength} days</td>
           </tr>
           <tr>
-            <th>Moons:</th>
+            <th>Number of moons:</th>
             <td>{numberOfMoons}</td>
           </tr>
         </tbody>

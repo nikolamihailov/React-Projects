@@ -15,7 +15,7 @@
 
 <img alt="flow screenshot" src="https://i.ibb.co/FxvQgB9/Untitled.jpg"/>
 
-## SipSpot: React, React Router, Redux App (In Progress)
+## SipSpot: React, React Router(In Progress)
 
 ### Live Demo:
 

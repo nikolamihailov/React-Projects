@@ -74,7 +74,7 @@ const AddCategoryItem = ({ onClose }) => {
         <div className={styles["form-group"]}>
           <label htmlFor="name">Category Image</label>
           <input
-            type="text"
+            type="urls"
             name="categoryImage"
             placeholder="https://games..."
             id="categoryImage"

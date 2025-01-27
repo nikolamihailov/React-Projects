@@ -182,7 +182,7 @@ const AddProductItem = ({ onClose }) => {
             <div className={styles["form-group"]}>
               <label htmlFor={FORM_VALUES.Image}>Product Image</label>
               <input
-                type="text"
+                type="url"
                 name={FORM_VALUES.Image}
                 placeholder="https://iphone-15..."
                 id={FORM_VALUES.Image}
@@ -203,7 +203,7 @@ const AddProductItem = ({ onClose }) => {
                 Product Image 2 (Optional)
               </label>
               <input
-                type="text"
+                type="url"
                 name={FORM_VALUES.ImageTwo}
                 placeholder="https://iphone-15..."
                 id={FORM_VALUES.ImageTwo}
@@ -224,7 +224,7 @@ const AddProductItem = ({ onClose }) => {
                 Product Image 3 (Optional)
               </label>
               <input
-                type="text"
+                type="url"
                 name={FORM_VALUES.ImageThree}
                 placeholder="https://iphone-15..."
                 id={FORM_VALUES.ImageThree}
@@ -245,7 +245,7 @@ const AddProductItem = ({ onClose }) => {
                 Product Image 4 (Optional)
               </label>
               <input
-                type="text"
+                type="url"
                 name={FORM_VALUES.ImageFour}
                 placeholder="https://iphone-15..."
                 id={FORM_VALUES.ImageFour}

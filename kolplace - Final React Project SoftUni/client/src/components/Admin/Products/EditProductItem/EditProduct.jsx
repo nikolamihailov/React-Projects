@@ -149,16 +149,18 @@ const EditProductItem = ({ onClose, id, updateProducts }) => {
                   />
                 </div>
                 <div className={styles["form-group"]}>
-                  <label className={styles["container"]}>
+                  <div className={styles["form-group-checkbox"]}>
+                  <label htmlFor="checkbox">
                     Has Promo Price
+                  </label>
                     <input
                       type="checkbox"
                       name={FORM_VALUES.HasPromoPrice}
                       checked={values[FORM_VALUES.HasPromoPrice]}
                       onChange={onChange}
+                      id="checkbox"
                     />
-                    <span className={styles["checkmark"]}></span>
-                  </label>
+                  </div>
                 </div>
                 {values[FORM_VALUES.HasPromoPrice] && (
                   <div className={styles["form-group"]}>

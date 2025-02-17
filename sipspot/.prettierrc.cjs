@@ -1,0 +1,28 @@
+module.exports = {
+    printWidth: 120, // max 120 chars in line, code is easy to read
+    useTabs: false, // use spaces instead of tabs
+    tabWidth: 2, // "visual width" of the "tab"
+    trailingComma: "es5", // add trailing commas in objects, arrays, etc.
+    semi: true, // add ; when needed
+    singleQuote: false, // '' for stings instead of ""
+    bracketSpacing: true, // import { some } ... instead of import {some} ...
+    arrowParens: "always", // braces even for single param in arrow functions (a) => { }
+    jsxSingleQuote: false, // "" for react props, like in html
+    bracketSameLine: false, // pretty JSX
+    endOfLine: "lf", // 'lf' for linux, 'crlf' for windows, we need to use 'lf' for git
+    plugins: ["@trivago/prettier-plugin-sort-imports"],
+    importOrder: [
+        "^react$", // React imports first
+        "^@hooks/(.*)$", // Hooks
+        "^@features/(.*)$", // Features
+        "^@services/(.*)$", // Services
+        "^@type/(.*)$", // Types
+        "^@mui/(.*)$", // Material-UI components
+        "^@components/(.*)$", // Components
+        "^@utils/(.*)$", // Utilities
+        "^[./]", // Relative imports
+    ],
+    importOrderSeparation: true, // add a newline between different groups of imports
+    importOrderSortSpecifiers: true, // sort specifiers within the same import statement
+    importOrderTypeImports: false,
+};

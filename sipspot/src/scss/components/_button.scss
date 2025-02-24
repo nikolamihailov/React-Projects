@@ -1,0 +1,42 @@
+@use "sass:color";
+@use "../abstracts/variables" as variables;
+
+.btn-link,
+.btn-link:link,
+.btn-link:visited {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s all ease-in-out;
+
+    &:active {
+        scale: 1.05;
+    }
+
+    &--small {
+        font-size: 1.8rem;
+        padding: 1.3rem 2.6rem;
+    }
+
+    &--medium {
+        font-size: 2rem;
+        padding: 1.6rem 3.2rem;
+    }
+
+    &--large {
+        font-size: 2.2rem;
+        padding: 1.8rem 3.6rem;
+    }
+
+    &--primary {
+        background-color: variables.$primary-color;
+        color: variables.$color-white;
+
+        &:hover {
+            background-color: color.adjust-color(variables.$primary-color, $darkness: -25%);
+        }
+    }
+}

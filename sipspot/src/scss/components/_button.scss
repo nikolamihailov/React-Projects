@@ -36,7 +36,7 @@
         color: variables.$color-white;
 
         &:hover {
-            background-color: color.adjust-color(variables.$primary-color, $darkness: -25%);
+             background-color: color.mix(variables.$primary-color, variables.$color-black, 25%);
         }
     }
 }

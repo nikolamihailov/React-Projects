@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+@include mixins.bounce;
+
+.hero {
+    margin: 0 auto;
+    max-width: 130rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9.6rem;
+    align-items: center;
+    padding: 3.2rem;
+
+    &__text-box {
+        color: variables.$primary-color;
+    }
+
+    &__heading {
+        font-size: 4.4rem;
+        margin-bottom: 3.2rem;
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+
+    &__info {
+        font-size: 2rem;
+        line-height: 1.6;
+        margin-bottom: 3.2rem;
+    }
+
+    &__img-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__img {
+        width: 90%;
+        animation: bounce 3s infinite ease-in-out;
+        filter: drop-shadow(0 0 1rem variables.$primary-color);
+    }
+
+    &__btns{
+        display: flex;
+        gap: 2rem;
+    }
+}

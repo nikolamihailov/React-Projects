@@ -1,0 +1,19 @@
+@use "sass:color";
+@use "../../abstracts/variables" as variables;
+
+.btn-link,
+.btn-link:link,
+.btn-link:visited {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s all ease-in-out;
+    display: inline-block;
+
+    &:active {
+        scale: 1.05;
+    }
+}

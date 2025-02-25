@@ -1,0 +1,37 @@
+@use "./button-core"; 
+
+@use "sass:color";
+@use "../../abstracts/variables" as variables;
+
+.btn-link--small {
+    font-size: 1.8rem;
+    padding: 1.3rem 2.6rem;
+}
+
+.btn-link--medium {
+    font-size: 2rem;
+    padding: 1.6rem 3.2rem;
+}
+
+.btn-link--large {
+    font-size: 2.2rem;
+    padding: 1.8rem 3.6rem;
+}
+
+.btn-link--primary {
+    background-color: variables.$primary-color;
+    color: variables.$color-white;
+
+    &:hover {
+        background-color: color.mix(variables.$primary-color, variables.$color-black, 25%);
+    }
+}
+
+.btn-link--secondary {
+    background-color: variables.$secondary-color;
+    color: variables.$color-white;
+
+    &:hover {
+        background-color: color.mix(variables.$secondary-color, variables.$color-black, 25%);
+    }
+}

@@ -1,0 +1,15 @@
+@mixin bounce {
+    @keyframes bounce {
+        0% {
+            transform: translateY(0) rotate(0);
+        }
+
+        50% {
+            transform: translateY(1.5rem) rotate(-3deg);
+        }
+
+        100% {
+            transform: translateY(0) rotate(0);
+        }
+    }
+}

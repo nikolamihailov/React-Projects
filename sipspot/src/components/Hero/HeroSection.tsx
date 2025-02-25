@@ -1,41 +1,28 @@
 import Button from "../UI/Button/Button";
 import Section from "../UI/Section/Section";
 import heroImg from "/hero-img.png";
-import styles from "./Hero.module.css";
 
 function HeroSection() {
   return (
     <Section bgColor="#ffe066">
-      <div className={styles["hero"]}>
-        <div className={styles["text-box"]}>
-          <h1>Discover the Ultimate Cocktail Experience</h1>
-          <p>
+      <div className="hero">
+        <div className="hero__text-box">
+          <h1 className="hero__heading">Discover the Ultimate Cocktail Experience</h1>
+          <p className="hero__info">
             Crafting the finest cocktails for your delight. Every sip, a new story. Cheers to
             unforgettable moments! Elevate your evenings with our masterfully crafted drinks.
           </p>
-          <Button
-            bgColor="#8B0401"
-            color="#fff"
-            el="link"
-            hoverBgColor="#fff"
-            hoverColor="#000"
-            href="/recipes"
-          >
-            Explore Cocktails
-          </Button>
-          <Button
-            bgColor="#e67700"
-            color="#fff"
-            el="link"
-            hoverBgColor="#fff"
-            hoverColor="#000"
-            href="#reservation"
-          >
-            Book Reservation
-          </Button>
+          <div className="hero__btns">
+            <Button el="link" href="/recipes" type="small" variant="primary">
+              Explore Cocktails
+            </Button>
+            <Button el="link" href="#reservation" type="small" variant="secondary">
+              Book Reservation
+            </Button>
+          </div>
         </div>
-        <div className={styles["img-box"]}>
-          <img src={heroImg} alt="Delicious cocktails" />
+        <div className="hero__img-box">
+          <img className="hero__img" src={heroImg} alt="Delicious cocktails" />
         </div>
       </div>
     </Section>

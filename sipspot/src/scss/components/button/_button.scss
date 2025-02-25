@@ -23,7 +23,7 @@
     color: variables.$color-white;
 
     &:hover {
-        background-color: color.mix(variables.$primary-color, variables.$color-black, 25%);
+        background-color: color.mix(variables.$primary-color, variables.$color-black, 75%);
     }
 }
 
@@ -32,6 +32,6 @@
     color: variables.$color-white;
 
     &:hover {
-        background-color: color.mix(variables.$secondary-color, variables.$color-black, 25%);
+        background-color: color.mix(variables.$secondary-color, variables.$color-black, 75%);
     }
 }

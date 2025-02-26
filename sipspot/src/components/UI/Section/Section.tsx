@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
-import styles from "./Section.module.css";
+import { Colors } from "../../../types/Colors";
 
 type SectionProps = {
   bgColor?: string;
   children: ReactNode;
 };
 
-function Section({ bgColor = "#fff", children }: SectionProps) {
+function Section({ bgColor = Colors.White, children }: SectionProps) {
   return (
-    <section style={{ backgroundColor: bgColor }} className={styles["section"]}>
+    <section style={{ backgroundColor: bgColor }} className="section">
       {children}
     </section>
   );

@@ -1,10 +1,11 @@
+import { Colors } from "../../types/Colors";
 import Button from "../UI/Button/Button";
 import Section from "../UI/Section/Section";
 import heroImg from "/hero-img.png";
 
 function HeroSection() {
   return (
-    <Section bgColor="#ffe066">
+    <Section bgColor={Colors.Tertiary}>
       <div className="hero">
         <div className="hero__text-box">
           <h1 className="hero__heading">Discover the Ultimate Cocktail Experience</h1>

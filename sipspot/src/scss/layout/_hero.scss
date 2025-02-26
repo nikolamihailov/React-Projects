@@ -4,6 +4,7 @@
 @include mixins.bounce;
 
 .hero {
+    background-color: variables.$tertiary-color;
     margin: 0 auto;
     max-width: 130rem;
     display: grid;
@@ -42,7 +43,7 @@
         filter: drop-shadow(0 0 1rem variables.$primary-color);
     }
 
-    &__btns{
+    &__btns {
         display: flex;
         gap: 2rem;
     }

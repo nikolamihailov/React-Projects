@@ -9,6 +9,10 @@
   }
 
   &__main {
+    background-color: variables.$tertiary-color;
+  }
+
+  &__list {
     margin: 0 auto;
     max-width: 100rem;
     display: flex;
@@ -23,4 +27,5 @@
       font-weight: 700;
     }
   }
+
 }

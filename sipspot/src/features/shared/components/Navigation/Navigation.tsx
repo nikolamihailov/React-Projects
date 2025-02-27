@@ -2,12 +2,11 @@ import { NavLink } from "react-router-dom";
 import Logo from "../UI/Logo/Logo";
 import Nav from "../UI/Nav/Nav";
 import logo from "/logo-icon.png";
-import { Colors } from "../../../../types/Colors";
 
 function Navigation() {
   return (
-    <Nav bgColor={Colors.Tertiary}>
-      <ul className="nav__main">
+    <Nav navClassname="main">
+      <ul className="nav__list">
         <li className="nav__list-item">
           <NavLink to={"/"}>Home</NavLink>
         </li>

@@ -1,4 +1,4 @@
-import { Colors } from "../../types/Colors";
+import { Colors } from "../../../../types/Colors";
 import Button from "../UI/Button/Button";
 import Section from "../UI/Section/Section";
 import heroImg from "/hero-img.png";

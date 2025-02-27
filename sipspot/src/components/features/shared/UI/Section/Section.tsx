@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Colors } from "../../../types/Colors";
+import { Colors } from "../../../../../types/Colors";
 
 type SectionProps = {
   bgColor?: string;

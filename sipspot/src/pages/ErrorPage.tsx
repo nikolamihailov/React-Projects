@@ -1,4 +1,4 @@
-import Section from "../components/UI/Section/Section";
+import Section from "../components/features/shared/UI/Section/Section";
 
 function ErrorPage() {
   return (

@@ -1,0 +1,35 @@
+@use "../abstracts/variables" as variables;
+
+.carousel {
+    max-width: variables.$max-width-content;
+    display: flex;
+    align-items: center;
+
+    &__gap--small {
+        gap: 1rem;
+    }
+
+    &__gap--medium {
+        gap: 2rem;
+    }
+
+    &__gap--large {
+        gap: 3rem;
+    }
+
+    &__item {
+        max-width: 150px;
+        padding: 1rem;
+    }
+
+    &__img {
+        filter: grayscale(100%);
+        width: 100%;
+        object-fit: contain;
+        transition: all 0.5s ease;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+}

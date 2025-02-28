@@ -6,7 +6,7 @@
 .hero {
     background-color: variables.$tertiary-color;
     margin: 0 auto;
-    max-width: 130rem;
+    max-width: variables.$max-width-content;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 9.6rem;

@@ -1,25 +1,37 @@
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+@include mixins.slideout();
 
 .carousel {
     max-width: variables.$max-width-content;
-    display: flex;
-    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
 
     &__gap--small {
-        gap: 1rem;
-    }
-
-    &__gap--medium {
         gap: 2rem;
     }
 
-    &__gap--large {
+    &__gap--medium {
         gap: 3rem;
     }
 
+    &__gap--large {
+        gap: 4rem;
+    }
+
+    &__track {
+        display: flex;
+        align-items: center;
+        width: max-content; 
+        animation: slideout 15s linear infinite;
+    }
+
     &__item {
-        max-width: 150px;
-        padding: 1rem;
+        width: 15rem;
+        padding: 1rem 1.5rem;
+        flex-shrink: 0;
     }
 
     &__img {

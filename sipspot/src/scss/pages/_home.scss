@@ -11,4 +11,8 @@
         padding: 0;
         background-color: variables.$secondary-dark;
     }
+
+    &__featured-cocktails {
+        background-color: variables.$tertiary-color;
+    }
 }

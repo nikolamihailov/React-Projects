@@ -25,7 +25,7 @@
         display: flex;
         align-items: center;
         width: max-content; 
-        animation: slideout 15s linear infinite;
+        animation: slideout 15s ease-in-out infinite;
     }
 
     &__item {

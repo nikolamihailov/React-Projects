@@ -28,6 +28,7 @@ Home Section:
 - Hero
 - Partners 
 - Few Cocktails examples with cards
+- Features
 - Testimonials + Gallery
 - Book Reservation(CTA)
 

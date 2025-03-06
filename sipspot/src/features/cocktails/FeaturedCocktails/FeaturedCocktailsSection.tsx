@@ -1,18 +1,19 @@
 import Section from "../../shared/components/UI/Section/Section";
 import FeaturedItem from "./FeaturedItem";
-import martiniPng from "/martini.png";
-import cosmopolitanPng from "/cosmopolitan.png";
+import daiquiriPng from "/daiquiri.png";
+import strawberryMargaritaPng from "/strawberryMargarita.png";
 import mojitoPng from "/mojito.png";
 
 function FeaturedCocktailsSection() {
     return (
         <Section sectionClassName="featured-cocktails">
-            <FeaturedItem name="Martini" imgSrc={martiniPng} />
-            <FeaturedItem name="Mojito" imgSrc={mojitoPng} />
-            <FeaturedItem name="Cosmopolitan" imgSrc={cosmopolitanPng} />
+            <div className="featured-cocktails__container">
+                <FeaturedItem name="Daiquiri" imgSrc={daiquiriPng} />
+                <FeaturedItem name="Mojito" imgSrc={mojitoPng} />
+                <FeaturedItem name="Strawberry Margarita" imgSrc={strawberryMargaritaPng} />
+            </div>
         </Section>
-    )
-
+    );
 }
 
 export default FeaturedCocktailsSection;

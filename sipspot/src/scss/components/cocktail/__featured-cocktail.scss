@@ -1,13 +1,23 @@
 @use "../../abstracts/variables" as variables;
 
 .featured-cocktails {
+    text-align: center;
+
+    &__info {
+        margin: 0 auto;
+        max-width: variables.$max-width-content;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4.8rem;
+    }
+
     &__container {
+        color: variables.$primary-color;
         margin: 0 auto;
         max-width: variables.$max-width-content;
         display: flex;
         justify-content: center;
         gap: 3.2rem;
-        color: variables.$primary-color;
     }
 
     &__item {

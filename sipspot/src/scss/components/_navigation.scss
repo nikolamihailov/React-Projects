@@ -1,31 +1,29 @@
 @use "../abstracts/variables" as variables;
 
 .nav {
-  position: relative;
-  padding: 2.4rem 0;
+    position: relative;
+    padding: 2.4rem 0;
 
-  &__list-item {
-    list-style-type: none;
-  }
-
-  &__main {
-    background-color: variables.$tertiary-color;
-  }
-
-  &__list {
-    margin: 0 auto;
-    max-width: 100rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background: variables.$tertiary-color;
-
-    a {
-      text-decoration: none;
-      color: variables.$primary-color;
-      font-size: 2rem;
-      font-weight: 700;
+    &__list-item {
+        list-style-type: none;
     }
-  }
 
+    &__main {
+        background-color: variables.$tertiary-color;
+    }
+
+    &__list {
+        margin: 0 auto;
+        max-width: 100rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        a {
+            text-decoration: none;
+            color: variables.$primary-color;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    }
 }

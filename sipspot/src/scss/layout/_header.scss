@@ -1,0 +1,5 @@
+@use "../abstracts/variables" as variables;
+
+.header {
+    background: variables.$tertiary-color;
+}

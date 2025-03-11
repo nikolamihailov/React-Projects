@@ -8,6 +8,7 @@
     overflow: hidden;
     margin: 0 auto;
     position: relative;
+    animation-play-state: running;
 
     &__gap--small {
         gap: 2rem;
@@ -24,8 +25,12 @@
     &__track {
         display: flex;
         align-items: center;
-        width: max-content; 
+        width: max-content;
         animation: slideout 15s ease-in-out infinite;
+
+        &:hover {
+            animation-play-state: paused;
+        }
     }
 
     &__item {

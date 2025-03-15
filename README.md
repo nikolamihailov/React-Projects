@@ -19,4 +19,4 @@
 
 ### Live Demo:
 
-[<img alt="sipspot screenshot" src="https://i.ibb.co/TcYtzcN/Screenshot-2024-07-05-at-20-06-25-Sip-Spot-Best-Bar-for-Cocktails.png"/>](https://sipspot.netlify.app/)
+[<img alt="sipspot screenshot" src="https://i.ibb.co/TBzTFknX/Screenshot-6.png"/>](https://sipspot.netlify.app/)

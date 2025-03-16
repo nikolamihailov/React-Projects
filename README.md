@@ -11,12 +11,14 @@
 
 [<img alt="kolplace screenshot" src="https://i.ibb.co/x2tSzXB/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png"/>](https://kolplace.netlify.app/)
 
-## Flow: Appointment Scheduling - Full-stack App (React, TS, React Query, Java, Spring Boot)
-
-<img alt="flow screenshot" src="https://i.ibb.co/FxvQgB9/Untitled.jpg"/>
-
 ## SipSpot: React, React Router(In Progress)
 
 ### Live Demo:
 
 [<img alt="sipspot screenshot" src="https://i.ibb.co/TBzTFknX/Screenshot-6.png"/>](https://sipspot.netlify.app/)
+
+## Flow: Appointment Scheduling - Full-stack App (React, TS, React Query, Java, Spring Boot)
+
+<img alt="flow screenshot" src="https://i.ibb.co/FxvQgB9/Untitled.jpg"/>
+
+

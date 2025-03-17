@@ -1,0 +1,103 @@
+@use "../abstracts/variables" as variables;
+
+.footer {
+    background-color: variables.$secondary-light;
+    color: variables.$primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1.6rem 3.2rem;
+    gap: 1.6rem;
+
+    &__logo-terms {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+    }
+
+    &__logo {
+        height: 3rem;
+        width: 9rem;
+
+        img {
+            height: 3rem;
+            width: 9rem;
+            object-fit: contain;
+        }
+    }
+
+    &__terms {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        font-size: 1.6rem;
+        list-style: none;
+    }
+
+    &__nav-item {
+        a {
+            text-decoration: none;
+            color: currentColor;
+        }
+    }
+
+    &__socials-design {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+    }
+
+    &__socials {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+
+        li a {
+            text-decoration: none;
+            color: currentColor;
+            font-size: 2.4rem;
+            transition: 0.5s ease;
+            padding: 0;
+        }
+
+        li a i {
+            transition: 0.5 ease;
+            padding: 0;
+        }
+
+        li a:hover {
+            color: red;
+        }
+
+        li i:hover {
+            scale: 1.15;
+        }
+    }
+
+    &__creator {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        font-style: italic;
+        a {
+            text-decoration: none;
+            color: currentColor;
+            margin-left: 1rem;
+        }
+    }
+}

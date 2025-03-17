@@ -27,6 +27,7 @@
         align-items: center;
         width: max-content;
         animation: slideout 15s ease-in-out infinite;
+        overflow: hidden;
 
         &:hover {
             animation-play-state: paused;

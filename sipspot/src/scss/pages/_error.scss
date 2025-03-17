@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as variables;
+
+.section {
+    &__error {
+        padding: 0;
+        background-color: variables.$tertiary-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 3.2rem;
+    max-width: 30rem;
+
+    &__image {
+        background-color: variables.$primary-color;
+        mask-image: url(../not-found.png);
+        mask-size: cover;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    &__heading {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: variables.$primary-dark;
+    }
+}

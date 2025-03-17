@@ -2,19 +2,21 @@
 
 .featured-cocktails {
     text-align: center;
+    margin: 0 auto;
+    max-width: variables.$max-width-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4.8rem;
 
     &__info {
-        margin: 0 auto;
-        max-width: variables.$max-width-content;
         display: flex;
         flex-direction: column;
-        margin-bottom: 4.8rem;
     }
 
     &__container {
         color: variables.$primary-color;
         margin: 0 auto;
-        max-width: variables.$max-width-content;
         display: flex;
         justify-content: center;
         gap: 3.2rem;

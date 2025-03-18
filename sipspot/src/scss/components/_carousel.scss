@@ -10,6 +10,10 @@
     position: relative;
     animation-play-state: running;
 
+    @media (max-width: 1300px) {
+        max-width: 90vw;
+    }
+
     &__gap--small {
         gap: 2rem;
     }
@@ -25,7 +29,7 @@
     &__track {
         display: flex;
         align-items: center;
-        width: max-content;
+        min-width: max-content;
         animation: slideout 15s ease-in-out infinite;
         overflow: hidden;
 

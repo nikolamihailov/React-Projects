@@ -30,7 +30,7 @@ Home Section:
 - Few Cocktails examples with cards
 - Features
 - Testimonials + Gallery
-- Book Reservation(CTA)
+- Book Reservation (CTA)
 
 
 Transitions: 

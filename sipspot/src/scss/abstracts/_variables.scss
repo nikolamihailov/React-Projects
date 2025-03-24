@@ -19,3 +19,4 @@ $color-black: #0c0b0b;
 
 // WIDTHS
 $max-width-content: 130rem;
+@debug $max-width-content; // ✅ Correct usage

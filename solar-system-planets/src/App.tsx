@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import { planetService } from "./services/api";
 import Spinner from "./components/Spinner/Spinner";
-import PlanetList from "./components/Planets/PlanetsList";
 import Footer from "./components/Footer/Footer";
 import { Planet } from "./types/Planet";
-import StarsCanvas from "./components/Stars/Stars";
+const PlanetList = lazy(() => import("./components/Planets/PlanetsList"));
+const StarsCanvas = lazy(() => import("./components/Stars/Stars"));
 
 function App() {
   const [planets, setPlanets] = useState<Planet[]>([]);
@@ -28,12 +28,12 @@ function App() {
     <>
       {isLoading ? (
         <div style={{ minHeight: "100vh" }}>
-          <StarsCanvas/>
+          <StarsCanvas />
           <Spinner />
         </div>
       ) : (
-          <>
-          <StarsCanvas/>
+        <>
+          <StarsCanvas />
           <Nav />
           <PlanetList planets={planets} />
           <Footer />

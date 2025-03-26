@@ -6,6 +6,7 @@ import Spinner from "./components/Spinner/Spinner";
 import PlanetList from "./components/Planets/PlanetsList";
 import Footer from "./components/Footer/Footer";
 import { Planet } from "./types/Planet";
+import StarsCanvas from "./components/Stars/Stars";
 
 function App() {
   const [planets, setPlanets] = useState<Planet[]>([]);
@@ -27,10 +28,12 @@ function App() {
     <>
       {isLoading ? (
         <div style={{ minHeight: "100vh" }}>
+          <StarsCanvas/>
           <Spinner />
         </div>
       ) : (
-        <>
+          <>
+          <StarsCanvas/>
           <Nav />
           <PlanetList planets={planets} />
           <Footer />

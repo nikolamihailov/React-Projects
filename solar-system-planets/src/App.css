@@ -5,10 +5,12 @@
 }
 
 body {
-  background-image: url("/sky.jpg");
+  /* background-image: url("/sky.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  */
+  background-color: black;
   color: white;
 }
 

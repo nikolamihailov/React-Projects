@@ -37,7 +37,7 @@ const Stars = (props) => {
 const StarsCanvas = () => {
   // React-three-fiber Canvas for 3D rendering and suspense for fallback during initial loading
   return (
-   <div style={{ width: "100%", height: "auto", position: "absolute", inset: 0, zIndex: -1 }}>
+   <div style={{ width: "100%", height: "100%", position: "absolute", inset: 0, zIndex: -1 }}>
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

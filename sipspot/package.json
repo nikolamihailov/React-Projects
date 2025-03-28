@@ -15,9 +15,10 @@
     "@mui/material": "^6.3.0",
     "@tanstack/react-query": "^5.67.1",
     "axios": "^1.8.1",
-    "framer-motion": "^11.2.13",
+    "framer-motion": "^11.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^6.24.1",
     "sass": "^1.85.0"
   },

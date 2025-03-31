@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import SocialNetwork from "../Socials/SocialNetwork";
+import SocialNetwork from "./Socials/SocialNetwork";
 import { SocialNetworks, socials } from "../../../../types/Socials";
 
 function Footer() {

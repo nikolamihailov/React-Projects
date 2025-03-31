@@ -13,6 +13,8 @@ function Footer() {
                 <p className="footer__terms">© {new Date().getFullYear()} All rights reserved.</p>
             </div>
             <div className="footer__links">
+                <h4 className="heading-tertiary">Links:</h4>
+
                 <ul className="footer__nav-list">
                     <li className="footer__nav-item">
                         <NavLink to={"/"}>Home</NavLink>
@@ -29,6 +31,7 @@ function Footer() {
                 </ul>
             </div>
             <div className="footer__socials-design">
+                <h4 className="heading-tertiary">Socials: </h4>
                 <ul className="footer__socials">
                     <SocialNetwork linkUrl={socials[SocialNetworks.linkedIn]} networkName={SocialNetworks.linkedIn} />
                     <SocialNetwork linkUrl={socials[SocialNetworks.github]} networkName={SocialNetworks.github} />

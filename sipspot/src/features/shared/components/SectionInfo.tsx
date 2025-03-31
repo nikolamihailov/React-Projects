@@ -6,7 +6,7 @@ type SectionInfoProps = {
 function SectionInfo({ subheading, heading }: SectionInfoProps) {
     return (
         <div>
-            <span className="subheading">{subheading}</span>
+            <span className="heading-sub">{subheading}</span>
             <h2 className="heading-secondary">{heading}</h2>
         </div>
     );

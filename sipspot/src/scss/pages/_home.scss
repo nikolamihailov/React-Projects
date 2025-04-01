@@ -21,6 +21,9 @@
     }
 
     &__features {
+        padding: 6.4rem 0;
+        color: variables.$primary-color;
         background-color: variables.$tertiary-light;
+        text-align: center;
     }
 }

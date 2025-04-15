@@ -31,6 +31,7 @@ Home Section:
 - Features
 - Testimonials + Gallery
 - Book Reservation (CTA)
+- FAQ
 
 
 Transitions: 

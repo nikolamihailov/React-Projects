@@ -24,14 +24,16 @@ Colors:
     - Logo + Navigation
     - all rights reserved + socials
 
-Home Section:
+Home Page:
 - Hero
 - Partners 
 - Few Cocktails examples with cards
 - Features
-- Testimonials + Gallery
 - Book Reservation (CTA)
 - FAQ
+
+Gallery Page:
+- Testimonials + Gallery
 
 
 Transitions: 

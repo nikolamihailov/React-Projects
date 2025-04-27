@@ -29,12 +29,8 @@ Home Page:
 - Partners 
 - Few Cocktails examples with cards
 - Features
-- Book Reservation (CTA)
-- FAQ
-
-Gallery Page:
 - Testimonials + Gallery
-
+- Book Reservation (CTA)
 
 Transitions: 
  <motion.div

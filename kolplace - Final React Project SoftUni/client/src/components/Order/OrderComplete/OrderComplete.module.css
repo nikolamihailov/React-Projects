@@ -11,7 +11,7 @@
 .order-complete-section div {
   font-size: 19px;
   font-weight: bold;
-  animation: move 5s ease-in-out infinite;
+  animation: move 5s ease-in infinite;
   transition: 0.5s ease-in;
 }
 
@@ -51,8 +51,16 @@
 @keyframes move {
   0% {
     transform: translateX(-150%);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.2;
   }
   100% {
     transform: translateX(150%);
+    opacity: 0;
   }
 }

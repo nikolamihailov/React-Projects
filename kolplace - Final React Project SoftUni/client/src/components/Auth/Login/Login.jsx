@@ -17,6 +17,7 @@ const Login = () => {
   useTitle("Login Page | KolPlace");
   const { updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigateTo = useNavigate();
 
   const [errors, setErrors] = useState([]);
@@ -33,6 +34,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (values[FORM_KEYS.Email].trim() === "") {
       updateNotifs([{ text: "Email must be filled!", type: "error" }]);
       return;
@@ -41,16 +43,18 @@ const Login = () => {
       updateNotifs([{ text: "Password must be filled!", type: "error" }]);
       return;
     }
+   
     const userData = await login(values);
     if (userData.errors) {
       const errs = Object.values(userData.errors);
       setErrors(errs);
+      setIsLoading(false);
     } else {
       updateNotifs([{ text: "You successfully logged in!", type: "success" }]);
       updateAuth(userData);
       setErrors([]);
       navigateTo("/");
-    }
+    } 
   };
 
   return (
@@ -89,7 +93,9 @@ const Login = () => {
         </div>
 
         <div className={styles["btns"]}>
-          <button type="submit">Sign in</button>
+          <button type="submit">
+            {isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "24px", color: "white"}}></i> : "Sign in"}
+          </button>
         </div>
 
         <Link to="/register"> Do not have an account?</Link>

@@ -37,10 +37,12 @@ const Login = () => {
     setIsLoading(true);
     if (values[FORM_KEYS.Email].trim() === "") {
       updateNotifs([{ text: "Email must be filled!", type: "error" }]);
+      setIsLoading(false);
       return;
     }
     if (values[FORM_KEYS.Password].trim() === "") {
       updateNotifs([{ text: "Password must be filled!", type: "error" }]);
+      setIsLoading(false);
       return;
     }
    

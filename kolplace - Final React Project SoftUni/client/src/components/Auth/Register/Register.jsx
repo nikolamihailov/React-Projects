@@ -19,6 +19,7 @@ const Register = () => {
   useTitle("Register Page | KolPlace");
   const { updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigateTo = useNavigate();
 
   const [errors, setErrors] = useState([]);
@@ -35,28 +36,29 @@ const Register = () => {
     setErrors([]);
   };
 
+  const isInputValid = (input, message) => {
+    if (input.trim() === "") {
+      updateNotifs([{ text: message, type: "error" }]);
+      setIsLoading(false);
+      return false;
+    }
+    return true;
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
+    if (!isInputValid(values[FORM_KEYS.FirstName], "First name must be filled!")) return;
+    if (!isInputValid(values[FORM_KEYS.LastName], "Last name must be filled!")) return;
+    if (!isInputValid(values[FORM_KEYS.Email], "Email must be filled!")) return;
+    if (!isInputValid(values[FORM_KEYS.Password], "Password must be filled!")) return;
+
     const userData = await register(values);
-    if (values[FORM_KEYS.FirstName].trim() === "") {
-      updateNotifs([{ text: "First name must be filled!", type: "error" }]);
-      return;
-    }
-    if (values[FORM_KEYS.LastName].trim() === "") {
-      updateNotifs([{ text: "Last name must be filled!", type: "error" }]);
-      return;
-    }
-    if (values[FORM_KEYS.Email].trim() === "") {
-      updateNotifs([{ text: "Email must be filled!", type: "error" }]);
-      return;
-    }
-    if (values[FORM_KEYS.Password].trim() === "") {
-      updateNotifs([{ text: "Password must be filled!", type: "error" }]);
-      return;
-    }
 
     if (userData.errors) {
       setErrors(Object.values(userData.errors));
+      setIsLoading(false);
     } else {
       updateAuth(userData);
       updateNotifs([{ text: "You successfully registered!", type: "success" }]);
@@ -130,7 +132,7 @@ const Register = () => {
         </div>
 
         <div className={styles["btns"]}>
-          <button type="submit">Register</button>
+          <button type="submit">{isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "24px", color: "white" }}></i> : "Register"}</button>
         </div>
         <Link to="/login">Already have an account?</Link>
       </form>

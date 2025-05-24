@@ -1,13 +1,11 @@
-import axios from "axios";
 import { CocktailsResults } from "../../types/cocktails/CocktailsResults";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { axiosInstance } from "../config/axiosConfig";
 
 const cocktailsEndpoints = {
-    searchByName: BASE_URL + `/s=`
-}
+    searchByName: "/s=",
+};
 
 export const getCocktailByName = async (name: string) => {
-    const res = await axios.get<CocktailsResults>(cocktailsEndpoints.searchByName + name);
+    const res = await axiosInstance.get<CocktailsResults>(cocktailsEndpoints.searchByName + name);
     return res.data;
-}
+};

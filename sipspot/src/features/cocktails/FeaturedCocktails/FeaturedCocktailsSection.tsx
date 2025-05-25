@@ -10,7 +10,7 @@ function FeaturedCocktailsSection() {
         <Section sectionClassName="featured-cocktails">
             <div className="featured-cocktails">
                 <div className="featured-cocktails__info">
-                    <SectionInfo heading="Our most popular cocktails:" subheading="cocktails" />
+                    <SectionInfo heading="Our Most Popular Cocktails:" subheading="cocktails" />
                     <p className="paragraph">
                         Discover our selection of best-loved cocktails, crafted to perfection. Whether you enjoy the
                         refreshing zest of a Mojito, the sweet and tangy flavors of a Strawberry Margarita, or the

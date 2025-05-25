@@ -8,22 +8,29 @@
     }
 
     &__partners {
-        padding: 0;
-        background-color: variables.$secondary-dark;
         position: relative;
+        background-color: variables.$secondary-dark;
+        padding: 0;
     }
 
     &__featured-cocktails {
-        color: variables.$primary-color;
-        text-align: center;
-        padding: 6.4rem 0;
         background-color: variables.$tertiary-color;
+        color: variables.$primary-color;
+        padding: 6.4rem 0;
+        text-align: center;
     }
 
     &__features {
-        padding: 6.4rem 0;
-        color: variables.$primary-color;
         background-color: variables.$tertiary-light;
+        color: variables.$primary-color;
+        padding: 6.4rem 0;
+        text-align: center;
+    }
+
+    &__testimonials {
+        background-color: variables.$tertiary-color;
+        color: variables.$primary-color;
+        padding: 6.4rem 0;
         text-align: center;
     }
 }

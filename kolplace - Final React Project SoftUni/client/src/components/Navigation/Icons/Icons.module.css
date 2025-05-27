@@ -53,11 +53,12 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1200px) {
   .icon-btn i {
-    font-size: 26px;
+    font-size: 24px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .icon-btn {
     padding: 5px 10px;

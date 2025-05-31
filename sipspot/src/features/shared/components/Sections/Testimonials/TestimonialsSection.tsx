@@ -7,31 +7,33 @@ function TestimonialsSection() {
     const [cats] = useState(["Bad", "Stava", "Top", "Tragediq", "Bad", "Stava", "Top", "Tragediq"]);
     const [activeIdx, setActiveIdx] = useState(0);
     const [moveWidth, setMoveWidth] = useState(0);
-    const itemWidth = 230;
+    const gap = 30;
+    const itemWidth = 200;
+    const itemWidthWithGap = 230;
     const shownItems = 3;
-    const maxWidth = cats.length * itemWidth;
+    const maxWidth = cats.length * itemWidthWithGap;
 
     const handleBtnClick = (side: Sides) => {
         if (side === Sides.Left && activeIdx >= 1) {
             setActiveIdx(activeIdx - 1);
-            setMoveWidth(moveWidth - itemWidth);
+            setMoveWidth(moveWidth - itemWidthWithGap);
         }
-        if (side === Sides.Right && moveWidth < maxWidth - shownItems * itemWidth) {
+        if (side === Sides.Right && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
             setActiveIdx(activeIdx + 1);
-            setMoveWidth(moveWidth + itemWidth);
+            setMoveWidth(moveWidth + itemWidthWithGap);
         }
     };
 
     return (
         <Section sectionClassName="testimonials">
             <SectionInfo heading="What Our Customers Say:" subheading="Testimonials" />
-            <div style={{ position: "relative", width: `660px`, margin: "0 auto" }}>
+            <div style={{ position: "relative", width: `${itemWidthWithGap * shownItems - gap}px`, margin: "0 auto" }}>
                 <div style={{ overflow: "hidden" }}>
                     <div
                         style={{
                             display: "flex",
                             justifyContent: "flex-start",
-                            transform: `translateX(-${activeIdx * 230}px)`,
+                            transform: `translateX(-${activeIdx * itemWidthWithGap}px)`,
                             /* gap: "3rem", */
                             transition: "all 0.5s ease",
                             width: `${maxWidth}px`,
@@ -41,10 +43,10 @@ function TestimonialsSection() {
                             return (
                                 <div
                                     style={{
-                                        minWidth: "200px",
+                                        width: `${itemWidth}px`,
                                         height: "200px",
                                         backgroundColor: "orange",
-                                        marginRight: "30px",
+                                        marginRight: `${gap}px`,
                                         transition: "0.5s ease",
                                     }}
                                     className={activeIdx === idx - 1 ? "active" : ""}

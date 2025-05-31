@@ -27,8 +27,14 @@ function TestimonialsSection() {
     return (
         <Section sectionClassName="testimonials">
             <SectionInfo heading="What Our Customers Say:" subheading="Testimonials" />
-            <div style={{ position: "relative", width: `${itemWidthWithGap * shownItems - gap}px`, margin: "0 auto" }}>
-                <div style={{ overflow: "hidden" }}>
+            <div
+                style={{
+                    position: "relative",
+                    width: `${itemWidthWithGap * shownItems - gap}px`,
+                    margin: "1.6rem auto",
+                }}
+            >
+                <div style={{ overflowY: "visible", overflowX: "hidden", position: "relative", paddingTop: "30px" }}>
                     <div
                         style={{
                             display: "flex",
@@ -50,6 +56,7 @@ function TestimonialsSection() {
                                         transition: "0.5s ease",
                                     }}
                                     className={activeIdx === idx - 1 ? "active" : ""}
+                                    key={idx}
                                 >
                                     {cat}
                                 </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SectionInfo from "../../SectionInfo";
 import Section from "../../UI/Section/Section";
-import { Sides } from "../../../../../types/SIdes";
+import { Sides } from "../../../../../types/Sides";
 
 function TestimonialsSection() {
     const [cats] = useState(["Bad", "Stava", "Top", "Tragediq", "Bad", "Stava", "Top", "Tragediq"]);
@@ -14,11 +14,11 @@ function TestimonialsSection() {
     const maxWidth = cats.length * itemWidthWithGap;
 
     const handleBtnClick = (side: Sides) => {
-        if (side === Sides.Left && activeIdx >= 1) {
+        if (side === Sides.LEFT && activeIdx >= 1) {
             setActiveIdx(activeIdx - 1);
             setMoveWidth(moveWidth - itemWidthWithGap);
         }
-        if (side === Sides.Right && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
+        if (side === Sides.RIGHT && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
             setActiveIdx(activeIdx + 1);
             setMoveWidth(moveWidth + itemWidthWithGap);
         }
@@ -71,7 +71,7 @@ function TestimonialsSection() {
                         left: 0,
                         transform: "translate(-150%, -50%)",
                     }}
-                    onClick={() => handleBtnClick(Sides.Left)}
+                    onClick={() => handleBtnClick(Sides.LEFT)}
                 >
                     &larr;
                 </button>
@@ -82,7 +82,7 @@ function TestimonialsSection() {
                         right: 0,
                         transform: "translate(150%, -50%)",
                     }}
-                    onClick={() => handleBtnClick(Sides.Right)}
+                    onClick={() => handleBtnClick(Sides.RIGHT)}
                 >
                     &rarr;
                 </button>

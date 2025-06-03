@@ -1,0 +1,63 @@
+@use "../../abstracts/variables" as variables;
+
+.testimonial {
+    position: relative;
+    margin: 1.6rem auto;
+
+    &__container {
+        overflow: hidden visible;
+        position: relative;
+        padding: 3.2rem 0;
+    }
+
+    &__content-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        transition: all 0.5s ease;
+    }
+
+    &__btn {
+        all: unset;
+        position: absolute;
+        background-color: variables.$primary-color;
+        color: variables.$color-white;
+        padding: 0.8rem 1.2rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        top: 50%;
+        border-radius: 50%;
+
+        &--left {
+            left: 0;
+            transform: translate(-150%, -50%);
+        }
+        &--right {
+            right: 0;
+            transform: translate(150%, -50%);
+        }
+    }
+
+    &__item {
+        height: auto;
+        background-color: variables.$secondary-color;
+        transition: 0.5s ease;
+        margin-right: 30px;
+
+        &--small {
+            width: 100px;
+        }
+        &--medium {
+            width: 200px;
+        }
+        &--large {
+            width: 300px;
+        }
+
+        &--active {
+            scale: 1.05;
+            background-color: variables.$color-white !important;
+            transform: translateY(-2.5rem);
+        }
+    }
+}

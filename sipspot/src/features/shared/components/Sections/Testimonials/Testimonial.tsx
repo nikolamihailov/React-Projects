@@ -21,7 +21,7 @@ const GAP = 30;
 function Testimonial<T>({ items, itemSize, shownItems, renderItem }: TestimonialProps<T>) {
     const [activeIdx, setActiveIdx] = useState(0);
     const [moveWidth, setMoveWidth] = useState(0);
-    const itemWidthWithGap = ITEM_WIDTHS[itemSize] + GAP;
+    const itemWidthWithGap = shownItems === 1 ? ITEM_WIDTHS[itemSize] : ITEM_WIDTHS[itemSize] + GAP;
     const maxWidth = items.length * itemWidthWithGap;
 
     const handleBtnClick = (side: Sides) => {
@@ -29,16 +29,24 @@ function Testimonial<T>({ items, itemSize, shownItems, renderItem }: Testimonial
             setActiveIdx(activeIdx - 1);
             setMoveWidth(moveWidth - itemWidthWithGap);
         }
-        if (side === Sides.RIGHT && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
-            setActiveIdx(activeIdx + 1);
-            setMoveWidth(moveWidth + itemWidthWithGap);
+        if (shownItems === 1) {
+            if (side === Sides.RIGHT && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
+                setActiveIdx(activeIdx + 1);
+                setMoveWidth(moveWidth + itemWidthWithGap);
+            }
+        } else {
+            if (side === Sides.RIGHT && moveWidth <= maxWidth - shownItems * itemWidthWithGap) {
+                setActiveIdx(activeIdx + 1);
+                setMoveWidth(moveWidth + itemWidthWithGap);
+            }
         }
     };
 
     const itemClasses = (idx: number) =>
         classNames(
             "testimonial__item",
-            `testimonial__item${activeIdx === idx - 1 ? "--active" : ""}`,
+            `${shownItems <= 2 && `testimonial__item${activeIdx === idx ? "--active" : ""}`}`,
+            `${shownItems >= 3 && `testimonial__item${activeIdx === idx - 1 ? "--active" : ""}`}`,
             `testimonial__item--${itemSize}`
         );
 

@@ -40,4 +40,25 @@ export const testimonialItems = [
         review: "Fantastic experience! I felt heard and supported throughout.",
         rating: 5,
     },
+    {
+        picture: user1,
+        name: "Emily Johnson",
+        position: "Product Manager",
+        review: "Absolutely loved the experience. The team was professional and friendly!",
+        rating: 5,
+    },
+    {
+        picture: user4,
+        name: "Daniel Smith",
+        position: "Freelancer",
+        review: "It was okay, but I expected a bit more customization.",
+        rating: 3,
+    },
+    {
+        picture: user5,
+        name: "Olivia Brown",
+        position: "Marketing Specialist",
+        review: "Fantastic experience! I felt heard and supported throughout.",
+        rating: 5,
+    },
 ];

@@ -6,7 +6,9 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+}
 
+* {
     /* For Firefox */
     scrollbar-color: variables.$primary-color variables.$tertiary-color;
     scrollbar-width: thin;

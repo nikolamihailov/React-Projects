@@ -1,9 +1,15 @@
+@use "../abstracts/variables" as variables;
+
 *,
 *::after,
 *::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+
+    /* For Firefox */
+    scrollbar-color: variables.$primary-color variables.$tertiary-color;
+    scrollbar-width: thin;
 }
 
 html {
@@ -19,4 +25,27 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
+}
+
+/* Other browsers - Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: variables.$primary-color;
+}
+
+/* *::-webkit-scrollbar-track:hover {
+  background-color: var(--primary-color);
+} */
+
+*::-webkit-scrollbar-track:active {
+    background-color: variables.$secondary-color;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: variables.$secondary-color;
 }

@@ -18,7 +18,7 @@ function FeaturedCocktailsSection() {
                     </p>
                 </div>
                 <div className="featured-cocktails__container">
-                    <FeaturedItem name="Strawberry Margarita" imgSrc={strawberryMargaritaPng} />
+                    <FeaturedItem name="Margarita" imgSrc={strawberryMargaritaPng} />
                     <FeaturedItem name="Daiquiri" imgSrc={daiquiriPng} />
                     <FeaturedItem name="Mojito" imgSrc={mojitoPng} />
                 </div>

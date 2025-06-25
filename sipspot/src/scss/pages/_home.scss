@@ -1,10 +1,14 @@
 @use "../abstracts/variables" as variables;
 
 .section {
-    padding: 4.8rem 0;
+    color: variables.$primary-color;
+    padding: 6.4rem 0;
+    text-align: center;
 
     &__hero {
         background-color: variables.$tertiary-color;
+        padding: 4.8rem 0;
+        text-align: left;
     }
 
     &__partners {
@@ -15,22 +19,13 @@
 
     &__featured-cocktails {
         background-color: variables.$tertiary-color;
-        color: variables.$primary-color;
-        padding: 6.4rem 0;
-        text-align: center;
     }
 
     &__features {
         background-color: variables.$tertiary-light;
-        color: variables.$primary-color;
-        padding: 6.4rem 0;
-        text-align: center;
     }
 
     &__testimonials {
         background-color: variables.$tertiary-color;
-        color: variables.$primary-color;
-        padding: 6.4rem 0;
-        text-align: center;
     }
 }

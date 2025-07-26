@@ -8,13 +8,13 @@ const Stars = (props) => {
   const ref = useRef();
   // Generate random points in a sphere for stars
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(50000), { radius: 1.5 })
+    random.inSphere(new Float32Array(30000), { radius: 1.5 })
   );
 
   // Use frame hook for animation and rotate the starfield slowly over time
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    ref.current.rotation.x -= delta / 60;
+    ref.current.rotation.y -= delta / 40;
   });
 
   return (

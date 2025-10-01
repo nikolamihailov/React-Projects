@@ -2,6 +2,7 @@ import { TestimonialItemSize } from "../../../../../types/Testimonial";
 import SectionInfo from "../../SectionInfo";
 import Section from "../../UI/Section/Section";
 import Testimonial from "./Testimonial";
+import TestimonialItem from "./TestimonialItem";
 import { testimonialItems } from "./testimonials";
 
 function TestimonialsSection() {
@@ -12,7 +13,7 @@ function TestimonialsSection() {
                 items={testimonialItems}
                 itemSize={TestimonialItemSize.MEDIUM}
                 shownItems={3}
-                renderItem={(item) => <div className="test">{item.name}</div>}
+                renderItem={(item) => <TestimonialItem testimonial={item}/>}
             />
         </Section>
     );

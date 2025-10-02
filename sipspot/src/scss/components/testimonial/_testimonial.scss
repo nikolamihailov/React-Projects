@@ -1,6 +1,6 @@
 @use "../../abstracts/variables" as variables;
 
-.testimonial {
+.testimonials {
     position: relative;
     margin: 1.6rem auto;
 
@@ -13,7 +13,8 @@
     &__content-wrapper {
         display: flex;
         justify-content: flex-start;
-        transition: all 0.5s ease;
+        transition: transform 0.5s ease;
+        will-change: transform;
     }
 
     &__btn {
@@ -38,26 +39,38 @@
         }
     }
 
-    &__item {
+    &__item-container {
         height: auto;
         background-color: variables.$secondary-color;
-        transition: 0.5s ease;
+        transition: transform 0.5s ease-out, background-color 0.3s ease-out;
         margin-right: 30px;
+        border-radius: 6px;
+        will-change: transform, background-color;
 
         &--small {
-            width: 100px;
+            width: 15rem;
         }
         &--medium {
-            width: 200px;
+            width: 25rem;
         }
         &--large {
-            width: 300px;
+            width: 35rem;
         }
 
         &--active {
-            scale: 1.05;
+            transform: translateY(-2.5rem) scale(1.05);
             background-color: variables.$color-white !important;
-            transform: translateY(-2.5rem);
         }
+    }
+}
+
+.testimonial-item {
+    padding: 15px;
+
+    &__authorImg {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        border-radius: 50%;
     }
 }

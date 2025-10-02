@@ -11,9 +11,9 @@ type TestimonialProps<T> = {
 };
 
 const ITEM_WIDTHS: Record<TestimonialItemSize, number> = {
-    [TestimonialItemSize.SMALL]: 100,
-    [TestimonialItemSize.MEDIUM]: 200,
-    [TestimonialItemSize.LARGE]: 300,
+    [TestimonialItemSize.SMALL]: 150,
+    [TestimonialItemSize.MEDIUM]: 250,
+    [TestimonialItemSize.LARGE]: 350,
 };
 
 const GAP = 30;
@@ -42,24 +42,32 @@ function Testimonial<T>({ items, itemSize, shownItems, renderItem }: Testimonial
         }
     };
 
+    const getActiveIndex = (idx: number) => {
+        if (shownItems === 1) return idx === activeIdx;
+        if (shownItems === 2) return idx === activeIdx;
+        if (shownItems >= 3) return idx === activeIdx + 1;
+        return false;
+    };
+
     const itemClasses = (idx: number) =>
         classNames(
-            "testimonial__item",
-            `${shownItems <= 2 && `testimonial__item${activeIdx === idx ? "--active" : ""}`}`,
-            `${shownItems >= 3 && `testimonial__item${activeIdx === idx - 1 ? "--active" : ""}`}`,
-            `testimonial__item--${itemSize}`
+            "testimonials__item-container",
+            {
+                "testimonials__item-container--active": getActiveIndex(idx),
+            },
+            `testimonials__item-container--${itemSize}`
         );
 
     return (
         <div
-            className="testimonial"
+            className="testimonials"
             style={{
                 width: `${itemWidthWithGap * shownItems - GAP}px`,
             }}
         >
-            <div className="testimonial__container">
+            <div className="testimonials__container">
                 <div
-                    className="testimonial__content-wrapper"
+                    className="testimonials__content-wrapper"
                     style={{
                         transform: `translateX(-${activeIdx * itemWidthWithGap}px)`,
                         width: `${maxWidth}px`,
@@ -74,12 +82,22 @@ function Testimonial<T>({ items, itemSize, shownItems, renderItem }: Testimonial
                     })}
                 </div>
             </div>
-            <button className="testimonial__btn testimonial__btn--left" onClick={() => handleBtnClick(Sides.LEFT)}>
-                &larr;
-            </button>
-            <button className="testimonial__btn testimonial__btn--right" onClick={() => handleBtnClick(Sides.RIGHT)}>
-                &rarr;
-            </button>
+            {activeIdx >= 1 && (
+                <button
+                    className="testimonials__btn testimonials__btn--left"
+                    onClick={() => handleBtnClick(Sides.LEFT)}
+                >
+                    &larr;
+                </button>
+            )}
+            {activeIdx < items.length - 1 && (
+                <button
+                    className="testimonials__btn testimonials__btn--right"
+                    onClick={() => handleBtnClick(Sides.RIGHT)}
+                >
+                    &rarr;
+                </button>
+            )}
         </div>
     );
 }

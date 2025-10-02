@@ -10,13 +10,13 @@ export const testimonialItems: Testimonial[] = [
         picture: user1,
         name: "Emily Johnson",
         review: "Absolutely loved the experience. The team was professional and friendly!",
-        rating: 5,
+        rating: 4.2,
     },
     {
         picture: user2,
         name: "James Miller",
         review: "Very efficient and seamless process from start to finish.",
-        rating: 4,
+        rating: 4.5,
     },
     {
         picture: user3,

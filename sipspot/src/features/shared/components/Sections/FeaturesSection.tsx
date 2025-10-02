@@ -1,7 +1,7 @@
 import SectionInfo from "../SectionInfo";
 import Section from "../UI/Section/Section";
 import { motion } from "framer-motion";
-import { FaCocktail, FaStar, FaGlassCheers, FaLeaf } from "react-icons/fa"; // Using react-icons
+import { FaCocktail, FaStar, FaGlassCheers, FaLeaf } from "react-icons/fa";
 
 const features = [
     {

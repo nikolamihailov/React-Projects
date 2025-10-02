@@ -2,6 +2,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import { Sides } from "../../../../../types/Sides";
 import { TestimonialItemSize } from "../../../../../types/Testimonial";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 type TestimonialProps<T> = {
     items: T[];
@@ -87,15 +88,15 @@ function Testimonial<T>({ items, itemSize, shownItems, renderItem }: Testimonial
                     className="testimonials__btn testimonials__btn--left"
                     onClick={() => handleBtnClick(Sides.LEFT)}
                 >
-                    &larr;
+                    <FaArrowLeft color="#fff" />
                 </button>
             )}
-            {activeIdx < items.length - 1 && (
+            {activeIdx < items.length - 2 && (
                 <button
                     className="testimonials__btn testimonials__btn--right"
                     onClick={() => handleBtnClick(Sides.RIGHT)}
                 >
-                    &rarr;
+                    <FaArrowRight color="#fff" />
                 </button>
             )}
         </div>

@@ -22,12 +22,19 @@
         position: absolute;
         background-color: variables.$primary-color;
         color: variables.$color-white;
-        padding: 0.8rem 1.2rem;
+        padding: 1.2rem;
         font-size: 1.8rem;
         font-weight: bold;
         cursor: pointer;
         top: 50%;
         border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: variables.$secondary-color;
+        }
 
         &--left {
             left: 0;
@@ -73,14 +80,27 @@
     padding: 15px;
 
     &__authorImg {
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px;
         object-fit: cover;
         border-radius: 50%;
     }
 
     &__name {
         font-size: 1.8rem;
+    }
+
+    &__rating {
+        font-size: 1.6rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+
+        &-number {
+            margin-top: -0.5rem;
+        }
     }
 
     &__review {

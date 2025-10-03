@@ -49,6 +49,7 @@
     &__item-container {
         height: auto;
         background-color: variables.$secondary-color;
+        color: variables.$color-white;
         transition: transform 0.5s ease-out, background-color 0.3s ease-out;
         margin-right: 30px;
         border-radius: 6px;
@@ -65,8 +66,9 @@
         }
 
         &--active {
+            color: variables.$primary-color;
             transform: translateY(-2.5rem) scale(1.05);
-            background-color: variables.$color-white !important;
+            background-color: variables.$color-white;
         }
     }
 }
@@ -77,7 +79,7 @@
     align-items: center;
     justify-content: center;
     gap: 1.6rem;
-    padding: 15px;
+    padding: 1.8rem 3.2rem;
 
     &__authorImg {
         height: 70px;
@@ -88,6 +90,7 @@
 
     &__name {
         font-size: 1.8rem;
+        color: variables.$primary-color;
     }
 
     &__rating {
@@ -106,10 +109,12 @@
     &__review {
         font-size: 1.3rem;
         font-style: italic;
+        font-weight: 600;
     }
 
     &__quote {
-        font-size: 1.9rem;
+        font-size: 1.2rem;
         font-weight: bold;
+        margin: 0 0.8rem;
     }
 }

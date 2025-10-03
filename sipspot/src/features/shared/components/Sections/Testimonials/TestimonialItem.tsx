@@ -1,3 +1,4 @@
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { Testimonial } from "../../../../../types/Testimonial";
 import Rating from "./Rating";
 
@@ -14,9 +15,9 @@ function TestimonialItem({ testimonial }: TestimonialItemProps) {
                 <span className="testimonial-item__rating-number">{testimonial.rating.toFixed(1)}/5</span>
             </div>
             <p className="testimonial-item__review">
-                <span className="testimonial-item__quote">" </span>
+                <FaQuoteLeft className="testimonial-item__quote" />
                 {testimonial.review}
-                <span className="testimonial-item__quote"> "</span>
+                <FaQuoteRight className="testimonial-item__quote" />
             </p>
         </article>
     );

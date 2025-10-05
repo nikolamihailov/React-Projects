@@ -11,7 +11,7 @@ type CarouselProps = {
 };
 
 function Carousel({ items, gap = Gap.MEDIUM }: CarouselProps) {
-     const duplicatedItems = [...items, ...items];
+    const duplicatedItems = [...items, ...items];
 
     return (
         <div className="carousel">

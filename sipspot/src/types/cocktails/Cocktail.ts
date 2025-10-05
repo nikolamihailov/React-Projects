@@ -27,4 +27,4 @@ export type Cocktail = {
     strMeasure9: string;
     strMeasure10: string;
     strImageSource: string;
-}
+};

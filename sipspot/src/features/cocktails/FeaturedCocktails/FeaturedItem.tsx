@@ -2,8 +2,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 type FeatureItemProps = {
-    name: string,
-    imgSrc: string,
+    name: string;
+    imgSrc: string;
 };
 
 function FeaturedItem({ name, imgSrc }: FeatureItemProps) {

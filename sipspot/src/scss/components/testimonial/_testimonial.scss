@@ -40,6 +40,7 @@
             left: 0;
             transform: translate(-150%, -50%);
         }
+
         &--right {
             right: 0;
             transform: translate(150%, -50%);
@@ -58,9 +59,11 @@
         &--small {
             width: 15rem;
         }
+
         &--medium {
             width: 25rem;
         }
+
         &--large {
             width: 35rem;
         }

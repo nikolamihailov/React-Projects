@@ -9,4 +9,4 @@ export type Testimonial = {
     name: string;
     review: string;
     rating: number;
-}
+};

@@ -17,5 +17,5 @@ export const partners = [
     { id: 6, src: logo6 },
     { id: 7, src: logo7 },
     { id: 8, src: logo8 },
-    { id: 9, src: logo9 }
+    { id: 9, src: logo9 },
 ];

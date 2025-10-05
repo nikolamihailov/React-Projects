@@ -5,13 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const client = new QueryClient();
 
 function App() {
-  return (
-    <>
-      <QueryClientProvider client={client}>
-        <RouterProvider router={appRouter} />
-      </QueryClientProvider>
-    </>
-  );
+    return (
+        <>
+            <QueryClientProvider client={client}>
+                <RouterProvider router={appRouter} />
+            </QueryClientProvider>
+        </>
+    );
 }
 
 export default App;

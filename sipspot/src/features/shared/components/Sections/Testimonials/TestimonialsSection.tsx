@@ -13,7 +13,7 @@ function TestimonialsSection() {
                 items={testimonialItems}
                 itemSize={TestimonialItemSize.MEDIUM}
                 shownItems={3}
-                renderItem={(item) => <TestimonialItem testimonial={item}/>}
+                renderItem={(item) => <TestimonialItem testimonial={item} />}
             />
         </Section>
     );

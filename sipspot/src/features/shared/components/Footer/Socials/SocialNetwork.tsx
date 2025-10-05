@@ -1,6 +1,6 @@
 export type SocialNetworkProps = {
-    linkUrl: string,
-    networkName: string,
+    linkUrl: string;
+    networkName: string;
 };
 
 function SocialNetwork({ linkUrl, networkName }: SocialNetworkProps) {

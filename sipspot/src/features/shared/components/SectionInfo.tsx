@@ -1,6 +1,6 @@
 type SectionInfoProps = {
-    subheading: string,
-    heading: string,
+    subheading: string;
+    heading: string;
 };
 
 function SectionInfo({ subheading, heading }: SectionInfoProps) {

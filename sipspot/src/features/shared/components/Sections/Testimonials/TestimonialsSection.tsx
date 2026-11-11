@@ -19,13 +19,19 @@ function TestimonialsSection() {
 
     return (
         <Section sectionClassName="testimonials">
-            <SectionInfo heading="What Our Customers Say:" subheading="Testimonials" />
-            <Testimonial
-                items={testimonialItems}
-                itemSize={TestimonialItemSize.MEDIUM}
-                shownItems={getShownItems()}
-                renderItem={(item) => <TestimonialItem testimonial={item} />}
-            />
+            <div className="container">
+                <SectionInfo
+                    subheading="Testimonials"
+                    heading="What our guests say"
+                    description="A few kind words from the people who make our nights."
+                />
+                <Testimonial
+                    items={testimonialItems}
+                    itemSize={TestimonialItemSize.MEDIUM}
+                    shownItems={getShownItems()}
+                    renderItem={(item) => <TestimonialItem testimonial={item} />}
+                />
+            </div>
         </Section>
     );
 }

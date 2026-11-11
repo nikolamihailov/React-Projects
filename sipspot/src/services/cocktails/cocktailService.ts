@@ -59,3 +59,11 @@ export const getFilterOptions = async (filter: CocktailFilter) => {
         .map((option) => option[optionKey])
         .filter(Boolean);
 };
+
+// first-letter search returns full recipes (the free key caps it at 25 drinks per letter)
+export const getCocktailsByFirstLetter = async (letter: string) => {
+    const res = await axiosInstance.get<DrinksResponse<Cocktail>>(cocktailsEndpoints.search, {
+        params: { f: letter },
+    });
+    return toDrinksArray(res.data);
+};

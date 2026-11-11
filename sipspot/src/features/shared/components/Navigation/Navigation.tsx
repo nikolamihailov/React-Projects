@@ -2,27 +2,13 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router-dom";
+import { navLinks } from "../../../../data/navLinks";
+import Button from "../UI/Button/Button";
 import Logo from "../UI/Logo/Logo";
 import Nav from "../UI/Nav/Nav";
 import logo from "/logo-icon.png";
 
-type NavItem = {
-    label: string;
-    to: string;
-};
-
-// split around the centred logo on desktop
-const leftLinks: NavItem[] = [
-    { label: "Home", to: "/" },
-    { label: "Recipes", to: "/recipes" },
-];
-
-const rightLinks: NavItem[] = [
-    { label: "Gallery", to: "/gallery" },
-    { label: "About us", to: "/about-us" },
-];
-
-const NAV_LIST_ID = "main-nav-list";
+const NAV_MENU_ID = "main-nav-menu";
 
 function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,41 +32,43 @@ function Navigation() {
 
     const handleMenuToggle = () => setIsMenuOpen((isOpen) => !isOpen);
 
-    const renderLinks = (links: NavItem[]) =>
-        links.map((link) => (
-            <li key={link.to} className="nav__list-item">
-                <NavLink to={link.to}>{link.label}</NavLink>
-            </li>
-        ));
-
     return (
         <Nav navClassname="main">
-            {/* mobile only: logo + menu button */}
-            <div className="nav__bar">
+            <div className="nav__inner container">
                 <NavLink to="/" className="nav__brand" aria-label="SipSpot home">
-                    <Logo src={logo} width={48} />
+                    <Logo src={logo} width={40} />
+                    <span className="nav__brand-name" aria-hidden="true">
+                        Sip<span>Spot</span>
+                    </span>
                 </NavLink>
+
                 <button
                     type="button"
                     className="nav__toggle"
                     aria-expanded={isMenuOpen}
-                    aria-controls={NAV_LIST_ID}
+                    aria-controls={NAV_MENU_ID}
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     onClick={handleMenuToggle}
                 >
                     {isMenuOpen ? <IoClose aria-hidden="true" /> : <IoMenu aria-hidden="true" />}
                 </button>
-            </div>
 
-            <ul id={NAV_LIST_ID} className={classNames("nav__list", { "nav__list--open": isMenuOpen })}>
-                {renderLinks(leftLinks)}
-                <li className="nav__list-item nav__list-item--logo">
-                    <NavLink to="/" aria-label="SipSpot home">
-                        <Logo src={logo} width={60} />
-                    </NavLink>
-                </li>
-                {renderLinks(rightLinks)}
-            </ul>
+                <div id={NAV_MENU_ID} className={classNames("nav__menu", { "nav__menu--open": isMenuOpen })}>
+                    <ul className="nav__list">
+                        {navLinks.map((link) => (
+                            <li key={link.to} className="nav__list-item">
+                                {/* `end` so Home isn't highlighted on every page */}
+                                <NavLink to={link.to} end={link.to === "/"} className="nav__link">
+                                    {link.label}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                    <Button el="link" href="/#reservation" type="small" variant="primary">
+                        Book a table
+                    </Button>
+                </div>
+            </div>
         </Nav>
     );
 }

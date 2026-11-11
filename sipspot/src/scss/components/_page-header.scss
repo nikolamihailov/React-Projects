@@ -1,0 +1,26 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+// title band at the top of every inner page
+.page-header {
+    position: relative;
+    overflow: hidden;
+    padding: 7.2rem 0 6.4rem;
+    background: radial-gradient(circle at 85% 20%, rgba(variables.$tertiary-color, 0.55), transparent 45%),
+        linear-gradient(180deg, variables.$bg-tint, variables.$bg);
+    border-bottom: 1px solid variables.$border;
+
+    @include mixins.phone {
+        padding: 4.8rem 0;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__description {
+        max-width: 64rem;
+    }
+}

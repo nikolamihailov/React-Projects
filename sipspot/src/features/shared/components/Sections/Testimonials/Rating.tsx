@@ -10,7 +10,7 @@ function Rating({ value, max = 5 }: RatingProps) {
 
     let rounded: number;
     const decimal = value % 1;
-    const STAR_COLOR = "#FFD700";
+    const STAR_COLOR = "#f59f00";
 
     if (decimal < 0.5) {
         rounded = Math.floor(value);

@@ -1,32 +1,42 @@
 import { Link, useLocation } from "react-router-dom";
-import { CocktailSummary } from "../../../types/cocktails/Cocktail";
+import { MenuCocktail } from "../menu/menuTypes";
 import { getDrinkImage } from "../utils/cocktailUtils";
 
-// lets the details page link back to the same search / category
+// lets the details page link back to the same search / filters
 export type RecipesLinkState = {
     recipesSearch: string;
 };
 
 type CocktailCardProps = {
-    cocktail: CocktailSummary;
+    cocktail: MenuCocktail;
 };
 
 function CocktailCard({ cocktail }: CocktailCardProps) {
     const location = useLocation();
-    const linkState: RecipesLinkState = { recipesSearch: location.search };
+    const linkState: RecipesLinkState = { recipesSearch: location.pathname === "/recipes" ? location.search : "" };
+    const ingredientCount = cocktail.ingredients.length;
 
     return (
         <li className="cocktail-card">
-            <Link className="cocktail-card__link" to={`/recipes/${cocktail.idDrink}`} state={linkState}>
-                <img
-                    className="cocktail-card__img"
-                    src={getDrinkImage(cocktail.strDrinkThumb, "medium")}
-                    alt=""
-                    loading="lazy"
-                    width={350}
-                    height={350}
-                />
-                <h3 className="cocktail-card__title">{cocktail.strDrink}</h3>
+            <Link className="cocktail-card__link" to={`/recipes/${cocktail.id}`} state={linkState}>
+                <div className="cocktail-card__media">
+                    <img
+                        className="cocktail-card__img"
+                        src={getDrinkImage(cocktail.thumb, "medium")}
+                        alt=""
+                        loading="lazy"
+                        width={350}
+                        height={350}
+                    />
+                    {cocktail.isIbaClassic && <span className="cocktail-card__badge">IBA Classic</span>}
+                </div>
+                <div className="cocktail-card__body">
+                    <span className="cocktail-card__category">{cocktail.categoryLabel}</span>
+                    <h3 className="cocktail-card__title">{cocktail.name}</h3>
+                    <p className="cocktail-card__meta">
+                        {cocktail.glass} · {ingredientCount} {ingredientCount === 1 ? "ingredient" : "ingredients"}
+                    </p>
+                </div>
             </Link>
         </li>
     );

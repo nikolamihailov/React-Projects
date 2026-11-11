@@ -1,0 +1,308 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.about-intro {
+    padding-block: 9.6rem;
+
+    @include mixins.phone {
+        padding-block: 6.4rem;
+    }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 8rem;
+        align-items: center;
+
+        @include mixins.tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 6.4rem;
+        }
+    }
+
+    // two overlapping photos + an "Est." badge
+    &__media {
+        position: relative;
+        padding: 0 4.8rem 6.4rem 0;
+        max-width: 56rem;
+
+        @include mixins.phone {
+            padding: 0 2.4rem 4rem 0;
+        }
+    }
+
+    &__img {
+        border-radius: variables.$radius-lg;
+        object-fit: cover;
+
+        &--primary {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            box-shadow: variables.$shadow-md;
+        }
+
+        &--secondary {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 45%;
+            aspect-ratio: 1;
+            border: 0.6rem solid variables.$bg;
+            box-shadow: variables.$shadow-lg;
+        }
+    }
+
+    &__since {
+        position: absolute;
+        top: 2.4rem;
+        left: -2.4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.6rem 2rem;
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: variables.$primary-dark;
+        background-color: variables.$tertiary-color;
+        border-radius: variables.$radius;
+        box-shadow: variables.$shadow-md;
+
+        strong {
+            font-size: 3.2rem;
+            letter-spacing: 0;
+            line-height: 1.1;
+        }
+
+        @include mixins.phone {
+            left: 1.2rem;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .section-info {
+            margin-bottom: 0;
+        }
+    }
+
+    &__quote {
+        position: relative;
+        margin-top: 1.2rem;
+        padding: 2.4rem 2.8rem;
+        background-color: variables.$bg-tint;
+        border-left: 0.4rem solid variables.$secondary-color;
+        border-radius: 0 variables.$radius variables.$radius 0;
+
+        svg {
+            font-size: 2rem;
+            color: variables.$secondary-color;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            font-size: 1.9rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.5;
+            color: variables.$primary-dark;
+        }
+
+        cite {
+            display: block;
+            margin-top: 1.2rem;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 700;
+            color: variables.$ink-muted;
+        }
+    }
+}
+
+.about-stats {
+    padding-block: 5.6rem;
+    background: linear-gradient(135deg, #3d0200 0%, variables.$primary-dark 100%);
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 3.2rem;
+
+        @include mixins.tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+
+        dd {
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: variables.$tertiary-color;
+        }
+
+        dt {
+            font-size: 1.5rem;
+            color: variables.$on-dark-muted;
+        }
+    }
+}
+
+.about-timeline {
+    padding-block: 9.6rem;
+
+    @include mixins.phone {
+        padding-block: 6.4rem;
+    }
+}
+
+.timeline {
+    position: relative;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+
+    @include mixins.tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mixins.phone {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 2.8rem;
+        @include mixins.card;
+
+        // gold rule on top of each milestone
+        &::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 2.8rem;
+            right: 2.8rem;
+            height: 0.3rem;
+            background: linear-gradient(90deg, variables.$secondary-color, variables.$tertiary-color);
+            border-radius: 0 0 0.3rem 0.3rem;
+        }
+    }
+
+    &__year {
+        font-size: 3.2rem;
+        font-weight: 900;
+        line-height: 1.1;
+        color: variables.$secondary-color;
+    }
+
+    &__title {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
+    }
+
+    &__text {
+        font-size: 1.55rem;
+        color: variables.$ink-muted;
+    }
+}
+
+.about-values {
+    padding-block: 9.6rem;
+    background-color: variables.$bg-tint;
+
+    @include mixins.phone {
+        padding-block: 6.4rem;
+    }
+
+    &__grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+        gap: 2.4rem;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 3.6rem 3.2rem;
+        @include mixins.card;
+    }
+
+    &__number {
+        font-size: 1.4rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        color: variables.$secondary-color;
+    }
+}
+
+.about-team {
+    padding-block: 9.6rem;
+
+    @include mixins.phone {
+        padding-block: 6.4rem;
+    }
+
+    &__grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+        gap: 2.4rem;
+    }
+
+    &__member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 4rem 2.4rem 3.2rem;
+        text-align: center;
+        @include mixins.card;
+    }
+
+    &__avatar {
+        display: grid;
+        place-items: center;
+        width: 9.6rem;
+        height: 9.6rem;
+        margin-bottom: 1.2rem;
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: variables.$tertiary-color;
+        background: linear-gradient(135deg, variables.$primary-color, variables.$primary-dark);
+        border-radius: 50%;
+        box-shadow: 0 0 0 0.6rem rgba(variables.$tertiary-color, 0.4);
+    }
+
+    &__name {
+        font-size: 2rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
+    }
+
+    &__role {
+        font-size: 1.45rem;
+        color: variables.$ink-muted;
+    }
+
+    &__cta {
+        display: flex;
+        justify-content: center;
+        margin-top: 4.8rem;
+    }
+}

@@ -1,100 +1,461 @@
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
 
-.section {
-    &__recipes,
-    &__cocktail-details {
-        background-color: variables.$tertiary-pastel;
+$sidebar-width: 28rem;
+$drawer-breakpoint: 960px;
+
+.menu-layout {
+    display: grid;
+    grid-template-columns: $sidebar-width minmax(0, 1fr);
+    gap: 4.8rem;
+    align-items: start;
+    padding-block: 4.8rem 9.6rem;
+
+    @media (max-width: $drawer-breakpoint) {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
-.recipes {
-    max-width: variables.$max-width-content;
-    margin: 0 auto;
-    padding: 0 3.2rem;
+// ===== sidebar / mobile drawer =====
+.menu-filters {
+    position: sticky;
+    top: calc(#{variables.$header-height} + 2.4rem);
+    max-height: calc(100vh - #{variables.$header-height} - 4.8rem);
     display: flex;
     flex-direction: column;
-    gap: 4.8rem;
 
-    &__header .heading-secondary {
-        margin-bottom: 2.4rem;
-    }
-
-    &__intro {
-        max-width: 70rem;
-        margin: 0 auto;
-    }
-
-    &__controls {
+    &__header {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 2.4rem;
+        gap: 1.2rem;
+        padding-bottom: 1.6rem;
+        border-bottom: 2px solid variables.$primary-dark;
     }
 
-    &__results {
-        display: flex;
-        flex-direction: column;
-        gap: 2.4rem;
+    &__title {
+        flex-grow: 1;
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
     }
 
-    &__results-header {
+    &__clear {
+        font-family: inherit;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: variables.$primary-color;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 0.3rem;
+        @include mixins.focus-ring;
+    }
+
+    &__close {
+        display: none;
+        padding: 0.6rem;
+        font-size: 2.6rem;
+        color: variables.$ink;
+        background: none;
+        border: none;
+        border-radius: variables.$radius-sm;
+        cursor: pointer;
+        @include mixins.focus-ring;
+    }
+
+    &__body {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-right: 0.8rem;
+        // quiet scrollbar - the page-wide red one is too heavy inside the panel
+        scrollbar-color: variables.$border transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border: none;
+            background-color: variables.$border;
+        }
+    }
+
+    &__toggle {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: start;
+        gap: 1.2rem;
+        margin-top: 2rem;
+        padding: 1.4rem;
+        background-color: variables.$bg-tint;
+        border-radius: variables.$radius-sm;
+        cursor: pointer;
+
+        small {
+            display: block;
+            margin-top: 0.2rem;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: variables.$ink-muted;
+        }
+    }
+
+    &__footer {
+        display: none;
+    }
+
+    &__overlay {
+        display: none;
+    }
+
+    @media (max-width: $drawer-breakpoint) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        width: min(36rem, 88vw);
+        max-height: none;
+        padding: 2.4rem;
+        background-color: variables.$bg;
+        box-shadow: variables.$shadow-lg;
+        transform: translateX(-105%);
+        transition: transform 0.35s ease;
+        visibility: hidden;
+
+        &--open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        &__close {
+            display: flex;
+        }
+
+        &__body {
+            flex-grow: 1;
+        }
+
+        &__footer {
+            display: block;
+            padding-top: 1.6rem;
+            border-top: 1px solid variables.$border;
+
+            .btn-link {
+                width: 100%;
+            }
+        }
+
+        &__overlay {
+            display: block;
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background-color: rgba(variables.$ink, 0.45);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+
+            &--visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+// ===== one filter group =====
+.facet {
+    border: none;
+    border-bottom: 1px solid variables.$border;
+    padding-block: 1.6rem;
+
+    &__header {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        padding: 0.4rem 0;
+        font-family: inherit;
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
+        background: none;
+        border: none;
+        cursor: pointer;
+        @include mixins.focus-ring;
+
+        &[aria-expanded="false"] .facet__chevron {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &__chevron {
+        font-size: 1.8rem;
+        transition: transform variables.$transition;
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding-top: 1.2rem;
+    }
+
+    &__search {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        font-family: inherit;
+        font-size: 1.4rem;
+        color: variables.$ink;
+        background-color: variables.$surface;
+        border: 1px solid variables.$border;
+        border-radius: variables.$radius-sm;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$primary-color;
+        }
+    }
+
+    &__options {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    &__option {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
         gap: 1.2rem;
-        text-align: left;
+        padding: 0.6rem 0.4rem;
+        font-size: 1.5rem;
+        border-radius: 0.6rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(variables.$tertiary-color, 0.25);
+        }
     }
 
-    &__results-heading {
-        margin-bottom: 0;
-        font-size: 2.4rem;
+    // custom square checkbox in brand colours
+    &__checkbox {
+        appearance: none;
+        display: grid;
+        place-items: center;
+        width: 2rem;
+        height: 2rem;
+        margin: 0;
+        background-color: variables.$surface;
+        border: 1.5px solid rgba(variables.$ink, 0.35);
+        border-radius: 0.4rem;
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+
+        &::after {
+            content: "";
+            width: 0.5rem;
+            height: 1rem;
+            margin-top: -0.2rem;
+            border: solid variables.$color-white;
+            border-width: 0 0.2rem 0.2rem 0;
+            transform: rotate(45deg) scale(0);
+            transition: transform 0.15s ease;
+        }
+
+        &:checked {
+            background-color: variables.$primary-color;
+            border-color: variables.$primary-color;
+
+            &::after {
+                transform: rotate(45deg) scale(1);
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.2rem solid variables.$secondary-color;
+            outline-offset: 0.2rem;
+        }
     }
 
-    &__results-count {
-        font-size: 1.6rem;
+    &__label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    &__count {
+        min-width: 2.8rem;
+        font-size: 1.3rem;
         font-weight: 700;
-        color: variables.$secondary-dark;
+        color: variables.$ink-muted;
+        text-align: right;
+    }
+
+    &__empty {
+        font-size: 1.4rem;
+        color: variables.$ink-muted;
+    }
+
+    &__more {
+        align-self: flex-start;
+        font-family: inherit;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: variables.$primary-color;
+        background: none;
+        border: none;
+        cursor: pointer;
+        @include mixins.focus-ring;
+    }
+}
+
+// ===== results column =====
+.menu-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.2rem;
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.6rem;
+    }
+
+    &__count {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    &__filters-btn,
+    &__surprise,
+    &__sort select {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        height: 4.4rem;
+        padding: 0 1.6rem;
+        font-family: inherit;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: variables.$ink;
+        background-color: variables.$surface;
+        border: 1px solid variables.$border;
+        border-radius: variables.$radius-pill;
+        cursor: pointer;
+        transition: border-color variables.$transition;
+        @include mixins.focus-ring;
+
+        &:hover:not(:disabled) {
+            border-color: variables.$primary-color;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        svg {
+            font-size: 1.8rem;
+            color: variables.$primary-color;
+        }
+    }
+
+    &__filters-btn {
+        display: none;
+
+        @media (max-width: $drawer-breakpoint) {
+            display: inline-flex;
+        }
+    }
+
+    &__badge {
+        display: grid;
+        place-items: center;
+        min-width: 2.2rem;
+        height: 2.2rem;
+        padding: 0 0.6rem;
+        font-size: 1.2rem;
+        color: variables.$color-white;
+        background-color: variables.$primary-color;
+        border-radius: variables.$radius-pill;
+    }
+
+    &__sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: variables.$ink-muted;
+
+        select {
+            padding-right: 1.2rem;
+        }
+
+        @include mixins.phone {
+            span {
+                @include mixins.sr-only;
+            }
+        }
     }
 }
 
 .recipe-search {
     position: relative;
     width: 100%;
-    max-width: 60rem;
 
     &__icon {
         position: absolute;
         top: 50%;
         left: 2rem;
         transform: translateY(-50%);
-        font-size: 2.2rem;
+        font-size: 2rem;
         color: variables.$primary-color;
         pointer-events: none;
     }
 
     &__input {
         width: 100%;
-        padding: 1.6rem 5.6rem;
+        height: 5.4rem;
+        padding: 0 5.6rem;
         font-family: inherit;
-        font-size: 1.8rem;
-        color: variables.$color-black;
-        background-color: variables.$color-white;
-        border: 0.2rem solid variables.$primary-pastel;
-        border-radius: 10rem;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        font-size: 1.7rem;
+        color: variables.$ink;
+        background-color: variables.$surface;
+        border: 1px solid variables.$border;
+        border-radius: variables.$radius-pill;
+        box-shadow: variables.$shadow-sm;
+        transition: border-color variables.$transition, box-shadow variables.$transition;
 
         &::placeholder {
-            color: rgba(variables.$color-black, 0.45);
+            color: rgba(variables.$ink, 0.45);
         }
 
         &:focus {
             outline: none;
             border-color: variables.$primary-color;
-            box-shadow: 0 0 0 0.4rem rgba(variables.$secondary-color, 0.35);
+            box-shadow: 0 0 0 0.4rem rgba(variables.$tertiary-color, 0.6);
         }
 
-        // the custom clear button replaces the browser's own
         &::-webkit-search-cancel-button {
             display: none;
         }
@@ -107,57 +468,85 @@
         transform: translateY(-50%);
         display: flex;
         padding: 0.8rem;
-        font-size: 2.2rem;
-        color: variables.$primary-color;
+        font-size: 2rem;
+        color: variables.$ink;
         background: none;
         border: none;
         border-radius: 50%;
         cursor: pointer;
+        @include mixins.focus-ring;
 
-        &:hover,
-        &:focus-visible {
-            background-color: variables.$tertiary-light;
-        }
-
-        &:focus-visible {
-            outline: 0.2rem solid variables.$secondary-color;
+        &:hover {
+            background-color: variables.$bg-tint;
         }
     }
 }
 
-.category-filter {
+.active-filters {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        list-style: none;
+    }
 
     &__chip {
-        padding: 0.8rem 1.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.6rem 1.2rem 0.6rem 1.4rem;
         font-family: inherit;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 700;
-        color: variables.$secondary-dark;
-        background-color: variables.$color-white;
-        border: 0.2rem solid variables.$secondary-light;
-        border-radius: 10rem;
+        color: variables.$primary-dark;
+        background-color: rgba(variables.$tertiary-color, 0.55);
+        border: none;
+        border-radius: variables.$radius-pill;
         cursor: pointer;
-        transition: all 0.3s ease;
+        @include mixins.focus-ring;
 
         &:hover {
-            border-color: variables.$secondary-color;
-            background-color: variables.$tertiary-light;
-        }
-
-        &:focus-visible {
-            outline: 0.3rem solid variables.$primary-color;
-            outline-offset: 0.2rem;
-        }
-
-        &--active,
-        &--active:hover {
-            color: variables.$color-white;
-            background-color: variables.$primary-color;
-            border-color: variables.$primary-color;
+            background-color: variables.$tertiary-color;
         }
     }
+
+    &__clear {
+        font-family: inherit;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: variables.$primary-color;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 0.3rem;
+        @include mixins.focus-ring;
+    }
+}
+
+.menu-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 6.4rem 2.4rem;
+    text-align: center;
+    border: 1px dashed variables.$border;
+    border-radius: variables.$radius;
+}
+
+.menu-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    margin-top: 4.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: variables.$ink-muted;
 }

@@ -4,56 +4,114 @@
 @include mixins.bounce;
 
 .hero {
-    background-color: variables.$tertiary-color;
-    margin: 0 auto;
-    max-width: variables.$max-width-content;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 9.6rem;
-    align-items: center;
-    padding: 3.2rem;
+    position: relative;
+    overflow: hidden;
+    color: variables.$on-dark;
+    background: radial-gradient(circle at 78% 45%, rgba(variables.$secondary-color, 0.45), transparent 42%),
+        radial-gradient(circle at 10% 110%, rgba(variables.$primary-light, 0.5), transparent 40%),
+        linear-gradient(135deg, variables.$primary-dark 0%, #3d0200 100%);
 
-    // stack text above the image on narrow screens
-    @media (max-width: 800px) {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 4.8rem;
-        padding: 2.4rem;
+    &__inner {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 6.4rem;
+        align-items: center;
+        padding-block: 9.6rem;
+
+        @include mixins.tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 4.8rem;
+            padding-block: 6.4rem;
+        }
     }
 
     &__text-box {
-        color: variables.$primary-color;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2.4rem;
+
+        .heading-sub {
+            color: variables.$tertiary-color;
+        }
     }
 
     &__heading {
-        font-size: 4.4rem;
-        margin-bottom: 3.2rem;
-        line-height: 1.1;
-        font-weight: 700;
-        letter-spacing: -1px;
+        font-size: 6.4rem;
+        font-weight: 900;
+        line-height: 1.04;
+        letter-spacing: -0.2rem;
+        color: variables.$color-white;
+
+        em {
+            font-style: italic;
+            font-weight: 300;
+            color: variables.$tertiary-color;
+        }
+
+        @include mixins.phone {
+            font-size: 4.4rem;
+            letter-spacing: -0.1rem;
+        }
     }
 
     &__info {
-        font-size: 2rem;
-        line-height: 1.6;
-        margin-bottom: 3.2rem;
-    }
-
-    &__img-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__img {
-        width: 90%;
-        max-width: 40rem;
-        animation: bounce 3s infinite ease-in-out;
-        filter: drop-shadow(0 0 1rem variables.$primary-color);
+        max-width: 52rem;
+        font-size: 1.9rem;
+        line-height: 1.65;
+        color: variables.$on-dark-muted;
     }
 
     &__btns {
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 1.6rem;
+    }
+
+    &__stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        margin-top: 1.6rem;
+        padding-top: 3.2rem;
+        border-top: 1px solid rgba(variables.$on-dark, 0.15);
+
+        @include mixins.phone {
+            gap: 2.4rem;
+        }
+    }
+
+    &__stat {
+        display: flex;
+        flex-direction: column-reverse;
+
+        dd {
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: variables.$color-white;
+        }
+
+        dt {
+            font-size: 1.3rem;
+            color: variables.$on-dark-muted;
+        }
+    }
+
+    &__img-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img {
+        width: 100%;
+        max-width: 48rem;
+        height: auto;
+        animation: bounce 5s infinite ease-in-out;
+        filter: drop-shadow(0 3rem 4rem rgba(0, 0, 0, 0.45));
+
+        @include mixins.tablet {
+            max-width: 32rem;
+        }
     }
 }

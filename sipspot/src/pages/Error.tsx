@@ -1,17 +1,21 @@
 import Button from "../features/shared/components/UI/Button/Button";
-import Section from "../features/shared/components/UI/Section/Section";
 
 function ErrorPage() {
     return (
-        <Section sectionClassName="error">
-            <div className="error-page">
-                <img src="/not-found.png" alt="Not found page image" className="error-page__image" />
-                <h1 className="error-page__heading">Oops! Page not found</h1>
-                <Button type="small" el="link" variant="primary" href="/">
-                    Go back home
+        <section className="error-page container">
+            <img src="/not-found.png" alt="" className="error-page__image" width={240} height={240} />
+            <span className="heading-sub">Error 404</span>
+            <h1 className="heading-secondary">This glass is empty</h1>
+            <p className="lede">The page you're looking for has been moved, finished or never existed.</p>
+            <div className="error-page__actions">
+                <Button el="link" type="medium" variant="primary" href="/">
+                    Back to home
+                </Button>
+                <Button el="link" type="medium" variant="outline" href="/recipes">
+                    Browse the menu
                 </Button>
             </div>
-        </Section>
+        </section>
     );
 }
 

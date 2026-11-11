@@ -1,4 +1,8 @@
+import { IoArrowForward } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import { CocktailIngredient } from "../../../types/cocktails/Cocktail";
+import { FilterGroupKey } from "../menu/menuTypes";
+import { getMenuLink } from "../menu/menuUtils";
 import { getIngredientImage } from "../utils/cocktailUtils";
 
 type IngredientListProps = {
@@ -9,17 +13,26 @@ function IngredientList({ ingredients }: IngredientListProps) {
     return (
         <ul className="ingredient-list">
             {ingredients.map((ingredient, index) => (
-                <li key={`${ingredient.name}-${index}`} className="ingredient-list__item">
-                    <img
-                        className="ingredient-list__img"
-                        src={getIngredientImage(ingredient.name)}
-                        alt=""
-                        loading="lazy"
-                        width={56}
-                        height={56}
-                    />
-                    <span className="ingredient-list__name">{ingredient.name}</span>
-                    {ingredient.measure && <span className="ingredient-list__measure">{ingredient.measure}</span>}
+                <li key={`${ingredient.name}-${index}`}>
+                    <Link
+                        className="ingredient-list__item"
+                        to={getMenuLink(FilterGroupKey.Ingredient, ingredient.name)}
+                        aria-label={`${ingredient.measure} ${ingredient.name} - see more drinks with ${ingredient.name}`}
+                    >
+                        <img
+                            className="ingredient-list__img"
+                            src={getIngredientImage(ingredient.name)}
+                            alt=""
+                            loading="lazy"
+                            width={56}
+                            height={56}
+                        />
+                        <span className="ingredient-list__text">
+                            <span className="ingredient-list__name">{ingredient.name}</span>
+                            {ingredient.measure && <span className="ingredient-list__measure">{ingredient.measure}</span>}
+                        </span>
+                        <IoArrowForward className="ingredient-list__arrow" aria-hidden="true" />
+                    </Link>
                 </li>
             ))}
         </ul>

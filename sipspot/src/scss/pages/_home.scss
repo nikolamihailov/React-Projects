@@ -1,31 +1,115 @@
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
 
+// ===== shared section rhythm - every content band uses the same spacing =====
 .section {
-    color: variables.$primary-color;
-    padding: 6.4rem 0;
-    text-align: center;
+    padding: 9.6rem 0;
 
-    &__hero {
-        background-color: variables.$tertiary-color;
-        padding: 4.8rem 0;
-        text-align: left;
+    @include mixins.phone {
+        padding: 6.4rem 0;
     }
 
     &__partners {
-        position: relative;
-        background-color: variables.$secondary-dark;
-        padding: 0;
+        padding: 3.2rem 0 2.4rem;
+        background-color: variables.$surface;
+        border-bottom: 1px solid variables.$border;
     }
 
     &__featured-cocktails {
-        background-color: variables.$tertiary-color;
+        background-color: variables.$bg;
     }
 
     &__features {
-        background-color: variables.$tertiary-light;
+        background-color: variables.$bg-tint;
     }
 
     &__testimonials {
-        background-color: variables.$tertiary-color;
+        background-color: variables.$bg;
+        overflow: hidden;
+    }
+
+    &__reservation {
+        color: variables.$on-dark;
+        background: radial-gradient(circle at 90% 10%, rgba(variables.$secondary-color, 0.35), transparent 40%),
+            linear-gradient(135deg, #3d0200 0%, variables.$primary-dark 100%);
+    }
+}
+
+.partners__label {
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+    color: variables.$ink-muted;
+}
+
+// ===== reservation call to action =====
+.reservation {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6.4rem;
+    align-items: center;
+
+    @include mixins.tablet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4.8rem;
+    }
+
+    .section-info {
+        margin-bottom: 3.2rem;
+    }
+
+    &__btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+        padding: 3.2rem;
+        background-color: rgba(variables.$color-white, 0.06);
+        border: 1px solid rgba(variables.$on-dark, 0.15);
+        border-radius: variables.$radius-lg;
+        backdrop-filter: blur(4px);
+    }
+
+    &__detail {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        & + & {
+            padding-top: 2.4rem;
+            border-top: 1px solid rgba(variables.$on-dark, 0.15);
+        }
+
+        dt {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: variables.$tertiary-color;
+
+            svg {
+                font-size: 1.8rem;
+            }
+        }
+
+        dd {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.6rem;
+            font-size: 1.6rem;
+            color: variables.$on-dark;
+        }
     }
 }

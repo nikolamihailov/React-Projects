@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
 
 *,
 *::after,
@@ -10,17 +11,27 @@
 
 * {
     /* For Firefox */
-    scrollbar-color: variables.$primary-color variables.$tertiary-color;
+    scrollbar-color: variables.$primary-color variables.$bg-tint;
     scrollbar-width: thin;
 }
 
 html {
     // This defines what 1rem is
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+    scroll-behavior: smooth;
+    // keeps in-page anchors (e.g. #reservation) clear of the sticky header
+    scroll-padding-top: variables.$header-height;
 }
 
 body {
     box-sizing: border-box;
+    background-color: variables.$bg;
+    color: variables.$ink;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 #root {
@@ -31,38 +42,40 @@ body {
     min-height: 100vh;
 }
 
+.container {
+    @include mixins.container;
+}
+
 /* Other browsers - Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
 }
 
 *::-webkit-scrollbar-track {
-    border-radius: 5px;
-    background-color: variables.$primary-color;
-}
-
-/* *::-webkit-scrollbar-track:hover {
-  background-color: var(--primary-color);
-} */
-
-*::-webkit-scrollbar-track:active {
-    background-color: variables.$secondary-color;
+    background-color: variables.$bg-tint;
 }
 
 *::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background-color: variables.$secondary-color;
+    border: 3px solid variables.$bg-tint;
+    background-color: variables.$primary-color;
 }
 
 // visually hidden but still read by screen readers
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    @include mixins.sr-only;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

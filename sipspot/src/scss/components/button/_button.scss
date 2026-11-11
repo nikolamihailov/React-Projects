@@ -1,50 +1,89 @@
 @use "sass:color";
-
-@use "./button-core" as btn;
 @use "../../abstracts/variables" as variables;
 
 .btn-link {
-    @include btn.core-properties;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-family: inherit;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-decoration: none;
+    border: 0.2rem solid transparent;
+    border-radius: variables.$radius-pill;
+    cursor: pointer;
+    transition: background-color variables.$transition, color variables.$transition,
+        border-color variables.$transition, transform variables.$transition, box-shadow variables.$transition;
 
-    &:link,
-    &:visited {
-        @include btn.core-properties;
+    &:hover {
+        transform: translateY(-0.2rem);
     }
 
     &:active {
-        scale: 1.05;
+        transform: translateY(0);
+    }
+
+    &:focus-visible {
+        outline: 0.3rem solid variables.$secondary-color;
+        outline-offset: 0.3rem;
     }
 
     &--small {
-        font-size: 1.8rem;
-        padding: 1.3rem 2.6rem;
+        font-size: 1.5rem;
+        padding: 1.1rem 2.2rem;
     }
 
     &--medium {
-        font-size: 2rem;
-        padding: 1.6rem 3.2rem;
+        font-size: 1.7rem;
+        padding: 1.4rem 2.8rem;
     }
 
     &--large {
-        font-size: 2.2rem;
-        padding: 1.8rem 3.6rem;
+        font-size: 1.9rem;
+        padding: 1.7rem 3.4rem;
     }
 
     &--primary {
         background-color: variables.$primary-color;
         color: variables.$color-white;
+        box-shadow: 0 8px 20px rgba(variables.$primary-color, 0.25);
 
         &:hover {
-            background-color: color.mix(variables.$primary-color, variables.$color-black, 75%);
+            background-color: variables.$primary-dark;
         }
     }
 
     &--secondary {
-        background-color: variables.$secondary-color;
-        color: variables.$color-white;
+        background-color: variables.$tertiary-color;
+        color: variables.$primary-dark;
 
         &:hover {
-            background-color: color.mix(variables.$secondary-color, variables.$color-black, 75%);
+            background-color: color.mix(variables.$tertiary-color, variables.$secondary-color, 70%);
+        }
+    }
+
+    &--outline {
+        background-color: transparent;
+        color: variables.$primary-color;
+        border-color: rgba(variables.$primary-color, 0.35);
+
+        &:hover {
+            border-color: variables.$primary-color;
+            background-color: rgba(variables.$primary-color, 0.05);
+        }
+    }
+
+    // for dark burgundy bands
+    &--light {
+        background-color: transparent;
+        color: variables.$on-dark;
+        border-color: rgba(variables.$on-dark, 0.45);
+
+        &:hover {
+            border-color: variables.$on-dark;
+            background-color: rgba(variables.$on-dark, 0.08);
         }
     }
 }

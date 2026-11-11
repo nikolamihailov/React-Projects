@@ -8,6 +8,7 @@
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
 
 body {
     font-family: "Nunito", sans-serif;
@@ -15,37 +16,107 @@ body {
     line-height: 1.7;
 }
 
+// ===== shared heading scale - every page uses these =====
 .heading {
-    color: variables.$primary-color;
+    color: variables.$primary-dark;
+
+    &-primary,
+    &-secondary,
+    &-tertiary {
+        // avoids single-word last lines like "...compromise / on"
+        text-wrap: balance;
+    }
+
+    &-primary {
+        font-size: 5.6rem;
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.15rem;
+
+        @include mixins.phone {
+            font-size: 4rem;
+        }
+    }
 
     &-secondary {
-        font-size: 3.6rem;
-        margin-bottom: 4.8rem;
-        line-height: 1.3;
-        font-weight: 600;
-        letter-spacing: 1px;
+        font-size: 4rem;
+        line-height: 1.15;
+        font-weight: 800;
+        letter-spacing: -0.08rem;
+
+        @include mixins.phone {
+            font-size: 3.2rem;
+        }
     }
 
     &-tertiary {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
+        font-size: 2rem;
         line-height: 1.3;
-        font-weight: 700;
-        letter-spacing: 1px;
+        font-weight: 800;
     }
 
+    // small uppercase label above headings
     &-sub {
-        display: block;
-        font-size: 1.6rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.3rem;
         font-weight: 800;
         color: variables.$secondary-color;
         text-transform: uppercase;
-        margin-bottom: 1.6rem;
-        letter-spacing: 0.75px;
+        letter-spacing: 0.22em;
+
+        &::before {
+            content: "";
+            width: 2.4rem;
+            height: 0.2rem;
+            background-color: currentColor;
+        }
     }
 }
 
 .paragraph {
-    font-size: 2rem;
-    font-weight: 450;
+    font-size: 1.8rem;
+    color: variables.$ink-muted;
+}
+
+.lede {
+    font-size: 1.9rem;
+    line-height: 1.65;
+    color: variables.$ink-muted;
+}
+
+// ===== section header (eyebrow + title + optional text) =====
+.section-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    max-width: 68rem;
+    margin-bottom: 4.8rem;
+
+    &--center {
+        align-items: center;
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    &--left {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    // on dark bands
+    &--light {
+        .heading-secondary {
+            color: variables.$on-dark;
+        }
+
+        .heading-sub {
+            color: variables.$tertiary-color;
+        }
+
+        .lede {
+            color: variables.$on-dark-muted;
+        }
+    }
 }

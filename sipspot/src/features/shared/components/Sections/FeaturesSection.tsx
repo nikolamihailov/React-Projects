@@ -1,51 +1,59 @@
+import { motion } from "framer-motion";
+import { FaCocktail, FaGlassCheers, FaLeaf, FaStar } from "react-icons/fa";
 import SectionInfo from "../SectionInfo";
 import Section from "../UI/Section/Section";
-import { motion } from "framer-motion";
-import { FaCocktail, FaStar, FaGlassCheers, FaLeaf } from "react-icons/fa";
 
 const features = [
     {
-        icon: <FaCocktail size={60} />,
-        title: "Exquisite Cocktails",
-        description: "Crafted by expert mixologists using the finest spirits and ingredients.",
+        icon: FaCocktail,
+        title: "Exquisite cocktails",
+        description: "Crafted by expert mixologists using the finest spirits and house-made syrups.",
     },
     {
-        icon: <FaStar size={60} />,
-        title: "Premium Quality",
-        description: "Every drink is made with top-tier spirits and exclusive recipes.",
+        icon: FaStar,
+        title: "Premium quality",
+        description: "Top-shelf spirits, clear hand-cut ice and juice squeezed fresh every evening.",
     },
     {
-        icon: <FaGlassCheers size={60} />,
-        title: "Elegant Atmosphere",
-        description: "Luxurious ambiance designed for unforgettable experiences.",
+        icon: FaGlassCheers,
+        title: "Elegant atmosphere",
+        description: "Low light, velvet booths and a soundtrack made for long conversations.",
     },
     {
-        icon: <FaLeaf size={60} />,
-        title: "Sustainable Ingredients",
-        description: "We use organic, fresh, and locally sourced ingredients.",
+        icon: FaLeaf,
+        title: "Sustainable ingredients",
+        description: "Seasonal, local produce and a zero-waste approach to garnishes and citrus.",
     },
 ];
 
 function FeaturesSection() {
     return (
         <Section sectionClassName="features">
-            <SectionInfo heading="Indulge in Excellence" subheading="Features" />
+            <div className="container">
+                <SectionInfo
+                    subheading="Why SipSpot"
+                    heading="Indulge in excellence"
+                    description="Every detail of the evening is considered - so all you have to do is choose your drink."
+                />
 
-            <div className="features features__container">
-                {features.map((feature, index) => (
-                    <motion.div
-                        key={index}
-                        className="feature__card"
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.3 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="feature__icon">{feature.icon}</div>
-                        <h3 className="feature__title">{feature.title}</h3>
-                        <p className="feature__text">{feature.description}</p>
-                    </motion.div>
-                ))}
+                <ul className="features">
+                    {features.map((feature, index) => (
+                        <motion.li
+                            key={feature.title}
+                            className="feature"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.12 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="feature__icon">
+                                <feature.icon aria-hidden="true" />
+                            </span>
+                            <h3 className="feature__title">{feature.title}</h3>
+                            <p className="feature__text">{feature.description}</p>
+                        </motion.li>
+                    ))}
+                </ul>
             </div>
         </Section>
     );

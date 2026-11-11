@@ -5,6 +5,7 @@ export const cocktailQueryKeys = {
     search: (name: string) => [...cocktailQueryKeys.all, "search", name] as const,
     detail: (id: string) => [...cocktailQueryKeys.all, "detail", id] as const,
     random: () => [...cocktailQueryKeys.all, "random"] as const,
+    menu: () => [...cocktailQueryKeys.all, "menu"] as const,
     filter: (filter: CocktailFilter, value: string) => [...cocktailQueryKeys.all, "filter", filter, value] as const,
     filterOptions: (filter: CocktailFilter) => [...cocktailQueryKeys.all, "filter-options", filter] as const,
 };

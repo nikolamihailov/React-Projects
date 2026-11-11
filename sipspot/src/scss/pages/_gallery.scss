@@ -1,0 +1,336 @@
+@use "sass:list";
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
+
+.gallery-section {
+    padding-block: 8rem;
+
+    @include mixins.phone {
+        padding-block: 5.6rem;
+    }
+}
+
+// bento grid: a few tiles span two rows / columns for rhythm
+.gallery-grid {
+    list-style: none;
+    display: grid;
+    // explicit layout for the 10 photos so the 4 x 5 grid is filled with no holes
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 22rem;
+    grid-template-areas:
+        "a a b c"
+        "a a d c"
+        "e f f g"
+        "h f f i"
+        "h j j i";
+    gap: 1.6rem;
+
+    $areas: a, b, c, d, e, f, g, h, i, j;
+
+    &__item {
+        @each $area in $areas {
+            &:nth-child(#{list.index($areas, $area)}) {
+                grid-area: $area;
+            }
+        }
+    }
+
+    // tablet & phone: two columns, the 1st and 6th photo run full width (12 cells = 6 full rows)
+    @include mixins.tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: none;
+        grid-auto-rows: 18rem;
+
+        &__item {
+            @each $area in $areas {
+                &:nth-child(#{list.index($areas, $area)}) {
+                    grid-area: auto;
+                }
+            }
+
+            &:nth-child(1),
+            &:nth-child(6) {
+                grid-column: span 2;
+            }
+        }
+    }
+
+    &__button {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+        border-radius: variables.$radius;
+        background-color: variables.$bg-tint;
+        cursor: zoom-in;
+        @include mixins.focus-ring;
+
+        &:hover,
+        &:focus-visible {
+            .gallery-grid__img {
+                transform: scale(1.06);
+            }
+
+            .gallery-grid__overlay {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.2rem;
+        padding: 2rem;
+        text-align: left;
+        color: variables.$color-white;
+        background: linear-gradient(180deg, transparent 45%, rgba(variables.$primary-dark, 0.85) 100%);
+        opacity: 0;
+        transition: opacity variables.$transition;
+
+        // touch screens have no hover, so always show the name
+        @media (hover: none) {
+            opacity: 1;
+        }
+    }
+
+    &__name {
+        font-size: 1.9rem;
+        font-weight: 800;
+    }
+
+    &__caption {
+        font-size: 1.35rem;
+        color: variables.$on-dark-muted;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        font-size: 2rem;
+    }
+}
+
+// ===== alternating image + text stories =====
+.gallery-stories {
+    padding-block: 2.4rem 9.6rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 9.6rem;
+
+        @include mixins.phone {
+            gap: 6.4rem;
+        }
+    }
+}
+
+.story {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6.4rem;
+    align-items: center;
+
+    &[data-reversed="true"] .story__media {
+        order: 2;
+    }
+
+    @include mixins.tablet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3.2rem;
+
+        &[data-reversed="true"] .story__media {
+            order: 0;
+        }
+    }
+
+    &__media {
+        position: relative;
+
+        // offset gold frame behind the photo
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 2.4rem -2.4rem -2.4rem 2.4rem;
+            border: 2px solid variables.$tertiary-dark;
+            border-radius: variables.$radius-lg;
+            z-index: -1;
+
+            @include mixins.phone {
+                inset: 1.2rem -1.2rem -1.2rem 1.2rem;
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: variables.$radius-lg;
+        box-shadow: variables.$shadow-md;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.6rem;
+    }
+
+    &__points {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 0.8rem;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        svg {
+            flex-shrink: 0;
+            font-size: 2rem;
+            color: variables.$secondary-color;
+        }
+    }
+}
+
+// ===== lightbox =====
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 6.4rem 2.4rem 2.4rem;
+
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(#1a0605, 0.92);
+        animation: lightbox-fade 0.25s ease;
+    }
+
+    &__figure {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+        max-height: 100%;
+        animation: lightbox-zoom 0.3s ease;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: calc(100vh - 18rem);
+        object-fit: contain;
+        border-radius: variables.$radius;
+        box-shadow: variables.$shadow-lg;
+    }
+
+    &__caption {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 1.6rem;
+        text-align: center;
+        color: variables.$on-dark;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        font-size: 1.4rem;
+        color: variables.$on-dark-muted;
+    }
+
+    &__link {
+        font-weight: 800;
+        color: variables.$tertiary-color;
+        @include mixins.focus-ring(variables.$tertiary-color);
+    }
+
+    &__close,
+    &__nav {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 4.8rem;
+        height: 4.8rem;
+        font-size: 2.4rem;
+        color: variables.$color-white;
+        background-color: rgba(variables.$color-white, 0.1);
+        border: 1px solid rgba(variables.$color-white, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color variables.$transition;
+        @include mixins.focus-ring(variables.$tertiary-color);
+
+        &:hover {
+            background-color: rgba(variables.$color-white, 0.22);
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+    }
+
+    @include mixins.phone {
+        grid-template-columns: minmax(0, 1fr);
+        padding-inline: 1.2rem;
+
+        &__nav {
+            position: absolute;
+            bottom: 2.4rem;
+            z-index: 1;
+
+            &--prev {
+                left: 2.4rem;
+            }
+
+            &--next {
+                right: 2.4rem;
+            }
+        }
+    }
+}
+
+@keyframes lightbox-fade {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes lightbox-zoom {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+}

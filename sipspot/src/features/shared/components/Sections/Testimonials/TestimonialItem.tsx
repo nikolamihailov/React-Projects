@@ -9,7 +9,7 @@ function TestimonialItem({ testimonial }: TestimonialItemProps) {
     return (
         <article className="testimonial-item">
             <img className="testimonial-item__authorImg" src={testimonial.picture} alt={`${testimonial.name}'s pic`} />
-            <h2 className="testimonial-item__name">{testimonial.name}</h2>
+            <h3 className="testimonial-item__name">{testimonial.name}</h3>
             <div className="testimonial-item__rating">
                 <Rating value={testimonial.rating} />
                 <span className="testimonial-item__rating-number">{testimonial.rating.toFixed(1)}/5</span>

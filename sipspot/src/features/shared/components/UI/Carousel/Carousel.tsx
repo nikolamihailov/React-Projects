@@ -18,7 +18,7 @@ function Carousel({ items, gap = Gap.MEDIUM }: CarouselProps) {
             <div className={`carousel__track carousel__gap--${gap}`}>
                 {duplicatedItems.map((item, index) => (
                     <div className="carousel__item" key={`${item.id}-${index}`}>
-                        <img src={item.src} alt="carousel-item-img" className="carousel__img" />
+                        <img src={item.src} alt="" className="carousel__img" />
                     </div>
                 ))}
             </div>

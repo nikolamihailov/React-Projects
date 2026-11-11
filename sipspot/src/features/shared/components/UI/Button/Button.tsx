@@ -1,10 +1,12 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Link } from "react-router-dom";
 
+export type ButtonVariant = "primary" | "secondary" | "outline" | "light";
+
 type ButtonProps = {
     el: "button";
     type?: "small" | "medium" | "large";
-    variant: "primary" | "secondary";
+    variant: ButtonVariant;
     onClickFunc?: () => void;
     children: ReactNode;
     // `type` is the size prop here, so the native button `type` is left out (always "button")
@@ -12,18 +14,21 @@ type ButtonProps = {
 
 type LinksProps = {
     el: "link";
-    type?: "small" | "medium";
-    variant: "primary" | "secondary";
+    type?: "small" | "medium" | "large";
+    variant: ButtonVariant;
     href: string;
     children: ReactNode;
 } & ComponentPropsWithoutRef<"a">;
+
+// same-page anchors, mail, phone and external links are plain <a>; app routes (incl. "/#hash") use the router
+const isPlainAnchor = (href: string) => /^(#|mailto:|tel:|https?:)/.test(href);
 
 function Button(props: ButtonProps | LinksProps) {
     const { el, type, variant, children, ...otherProps } = props;
 
     const className = `btn-link btn-link--${type} btn-link--${variant}`;
 
-    if (el === "link" && props.href.includes("#")) {
+    if (el === "link" && isPlainAnchor(props.href)) {
         return (
             <a className={className} {...(otherProps as LinksProps)}>
                 {children}

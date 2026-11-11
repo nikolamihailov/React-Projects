@@ -1,4 +1,4 @@
-// COLORS
+// ===== BRAND COLORS (from project.txt: #8b0401, #ffe066, #e67700, white + Open Color tints) =====
 $primary-dark: #600300;
 $primary-color: #8b0401;
 $primary-light: #b80a04;
@@ -14,9 +14,38 @@ $tertiary-color: #ffe066;
 $tertiary-light: #ffe6bd;
 $tertiary-pastel: #fceecb;
 
-$color-white: #f7f7f7;
+$color-white: #ffffff;
 $color-black: #0c0b0b;
 
-// WIDTHS
-$max-width-content: 130rem;
-@debug $max-width-content; // ✅ Correct usage
+// ===== SEMANTIC TOKENS - use these in new styles =====
+$bg: #fffcf3; // ivory page background (Open Color yellow 0 tint)
+$bg-tint: #fff6dc; // soft band behind images / alternating sections
+$surface: #ffffff; // cards, panels
+$ink: #2b1210; // main text - deepest shade of the brand red
+$ink-muted: rgba($ink, 0.68);
+$border: #f0e2c2;
+$gold: #f59f00; // Open Color yellow 7 - small luxury accents
+$dark-band: $primary-dark; // hero, reservation, footer
+$on-dark: #fff6dc;
+$on-dark-muted: rgba(#fff6dc, 0.72);
+
+// ===== SHAPE & DEPTH =====
+$radius-sm: 0.8rem;
+$radius: 1.6rem;
+$radius-lg: 2.4rem;
+$radius-pill: 10rem;
+
+$shadow-sm: 0 1px 2px rgba($ink, 0.06), 0 2px 8px rgba($ink, 0.05);
+$shadow-md: 0 10px 30px rgba($ink, 0.1);
+$shadow-lg: 0 24px 60px rgba($ink, 0.16);
+
+$transition: 0.3s ease;
+
+// ===== LAYOUT =====
+$max-width-content: 128rem;
+$gutter: 2.4rem;
+$header-height: 7.6rem;
+
+// breakpoints
+$bp-phone: 600px;
+$bp-tablet: 900px;

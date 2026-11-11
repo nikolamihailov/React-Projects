@@ -4,12 +4,13 @@ import { sectionTransition } from "./sectionTransition";
 
 type SectionProps = {
     sectionClassName: string;
+    id?: string;
     children: ReactNode;
 };
 
-function Section({ sectionClassName, children }: SectionProps) {
+function Section({ sectionClassName, id, children }: SectionProps) {
     return (
-        <section className={`section section__${sectionClassName}`}>
+        <section id={id} className={`section section__${sectionClassName}`}>
             <motion.div {...sectionTransition}>{children}</motion.div>
         </section>
     );

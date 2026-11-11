@@ -1,113 +1,142 @@
 @use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixins;
 
-$nav-mobile-breakpoint: 700px;
+$nav-mobile-breakpoint: 860px;
 
 .nav {
-    position: relative;
-    padding: 2.4rem 0;
-
-    @media (max-width: $nav-mobile-breakpoint) {
-        padding: 1.2rem 2.4rem;
-    }
-
-    &__list-item {
-        list-style-type: none;
-    }
-
-    &__main {
-        background-color: variables.$tertiary-color;
-    }
-
-    // mobile bar (logo + menu button) - hidden on desktop
-    &__bar {
-        display: none;
-
-        @media (max-width: $nav-mobile-breakpoint) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3.2rem;
+        min-height: variables.$header-height;
     }
 
     &__brand {
         display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        border-radius: variables.$radius-sm;
+        @include mixins.focus-ring;
     }
 
-    &__toggle {
+    &__brand-name {
+        font-size: 2.4rem;
+        font-weight: 900;
+        letter-spacing: -0.04rem;
+        color: variables.$primary-dark;
+
+        span {
+            color: variables.$secondary-color;
+        }
+    }
+
+    &__menu {
         display: flex;
-        padding: 0.8rem;
-        font-size: 3.2rem;
-        color: variables.$primary-color;
-        background: none;
-        border: none;
-        border-radius: 0.8rem;
-        cursor: pointer;
-
-        &:hover {
-            background-color: variables.$tertiary-light;
-        }
-
-        &:focus-visible {
-            outline: 0.3rem solid variables.$primary-color;
-        }
+        align-items: center;
+        gap: 3.2rem;
     }
 
     &__list {
-        margin: 0 auto;
-        max-width: 100rem;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        gap: 0.4rem;
+        list-style: none;
+    }
 
-        a {
-            text-decoration: none;
+    &__link {
+        position: relative;
+        display: block;
+        padding: 0.8rem 1.4rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: variables.$ink;
+        text-decoration: none;
+        border-radius: variables.$radius-pill;
+        transition: color variables.$transition, background-color variables.$transition;
+        @include mixins.focus-ring;
+
+        &:hover {
             color: variables.$primary-color;
-            font-size: 2rem;
-            font-weight: 700;
+            background-color: rgba(variables.$tertiary-color, 0.35);
+        }
 
-            &:focus-visible {
-                outline: 0.3rem solid variables.$primary-color;
-                outline-offset: 0.4rem;
-                border-radius: 0.4rem;
+        // current page (NavLink adds .active)
+        &.active {
+            color: variables.$primary-color;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: 0.2rem;
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 50%;
+                background-color: variables.$secondary-color;
+                transform: translateX(-50%);
             }
         }
+    }
 
-        // highlight the current page (NavLink adds .active)
-        .nav__list-item:not(.nav__list-item--logo) a.active {
-            text-decoration: underline;
-            text-decoration-color: variables.$secondary-color;
-            text-decoration-thickness: 0.3rem;
-            text-underline-offset: 0.8rem;
+    &__toggle {
+        display: none;
+        padding: 0.8rem;
+        font-size: 3rem;
+        color: variables.$primary-dark;
+        background: none;
+        border: none;
+        border-radius: variables.$radius-sm;
+        cursor: pointer;
+        @include mixins.focus-ring;
+
+        &:hover {
+            background-color: variables.$bg-tint;
+        }
+    }
+
+    // ===== mobile: toggle button + dropdown panel =====
+    @media (max-width: $nav-mobile-breakpoint) {
+        &__inner {
+            flex-wrap: wrap;
+            gap: 0;
         }
 
-        @media (max-width: $nav-mobile-breakpoint) {
+        &__toggle {
+            display: flex;
+        }
+
+        &__menu {
             display: none;
+            flex-basis: 100%;
             flex-direction: column;
             align-items: stretch;
-            gap: 0.4rem;
-            padding: 1.6rem 0 0.8rem;
-            text-align: center;
+            gap: 1.6rem;
+            padding: 0.8rem 0 2.4rem;
 
             &--open {
                 display: flex;
             }
+        }
 
-            a {
-                display: block;
-                padding: 1.2rem;
-                border-radius: 0.8rem;
+        &__list {
+            flex-direction: column;
+            align-items: stretch;
+        }
 
-                &:hover {
-                    background-color: variables.$tertiary-light;
+        &__link {
+            padding: 1.2rem 1.6rem;
+            font-size: 1.8rem;
+            border-radius: variables.$radius-sm;
+
+            &.active {
+                background-color: rgba(variables.$tertiary-color, 0.35);
+
+                &::after {
+                    display: none;
                 }
             }
-        }
-    }
-
-    // the centred logo is replaced by the mobile bar's logo on small screens
-    &__list-item--logo {
-        @media (max-width: $nav-mobile-breakpoint) {
-            display: none;
         }
     }
 }

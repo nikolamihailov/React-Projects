@@ -1,5 +1,10 @@
 @use "../abstracts/variables" as variables;
 
 .header {
-    background: variables.$tertiary-color;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(variables.$bg, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid variables.$border;
 }

@@ -1,54 +1,96 @@
 @use "../../abstracts/variables" as variables;
+@use "../../abstracts/mixins" as mixins;
 
 .featured-cocktails {
-    text-align: center;
-    margin: 0 auto;
-    max-width: variables.$max-width-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 4.8rem;
-
-    &__info {
-        display: flex;
-        flex-direction: column;
-        padding: 0 2.4rem;
-    }
+    align-items: center;
 
     &__container {
-        margin: 0 auto;
-        padding: 0 2.4rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 3.2rem;
-    }
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2.4rem;
+        width: 100%;
+        margin-bottom: 4.8rem;
 
-    &__item {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        max-width: 30rem;
-        padding: 2.4rem;
-        gap: 3.2rem;
-        box-shadow: 0 0 4rem 0.5rem rgba(variables.$primary-color, 0.15);
-        cursor: pointer;
-        transition: all 0.5s ease;
+        @include mixins.tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
 
-        &:hover {
-            transform: scale(1.05) translateY(-5%);
-            box-shadow: 0 0.5rem 4rem 0.5rem rgba(variables.$primary-color, 0.25);
+        @include mixins.phone {
+            grid-template-columns: minmax(0, 1fr);
         }
     }
 
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        height: 100%;
+        padding: 3.2rem 2.4rem 2.8rem;
+        color: inherit;
+        text-align: center;
+        text-decoration: none;
+        @include mixins.card;
+        transition: transform variables.$transition, box-shadow variables.$transition;
+        @include mixins.focus-ring;
+
+        &:hover {
+            transform: translateY(-0.8rem);
+            box-shadow: variables.$shadow-md;
+
+            .featured-cocktails__img {
+                transform: scale(1.08) rotate(-3deg);
+            }
+
+            .featured-cocktails__cta svg {
+                transform: translateX(0.4rem);
+            }
+        }
+    }
+
+    // soft gold circle behind the cut-out drink
+    &__img-box {
+        display: grid;
+        place-items: center;
+        width: 18rem;
+        aspect-ratio: 1;
+        margin-bottom: 1.6rem;
+        background: radial-gradient(circle, rgba(variables.$tertiary-color, 0.7) 0%, rgba(variables.$tertiary-color, 0.15) 62%, transparent 63%);
+    }
+
     &__img {
-        width: 75%;
-        object-fit: cover;
+        width: 78%;
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.5s ease;
     }
 
     &__title {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: variables.$primary-dark;
+    }
+
+    &__notes {
+        font-size: 1.45rem;
+        color: variables.$ink-muted;
+    }
+
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: auto;
+        padding-top: 1.2rem;
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: variables.$primary-color;
+
+        svg {
+            transition: transform variables.$transition;
+        }
     }
 }

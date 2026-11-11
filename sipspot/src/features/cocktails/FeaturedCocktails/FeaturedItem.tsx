@@ -1,26 +1,38 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { IoArrowForward } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-type FeatureItemProps = {
+export type FeaturedCocktail = {
+    id: string;
     name: string;
     imgSrc: string;
+    notes: string;
 };
 
-function FeaturedItem({ name, imgSrc }: FeatureItemProps) {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-20px" });
+type FeaturedItemProps = {
+    cocktail: FeaturedCocktail;
+    index: number;
+};
+
+function FeaturedItem({ cocktail, index }: FeaturedItemProps) {
     return (
-        <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 100 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeIn" }}
+        <motion.li
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
         >
-            <div className="featured-cocktails__item">
-                <img className="featured-cocktails__img" src={imgSrc} alt={`${name} cocktail`} />
-                <h3 className="featured-cocktails__title">{name}</h3>
-            </div>
-        </motion.div>
+            <Link className="featured-cocktails__item" to={`/recipes/${cocktail.id}`}>
+                <div className="featured-cocktails__img-box">
+                    <img className="featured-cocktails__img" src={cocktail.imgSrc} alt="" width={200} height={200} />
+                </div>
+                <h3 className="featured-cocktails__title">{cocktail.name}</h3>
+                <p className="featured-cocktails__notes">{cocktail.notes}</p>
+                <span className="featured-cocktails__cta">
+                    View recipe <IoArrowForward aria-hidden="true" />
+                </span>
+            </Link>
+        </motion.li>
     );
 }
 

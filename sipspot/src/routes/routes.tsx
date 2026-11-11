@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../pages/Layout";
 import Home from "../pages/Home";
 import Recipes from "../pages/Recipes";
+import CocktailDetails from "../pages/CocktailDetails";
 import Gallery from "../pages/Gallery";
 import About from "../pages/About";
 import ErrorPage from "../pages/Error";
@@ -20,6 +21,10 @@ export const appRouter = createBrowserRouter([
             {
                 path: "/recipes",
                 element: <Recipes />,
+            },
+            {
+                path: "/recipes/:id",
+                element: <CocktailDetails />,
             },
             {
                 path: "/gallery",

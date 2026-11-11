@@ -1,0 +1,163 @@
+@use "../abstracts/variables" as variables;
+
+.section {
+    &__recipes,
+    &__cocktail-details {
+        background-color: variables.$tertiary-pastel;
+    }
+}
+
+.recipes {
+    max-width: variables.$max-width-content;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+
+    &__header .heading-secondary {
+        margin-bottom: 2.4rem;
+    }
+
+    &__intro {
+        max-width: 70rem;
+        margin: 0 auto;
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.4rem;
+    }
+
+    &__results {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+    }
+
+    &__results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        text-align: left;
+    }
+
+    &__results-heading {
+        margin-bottom: 0;
+        font-size: 2.4rem;
+    }
+
+    &__results-count {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: variables.$secondary-dark;
+    }
+}
+
+.recipe-search {
+    position: relative;
+    width: 100%;
+    max-width: 60rem;
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 2rem;
+        transform: translateY(-50%);
+        font-size: 2.2rem;
+        color: variables.$primary-color;
+        pointer-events: none;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 1.6rem 5.6rem;
+        font-family: inherit;
+        font-size: 1.8rem;
+        color: variables.$color-black;
+        background-color: variables.$color-white;
+        border: 0.2rem solid variables.$primary-pastel;
+        border-radius: 10rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &::placeholder {
+            color: rgba(variables.$color-black, 0.45);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: variables.$primary-color;
+            box-shadow: 0 0 0 0.4rem rgba(variables.$secondary-color, 0.35);
+        }
+
+        // the custom clear button replaces the browser's own
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
+
+    &__clear {
+        position: absolute;
+        top: 50%;
+        right: 1.2rem;
+        transform: translateY(-50%);
+        display: flex;
+        padding: 0.8rem;
+        font-size: 2.2rem;
+        color: variables.$primary-color;
+        background: none;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background-color: variables.$tertiary-light;
+        }
+
+        &:focus-visible {
+            outline: 0.2rem solid variables.$secondary-color;
+        }
+    }
+}
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+
+    &__chip {
+        padding: 0.8rem 1.8rem;
+        font-family: inherit;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: variables.$secondary-dark;
+        background-color: variables.$color-white;
+        border: 0.2rem solid variables.$secondary-light;
+        border-radius: 10rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            border-color: variables.$secondary-color;
+            background-color: variables.$tertiary-light;
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid variables.$primary-color;
+            outline-offset: 0.2rem;
+        }
+
+        &--active,
+        &--active:hover {
+            color: variables.$color-white;
+            background-color: variables.$primary-color;
+            border-color: variables.$primary-color;
+        }
+    }
+}

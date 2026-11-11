@@ -1,0 +1,58 @@
+@use "../../abstracts/variables" as variables;
+
+.cocktail-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    gap: 3.2rem;
+    transition: opacity 0.3s ease;
+
+    // previous results stay visible (dimmed) while the next search loads
+    &--refreshing {
+        opacity: 0.5;
+    }
+}
+
+.cocktail-card {
+    &__link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: variables.$color-white;
+        border-radius: 1.2rem;
+        overflow: hidden;
+        color: variables.$primary-color;
+        text-decoration: none;
+        box-shadow: 0 0 4rem 0.5rem rgba(variables.$primary-color, 0.15);
+        transition: all 0.4s ease;
+
+        &:hover,
+        &:focus-visible {
+            transform: translateY(-0.8rem);
+            box-shadow: 0 0.5rem 4rem 0.5rem rgba(variables.$primary-color, 0.3);
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid variables.$secondary-color;
+            outline-offset: 0.4rem;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: cover;
+        background-color: variables.$tertiary-light;
+    }
+
+    &__title {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.6rem;
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+}

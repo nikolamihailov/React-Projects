@@ -7,7 +7,8 @@ type ButtonProps = {
     variant: "primary" | "secondary";
     onClickFunc?: () => void;
     children: ReactNode;
-} & ComponentPropsWithoutRef<"button">;
+    // `type` is the size prop here, so the native button `type` is left out (always "button")
+} & Omit<ComponentPropsWithoutRef<"button">, "type">;
 
 type LinksProps = {
     el: "link";
@@ -38,8 +39,11 @@ function Button(props: ButtonProps | LinksProps) {
         );
     }
 
+    // onClickFunc is pulled out so it isn't passed to the DOM as an unknown attribute
+    const { onClickFunc, ...buttonProps } = otherProps as Omit<ButtonProps, "el" | "type" | "variant" | "children">;
+
     return (
-        <button className={className} {...(otherProps as ButtonProps)} onClick={props.onClickFunc}>
+        <button type="button" className={className} {...buttonProps} onClick={onClickFunc}>
             {children}
         </button>
     );

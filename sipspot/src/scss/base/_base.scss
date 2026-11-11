@@ -26,6 +26,8 @@ body {
 #root {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    // stops one over-wide section from stretching the header and footer past the screen
+    grid-template-columns: minmax(0, 1fr);
     min-height: 100vh;
 }
 

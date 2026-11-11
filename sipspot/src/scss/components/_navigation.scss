@@ -1,8 +1,14 @@
 @use "../abstracts/variables" as variables;
 
+$nav-mobile-breakpoint: 700px;
+
 .nav {
     position: relative;
     padding: 2.4rem 0;
+
+    @media (max-width: $nav-mobile-breakpoint) {
+        padding: 1.2rem 2.4rem;
+    }
 
     &__list-item {
         list-style-type: none;
@@ -10,6 +16,40 @@
 
     &__main {
         background-color: variables.$tertiary-color;
+    }
+
+    // mobile bar (logo + menu button) - hidden on desktop
+    &__bar {
+        display: none;
+
+        @media (max-width: $nav-mobile-breakpoint) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__brand {
+        display: flex;
+    }
+
+    &__toggle {
+        display: flex;
+        padding: 0.8rem;
+        font-size: 3.2rem;
+        color: variables.$primary-color;
+        background: none;
+        border: none;
+        border-radius: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variables.$tertiary-light;
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid variables.$primary-color;
+        }
     }
 
     &__list {
@@ -24,6 +64,50 @@
             color: variables.$primary-color;
             font-size: 2rem;
             font-weight: 700;
+
+            &:focus-visible {
+                outline: 0.3rem solid variables.$primary-color;
+                outline-offset: 0.4rem;
+                border-radius: 0.4rem;
+            }
+        }
+
+        // highlight the current page (NavLink adds .active)
+        .nav__list-item:not(.nav__list-item--logo) a.active {
+            text-decoration: underline;
+            text-decoration-color: variables.$secondary-color;
+            text-decoration-thickness: 0.3rem;
+            text-underline-offset: 0.8rem;
+        }
+
+        @media (max-width: $nav-mobile-breakpoint) {
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.4rem;
+            padding: 1.6rem 0 0.8rem;
+            text-align: center;
+
+            &--open {
+                display: flex;
+            }
+
+            a {
+                display: block;
+                padding: 1.2rem;
+                border-radius: 0.8rem;
+
+                &:hover {
+                    background-color: variables.$tertiary-light;
+                }
+            }
+        }
+    }
+
+    // the centred logo is replaced by the mobile bar's logo on small screens
+    &__list-item--logo {
+        @media (max-width: $nav-mobile-breakpoint) {
+            display: none;
         }
     }
 }

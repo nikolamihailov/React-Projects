@@ -20,27 +20,23 @@ const ITEM_WIDTHS: Record<TestimonialItemSize, number> = {
 const GAP = 30;
 
 function Testimonial<T>({ items, itemSize, shownItems, renderItem }: TestimonialProps<T>) {
-    const [activeIdx, setActiveIdx] = useState(0);
-    const [moveWidth, setMoveWidth] = useState(0);
-    const itemWidthWithGap = shownItems === 1 ? ITEM_WIDTHS[itemSize] : ITEM_WIDTHS[itemSize] + GAP;
+    const [selectedIdx, setSelectedIdx] = useState(0);
+    // every item has a GAP-wide right margin, so one step is always item + gap
+    const itemWidthWithGap = ITEM_WIDTHS[itemSize] + GAP;
     const maxWidth = items.length * itemWidthWithGap;
 
+    // with one item shown we can step to the very last one; otherwise stop while the last two are visible
+    const lastActiveIdx = Math.max(shownItems === 1 ? items.length - 1 : items.length - 2, 0);
+    // shownItems changes on resize, so keep the index in range
+    const activeIdx = Math.min(selectedIdx, lastActiveIdx);
+
     const handleBtnClick = (side: Sides) => {
-        if (side === Sides.LEFT && activeIdx >= 1) {
-            setActiveIdx(activeIdx - 1);
-            setMoveWidth(moveWidth - itemWidthWithGap);
+        if (side === Sides.LEFT) {
+            setSelectedIdx(Math.max(activeIdx - 1, 0));
+            return;
         }
-        if (shownItems === 1) {
-            if (side === Sides.RIGHT && moveWidth < maxWidth - shownItems * itemWidthWithGap) {
-                setActiveIdx(activeIdx + 1);
-                setMoveWidth(moveWidth + itemWidthWithGap);
-            }
-        } else {
-            if (side === Sides.RIGHT && moveWidth <= maxWidth - shownItems * itemWidthWithGap) {
-                setActiveIdx(activeIdx + 1);
-                setMoveWidth(moveWidth + itemWidthWithGap);
-            }
-        }
+
+        setSelectedIdx(Math.min(activeIdx + 1, lastActiveIdx));
     };
 
     const getActiveIndex = (idx: number) => {
@@ -85,18 +81,22 @@ function Testimonial<T>({ items, itemSize, shownItems, renderItem }: Testimonial
             </div>
             {activeIdx >= 1 && (
                 <button
+                    type="button"
                     className="testimonials__btn testimonials__btn--left"
+                    aria-label="Previous testimonial"
                     onClick={() => handleBtnClick(Sides.LEFT)}
                 >
-                    <FaArrowLeft color="#fff" />
+                    <FaArrowLeft color="#fff" aria-hidden="true" />
                 </button>
             )}
-            {activeIdx < items.length - 2 && (
+            {activeIdx < lastActiveIdx && (
                 <button
+                    type="button"
                     className="testimonials__btn testimonials__btn--right"
+                    aria-label="Next testimonial"
                     onClick={() => handleBtnClick(Sides.RIGHT)}
                 >
-                    <FaArrowRight color="#fff" />
+                    <FaArrowRight color="#fff" aria-hidden="true" />
                 </button>
             )}
         </div>

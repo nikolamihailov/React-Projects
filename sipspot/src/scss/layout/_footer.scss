@@ -9,6 +9,24 @@
     padding: 2.4rem 3.2rem;
     gap: 1.6rem;
 
+    // stack the three columns on phones
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 3.2rem;
+        padding: 4rem 2.4rem;
+        text-align: center;
+
+        &__nav-list {
+            align-items: center;
+        }
+
+        &__links .heading-tertiary,
+        &__socials-design .heading-tertiary {
+            margin-bottom: 1.2rem;
+        }
+    }
+
     &__logo-terms {
         display: flex;
         flex-direction: column;

@@ -13,6 +13,13 @@
     align-items: center;
     padding: 3.2rem;
 
+    // stack text above the image on narrow screens
+    @media (max-width: 800px) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4.8rem;
+        padding: 2.4rem;
+    }
+
     &__text-box {
         color: variables.$primary-color;
     }
@@ -39,12 +46,14 @@
 
     &__img {
         width: 90%;
+        max-width: 40rem;
         animation: bounce 3s infinite ease-in-out;
         filter: drop-shadow(0 0 1rem variables.$primary-color);
     }
 
     &__btns {
         display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
     }
 }

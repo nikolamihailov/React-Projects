@@ -12,11 +12,14 @@
     &__info {
         display: flex;
         flex-direction: column;
+        padding: 0 2.4rem;
     }
 
     &__container {
         margin: 0 auto;
+        padding: 0 2.4rem;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 3.2rem;
     }

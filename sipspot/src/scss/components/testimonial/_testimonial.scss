@@ -39,11 +39,20 @@
         &--left {
             left: 0;
             transform: translate(-150%, -50%);
+
+            // phones: sit on the card edge so the arrow stays on screen
+            @media (max-width: 600px) {
+                transform: translate(-50%, -50%);
+            }
         }
 
         &--right {
             right: 0;
             transform: translate(150%, -50%);
+
+            @media (max-width: 600px) {
+                transform: translate(50%, -50%);
+            }
         }
     }
 

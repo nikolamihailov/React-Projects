@@ -4,10 +4,12 @@
 .features {
     max-width: variables.$max-width-content;
     margin: 0 auto;
+    padding: 0 2.4rem;
 
     &__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        // 1 column on phones, up to 4 on desktop; min() keeps a column from exceeding the screen
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
         gap: 2rem;
         text-align: center;
     }

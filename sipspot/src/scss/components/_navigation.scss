@@ -98,25 +98,31 @@ $nav-mobile-breakpoint: 860px;
 
     // ===== mobile: toggle button + dropdown panel =====
     @media (max-width: $nav-mobile-breakpoint) {
-        &__inner {
-            flex-wrap: wrap;
-            gap: 0;
-        }
-
         &__toggle {
             display: flex;
         }
 
+        // the panel overlays the page below the sticky header (its containing block),
+        // so opening it never moves the logo row or pushes the content down
         &__menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
             display: none;
-            flex-basis: 100%;
             flex-direction: column;
             align-items: stretch;
             gap: 1.6rem;
-            padding: 0.8rem 0 2.4rem;
+            max-height: calc(100dvh - #{variables.$header-height});
+            overflow-y: auto;
+            padding: 0.8rem variables.$gutter 2.4rem;
+            background-color: variables.$bg;
+            border-bottom: 1px solid variables.$border;
+            box-shadow: variables.$shadow-lg;
 
             &--open {
                 display: flex;
+                animation: nav-menu-in 0.25s ease;
             }
         }
 
@@ -138,5 +144,12 @@ $nav-mobile-breakpoint: 860px;
                 }
             }
         }
+    }
+}
+
+@keyframes nav-menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.8rem);
     }
 }

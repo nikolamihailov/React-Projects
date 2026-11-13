@@ -178,11 +178,25 @@
     }
 
     &__img {
+        display: block;
         width: 100%;
         aspect-ratio: 4 / 3;
         object-fit: cover;
         border-radius: variables.$radius-lg;
         box-shadow: variables.$shadow-md;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    // on hover the photo slides into the gold frame (same offset as the frame's inset above)
+    @media (hover: hover) {
+        &__media:hover &__img {
+            transform: translate(2.4rem, 2.4rem);
+            box-shadow: variables.$shadow-sm;
+
+            @include mixins.phone {
+                transform: translate(1.2rem, 1.2rem);
+            }
+        }
     }
 
     &__text {

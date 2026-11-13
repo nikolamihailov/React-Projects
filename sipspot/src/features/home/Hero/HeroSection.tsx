@@ -1,11 +1,27 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { IoArrowForward } from "react-icons/io5";
 import { barInfo } from "@/data/barInfo";
 import { heroStats } from "@/data/heroStats";
 import Button from "@/features/shared/components/UI/Button/Button";
 import heroImg from "/hero-img.png";
 
+type ImageStatus = "loading" | "loaded" | "error";
+
 function HeroSection() {
+    // the glass stays hidden until it has loaded, so the browser never paints (and bounces) the alt text instead
+    const [imgStatus, setImgStatus] = useState<ImageStatus>("loading");
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    // a cached image can finish loading before React attaches onLoad
+    useEffect(() => {
+        const img = imgRef.current;
+        if (img?.complete) setImgStatus(img.naturalWidth > 0 ? "loaded" : "error");
+    }, []);
+
+    const handleImgLoad = () => setImgStatus("loaded");
+    const handleImgError = () => setImgStatus("error");
+
     return (
         <section className="hero">
             <div className="hero__inner container">
@@ -46,7 +62,18 @@ function HeroSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
                 >
-                    <img className="hero__img" src={heroImg} alt="A signature SipSpot cocktail" width={520} height={520} />
+                    <img
+                        ref={imgRef}
+                        className="hero__img"
+                        src={heroImg}
+                        alt="A signature SipSpot cocktail"
+                        width={520}
+                        height={520}
+                        fetchPriority="high"
+                        data-status={imgStatus}
+                        onLoad={handleImgLoad}
+                        onError={handleImgError}
+                    />
                 </motion.div>
             </div>
         </section>

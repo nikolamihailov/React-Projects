@@ -18,7 +18,7 @@ function FeaturedItem({ cocktail, index }: FeaturedItemProps) {
         >
             <Link className="featured-cocktails__item" to={`/recipes/${cocktail.id}`}>
                 <div className="featured-cocktails__img-box">
-                    <img className="featured-cocktails__img" src={cocktail.imgSrc} alt="" width={200} height={200} />
+                    <img className="featured-cocktails__img" src={cocktail.imgSrc} alt="" width={200} height={200} loading="lazy" />
                 </div>
                 <h3 className="featured-cocktails__title">{cocktail.name}</h3>
                 <p className="featured-cocktails__notes">{cocktail.notes}</p>

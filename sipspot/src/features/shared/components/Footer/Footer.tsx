@@ -13,7 +13,7 @@ function Footer() {
             <div className="footer__grid container">
                 <div className="footer__brand">
                     <NavLink to="/" className="footer__logo" aria-label="SipSpot home">
-                        <img src={logo} alt="" width={40} height={40} />
+                        <img src={logo} alt="" width={40} height={40} loading="lazy" />
                         <span>
                             Sip<span>Spot</span>
                         </span>

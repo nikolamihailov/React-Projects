@@ -5,7 +5,7 @@ type LogoProps = {
 function Logo({ width, src }: LogoProps) {
     return (
         <>
-            <img src={src} alt="logo for sipspot bar" width={width} />
+            <img src={src} alt="logo for sipspot bar" width={width} height={width} />
         </>
     );
 }

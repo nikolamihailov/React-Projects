@@ -1,9 +1,9 @@
 import { Testimonial } from "@/types/Testimonial";
-import user1 from "/user-1.jpg";
-import user2 from "/user-2.jpg";
-import user3 from "/user-3.jpg";
-import user4 from "/user-4.jpg";
-import user5 from "/user-5.jpg";
+import user1 from "/user-1.webp";
+import user2 from "/user-2.webp";
+import user3 from "/user-3.webp";
+import user4 from "/user-4.webp";
+import user5 from "/user-5.webp";
 
 export const testimonialItems: Testimonial[] = [
     {

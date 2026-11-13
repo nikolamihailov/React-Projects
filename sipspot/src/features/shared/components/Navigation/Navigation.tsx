@@ -6,7 +6,7 @@ import { navLinks } from "@/data/navLinks";
 import Button from "@/features/shared/components/UI/Button/Button";
 import Logo from "@/features/shared/components/UI/Logo/Logo";
 import Nav from "@/features/shared/components/UI/Nav/Nav";
-import logo from "/logo-icon.png";
+import logo from "/logo-icon.webp";
 
 const NAV_MENU_ID = "main-nav-menu";
 

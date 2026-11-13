@@ -3,7 +3,7 @@ import { barInfo } from "@/data/barInfo";
 import { navLinks } from "@/data/navLinks";
 import { SocialNetworks, socials } from "@/types/Socials";
 import SocialNetwork from "./Socials/SocialNetwork";
-import logo from "/logo-icon.png";
+import logo from "/logo-icon.webp";
 
 const socialNetworkList = [SocialNetworks.instagram, SocialNetworks.linkedIn, SocialNetworks.github];
 

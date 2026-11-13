@@ -4,7 +4,7 @@ import { IoArrowForward } from "react-icons/io5";
 import { barInfo } from "@/data/barInfo";
 import { heroStats } from "@/data/heroStats";
 import Button from "@/features/shared/components/UI/Button/Button";
-import heroImg from "/hero-img.png";
+import heroImg from "/hero-img.webp";
 
 type ImageStatus = "loading" | "loaded" | "error";
 

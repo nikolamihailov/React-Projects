@@ -1,12 +1,12 @@
-import logo1 from "/partnerLogo1.png";
-import logo2 from "/partnerLogo2.png";
-import logo3 from "/partnerLogo3.png";
-import logo4 from "/partnerLogo4.png";
-import logo5 from "/partnerLogo5.png";
-import logo6 from "/partnerLogo6.png";
-import logo7 from "/partnerLogo7.png";
-import logo8 from "/partnerLogo8.png";
-import logo9 from "/partnerLogo9.png";
+import logo1 from "/partnerLogo1.webp";
+import logo2 from "/partnerLogo2.webp";
+import logo3 from "/partnerLogo3.webp";
+import logo4 from "/partnerLogo4.webp";
+import logo5 from "/partnerLogo5.webp";
+import logo6 from "/partnerLogo6.webp";
+import logo7 from "/partnerLogo7.webp";
+import logo8 from "/partnerLogo8.webp";
+import logo9 from "/partnerLogo9.webp";
 
 export const partners = [
     { id: 1, src: logo1 },

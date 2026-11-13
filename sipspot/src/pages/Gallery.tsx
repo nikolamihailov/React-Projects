@@ -1,17 +1,16 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoCheckmarkCircle, IoExpandOutline } from "react-icons/io5";
-import { galleryPhotos, galleryStories } from "@/data/gallery";
+import { galleryPhotos, galleryStories, unsplashUrl } from "@/data/gallery";
 import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
 import ReservationSection from "@/features/shared/components/ReservationSection/ReservationSection";
 import SectionInfo from "@/features/shared/components/SectionInfo";
 import Lightbox, { LightboxItem } from "@/features/shared/components/UI/Lightbox/Lightbox";
 
 const lightboxItems: LightboxItem[] = galleryPhotos.map((photo) => ({
-    image: `${photo.image}/large`,
-    title: photo.name,
+    image: unsplashUrl(photo.photoId, 1600),
+    title: photo.title,
     caption: photo.caption,
-    href: `/recipes/${photo.drinkId}`,
 }));
 
 function Gallery() {
@@ -30,9 +29,9 @@ function Gallery() {
             <section className="gallery-section">
                 <div className="container">
                     <SectionInfo
-                        subheading="In the glass"
-                        heading="Drinks worth a photo"
-                        description="A few of the classics our bartenders are proudest of. Every one of them is on the menu tonight."
+                        subheading="The room"
+                        heading="Step inside SipSpot"
+                        description="Brass, velvet and warm low light - a look around the bar, the lounge and the dining room before you visit."
                     />
                     <ul className="gallery-grid">
                         {galleryPhotos.map((photo, index) => {
@@ -40,7 +39,7 @@ function Gallery() {
 
                             return (
                                 <motion.li
-                                    key={photo.drinkId}
+                                    key={photo.photoId}
                                     className="gallery-grid__item"
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -50,17 +49,17 @@ function Gallery() {
                                     <button
                                         type="button"
                                         className="gallery-grid__button"
-                                        aria-label={`Open photo: ${photo.name}`}
+                                        aria-label={`Open photo: ${photo.title}`}
                                         onClick={handleOpen}
                                     >
                                         <img
                                             className="gallery-grid__img"
-                                            src={`${photo.image}/medium`}
+                                            src={unsplashUrl(photo.photoId, 900)}
                                             alt=""
                                             loading="lazy"
                                         />
                                         <span className="gallery-grid__overlay" aria-hidden="true">
-                                            <span className="gallery-grid__name">{photo.name}</span>
+                                            <span className="gallery-grid__name">{photo.title}</span>
                                             <span className="gallery-grid__caption">{photo.caption}</span>
                                             <IoExpandOutline className="gallery-grid__icon" />
                                         </span>

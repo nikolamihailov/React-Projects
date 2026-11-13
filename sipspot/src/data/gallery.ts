@@ -1,25 +1,32 @@
-// Photos come from TheCocktailDB (each links to its recipe) - swap in real bar photography when available
-const IMAGE_BASE = "https://www.thecocktaildb.com/images/media/drink/";
+// Interior photos are hotlinked from Unsplash (free licence) - swap in real SipSpot photography when available
+const UNSPLASH_BASE = "https://images.unsplash.com/photo-";
+
+// builds a cropped, compressed Unsplash URL at the requested width
+export const unsplashUrl = (photoId: string, width: number) =>
+    `${UNSPLASH_BASE}${photoId}?auto=format&fit=crop&q=75&w=${width}`;
 
 export type GalleryPhoto = {
-    drinkId: string;
-    name: string;
-    image: string;
+    photoId: string;
+    title: string;
     caption: string;
 };
 
+// order matters - the bento grid in _gallery.scss gives the 1st and 6th photo the large tiles
 export const galleryPhotos: GalleryPhoto[] = [
-    { drinkId: "11003", name: "Negroni", image: `${IMAGE_BASE}qgdu971561574065.jpg`, caption: "Equal parts, stirred long and slow" },
-    { drinkId: "17212", name: "Espresso Martini", image: `${IMAGE_BASE}n0sx531504372951.jpg`, caption: "Our most-ordered drink after midnight" },
-    { drinkId: "17180", name: "Aviation", image: `${IMAGE_BASE}trbplb1606855233.jpg`, caption: "Violet, gin and a pre-Prohibition story" },
-    { drinkId: "11001", name: "Old Fashioned", image: `${IMAGE_BASE}vrwquq1478252802.jpg`, caption: "One large cube, one orange twist" },
-    { drinkId: "17197", name: "French 75", image: `${IMAGE_BASE}hrxfbl1606773109.jpg`, caption: "Gin and champagne for celebrations" },
-    { drinkId: "17186", name: "Clover Club", image: `${IMAGE_BASE}t0aja61504348715.jpg`, caption: "Raspberry, lemon and a silky foam" },
-    { drinkId: "11008", name: "Manhattan", image: `${IMAGE_BASE}yk70e31606771240.jpg`, caption: "Rye, sweet vermouth, bitters" },
-    { drinkId: "17210", name: "Bramble", image: `${IMAGE_BASE}twtbh51630406392.jpg`, caption: "A London classic over crushed ice" },
-    { drinkId: "17247", name: "The Last Word", image: `${IMAGE_BASE}91oule1513702624.jpg`, caption: "Green chartreuse at its finest" },
-    { drinkId: "13837", name: "Kir Royale", image: `${IMAGE_BASE}yt9i7n1504370388.jpg`, caption: "Cassis topped with champagne" },
+    { photoId: "1572116469696-31de0f17cc34", title: "The main bar", caption: "Brass, back-lit bottles and a dozen walnut stools" },
+    { photoId: "1597075687490-8f673c6c17f6", title: "Last call", caption: "A martini waiting on the polished counter" },
+    { photoId: "1574096079513-d8259312b785", title: "The back room", caption: "Stained glass and dark wood for quieter nights" },
+    { photoId: "1585518419759-7fe2e0fbf8a6", title: "Velvet booths", caption: "Padded walls and soft light for groups" },
+    { photoId: "1514933651103-005eec06c04b", title: "Behind the counter", caption: "Where every syrup and bitters is made in-house" },
+    { photoId: "1578474846511-04ba529f0b88", title: "The dining room", caption: "White linen, low light and long conversations" },
+    { photoId: "1516997121675-4c2d1684aa3e", title: "Private hire", caption: "Set for celebrations of up to forty guests" },
+    { photoId: "1543007630-9710e4a00a20", title: "Golden hour", caption: "The room as the first guests arrive" },
+    { photoId: "1590846406792-0adc7f938f1d", title: "The lounge", caption: "Deep chairs and a vinyl-only soundtrack" },
+    { photoId: "1517248135467-4c7edcad34c4", title: "Tables for two", caption: "Our favourite corner for a quiet evening" },
 ];
+
+// Story photos come from TheCocktailDB
+const IMAGE_BASE = "https://www.thecocktaildb.com/images/media/drink/";
 
 export type GalleryStory = {
     eyebrow: string;

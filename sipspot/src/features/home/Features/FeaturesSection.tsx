@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { features } from "@/data/features";
 import SectionInfo from "@/features/shared/components/SectionInfo";
 import Section from "@/features/shared/components/UI/Section/Section";
@@ -15,7 +15,7 @@ function FeaturesSection() {
 
                 <ul className="features">
                     {features.map((feature, index) => (
-                        <motion.li
+                        <m.li
                             key={feature.title}
                             className="feature"
                             initial={{ opacity: 0, y: 40 }}
@@ -28,7 +28,7 @@ function FeaturesSection() {
                             </span>
                             <h3 className="feature__title">{feature.title}</h3>
                             <p className="feature__text">{feature.description}</p>
-                        </motion.li>
+                        </m.li>
                     ))}
                 </ul>
             </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa";
 import { ABOUT_IMAGES, aboutStats, aboutTeam, aboutTimeline, aboutValues } from "@/data/about";
 import { barInfo } from "@/data/barInfo";
@@ -25,7 +25,7 @@ function About() {
 
             <section className="about-intro">
                 <div className="about-intro__inner container">
-                    <motion.div className="about-intro__media" {...fadeUp}>
+                    <m.div className="about-intro__media" {...fadeUp}>
                         <img
                             className="about-intro__img about-intro__img--primary"
                             src={ABOUT_IMAGES.primary}
@@ -42,9 +42,9 @@ function About() {
                             Est.
                             <strong>{barInfo.foundedYear}</strong>
                         </span>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div className="about-intro__text" {...fadeUp}>
+                    <m.div className="about-intro__text" {...fadeUp}>
                         <SectionInfo
                             subheading="Who we are"
                             heading="A neighbourhood bar with grand ambitions"
@@ -64,7 +64,7 @@ function About() {
                             <p>A great cocktail is a small act of hospitality. We just try to do it a few hundred times a night.</p>
                             <cite>Anna Dimitrova, co-founder</cite>
                         </blockquote>
-                    </motion.div>
+                    </m.div>
                 </div>
             </section>
 
@@ -88,7 +88,7 @@ function About() {
                     />
                     <ol className="timeline">
                         {aboutTimeline.map((entry, index) => (
-                            <motion.li
+                            <m.li
                                 key={entry.year}
                                 className="timeline__item"
                                 initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ function About() {
                                 <span className="timeline__year">{entry.year}</span>
                                 <h3 className="timeline__title">{entry.title}</h3>
                                 <p className="timeline__text">{entry.text}</p>
-                            </motion.li>
+                            </m.li>
                         ))}
                     </ol>
                 </div>
@@ -113,7 +113,7 @@ function About() {
                     />
                     <ul className="about-values__grid">
                         {aboutValues.map((value, index) => (
-                            <motion.li
+                            <m.li
                                 key={value.title}
                                 className="about-values__card"
                                 {...fadeUp}
@@ -122,7 +122,7 @@ function About() {
                                 <span className="about-values__number">0{index + 1}</span>
                                 <h3 className="heading-tertiary">{value.title}</h3>
                                 <p className="paragraph">{value.text}</p>
-                            </motion.li>
+                            </m.li>
                         ))}
                     </ul>
                 </div>

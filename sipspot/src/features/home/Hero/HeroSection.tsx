@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { IoArrowForward } from "react-icons/io5";
 import { barInfo } from "@/data/barInfo";
@@ -25,7 +25,7 @@ function HeroSection() {
     return (
         <section className="hero">
             <div className="hero__inner container">
-                <motion.div
+                <m.div
                     className="hero__text-box"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -55,8 +55,8 @@ function HeroSection() {
                             </div>
                         ))}
                     </dl>
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                     className="hero__img-box"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -74,7 +74,7 @@ function HeroSection() {
                         onLoad={handleImgLoad}
                         onError={handleImgError}
                     />
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

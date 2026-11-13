@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 type PageHeaderProps = {
@@ -11,7 +11,7 @@ type PageHeaderProps = {
 function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
     return (
         <header className="page-header">
-            <motion.div
+            <m.div
                 className="page-header__inner container"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
                 <span className="heading-sub">{eyebrow}</span>
                 <h1 className="heading-primary page-header__title">{title}</h1>
                 {description && <p className="lede page-header__description">{description}</p>}
-            </motion.div>
+            </m.div>
         </header>
     );
 }

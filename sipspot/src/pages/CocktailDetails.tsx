@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { IoListOutline, IoChevronForward, IoFlaskOutline, IoWineOutline } from "react-icons/io5";
 import { Link, useLocation, useParams } from "react-router-dom";
 import IngredientList from "@/features/cocktails/CocktailDetails/IngredientList";
@@ -97,7 +97,7 @@ function CocktailDetails() {
                     </nav>
 
                     <div className="cocktail-details__top">
-                        <motion.div
+                        <m.div
                             className="cocktail-details__media"
                             initial={{ opacity: 0, scale: 0.96 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -113,9 +113,9 @@ function CocktailDetails() {
                             {cocktail.strIBA && (
                                 <span className="cocktail-details__iba">IBA · {cocktail.strIBA}</span>
                             )}
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             className="cocktail-details__intro"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ function CocktailDetails() {
                                 </div>
                                 <IngredientList ingredients={ingredients} />
                             </section>
-                        </motion.div>
+                        </m.div>
                     </div>
                 </div>
             </div>

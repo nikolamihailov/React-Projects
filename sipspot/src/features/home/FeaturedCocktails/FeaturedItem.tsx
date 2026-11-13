@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FeaturedCocktail } from "@/data/featuredCocktails";
@@ -10,7 +10,7 @@ type FeaturedItemProps = {
 
 function FeaturedItem({ cocktail, index }: FeaturedItemProps) {
     return (
-        <motion.li
+        <m.li
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -26,7 +26,7 @@ function FeaturedItem({ cocktail, index }: FeaturedItemProps) {
                     View recipe <IoArrowForward aria-hidden="true" />
                 </span>
             </Link>
-        </motion.li>
+        </m.li>
     );
 }
 

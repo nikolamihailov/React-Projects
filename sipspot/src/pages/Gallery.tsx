@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState } from "react";
 import { IoCheckmarkCircle, IoExpandOutline } from "react-icons/io5";
 import { galleryPhotos, galleryStories, unsplashUrl } from "@/data/gallery";
@@ -38,7 +38,7 @@ function Gallery() {
                             const handleOpen = () => setActiveIndex(index);
 
                             return (
-                                <motion.li
+                                <m.li
                                     key={photo.photoId}
                                     className="gallery-grid__item"
                                     initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ function Gallery() {
                                             <IoExpandOutline className="gallery-grid__icon" />
                                         </span>
                                     </button>
-                                </motion.li>
+                                </m.li>
                             );
                         })}
                     </ul>
@@ -74,7 +74,7 @@ function Gallery() {
             <section className="gallery-stories" aria-label="Life at SipSpot">
                 <div className="container">
                     {galleryStories.map((story, index) => (
-                        <motion.article
+                        <m.article
                             key={story.title}
                             className="story"
                             initial={{ opacity: 0, y: 40 }}
@@ -100,7 +100,7 @@ function Gallery() {
                                     ))}
                                 </ul>
                             </div>
-                        </motion.article>
+                        </m.article>
                     ))}
                 </div>
             </section>

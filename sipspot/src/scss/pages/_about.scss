@@ -243,11 +243,26 @@
         @include mixins.card;
     }
 
+    // large numeral in the same scale as the timeline years, with a short gold rule under it
     &__number {
-        font-size: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 0.4rem;
+        font-size: 3.2rem;
         font-weight: 900;
-        letter-spacing: 0.2em;
+        line-height: 1;
+        letter-spacing: -0.04rem;
+        font-variant-numeric: tabular-nums;
         color: variables.$secondary-color;
+
+        &::after {
+            content: "";
+            width: 3.2rem;
+            height: 0.3rem;
+            border-radius: variables.$radius-pill;
+            background-color: variables.$tertiary-dark;
+        }
     }
 }
 

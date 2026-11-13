@@ -1,4 +1,4 @@
-import { Location, Outlet, ScrollRestoration } from "react-router-dom";
+import { Location, Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
 import Header from "@/features/shared/components/Header/Header";
 import Footer from "@/features/shared/components/Footer/Footer";
 
@@ -11,8 +11,12 @@ const getScrollKey = (location: Location) => {
 };
 
 function Layout() {
+    // pages are lazy-loaded, so show a thin bar while the next page's code downloads
+    const isNavigating = useNavigation().state === "loading";
+
     return (
         <>
+            {isNavigating && <div className="route-progress" role="progressbar" aria-label="Loading page" />}
             <Header />
             <main>
                 <Outlet />

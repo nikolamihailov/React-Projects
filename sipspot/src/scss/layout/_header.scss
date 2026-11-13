@@ -8,3 +8,25 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid variables.$border;
 }
+
+// thin bar along the top of the viewport while a lazy-loaded page downloads (see Layout.tsx)
+.route-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 0.3rem;
+    background: linear-gradient(90deg, variables.$secondary-color, variables.$tertiary-color);
+    transform-origin: left;
+    animation: route-progress 1.2s ease-out forwards;
+}
+
+@keyframes route-progress {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(0.85);
+    }
+}

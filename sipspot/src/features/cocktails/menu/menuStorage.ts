@@ -4,22 +4,23 @@ import { MenuCocktail } from "./menuTypes";
 // Caching the curated menu in the browser means refreshes and return visits make no API calls at all.
 // Bump the version whenever menuConfig curation rules change, so visitors don't keep an old menu.
 const STORAGE_KEY = "sipspot:bar-menu:v1";
-const MAX_AGE_MS = 24 * 60 * 60 * 1000;
+export const MENU_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
-type StoredMenu = {
+export type StoredMenu = {
     savedAt: number;
     menu: MenuCocktail[];
 };
 
-export const readStoredMenu = (): MenuCocktail[] | undefined => {
+// returns savedAt too, so React Query knows how old the cached menu really is
+export const readStoredMenu = (): StoredMenu | undefined => {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return undefined;
 
         const stored = JSON.parse(raw) as StoredMenu;
-        if (Date.now() - stored.savedAt > MAX_AGE_MS || !Array.isArray(stored.menu)) return undefined;
+        if (Date.now() - stored.savedAt > MENU_MAX_AGE_MS || !Array.isArray(stored.menu)) return undefined;
 
-        return stored.menu;
+        return stored;
     } catch {
         // storage blocked (private mode) or corrupted - just fetch again
         return undefined;

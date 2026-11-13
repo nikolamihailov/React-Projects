@@ -1,11 +1,17 @@
 import { m } from "framer-motion";
 import { useState } from "react";
 import { IoCheckmarkCircle, IoExpandOutline } from "react-icons/io5";
-import { galleryPhotos, galleryStories, unsplashUrl } from "@/data/gallery";
+import { galleryPhotos, galleryStories, unsplashSrcSet, unsplashUrl } from "@/data/gallery";
 import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
 import ReservationSection from "@/features/shared/components/ReservationSection/ReservationSection";
 import SectionInfo from "@/features/shared/components/SectionInfo";
 import Lightbox, { LightboxItem } from "@/features/shared/components/UI/Lightbox/Lightbox";
+
+// tile widths from the bento grid in _gallery.scss: the 1st and 6th photos are the large tiles
+// (2 of 4 columns on desktop, full width below 900px); the rest are 1 column (half width below 900px)
+const LARGE_TILE_INDEXES = [0, 5];
+const getTileSizes = (index: number) =>
+    LARGE_TILE_INDEXES.includes(index) ? "(max-width: 900px) 100vw, 640px" : "(max-width: 900px) 50vw, 320px";
 
 const lightboxItems: LightboxItem[] = galleryPhotos.map((photo) => ({
     image: unsplashUrl(photo.photoId, 1600),
@@ -55,6 +61,8 @@ function Gallery() {
                                         <img
                                             className="gallery-grid__img"
                                             src={unsplashUrl(photo.photoId, 900)}
+                                            srcSet={unsplashSrcSet(photo.photoId)}
+                                            sizes={getTileSizes(index)}
                                             alt=""
                                             loading="lazy"
                                         />

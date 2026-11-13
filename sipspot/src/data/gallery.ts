@@ -5,6 +5,11 @@ const UNSPLASH_BASE = "https://images.unsplash.com/photo-";
 export const unsplashUrl = (photoId: string, width: number) =>
     `${UNSPLASH_BASE}${photoId}?auto=format&fit=crop&q=75&w=${width}`;
 
+// the same photo at several widths, so the browser picks the smallest one that fills its tile
+const SRCSET_WIDTHS = [400, 600, 900, 1200];
+export const unsplashSrcSet = (photoId: string) =>
+    SRCSET_WIDTHS.map((width) => `${unsplashUrl(photoId, width)} ${width}w`).join(", ");
+
 export type GalleryPhoto = {
     photoId: string;
     title: string;

@@ -2,19 +2,8 @@ import { IoArrowForward } from "react-icons/io5";
 import Section from "@/features/shared/components/UI/Section/Section";
 import SectionInfo from "@/features/shared/components/SectionInfo";
 import Button from "@/features/shared/components/UI/Button/Button";
-import FeaturedItem, { FeaturedCocktail } from "./FeaturedItem";
-import cosmopolitanPng from "/cosmopolitan.png";
-import daiquiriPng from "/daiquiri.png";
-import mojitoPng from "/mojito.png";
-import strawberryMargaritaPng from "/strawberryMargarita.png";
-
-// ids are TheCocktailDB drinks, so each card opens the full recipe
-const featuredCocktails: FeaturedCocktail[] = [
-    { id: "11007", name: "Margarita", imgSrc: strawberryMargaritaPng, notes: "Tequila · lime · salted rim" },
-    { id: "11006", name: "Daiquiri", imgSrc: daiquiriPng, notes: "White rum · lime · sugar" },
-    { id: "11000", name: "Mojito", imgSrc: mojitoPng, notes: "Rum · fresh mint · soda" },
-    { id: "17196", name: "Cosmopolitan", imgSrc: cosmopolitanPng, notes: "Citrus vodka · cranberry · lime" },
-];
+import { featuredCocktails } from "@/data/featuredCocktails";
+import FeaturedItem from "./FeaturedItem";
 
 function FeaturedCocktailsSection() {
     return (

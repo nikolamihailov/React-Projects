@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
 import { IoArrowForward } from "react-icons/io5";
 import { barInfo } from "@/data/barInfo";
+import { heroStats } from "@/data/heroStats";
 import Button from "@/features/shared/components/UI/Button/Button";
 import heroImg from "/hero-img.png";
-
-const heroStats = [
-    { value: "300+", label: "Recipes on our menu" },
-    { value: `${new Date().getFullYear() - barInfo.foundedYear}`, label: "Years behind the bar" },
-    { value: "4.9", label: "Average guest rating" },
-];
 
 function HeroSection() {
     return (

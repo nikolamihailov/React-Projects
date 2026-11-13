@@ -1,13 +1,7 @@
 import { motion } from "framer-motion";
 import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
-export type FeaturedCocktail = {
-    id: string;
-    name: string;
-    imgSrc: string;
-    notes: string;
-};
+import { FeaturedCocktail } from "@/data/featuredCocktails";
 
 type FeaturedItemProps = {
     cocktail: FeaturedCocktail;

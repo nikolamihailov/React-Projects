@@ -4,7 +4,7 @@ import SectionInfo from "@/features/shared/components/SectionInfo";
 import Section from "@/features/shared/components/UI/Section/Section";
 import Testimonial from "./Testimonial";
 import TestimonialItem from "./TestimonialItem";
-import { testimonialItems } from "./testimonials";
+import { testimonialItems } from "@/data/testimonials";
 
 function TestimonialsSection() {
     const isPhone = useMediaQuery("(max-width: 600px)");

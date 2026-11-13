@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoCheckmarkCircle, IoExpandOutline } from "react-icons/io5";
 import { galleryPhotos, galleryStories } from "@/data/gallery";
 import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
-import ReservationSection from "@/features/shared/components/Sections/ReservationSection";
+import ReservationSection from "@/features/shared/components/ReservationSection/ReservationSection";
 import SectionInfo from "@/features/shared/components/SectionInfo";
 import Lightbox, { LightboxItem } from "@/features/shared/components/UI/Lightbox/Lightbox";
 

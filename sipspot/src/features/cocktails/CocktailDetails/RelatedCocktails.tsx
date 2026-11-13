@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import { useBarMenu } from "../../../hooks/cocktails/useBarMenu";
-import SectionInfo from "../../shared/components/SectionInfo";
-import Button from "../../shared/components/UI/Button/Button";
-import { SPIRIT_GROUPS } from "../menu/menuConfig";
-import { FilterGroupKey } from "../menu/menuTypes";
-import { getMenuLink } from "../menu/menuUtils";
-import CocktailCard from "../Recipes/CocktailCard";
+import { useBarMenu } from "@/hooks/cocktails/useBarMenu";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Button from "@/features/shared/components/UI/Button/Button";
+import { SPIRIT_GROUPS } from "@/features/cocktails/menu/menuConfig";
+import { FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
+import { getMenuLink } from "@/features/cocktails/menu/menuUtils";
+import CocktailCard from "@/features/cocktails/Recipes/CocktailCard";
 
 type RelatedCocktailsProps = {
     cocktailId: string;

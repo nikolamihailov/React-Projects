@@ -1,6 +1,6 @@
 import { ChangeEvent, useId, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
-import { Facet, FilterGroupKey } from "../menu/menuTypes";
+import { Facet, FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
 
 type FacetGroupProps = {
     facet: Facet;

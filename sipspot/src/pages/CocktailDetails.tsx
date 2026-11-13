@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { IoListOutline, IoChevronForward, IoFlaskOutline, IoWineOutline } from "react-icons/io5";
 import { Link, useLocation, useParams } from "react-router-dom";
-import IngredientList from "../features/cocktails/CocktailDetails/IngredientList";
-import RelatedCocktails from "../features/cocktails/CocktailDetails/RelatedCocktails";
-import { SPIRIT_GROUPS } from "../features/cocktails/menu/menuConfig";
-import { FilterGroupKey } from "../features/cocktails/menu/menuTypes";
-import { getMenuCategory, getMenuLink, getStrengthOption } from "../features/cocktails/menu/menuUtils";
-import { RecipesLinkState } from "../features/cocktails/Recipes/CocktailCard";
-import { getCocktailIngredients, getDrinkImage } from "../features/cocktails/utils/cocktailUtils";
-import Button from "../features/shared/components/UI/Button/Button";
-import StatusMessage from "../features/shared/components/UI/StatusMessage/StatusMessage";
-import { barInfo } from "../data/barInfo";
-import { useCocktailById } from "../hooks/cocktails/useCocktailById";
+import IngredientList from "@/features/cocktails/CocktailDetails/IngredientList";
+import RelatedCocktails from "@/features/cocktails/CocktailDetails/RelatedCocktails";
+import { SPIRIT_GROUPS } from "@/features/cocktails/menu/menuConfig";
+import { FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
+import { getMenuCategory, getMenuLink, getStrengthOption } from "@/features/cocktails/menu/menuUtils";
+import { RecipesLinkState } from "@/features/cocktails/Recipes/CocktailCard";
+import { getCocktailIngredients, getDrinkImage } from "@/features/cocktails/utils/cocktailUtils";
+import Button from "@/features/shared/components/UI/Button/Button";
+import StatusMessage from "@/features/shared/components/UI/StatusMessage/StatusMessage";
+import { barInfo } from "@/data/barInfo";
+import { useCocktailById } from "@/hooks/cocktails/useCocktailById";
 
 type DrinkTag = {
     label: string;

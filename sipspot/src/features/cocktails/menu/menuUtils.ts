@@ -1,5 +1,5 @@
-import { Cocktail } from "../../../types/cocktails/Cocktail";
-import { getCocktailIngredients } from "../utils/cocktailUtils";
+import { Cocktail } from "@/types/cocktails/Cocktail";
+import { getCocktailIngredients } from "@/features/cocktails/utils/cocktailUtils";
 import {
     EXCLUDED_INGREDIENTS,
     EXCLUDED_NAMES,

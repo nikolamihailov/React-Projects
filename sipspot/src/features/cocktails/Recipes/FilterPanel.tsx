@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
-import Button from "../../shared/components/UI/Button/Button";
-import { Facet, FilterGroupKey } from "../menu/menuTypes";
+import Button from "@/features/shared/components/UI/Button/Button";
+import { Facet, FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
 import FacetGroup from "./FacetGroup";
 
 type FilterPanelProps = {

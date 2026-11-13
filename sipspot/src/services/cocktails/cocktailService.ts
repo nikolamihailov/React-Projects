@@ -1,5 +1,5 @@
-import { Cocktail, CocktailFilter, CocktailSummary, DrinksResponse } from "../../types/cocktails/Cocktail";
-import { axiosInstance } from "../config/axiosConfig";
+import { Cocktail, CocktailFilter, CocktailSummary, DrinksResponse } from "@/types/cocktails/Cocktail";
+import { axiosInstance } from "@/services/config/axiosConfig";
 
 const cocktailsEndpoints = {
     search: "/search.php",

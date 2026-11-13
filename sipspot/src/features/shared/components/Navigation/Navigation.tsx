@@ -2,10 +2,10 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router-dom";
-import { navLinks } from "../../../../data/navLinks";
-import Button from "../UI/Button/Button";
-import Logo from "../UI/Logo/Logo";
-import Nav from "../UI/Nav/Nav";
+import { navLinks } from "@/data/navLinks";
+import Button from "@/features/shared/components/UI/Button/Button";
+import Logo from "@/features/shared/components/UI/Logo/Logo";
+import Nav from "@/features/shared/components/UI/Nav/Nav";
 import logo from "/logo-icon.png";
 
 const NAV_MENU_ID = "main-nav-menu";

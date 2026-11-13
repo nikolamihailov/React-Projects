@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback, useMemo, useState } from "react";
 import { IoOptionsOutline, IoShuffle } from "react-icons/io5";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { FilterGroupKey, MenuSort } from "../features/cocktails/menu/menuTypes";
+import { FilterGroupKey, MenuSort } from "@/features/cocktails/menu/menuTypes";
 import {
     buildFacets,
     countActiveFilters,
@@ -9,15 +9,15 @@ import {
     filterMenu,
     menuParamNames,
     parseMenuFilters,
-} from "../features/cocktails/menu/menuUtils";
-import ActiveFilters from "../features/cocktails/Recipes/ActiveFilters";
-import CocktailCard from "../features/cocktails/Recipes/CocktailCard";
-import FilterPanel, { FILTER_PANEL_ID } from "../features/cocktails/Recipes/FilterPanel";
-import RecipeSearchBar from "../features/cocktails/Recipes/RecipeSearchBar";
-import PageHeader from "../features/shared/components/PageHeader/PageHeader";
-import Button from "../features/shared/components/UI/Button/Button";
-import StatusMessage from "../features/shared/components/UI/StatusMessage/StatusMessage";
-import { useBarMenu } from "../hooks/cocktails/useBarMenu";
+} from "@/features/cocktails/menu/menuUtils";
+import ActiveFilters from "@/features/cocktails/Recipes/ActiveFilters";
+import CocktailCard from "@/features/cocktails/Recipes/CocktailCard";
+import FilterPanel, { FILTER_PANEL_ID } from "@/features/cocktails/Recipes/FilterPanel";
+import RecipeSearchBar from "@/features/cocktails/Recipes/RecipeSearchBar";
+import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
+import Button from "@/features/shared/components/UI/Button/Button";
+import StatusMessage from "@/features/shared/components/UI/StatusMessage/StatusMessage";
+import { useBarMenu } from "@/hooks/cocktails/useBarMenu";
 
 const PAGE_SIZE = 24;
 const SHOW_PARAM = "show";

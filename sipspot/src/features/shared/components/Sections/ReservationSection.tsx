@@ -1,8 +1,8 @@
 import { IoCallOutline, IoLocationOutline, IoTimeOutline } from "react-icons/io5";
-import { barInfo } from "../../../../data/barInfo";
-import SectionInfo from "../SectionInfo";
-import Button from "../UI/Button/Button";
-import Section from "../UI/Section/Section";
+import { barInfo } from "@/data/barInfo";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Button from "@/features/shared/components/UI/Button/Button";
+import Section from "@/features/shared/components/UI/Section/Section";
 
 // "Book Reservation" call to action from project.txt - the hero and header link here (#reservation)
 function ReservationSection() {

@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import Button from "@/features/shared/components/UI/Button/Button";
 
 type StatusMessageProps = {
     variant: "loading" | "error" | "empty";

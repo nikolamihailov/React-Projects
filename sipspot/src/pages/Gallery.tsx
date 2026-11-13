@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoCheckmarkCircle, IoExpandOutline } from "react-icons/io5";
-import { galleryPhotos, galleryStories } from "../data/gallery";
-import PageHeader from "../features/shared/components/PageHeader/PageHeader";
-import ReservationSection from "../features/shared/components/Sections/ReservationSection";
-import SectionInfo from "../features/shared/components/SectionInfo";
-import Lightbox, { LightboxItem } from "../features/shared/components/UI/Lightbox/Lightbox";
+import { galleryPhotos, galleryStories } from "@/data/gallery";
+import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
+import ReservationSection from "@/features/shared/components/Sections/ReservationSection";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Lightbox, { LightboxItem } from "@/features/shared/components/UI/Lightbox/Lightbox";
 
 const lightboxItems: LightboxItem[] = galleryPhotos.map((photo) => ({
     image: `${photo.image}/large`,

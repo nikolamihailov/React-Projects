@@ -1,4 +1,4 @@
-import { Cocktail, CocktailIngredient, INGREDIENT_NUMBERS } from "../../../types/cocktails/Cocktail";
+import { Cocktail, CocktailIngredient, INGREDIENT_NUMBERS } from "@/types/cocktails/Cocktail";
 
 const INGREDIENT_IMAGE_URL = "https://www.thecocktaildb.com/images/ingredients/";
 

@@ -1,4 +1,4 @@
-import Button from "../features/shared/components/UI/Button/Button";
+import Button from "@/features/shared/components/UI/Button/Button";
 
 function ErrorPage() {
     return (

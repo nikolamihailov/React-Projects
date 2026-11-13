@@ -1,5 +1,5 @@
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-import { Testimonial } from "../../../../../types/Testimonial";
+import { Testimonial } from "@/types/Testimonial";
 import Rating from "./Rating";
 
 interface TestimonialItemProps {

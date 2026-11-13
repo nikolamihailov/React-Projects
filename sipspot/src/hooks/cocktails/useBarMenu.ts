@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { CATALOG_INITIALS } from "../../features/cocktails/menu/menuConfig";
-import { readStoredMenu, writeStoredMenu } from "../../features/cocktails/menu/menuStorage";
-import { MenuCocktail } from "../../features/cocktails/menu/menuTypes";
-import { toMenuCocktail } from "../../features/cocktails/menu/menuUtils";
-import { getCocktailsByFirstLetter } from "../../services/cocktails/cocktailService";
+import { CATALOG_INITIALS } from "@/features/cocktails/menu/menuConfig";
+import { readStoredMenu, writeStoredMenu } from "@/features/cocktails/menu/menuStorage";
+import { MenuCocktail } from "@/features/cocktails/menu/menuTypes";
+import { toMenuCocktail } from "@/features/cocktails/menu/menuUtils";
+import { getCocktailsByFirstLetter } from "@/services/cocktails/cocktailService";
 import { COCKTAIL_STALE_TIME, cocktailQueryKeys } from "./cocktailQueryKeys";
 
 // one request per first letter (the free key caps each at 25 drinks), then curated into the bar menu

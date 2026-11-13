@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { IoArrowForward } from "react-icons/io5";
-import { barInfo } from "../../../../data/barInfo";
-import Button from "../UI/Button/Button";
+import { barInfo } from "@/data/barInfo";
+import Button from "@/features/shared/components/UI/Button/Button";
 import heroImg from "/hero-img.png";
 
 const heroStats = [

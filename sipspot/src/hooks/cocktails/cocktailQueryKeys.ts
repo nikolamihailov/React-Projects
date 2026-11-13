@@ -1,4 +1,4 @@
-import { CocktailFilter } from "../../types/cocktails/Cocktail";
+import { CocktailFilter } from "@/types/cocktails/Cocktail";
 
 export const cocktailQueryKeys = {
     all: ["cocktails"] as const,

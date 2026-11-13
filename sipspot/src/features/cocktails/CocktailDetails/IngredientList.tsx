@@ -1,9 +1,9 @@
 import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { CocktailIngredient } from "../../../types/cocktails/Cocktail";
-import { FilterGroupKey } from "../menu/menuTypes";
-import { getMenuLink } from "../menu/menuUtils";
-import { getIngredientImage } from "../utils/cocktailUtils";
+import { CocktailIngredient } from "@/types/cocktails/Cocktail";
+import { FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
+import { getMenuLink } from "@/features/cocktails/menu/menuUtils";
+import { getIngredientImage } from "@/features/cocktails/utils/cocktailUtils";
 
 type IngredientListProps = {
     ingredients: CocktailIngredient[];

@@ -1,4 +1,4 @@
-import Navigation from "../Navigation/Navigation";
+import Navigation from "@/features/shared/components/Navigation/Navigation";
 
 function Header() {
     return (

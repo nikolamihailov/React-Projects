@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames";
-import { Sides } from "../../../../../types/Sides";
-import { TestimonialItemSize } from "../../../../../types/Testimonial";
+import { Sides } from "@/types/Sides";
+import { TestimonialItemSize } from "@/types/Testimonial";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 type TestimonialProps<T> = {

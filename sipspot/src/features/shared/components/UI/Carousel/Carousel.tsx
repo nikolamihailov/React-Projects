@@ -1,4 +1,4 @@
-import { Gap } from "../../../../../types/Gap";
+import { Gap } from "@/types/Gap";
 
 type CarouselItem = {
     id: number | string;

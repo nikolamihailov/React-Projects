@@ -1,5 +1,5 @@
-import { Gap } from "../../../../../types/Gap";
-import Carousel from "../../UI/Carousel/Carousel";
+import { Gap } from "@/types/Gap";
+import Carousel from "@/features/shared/components/UI/Carousel/Carousel";
 import { partners } from "./partnersArray";
 
 function PartnersSection() {

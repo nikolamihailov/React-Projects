@@ -1,7 +1,7 @@
-import { useMediaQuery } from "../../../../../hooks/useMediaQuery";
-import { TestimonialItemSize } from "../../../../../types/Testimonial";
-import SectionInfo from "../../SectionInfo";
-import Section from "../../UI/Section/Section";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { TestimonialItemSize } from "@/types/Testimonial";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Section from "@/features/shared/components/UI/Section/Section";
 import Testimonial from "./Testimonial";
 import TestimonialItem from "./TestimonialItem";
 import { testimonialItems } from "./testimonials";

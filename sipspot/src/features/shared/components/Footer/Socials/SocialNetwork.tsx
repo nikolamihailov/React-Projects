@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { SocialNetworks } from "../../../../../types/Socials";
+import { SocialNetworks } from "@/types/Socials";
 
 export type SocialNetworkProps = {
     linkUrl: string;

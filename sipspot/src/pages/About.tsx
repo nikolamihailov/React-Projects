@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa";
-import { ABOUT_IMAGES, aboutStats, aboutTeam, aboutTimeline, aboutValues } from "../data/about";
-import { barInfo } from "../data/barInfo";
-import PageHeader from "../features/shared/components/PageHeader/PageHeader";
-import ReservationSection from "../features/shared/components/Sections/ReservationSection";
-import SectionInfo from "../features/shared/components/SectionInfo";
-import Button from "../features/shared/components/UI/Button/Button";
+import { ABOUT_IMAGES, aboutStats, aboutTeam, aboutTimeline, aboutValues } from "@/data/about";
+import { barInfo } from "@/data/barInfo";
+import PageHeader from "@/features/shared/components/PageHeader/PageHeader";
+import ReservationSection from "@/features/shared/components/Sections/ReservationSection";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Button from "@/features/shared/components/UI/Button/Button";
 
 const fadeUp = {
     initial: { opacity: 0, y: 40 },

@@ -1,7 +1,7 @@
 import { IoArrowForward } from "react-icons/io5";
-import Section from "../../shared/components/UI/Section/Section";
-import SectionInfo from "../../shared/components/SectionInfo";
-import Button from "../../shared/components/UI/Button/Button";
+import Section from "@/features/shared/components/UI/Section/Section";
+import SectionInfo from "@/features/shared/components/SectionInfo";
+import Button from "@/features/shared/components/UI/Button/Button";
 import FeaturedItem, { FeaturedCocktail } from "./FeaturedItem";
 import cosmopolitanPng from "/cosmopolitan.png";
 import daiquiriPng from "/daiquiri.png";

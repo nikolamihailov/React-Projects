@@ -1,5 +1,5 @@
 import { IoClose } from "react-icons/io5";
-import { Facet, FilterGroupKey } from "../menu/menuTypes";
+import { Facet, FilterGroupKey } from "@/features/cocktails/menu/menuTypes";
 
 type ActiveFiltersProps = {
     facets: Facet[];

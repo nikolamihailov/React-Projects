@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { barInfo } from "../../../../data/barInfo";
-import { navLinks } from "../../../../data/navLinks";
-import { SocialNetworks, socials } from "../../../../types/Socials";
+import { barInfo } from "@/data/barInfo";
+import { navLinks } from "@/data/navLinks";
+import { SocialNetworks, socials } from "@/types/Socials";
 import SocialNetwork from "./Socials/SocialNetwork";
 import logo from "/logo-icon.png";
 

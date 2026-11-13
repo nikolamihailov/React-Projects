@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { MenuCocktail } from "../menu/menuTypes";
-import { getDrinkImage } from "../utils/cocktailUtils";
+import { MenuCocktail } from "@/features/cocktails/menu/menuTypes";
+import { getDrinkImage } from "@/features/cocktails/utils/cocktailUtils";
 
 // lets the details page link back to the same search / filters
 export type RecipesLinkState = {

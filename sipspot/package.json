@@ -10,8 +10,6 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
         "@tanstack/react-query": "^5.67.1",
         "axios": "^1.8.1",
         "classnames": "^2.5.1",
@@ -19,9 +17,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^5.5.0",
-        "react-intersection-observer": "^9.16.0",
-        "react-router-dom": "^6.24.1",
-        "sass": "^1.85.0"
+        "react-router-dom": "^6.24.1"
     },
     "devDependencies": {
         "@tanstack/eslint-plugin-query": "^5.66.1",
@@ -33,6 +29,7 @@
         "eslint": "^8.57.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.6",
+        "sass": "^1.108.2",
         "typescript": "^5.2.2",
         "vite": "^5.2.0"
     }

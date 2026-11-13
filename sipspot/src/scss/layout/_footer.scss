@@ -2,7 +2,9 @@
 @use "../abstracts/mixins" as mixins;
 
 .footer {
-    background-color: variables.$dark-band;
+    // deeper than the red reservation band above it, with a gold rule, so the two never blend
+    background-color: variables.$footer-bg;
+    border-top: 1px solid rgba(variables.$tertiary-dark, 0.45);
     color: variables.$on-dark-muted;
     padding-top: 7.2rem;
     font-size: 1.5rem;

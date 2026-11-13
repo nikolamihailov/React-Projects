@@ -25,7 +25,8 @@ $ink: #2b1210; // main text - deepest shade of the brand red
 $ink-muted: rgba($ink, 0.68);
 $border: #f0e2c2;
 $gold: #f59f00; // Open Color yellow 7 - small luxury accents
-$dark-band: $primary-dark; // hero, reservation, footer
+$dark-band: $primary-dark; // hero, reservation
+$footer-bg: #1f0806; // near-black espresso, darker than any red band so the footer stands apart
 $on-dark: #fff6dc;
 $on-dark-muted: rgba(#fff6dc, 0.72);
 

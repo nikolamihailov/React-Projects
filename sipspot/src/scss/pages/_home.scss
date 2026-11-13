@@ -31,7 +31,7 @@
     &__reservation {
         color: variables.$on-dark;
         background: radial-gradient(circle at 90% 10%, rgba(variables.$secondary-color, 0.35), transparent 40%),
-            linear-gradient(135deg, #3d0200 0%, variables.$primary-dark 100%);
+            linear-gradient(135deg, variables.$primary-dark 0%, variables.$primary-color 100%);
     }
 }
 

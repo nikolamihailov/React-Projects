@@ -17,34 +17,27 @@ import { useNavigate } from "react-router-dom";
 
 export const ShoppingCartContext = createContext();
 
+// A product deleted after it was added to the cart comes back as null.
+const availableProducts = (products) =>
+  Array.isArray(products) ? products.filter((p) => p?.product) : [];
+
+const cartTotal = (products) =>
+  products.reduce((total, p) => {
+    const price = p.product.hasPromoPrice
+      ? p.product.promoPrice
+      : p.product.price;
+    return total + price * p.quantity;
+  }, 0);
+
 const reducer = (state, action) => {
   switch (action?.type) {
     case "INIT":
-      return {
-        ...state,
-        products: action.products,
-        totalPrice:
-          action.products?.length > 0
-            ? action.products?.reduce((total, p) => {
-                const price = p.product.hasPromoPrice
-                  ? p.product.promoPrice
-                  : p.product.price;
-                return total + price * p.quantity;
-              }, 0)
-            : 0,
-      };
     case "ADD_TO_CART":
     case "REMOVE_CART_PRODUCT":
-    case "CHANGE_PRODUCT_QUANTITY":
-      return {
-        products: action.products,
-        totalPrice: action.products?.reduce((total, p) => {
-          const price = p.product.hasPromoPrice
-            ? p.product.promoPrice
-            : p.product.price;
-          return total + price * p.quantity;
-        }, 0),
-      };
+    case "CHANGE_PRODUCT_QUANTITY": {
+      const products = availableProducts(action.products);
+      return { products, totalPrice: cartTotal(products) };
+    }
     case "EMPTY_CART":
       return {
         products: action.products,

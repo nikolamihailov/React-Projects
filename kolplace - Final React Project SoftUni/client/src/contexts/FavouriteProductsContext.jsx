@@ -19,15 +19,14 @@ export const FavouriteProductsContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "INIT":
-      return {
-        ...state,
-        favouriteProducts: action.products,
-      };
     case "ADD_PRODUCT":
     case "REMOVE_PRODUCT":
       return {
         ...state,
-        favouriteProducts: action.products,
+        // Deleted products populate as null; keep them out of the list.
+        favouriteProducts: Array.isArray(action.products)
+          ? action.products.filter(Boolean)
+          : [],
       };
     default:
       return state;

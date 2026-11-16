@@ -59,7 +59,7 @@ const OrderDetails = ({ id, onClose }) => {
                 <i className="fas fa-shopping-bag"></i>Ordered Products
               </h2>
               {order?.products.map((p) => (
-                <ProductItem key={p.product._id} productInfo={p} />
+                <ProductItem key={p._id} productInfo={p} />
               ))}
             </section>
 

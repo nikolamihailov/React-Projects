@@ -115,8 +115,15 @@ exports.deleteProduct = async (id) => {
     if (!deletedProduct) return deletedProduct;
 
     await Promise.all([
-        ShoppingCart.updateMany({}, { $pull: { products: { product: deletedProduct._id } } }),
-        User.updateMany({}, { $pull: { favouriteProducts: deletedProduct._id } }),
+        // Filter to documents holding the product so only those get a new updatedAt.
+        ShoppingCart.updateMany(
+            { "products.product": deletedProduct._id },
+            { $pull: { products: { product: deletedProduct._id } } }
+        ),
+        User.updateMany(
+            { favouriteProducts: deletedProduct._id },
+            { $pull: { favouriteProducts: deletedProduct._id } }
+        ),
         Review.deleteMany({ product: deletedProduct._id }),
     ]);
 

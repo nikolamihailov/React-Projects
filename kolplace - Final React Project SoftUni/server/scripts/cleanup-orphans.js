@@ -52,11 +52,19 @@ const run = async () => {
         return;
     }
 
-    const toObjectIds = (set) => [...set].map(id => new mongoose.Types.ObjectId(id));
+    const cartIds = [...orphanCartIds].map(id => new mongoose.Types.ObjectId(id));
+    const favIds = [...orphanFavIds].map(id => new mongoose.Types.ObjectId(id));
     // updateMany/deleteMany skip model save hooks (User re-hashes its password on save).
+    // The filters match only affected documents, so others keep their updatedAt.
     const [cartRes, userRes, reviewRes] = await Promise.all([
-        ShoppingCart.updateMany({}, { $pull: { products: { product: { $in: toObjectIds(orphanCartIds) } } } }),
-        User.updateMany({}, { $pull: { favouriteProducts: { $in: toObjectIds(orphanFavIds) } } }),
+        ShoppingCart.updateMany(
+            { "products.product": { $in: cartIds } },
+            { $pull: { products: { product: { $in: cartIds } } } }
+        ),
+        User.updateMany(
+            { favouriteProducts: { $in: favIds } },
+            { $pull: { favouriteProducts: { $in: favIds } } }
+        ),
         Review.deleteMany({ _id: { $in: orphanReviews.map(r => r._id) } }),
     ]);
 

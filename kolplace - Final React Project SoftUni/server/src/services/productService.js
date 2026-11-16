@@ -3,6 +3,9 @@
 // when using do not forget - const populatedProduct = await Product.findById(productId).populate('reviews').populate('category');
 
 const Product = require("../models/Product");
+const ShoppingCart = require("../models/ShoppingCart");
+const User = require("../models/User");
+const Review = require("../models/Review");
 
 
 exports.getAllProducts = () => Product.find().populate("category").populate("reviews");
@@ -105,7 +108,20 @@ exports.addProduct = (data) => Product.create(data);
 
 exports.editProduct = (id, data) => Product.findByIdAndUpdate(id, data, { new: true, runValidators: true });
 
-exports.deleteProduct = (id) => Product.findByIdAndDelete(id);
+// Remove every reference to the product too, otherwise carts and favourites
+// populate it as null and the client crashes reading its fields.
+exports.deleteProduct = async (id) => {
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    if (!deletedProduct) return deletedProduct;
+
+    await Promise.all([
+        ShoppingCart.updateMany({}, { $pull: { products: { product: deletedProduct._id } } }),
+        User.updateMany({}, { $pull: { favouriteProducts: deletedProduct._id } }),
+        Review.deleteMany({ product: deletedProduct._id }),
+    ]);
+
+    return deletedProduct;
+};
 
 exports.searchedProducts = (name) => Product.find({ name: { $regex: new RegExp(name, 'i') } })
     .collation({ locale: 'en', strength: 3 })

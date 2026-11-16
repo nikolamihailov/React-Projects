@@ -66,7 +66,8 @@ exports.removeProduct = async (id, product) => {
     });;
     // console.log(cart.products[0].product._id.toString());
     // console.log(product.productId);
-    const productsFiltered = cart.products.filter(p => p.product._id.toString() !== product.productId);
+    // Entries whose product was deleted populate as null; drop them as well.
+    const productsFiltered = cart.products.filter(p => p.product && p.product._id.toString() !== product.productId);
     cart.products = productsFiltered;
     await cart.save();
     return cart;

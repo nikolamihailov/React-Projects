@@ -18,6 +18,7 @@ import RouteGuardAdmin from "./guards/RouteGuardAdmin.jsx";
 import { ThemeProvider } from "./contexts/themeContext.jsx";
 import Category from "./components/Category/Category.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import Promotions from "./components/Promotions/Promotions.jsx";
 import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext.jsx";
@@ -47,6 +48,7 @@ function App() {
               <main className="main">
                 <NotificationContainer />
                 <SkeletonTheme baseColor={"#767c85"} highlightColor={"whitesmoke"}>
+                  <ErrorBoundary>
                   <Routes>
                     <Route path="/" element={<Home />}></Route>
                     <Route element={<RouteGuardLoginRegister />}>
@@ -80,6 +82,7 @@ function App() {
                     <Route path="/*" element={<Navigate to="/error" />} />
                     <Route path="/error" element={<ErrorPage />} />
                   </Routes>
+                  </ErrorBoundary>
                 </SkeletonTheme>
                 <ScrollToTop />
               </main>

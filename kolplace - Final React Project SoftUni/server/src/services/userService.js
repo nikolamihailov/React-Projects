@@ -2,7 +2,7 @@ const User = require("../models/User");
 const mongoose = require('mongoose');
 const ShoppingCart = require("../models/ShoppingCart");
 const jwt = require("../utils/jwt");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const SECRET = process.env.JWT_SECRET; // some secret
 
 exports.register = async (data) => {

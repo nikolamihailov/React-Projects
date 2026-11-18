@@ -212,12 +212,17 @@
 
 @media screen and (max-width: 31.5em) {
   .auth-page {
-    padding: 2rem 1rem;
+    min-height: 0;
+    padding: 2rem 1.25rem 3rem;
     align-items: flex-start;
   }
 
+  /* Phones: no box, the form simply uses the screen width. */
   .card {
-    padding: 1.5rem 1.25rem;
+    padding: 0.5rem 0.25rem;
+    background: none;
+    border: none;
+    border-radius: 0;
   }
 
   .row {

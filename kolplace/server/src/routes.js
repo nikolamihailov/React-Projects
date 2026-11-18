@@ -6,6 +6,7 @@ const shoppingCartController = require("./controllers/shoppingCartController");
 const storeController = require("./controllers/storeController");
 const reviewController = require("./controllers/reviewController");
 const orderController = require("./controllers/orderController");
+const uploadController = require("./controllers/uploadController");
 
 
 router.use("/users", userController);
@@ -15,5 +16,6 @@ router.use(shoppingCartController);
 router.use(storeController);
 router.use(reviewController);
 router.use(orderController);
+router.use(uploadController);
 
 module.exports = router;

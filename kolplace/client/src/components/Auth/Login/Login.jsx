@@ -3,15 +3,54 @@ import useTitle from "../../../hooks/useTitle";
 import styles from "../LoginRegister.module.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import Notification from "../../Notifications/Notification";
 import { login } from "../../../data/services/userService";
-import { v4 as uuidv4 } from "uuid";
 import { NotifContext } from "../../../contexts/NotificationContext";
 
 const FORM_KEYS = {
   Email: "email",
   Password: "password",
 };
+
+// Labelled password input with a show/hide toggle (also used by Register).
+export const PasswordField = ({ id, name, value, onChange, autoComplete }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div className={styles["field"]}>
+      <label htmlFor={id}>Password</label>
+      <div className={`${styles["control"]} ${styles["has-toggle"]}`}>
+        <i className="fa-solid fa-lock" aria-hidden="true"></i>
+        <input
+          type={isVisible ? "text" : "password"}
+          id={id}
+          placeholder="••••••••"
+          name={name}
+          value={value}
+          onChange={onChange}
+          autoComplete={autoComplete}
+        />
+        <button
+          type="button"
+          className={styles["toggle"]}
+          onClick={() => setIsVisible((v) => !v)}
+          aria-label={isVisible ? "Hide password" : "Show password"}
+          aria-pressed={isVisible}
+        >
+          <i className={`fa-regular ${isVisible ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export const ErrorList = ({ errors }) =>
+  errors.length > 0 && (
+    <ul className={styles["errors"]} role="alert">
+      {errors.map((e, i) => (
+        <li key={i}>{e}</li>
+      ))}
+    </ul>
+  );
 
 const Login = () => {
   useTitle("Login Page | KolPlace");
@@ -36,16 +75,16 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     if (values[FORM_KEYS.Email].trim() === "") {
-      updateNotifs([{ text: "Email must be filled!", type: "error" }]);
+      setErrors(["Email must be filled!"]);
       setIsLoading(false);
       return;
     }
     if (values[FORM_KEYS.Password].trim() === "") {
-      updateNotifs([{ text: "Password must be filled!", type: "error" }]);
+      setErrors(["Password must be filled!"]);
       setIsLoading(false);
       return;
     }
-   
+
     const userData = await login(values);
     if (userData.errors) {
       const errs = Object.values(userData.errors);
@@ -56,59 +95,51 @@ const Login = () => {
       updateAuth(userData);
       setErrors([]);
       navigateTo("/");
-    } 
+    }
   };
 
   return (
-    <section className={styles["login-section"]}>
-      <form method="POST" onSubmit={onSubmit}>
-        <div>
-          <h1>Login</h1>
+    <section className={styles["auth-page"]}>
+      <form className={styles["card"]} method="POST" onSubmit={onSubmit} noValidate>
+        <div className={styles["heading"]}>
+          <h1>Sign in</h1>
+          <p>Welcome back! Sign in to your KolPlace account.</p>
         </div>
-        <div className={styles["form-group"]}>
+
+        <ErrorList errors={errors} />
+
+        <div className={styles["field"]}>
           <label htmlFor="email">Email</label>
-          <div>
-            <i className="fas fa-user-circle"></i>
+          <div className={styles["control"]}>
+            <i className="fa-regular fa-envelope" aria-hidden="true"></i>
             <input
-              type="text"
+              type="email"
               id="email"
               placeholder="johndoe@gmail.com"
               name={FORM_KEYS.Email}
               value={values[FORM_KEYS.Email]}
               onChange={changeHandler}
-            />
-          </div>
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor="password">Password</label>
-          <div>
-            <i className="fa-solid fa-lock"></i>
-            <input
-              type="password"
-              id="password"
-              placeholder="************"
-              name={FORM_KEYS.Password}
-              value={values[FORM_KEYS.Password]}
-              onChange={changeHandler}
+              autoComplete="email"
             />
           </div>
         </div>
 
-        <div className={styles["btns"]}>
-          <button type="submit">
-            {isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "1.5rem", color: "white"}}></i> : "Sign in"}
-          </button>
-        </div>
+        <PasswordField
+          id="password"
+          name={FORM_KEYS.Password}
+          value={values[FORM_KEYS.Password]}
+          onChange={changeHandler}
+          autoComplete="current-password"
+        />
 
-        <Link to="/register"> Do not have an account?</Link>
+        <button type="submit" className={styles["primary"]} disabled={isLoading} aria-busy={isLoading}>
+          {isLoading ? <i className="fa-solid fa-spinner fa-spin" aria-label="Signing in"></i> : "Sign in"}
+        </button>
+
+        <p className={styles["switch"]}>
+          Don&apos;t have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
-      {errors.length > 0 && (
-        <div className={styles["errors-container"]}>
-          {errors.map((e) => (
-            <Notification text={e} type={"error"} key={uuidv4()} />
-          ))}
-        </div>
-      )}
     </section>
   );
 };

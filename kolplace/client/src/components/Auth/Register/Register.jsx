@@ -3,10 +3,9 @@ import useTitle from "../../../hooks/useTitle";
 import styles from "../LoginRegister.module.css";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useContext, useState } from "react";
-import Notification from "../../Notifications/Notification";
 import { register } from "../../../data/services/userService";
-import { v4 as uuidv4 } from "uuid";
 import { NotifContext } from "../../../contexts/NotificationContext";
+import { ErrorList, PasswordField } from "../Login/Login";
 
 const FORM_KEYS = {
   FirstName: "firstName",
@@ -38,7 +37,7 @@ const Register = () => {
 
   const isInputValid = (input, message) => {
     if (input.trim() === "") {
-      updateNotifs([{ text: message, type: "error" }]);
+      setErrors([message]);
       setIsLoading(false);
       return false;
     }
@@ -68,81 +67,80 @@ const Register = () => {
   };
 
   return (
-    <section className={styles["register-section"]}>
-      <form method="POST" onSubmit={onSubmit}>
-        <div>
-          <h1>Register</h1>
+    <section className={styles["auth-page"]}>
+      <form className={`${styles["card"]} ${styles["card-wide"]}`} method="POST" onSubmit={onSubmit} noValidate>
+        <div className={styles["heading"]}>
+          <h1>Create an account</h1>
+          <p>Register to save favourites, check out faster and track your orders.</p>
         </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor="firstname">First Name:</label>
-          <div>
-            <i className="fas fa-id-card"></i>
-            <input
-              type="text"
-              id="firstname"
-              placeholder="John"
-              name={FORM_KEYS.FirstName}
-              value={values[FORM_KEYS.FirstName]}
-              onChange={changeHandler}
-            />
+
+        <ErrorList errors={errors} />
+
+        <div className={styles["row"]}>
+          <div className={styles["field"]}>
+            <label htmlFor="firstname">First name</label>
+            <div className={styles["control"]}>
+              <i className="fa-regular fa-user" aria-hidden="true"></i>
+              <input
+                type="text"
+                id="firstname"
+                placeholder="John"
+                name={FORM_KEYS.FirstName}
+                value={values[FORM_KEYS.FirstName]}
+                onChange={changeHandler}
+                autoComplete="given-name"
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor="lastname">Last Name:</label>
-          <div>
-            <i className="fas fa-id-card"></i>
-            <input
-              type="text"
-              id="lastname"
-              placeholder="Doe"
-              name={FORM_KEYS.LastName}
-              value={values[FORM_KEYS.LastName]}
-              onChange={changeHandler}
-            />
+          <div className={styles["field"]}>
+            <label htmlFor="lastname">Last name</label>
+            <div className={styles["control"]}>
+              <i className="fa-regular fa-user" aria-hidden="true"></i>
+              <input
+                type="text"
+                id="lastname"
+                placeholder="Doe"
+                name={FORM_KEYS.LastName}
+                value={values[FORM_KEYS.LastName]}
+                onChange={changeHandler}
+                autoComplete="family-name"
+              />
+            </div>
           </div>
         </div>
 
-        <div className={styles["form-group"]}>
+        <div className={styles["field"]}>
           <label htmlFor="email">Email</label>
-          <div>
-            <i className="fas fa-user-circle"></i>
+          <div className={styles["control"]}>
+            <i className="fa-regular fa-envelope" aria-hidden="true"></i>
             <input
-              type="text"
+              type="email"
               id="email"
               placeholder="johndoe@gmail.com"
               name={FORM_KEYS.Email}
               value={values[FORM_KEYS.Email]}
               onChange={changeHandler}
-            />
-          </div>
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor="password">Password</label>
-          <div>
-            <i className="fa-solid fa-lock"></i>
-            <input
-              type="password"
-              id="password"
-              placeholder="************"
-              name={FORM_KEYS.Password}
-              value={values[FORM_KEYS.Password]}
-              onChange={changeHandler}
+              autoComplete="email"
             />
           </div>
         </div>
 
-        <div className={styles["btns"]}>
-          <button type="submit">{isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "1.5rem", color: "white" }}></i> : "Register"}</button>
-        </div>
-        <Link to="/login">Already have an account?</Link>
+        <PasswordField
+          id="password"
+          name={FORM_KEYS.Password}
+          value={values[FORM_KEYS.Password]}
+          onChange={changeHandler}
+          autoComplete="new-password"
+        />
+
+        <button type="submit" className={styles["primary"]} disabled={isLoading} aria-busy={isLoading}>
+          {isLoading ? <i className="fa-solid fa-spinner fa-spin" aria-label="Creating account"></i> : "Create account"}
+        </button>
+
+        <p className={styles["switch"]}>
+          Already have an account? <Link to="/login">Sign in</Link>
+        </p>
       </form>
-      {errors.length > 0 && (
-        <div className={styles["errors-container"]}>
-          {errors.map((e) => (
-            <Notification text={e} type={"error"} key={uuidv4()} />
-          ))}
-        </div>
-      )}
     </section>
   );
 };

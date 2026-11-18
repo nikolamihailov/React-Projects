@@ -35,31 +35,50 @@ const UserProfile = () => {
 
   const update = useCallback((data) => setProfile(data), []);
 
+  const fullName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ");
+  const details = [
+    { label: "First name", value: profile?.firstName },
+    { label: "Last name", value: profile?.lastName },
+    { label: "Email", value: profile?.email },
+    { label: "Role", value: profile?.role },
+  ];
+
   return (
     <section className={styles["user-profile"]}>
       {isLoading ? (
         <Spinner />
       ) : (
-        <>
-          <h1>
-            <i className="fa-regular fa-user"></i>My Profile{" "}
-          </h1>
-          <i className="fa-solid fa-pen-to-square" onClick={showHide} title="Edit Profile"></i>
-          <div className={styles["info"]}>
-            <img src={profile?.avatar ? profile?.avatar : avatar} alt="avatar" />
-            <h2>Role: {profile?.role}</h2>
-            <p>
-              <strong>First Name: </strong>
-              {profile?.firstName}
-            </p>
-            <p>
-              <strong>Last Name:</strong> {profile?.lastName}
-            </p>
-            <p>
-              <strong>Email:</strong> {profile?.email}
-            </p>
+        <div className={styles["container"]}>
+          <div className={styles["page-heading"]}>
+            <h1>My profile</h1>
+            <p>Your personal details and account information.</p>
           </div>
-        </>
+
+          <div className={`${styles["card"]} ${styles["summary"]}`}>
+            <img src={profile?.avatar ? profile?.avatar : avatar} alt="Your avatar" />
+            <div className={styles["identity"]}>
+              <h2>{fullName || "Your profile"}</h2>
+              <p>{profile?.email}</p>
+              {profile?.role && <span className={styles["role"]}>{profile.role}</span>}
+            </div>
+            <button type="button" className={styles["secondary"]} onClick={showHide}>
+              <i className="fa-solid fa-pen" aria-hidden="true"></i>
+              Edit profile
+            </button>
+          </div>
+
+          <div className={styles["card"]}>
+            <h2 className={styles["card-title"]}>Account details</h2>
+            <dl className={styles["details"]}>
+              {details.map((d) => (
+                <div key={d.label} className={styles["detail-row"]}>
+                  <dt>{d.label}</dt>
+                  <dd>{d.value || "—"}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
       )}
 
       {isOpen && <EditProfile onClose={showHide} update={update} />}

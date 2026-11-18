@@ -1,143 +1,222 @@
-.login-section,
-.register-section {
-  height: 100%;
+.auth-page {
   width: 100%;
-  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 3rem 1rem;
   background-color: var(--background-color);
 }
 
-.login-section h1,
-.register-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.95rem;
-}
-
-.login-section form,
-.register-section form {
-  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
-  min-height: 40%;
-  max-height: 90%;
-  min-width: 20%;
-  color: var(--background-color);
-  padding: 1.9rem 2.5rem;
-  background: var(--background-inverted-color);
-  border-radius: 1.3rem;
+.card {
+  width: min(100%, 26rem);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 25rem;
+  gap: 1.25rem;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--primary-color);
+  text-align: left;
 }
 
-.login-section form a,
-.register-section form a {
-  text-decoration: none;
-  color: var(--background-color);
-  font-style: oblique;
+.card-wide {
+  width: min(100%, 30rem);
 }
 
-.form-group {
+.heading {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.95rem;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
-.form-group > div {
+.heading h1 {
+  margin: 0;
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+.heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.errors {
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 45%, transparent);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.errors li + li {
+  margin-top: 0.25rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
   display: flex;
-  align-items: center;
-  border-bottom: 3px solid var(--background-color);
-}
-.form-group > div:focus-within {
-  transform: scale(1.06);
-}
-.form-group > div i {
-  color: red;
-  font-size: 1.3rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
-.form-group input {
-  color: var(--background-color);
-  background: none;
-  font-size: 1rem;
-  border: none;
-  padding: 0.65rem 0.95rem;
-  border-radius: 0.95rem;
+.field label {
+  font-size: var(--text-sm);
+  font-weight: 600;
 }
 
-.form-group input:focus {
-  outline: none;
-}
-
-.form-group label {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 1vh;
-}
-
-.btns {
+.control {
   position: relative;
-  width: 70%;
-  margin-bottom: 0.95rem;
   display: flex;
+  align-items: center;
+}
+
+.control > i {
+  position: absolute;
+  left: 0.9rem;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  pointer-events: none;
+}
+
+.control input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 0.9rem 0 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-strong);
+  color: var(--primary-color);
+  font: inherit;
+  font-size: var(--text-md);
+}
+
+.control input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.control input:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 0;
+  border-color: transparent;
+}
+
+.control:focus-within > i {
+  color: var(--secondary-color);
+}
+
+.control.has-toggle input {
+  padding-right: 2.75rem;
+}
+
+.toggle {
+  all: unset;
+  position: absolute;
+  right: 0.35rem;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
 }
-.btns button {
+
+.toggle:hover {
+  color: var(--primary-color);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 0;
+}
+
+.primary {
   all: unset;
-  width: 100%;
   cursor: pointer;
-  padding: 0.75rem 0.95rem;
-  font-size: 1.1rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.75rem;
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  background-color: var(--brand);
   color: var(--white-color);
-  font-weight: bold;
-  border-radius: 0.95rem;
-  background: linear-gradient(to bottom right, var(--brand), var(--black-color));
+  font-weight: 600;
 }
 
-.errors-container {
-  position: absolute;
-  top: 0.95rem;
-  right: 0.95rem;
-  display: flex;
-  flex-direction: column;
+.primary:not(:disabled):hover {
+  filter: brightness(1.1);
 }
 
-@media screen and (max-width: 37.5em) {
-  .login-section form,
-  .register-section form {
-    min-height: 50%;
-    max-height: 95%;
-    min-width: 20%;
-    padding: 0.95rem 1.6rem;
-    width: 16.9rem;
+.primary:disabled {
+  cursor: progress;
+  opacity: 0.8;
+}
+
+.primary:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.primary i {
+  font-size: var(--text-lg);
+}
+
+.switch {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.switch a {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+.switch a:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 31.5em) {
+  .auth-page {
+    padding: 2rem 1rem;
+    align-items: flex-start;
   }
 
-  .login-section h1,
-  .register-section h1 {
-    font-size: 1.9rem;
-    margin-bottom: 0.95rem;
+  .card {
+    padding: 1.5rem 1.25rem;
   }
 
-  .form-group {
-    width: 80%;
-  }
-
-  .btns button {
-    padding: 0.4rem 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .form-group input {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.75rem;
-  }
-  .form-group label {
-    font-size: 1rem;
-    margin-bottom: 1vh;
+  .row {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

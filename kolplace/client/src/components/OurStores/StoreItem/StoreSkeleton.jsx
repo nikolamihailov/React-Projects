@@ -16,10 +16,8 @@ function StoreSkeleton({ stores }) {
             style={{ marginBottom: "1.9rem", borderRadius: "0.65rem" }}
           />
           <h2>
-            <h2>
-              <i className="fa-solid fa-location-dot"></i>
-              <Skeleton width="6.3rem" />
-            </h2>
+            <i className="fa-solid fa-location-dot"></i>
+            <Skeleton width="6.3rem" />
           </h2>
         </motion.div>
       );

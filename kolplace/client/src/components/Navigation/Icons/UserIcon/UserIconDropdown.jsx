@@ -40,7 +40,8 @@ const UserIconDropDown = () => {
         aria-label="Account menu"
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen((o) => !o)}
+        // With a mouse, hovering already opened it, so a click must not toggle it shut.
+        onClick={() => setIsOpen((o) => (canHover ? true : !o))}
       >
         <i className="fa-regular fa-user" aria-hidden="true"></i>
         {isAuthenticated && <i className="fa-regular fa-circle-check" aria-hidden="true"></i>}

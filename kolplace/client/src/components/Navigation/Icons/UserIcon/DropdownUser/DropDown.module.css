@@ -5,7 +5,7 @@
   right: 0;
   z-index: 999;
   min-width: 15rem;
-  max-width: calc(100vw - 1.5rem);
+  max-width: calc(100vw - 2rem);
   margin: 0;
   padding: 0.4rem;
   list-style: none;

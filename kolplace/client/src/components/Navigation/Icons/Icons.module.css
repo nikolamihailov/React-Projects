@@ -82,4 +82,10 @@
   .icon-btn span {
     top: 0.1rem;
   }
+
+  /* Phones: the account menu lines up with the right edge of the header row
+     instead of hanging off the user icon. */
+  .dropdown-container {
+    position: static;
+  }
 }

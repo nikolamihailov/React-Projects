@@ -95,40 +95,56 @@ a.link:focus-visible {
   }
 }
 
-/* Phones: a compact two-column list with the icon beside the text. */
+/* Phones: one slim row of pills that scrolls sideways. */
 @media screen and (max-width: 31.5em) {
   .shop-features {
-    margin: 1.25rem auto 0.5rem;
+    width: 100%;
+    margin: 1rem 0 0.25rem;
   }
 
   .list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .feature {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .link {
     flex-direction: row;
-    gap: 0.6rem;
-    padding: 0.35rem 0;
-    text-align: left;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--surface);
+    white-space: nowrap;
   }
 
   .icon {
-    flex-shrink: 0;
-    width: 2.4rem;
-    height: 2.4rem;
-    font-size: 1rem;
+    width: auto;
+    height: auto;
+    background: none;
+    font-size: 0.85rem;
   }
 
   .label {
-    font-size: var(--text-sm);
-    line-height: 1.25;
+    font-size: var(--text-xs);
+    font-weight: 600;
   }
 
-  /* An odd last item spans both columns, centred. */
-  .feature:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
+  a.link:hover .icon {
+    transform: none;
+    background: none;
   }
 }
 

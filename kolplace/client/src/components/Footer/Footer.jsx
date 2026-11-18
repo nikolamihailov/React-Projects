@@ -10,6 +10,9 @@ const SHOP_LINKS = [
   { to: "/our-stores", label: "Our stores" },
 ];
 
+// The footer lists a few categories; the full list is in the Categories menu.
+const FOOTER_CATEGORY_COUNT = 4;
+
 const ACCOUNT_LINKS = [
   { to: "/my-profile", label: "My profile" },
   { to: "/my-orders", label: "My orders" },
@@ -65,7 +68,7 @@ const Footer = () => {
           <nav aria-label="Categories">
             <h3>Categories</h3>
             <ul>
-              {categories.slice(0, 8).map((c) => (
+              {categories.slice(0, FOOTER_CATEGORY_COUNT).map((c) => (
                 <li key={c._id}>
                   <Link to={`/categories/${c.name.toLowerCase()}`}>{c.name}</Link>
                 </li>

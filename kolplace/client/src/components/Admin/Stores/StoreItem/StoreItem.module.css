@@ -10,47 +10,47 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   background-color: var(--secondary-color);
-  font-size: 17px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.0625rem;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 .admin-store-item img {
-  height: 180px;
+  height: 11.25rem;
   width: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  margin: 0 0 8px;
-  filter: drop-shadow(0 0 3px var(--background-inverted-color));
+  border-radius: 0.625rem;
+  margin: 0 0 0.5rem;
+  filter: drop-shadow(0 0 0.1875rem var(--background-inverted-color));
 }
 .admin-store-item p {
   font-weight: bold;
 }
 
 .admin-store-item h2 {
-  font-size: 20px;
-  margin: 4px 0;
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
 }
 
 .admin-store-item div > button:nth-child(1) {
   background-color: var(--edit-btn-color);
-  filter: drop-shadow(0 0 4px var(--edit-btn-color));
+  filter: drop-shadow(0 0 0.25rem var(--edit-btn-color));
 }
 
 .admin-store-item div > button:nth-child(2) {
   background-color: var(--delete-btn-color);
-  filter: drop-shadow(0 0 4px var(--delete-btn-color));
+  filter: drop-shadow(0 0 0.25rem var(--delete-btn-color));
 }
 
 /* Card layout inside the admin grid: image, details, then the actions. */
 .admin-store-item > div:first-child {
   order: 10;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 0.75rem;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .admin-store-item > div:first-child > button {
@@ -59,13 +59,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 2.375rem;
+  height: 2.375rem;
   margin: 0;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   color: var(--white-color);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .admin-store-item > div:first-child > button:focus-visible {

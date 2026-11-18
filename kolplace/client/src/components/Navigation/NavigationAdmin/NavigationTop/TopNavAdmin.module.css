@@ -6,9 +6,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   border-bottom: 4px solid var(--secondary-color);
-  padding: 12px 32px;
+  padding: 0.75rem 2rem;
 }
 
 .logo {
@@ -21,10 +21,10 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 22px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  font-size: 1.375rem;
   color: var(--secondary-color);
 }
 
@@ -33,9 +33,9 @@
   outline-offset: 2px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 56.25em) {
   .top-nav-admin {
-    padding: 10px 16px;
+    padding: 0.625rem 1rem;
   }
 
   .menu-button {

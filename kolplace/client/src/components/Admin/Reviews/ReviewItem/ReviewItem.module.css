@@ -14,21 +14,21 @@
 }
 
 .review-item .author img {
-  height: 55px;
-  width: 55px;
+  height: 3.4375rem;
+  width: 3.4375rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .review-item .author span {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .review-item .content {
   width: 50%;
-  margin-left: 30px;
-  padding-left: 30px;
+  margin-left: 1.875rem;
+  padding-left: 1.875rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -36,16 +36,16 @@
 }
 .review-item .content i {
   color: #eba834;
-  font-size: 21px;
-  margin: 1.5px;
+  font-size: 1.3125rem;
+  margin: 0.0938rem;
 }
 .review-item .content p {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .review-item .product img {
-  height: 55px;
-  width: 55px;
+  height: 3.4375rem;
+  width: 3.4375rem;
   object-fit: contain;
 }
 
@@ -54,14 +54,14 @@
   cursor: pointer;
   color: var(--white-color);
   background-color: var(--secondary-color);
-  border-radius: 10px;
-  padding: 8px 10px;
-  font-size: 17px;
-  margin-bottom: 15px;
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  font-size: 1.0625rem;
+  margin-bottom: 0.9375rem;
 }
 
 .review-item .createdAt {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-style: italic;
 }
 
@@ -70,15 +70,15 @@
 }
 
 /* Narrow screens: author and review on top, product, date and delete below. */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .review-item {
     display: grid;
-    grid-template-columns: 64px minmax(0, 1fr) auto;
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
     grid-template-areas:
       "author content content"
       "product date delete";
     align-items: center;
-    gap: 10px 12px;
+    gap: 0.625rem 0.75rem;
   }
 
   .review-item > :nth-child(1) {
@@ -99,7 +99,7 @@
 
   .review-item > :nth-child(4) {
     grid-area: date;
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 
   .review-item > :nth-child(5) {
@@ -107,7 +107,7 @@
   }
 
   .review-item .content i {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .review-item button {

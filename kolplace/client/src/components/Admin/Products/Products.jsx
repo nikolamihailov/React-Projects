@@ -114,7 +114,7 @@ const Products = () => {
       isLoading={isLoading}
       isEmpty={!products?.length}
       emptyText="No products"
-      minItemWidth={200}
+      minItemWidth={12.5}
       onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={

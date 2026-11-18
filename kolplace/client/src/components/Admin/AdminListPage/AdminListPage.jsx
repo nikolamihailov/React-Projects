@@ -4,12 +4,16 @@ import styles from "./AdminListPage.module.css";
 import Spinner from "../../Spinner/Spinner";
 import Pagination from "../../Pagination/Pagination";
 
-const GAP = { grid: 20, list: 12 };
+// Sizes are in rem so the grid scales with the user's font size setting.
+const GAP = { grid: 1.25, list: 0.75 };
 // Phones: narrower cards so two fit side by side, and at least this many rows
 // per page (the list scrolls) so a page is never just one or two items.
-const COMPACT_WIDTH = 600;
-const COMPACT_MIN_ITEM_WIDTH = 150;
+const COMPACT_WIDTH = 37.5;
+const COMPACT_MIN_ITEM_WIDTH = 9.375;
 const COMPACT_MIN_ROWS = 3;
+
+const rootFontSize = () =>
+  parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
 
 // Shared frame for every admin list: a toolbar on top, a scrolling item area
 // in the middle and pagination pinned to the bottom, so nothing gets pushed
@@ -26,7 +30,7 @@ const AdminListPage = ({
   isEmpty,
   emptyText = "Nothing here yet",
   layout = "grid",
-  minItemWidth = 220,
+  minItemWidth = 13.75, // rem
   rows = 2,
   onPageSizeChange,
   pagination,
@@ -54,16 +58,18 @@ const AdminListPage = ({
     let last = null;
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
-      const compact = width < COMPACT_WIDTH;
+      const rem = rootFontSize();
+      const compact = width < COMPACT_WIDTH * rem;
       setIsCompact(compact);
       if (!onPageSizeChange) return;
-      const minWidth = compact ? Math.min(minItemWidth, COMPACT_MIN_ITEM_WIDTH) : minItemWidth;
+      const minWidth = (compact ? Math.min(minItemWidth, COMPACT_MIN_ITEM_WIDTH) : minItemWidth) * rem;
+      const gapPx = gap * rem;
       // Same maths as the CSS grid: repeat(auto-fill, minmax(minItemWidth, 1fr)).
       const columns = layout === "list"
         ? 1
-        : Math.max(1, Math.floor((width + gap) / (minWidth + gap)));
+        : Math.max(1, Math.floor((width + gapPx) / (minWidth + gapPx)));
       let fittingRows = itemHeight
-        ? Math.max(1, Math.floor((height + gap) / (itemHeight + gap)))
+        ? Math.max(1, Math.floor((height + gapPx) / (itemHeight + gapPx)))
         : rows;
       if (compact) fittingRows = Math.max(fittingRows, COMPACT_MIN_ROWS);
       const size = columns * fittingRows;
@@ -100,7 +106,7 @@ const AdminListPage = ({
             layout
             ref={itemsRef}
             className={`${styles[layout === "list" ? "list" : "grid"]} ${isCompact ? styles["compact"] : ""}`}
-            style={{ "--min-item-width": `${itemWidth}px`, "--grid-gap": `${gap}px` }}
+            style={{ "--min-item-width": `${itemWidth}rem`, "--grid-gap": `${gap}rem` }}
           >
             <AnimatePresence>{children}</AnimatePresence>
           </motion.div>

@@ -3,21 +3,21 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   height: 100%;
   text-align: center;
 }
 
 .admin-user-profile img {
   border-radius: 50%;
-  width: 96px;
-  height: 96px;
+  width: 6rem;
+  height: 6rem;
   object-fit: cover;
-  filter: drop-shadow(0 0 3px var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.1875rem var(--background-inverted-color));
 }
 
 .admin-user-profile h2 {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .admin-user-profile button {
@@ -25,24 +25,24 @@
   cursor: pointer;
   color: var(--white-color);
   background-color: var(--secondary-color);
-  border-radius: 10px;
-  padding: 8px 10px;
-  font-size: 17px;
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  font-size: 1.0625rem;
   margin-bottom: 0;
 }
 
 .admin-user-profile h3 {
-  padding: 7px 12px;
+  padding: 0.4375rem 0.75rem;
   background-color: var(--secondary-color);
-  filter: drop-shadow(0 0 4px var(--secondary-color));
+  filter: drop-shadow(0 0 0.25rem var(--secondary-color));
   color: var(--white-color);
-  border-radius: 20px;
-  font-size: 14px;
+  border-radius: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .admin-user-profile span {
   display: block;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: bold;
   font-style: italic;
 }
@@ -51,9 +51,9 @@
 .admin-user-profile > div:first-child {
   order: 10;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 0.75rem;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
 }

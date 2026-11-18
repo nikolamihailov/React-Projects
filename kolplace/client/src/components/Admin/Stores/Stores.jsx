@@ -62,7 +62,7 @@ const Stores = () => {
       isLoading={isLoading}
       isEmpty={!stores?.length}
       emptyText="No stores"
-      minItemWidth={240}
+      minItemWidth={15}
       overlays={
         <>
           {isAddOpen && <StoreForm onClose={onCloseAdd} onSaved={onSaved} />}

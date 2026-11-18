@@ -1,76 +1,116 @@
 .carousel-home {
-  position: sticky;
-  top: 0.65rem;
-  overflow: hidden;
-  width: 75vw;
-  height: 35vh;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 2.5rem;
+  width: min(calc(100% - 2rem), 75rem);
+  margin: 0 auto 2.5rem;
 }
 
-.carousel-home .inner {
-  transition: 0.8s ease-in-out;
+.viewport {
   position: relative;
+  overflow: hidden;
+  height: clamp(14rem, 35vh, 24rem);
+}
+
+.inner {
   display: flex;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+}
+
+/* Arrows: the same red circles, without the glow. */
+.nav-btn {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: var(--brand);
+  color: var(--white-color);
+  font-size: 1.3rem;
+  box-shadow: var(--shadow);
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.nav-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.nav-btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 3px;
 }
 
 .left-btn {
-  all: unset;
-  position: absolute;
-  cursor: pointer;
-  color: var(--white-color);
-  width: 3.4rem;
-  height: 3.4rem;
-  padding: 0;
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  background-color: var(--brand);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0.65rem;
-  z-index: 1;
+  left: 0.75rem;
 }
 
 .right-btn {
+  right: 0.75rem;
+}
+
+/* Slide indicators */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
   all: unset;
-  position: absolute;
   cursor: pointer;
-  color: var(--white-color);
-  width: 3.4rem;
-  height: 3.4rem;
-  padding: 0;
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background-color: var(--border);
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.dot:hover {
+  background-color: var(--muted);
+}
+
+.dot-active,
+.dot-active:hover {
+  width: 1.5rem;
   background-color: var(--brand);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0.65rem;
-  z-index: 1;
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 3px;
 }
 
 @media screen and (max-width: 44em) {
-  .left-btn {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1rem;
-    left: 0.25rem;
-    filter: drop-shadow(0 0 0.15rem var(--secondary-color));
+  .viewport {
+    height: clamp(11rem, 30vh, 16rem);
   }
-  .right-btn {
-    width: 2.5rem;
-    height: 2.5rem;
+
+  .nav-btn {
+    width: 2.4rem;
+    height: 2.4rem;
     font-size: 1rem;
+  }
+
+  .left-btn {
+    left: 0.25rem;
+  }
+
+  .right-btn {
     right: 0.25rem;
-    filter: drop-shadow(0 0 0.15rem var(--secondary-color));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .nav-btn,
+  .dot {
+    transition: none;
   }
 }

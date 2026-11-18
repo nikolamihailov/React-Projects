@@ -1,45 +1,52 @@
+/* Every slide is exactly the width of the carousel, so slides line up at any size. */
 .carousel-home-item {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 75vw;
-  height: 35vh;
 }
 
 .carousel-home-item img {
-  width: 75vw;
-  height: 35vh;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.carousel-home-item a {
-  text-decoration: none;
+/* Category button: the original look (red button, ring in the text colour,
+   red outer border), without the glow. */
+.cta {
   position: absolute;
-  bottom: 1.9rem;
-  margin: 0 auto;
-  padding: 0.75rem;
-  background-color: var(--primary-color);
-  border-radius: 1.3rem;
-  border: 0.3rem solid var(--brand);
-}
-.carousel-home-item button {
-  all: unset;
-  cursor: pointer;
-  color: var(--white-color);
-  padding: 0.65rem 1.6rem;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6rem 1.6rem;
+  border-radius: var(--radius-md);
   background-color: var(--brand);
-  font-size: 1.4rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
+  color: var(--white-color);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 0 0.45rem var(--primary-color), 0 0 0 0.7rem var(--brand), var(--shadow);
+  transition: filter 0.15s ease;
+}
+
+.cta:hover {
+  filter: brightness(1.1);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--white-color);
+  outline-offset: 0.9rem;
 }
 
 @media screen and (max-width: 44em) {
-  .carousel-home-item {
-    width: 85vw;
-  }
-  .carousel-home-item button {
-    padding: 0.45rem 0.95rem;
-    font-size: 0.95rem;
+  .cta {
+    bottom: 1rem;
+    padding: 0.45rem 1.1rem;
+    font-size: var(--text-md);
+    box-shadow: 0 0 0 0.3rem var(--primary-color), 0 0 0 0.5rem var(--brand), var(--shadow);
   }
 }

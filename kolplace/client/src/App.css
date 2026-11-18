@@ -63,6 +63,29 @@ body {
   background-color: var(--brand);
 }
 
+/* Shared design tokens. Declared on the theme classes so the colour mixes use
+   the active theme's background and text colours. */
+.light,
+.dark {
+  --surface: color-mix(in srgb, var(--background-inverted-color) 5%, var(--background-color));
+  --surface-strong: color-mix(in srgb, var(--background-inverted-color) 9%, var(--background-color));
+  --border: color-mix(in srgb, var(--background-inverted-color) 13%, transparent);
+  --muted: color-mix(in srgb, var(--primary-color) 65%, transparent);
+  --radius-sm: 0.6rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.25rem;
+  --shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.22);
+
+  /* Type scale: body copy is 1rem, headings step up from there. */
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-md: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.4rem;
+  --text-2xl: clamp(1.6rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+}
+
 .light {
   display: grid;
   grid-template-rows: auto 1fr auto;

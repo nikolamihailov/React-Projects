@@ -43,13 +43,31 @@
 .reviews-container .add {
   all: unset;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 2.75rem;
+  padding: 0 1.25rem;
   color: var(--white-color);
-  padding: 0.65rem 0.95rem;
   background-color: var(--brand);
-  font-size: 1.2rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
+  font-size: var(--text-md);
+  font-weight: 600;
+  border-radius: var(--radius-md);
   margin-bottom: 2.5rem;
+}
+
+.reviews-container .add:hover {
+  filter: brightness(1.1);
+}
+
+.reviews-container .add:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.no-reviews {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* Readable width for the review cards. */
@@ -74,8 +92,6 @@
     width: 100%;
   }
   .reviews-container .add {
-    padding: 0.5rem 0.75rem;
-    font-size: 1.1rem;
     margin-bottom: 2rem;
   }
   .reviews-container .want-to-add-review {

@@ -36,7 +36,7 @@ const ReviewsContainer = ({ productId, reviews, updateProduct }) => {
             return <ReviewItem key={r._id} {...r} />;
           })}
         {reviews?.length === 0 && (
-          <h3>This product does not have reviews yet!</h3>
+          <p className={styles["no-reviews"]}>No reviews yet. Be the first to share your thoughts.</p>
         )}
       </div>
     </div>

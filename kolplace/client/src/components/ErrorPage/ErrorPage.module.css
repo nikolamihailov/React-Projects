@@ -6,34 +6,35 @@
   flex-direction: column;
   color: var(--primary-color);
   text-align: center;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .error-section h2 {
-  font-size: 35px;
+  font-size: 2.1875rem;
 }
 
 .error-section p {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .error-section img {
   height: 40vh;
+  max-width: 100%;
   object-fit: contain;
 }
 
 .error-section span {
   color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: bold;
 }
 
 .error-section a {
   text-decoration: none;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }

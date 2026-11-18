@@ -63,6 +63,8 @@ body {
 .light {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  /* minmax(0, 1fr): content can never stretch the page wider than the screen. */
+  grid-template-columns: minmax(0, 1fr);
   min-height: 100vh;
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
@@ -75,6 +77,8 @@ body {
 .dark {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  /* minmax(0, 1fr): content can never stretch the page wider than the screen. */
+  grid-template-columns: minmax(0, 1fr);
   min-height: 100vh;
   --background-color: #23272f;
   --background-inverted-color: whitesmoke;

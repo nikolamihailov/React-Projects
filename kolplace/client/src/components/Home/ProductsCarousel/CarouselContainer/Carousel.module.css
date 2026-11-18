@@ -54,12 +54,13 @@
   font-weight: bold;
 }
 
-/* One row of cards: they share the width when there is room and scroll
-   sideways (snapping to each card) when there is not. */
+/* One row of same-size cards, centred. When they do not fit they scroll
+   sideways and snap to each card ("safe" keeps the first card reachable). */
 .carousel-products .products {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(13.5rem, 1fr);
+  grid-auto-columns: 13.5rem;
+  justify-content: safe center;
   gap: 1.25rem;
   width: 100%;
   padding: 0.5rem 0.25rem 1rem;

@@ -143,16 +143,8 @@
   font-weight: 800;
 }
 
-.note-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-top: -0.5rem;
-}
-
 .note {
-  margin: 0;
+  margin: -0.5rem 0 0.25rem;
   color: var(--muted);
   font-size: var(--text-xs);
 }
@@ -207,6 +199,7 @@
 
 .text-btn {
   all: unset;
+  align-self: center;
   cursor: pointer;
   display: inline-flex;
   align-items: center;

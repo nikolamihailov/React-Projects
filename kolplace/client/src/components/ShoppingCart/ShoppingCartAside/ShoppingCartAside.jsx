@@ -87,16 +87,7 @@ const ShoppingCartExpanded = ({ onClose }) => {
               <span>Subtotal</span>
               <strong>${cart?.totalPrice.toFixed(2)}</strong>
             </div>
-            <div className={styles["note-row"]}>
-              <p className={styles["note"]}>Delivery and payment are chosen at checkout.</p>
-              <button
-                type="button"
-                className={styles["text-btn"]}
-                onClick={() => emptyCartProducts()}
-              >
-                <i className="fa-solid fa-trash-can" aria-hidden="true"></i> Empty cart
-              </button>
-            </div>
+            <p className={styles["note"]}>Delivery and payment are chosen at checkout.</p>
             <div className={styles["foot-row"]}>
               <Link
                 to={"/shopping-cart"}
@@ -113,6 +104,13 @@ const ShoppingCartExpanded = ({ onClose }) => {
                 Checkout <i className="fas fa-arrow-right" aria-hidden="true"></i>
               </Link>
             </div>
+            <button
+              type="button"
+              className={styles["text-btn"]}
+              onClick={() => emptyCartProducts()}
+            >
+              <i className="fa-solid fa-trash-can" aria-hidden="true"></i> Empty cart
+            </button>
           </div>
         )}
       </aside>

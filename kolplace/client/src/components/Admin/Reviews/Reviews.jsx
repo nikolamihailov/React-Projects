@@ -14,16 +14,22 @@ const Reviews = () => {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [sortFilter, setSortFilter] = useState("");
   const [selectedReview, setSelectedReview] = useState(null);
+  const [pageSize, setPageSize] = useState(null);
+  const onPageSizeChange = useCallback((size) => {
+    setPageSize(size);
+    resetPage();
+  }, [resetPage]);
 
   useEffect(() => {
-    getAllWithFilters(page, sortFilter)
+    if (!pageSize) return;
+    getAllWithFilters(page, sortFilter, pageSize)
       .then((data) => {
         setReviews(data.reviews);
         updatePageCount(data.pageCount);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [updatePageCount, page, sortFilter]);
+  }, [updatePageCount, page, sortFilter, pageSize]);
 
   const updateReviews = useCallback((data) => setReviews(data), []);
 
@@ -47,6 +53,8 @@ const Reviews = () => {
       isEmpty={!reviews?.length}
       emptyText="No reviews"
       layout="list"
+      rows={8}
+      onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         deleteOpen && (

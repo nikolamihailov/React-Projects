@@ -24,9 +24,15 @@ const Categories = () => {
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const [filter, setFilter] = useState("");
+  const [pageSize, setPageSize] = useState(null);
+  const onPageSizeChange = useCallback((size) => {
+    setPageSize(size);
+    resetPage();
+  }, [resetPage]);
 
   useEffect(() => {
-    getAllWithFilters(page, filter)
+    if (!pageSize) return;
+    getAllWithFilters(page, filter, pageSize)
       .then((data) => {
         if (data.expMessage) {
           updateNotifs([{ text: data.expMessage, type: "error" }]);
@@ -40,7 +46,7 @@ const Categories = () => {
       .catch((error) => {
         updateNotifs([{ text: error, type: "error" }]);
       });
-  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter]);
+  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter, pageSize]);
 
   const updateCategories = useCallback((data) => setCategories(data), []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
@@ -73,6 +79,7 @@ const Categories = () => {
       isEmpty={!categories?.length}
       emptyText="No categories"
       minItemWidth={220}
+      onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         <>

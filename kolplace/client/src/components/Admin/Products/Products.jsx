@@ -14,7 +14,6 @@ import FilterProductsBySort from "../../Filters/AdminFilters/ProductFilters/Filt
 
 const Products = () => {
   const onPromotion = false;
-  const itemsPerPage = 8;
   const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount, resetPage } =
     usePagination();
   const [isLoading, setIsLoading] = useState(true);
@@ -25,18 +24,24 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortFilter, setSortFilter] = useState("");
+  const [pageSize, setPageSize] = useState(null);
+  const onPageSizeChange = useCallback((size) => {
+    setPageSize(size);
+    resetPage();
+  }, [resetPage]);
 
   const { updateAuth } = useContext(AuthContext);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
 
   useEffect(() => {
+    if (!pageSize) return;
     getAllWithFilters(
       page,
       sortFilter,
       categoryFilter,
       onPromotion,
-      itemsPerPage
+      pageSize
     )
       .then((data) => {
         if (data.expMessage) {
@@ -60,7 +65,7 @@ const Products = () => {
     sortFilter,
     categoryFilter,
     onPromotion,
-    itemsPerPage,
+    pageSize,
   ]);
 
   const updateProducts = useCallback((data) => setProducts(data), []);
@@ -104,6 +109,7 @@ const Products = () => {
       isEmpty={!products?.length}
       emptyText="No products"
       minItemWidth={200}
+      onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         <>

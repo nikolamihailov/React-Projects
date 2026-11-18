@@ -14,8 +14,8 @@ export const getAll = async () => {
     return await request.get(categoryEndpoints.getAll);
 };
 
-export const getAllWithFilters = async (page = "", filter = "") => {
-    return await request.get(categoryEndpoints.getAll + `?page=${page}&filter=${filter}`);
+export const getAllWithFilters = async (page = "", filter = "", itemsPerPage = "") => {
+    return await request.get(categoryEndpoints.getAll + `?page=${page}&filter=${filter}&itemsPerPage=${itemsPerPage}`);
 };
 
 export const getAllCategoriesAdmin = async () => {

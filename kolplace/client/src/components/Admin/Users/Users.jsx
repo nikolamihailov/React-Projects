@@ -14,16 +14,22 @@ const Users = () => {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [sortFilter, setSortFilter] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
+  const [pageSize, setPageSize] = useState(null);
+  const onPageSizeChange = useCallback((size) => {
+    setPageSize(size);
+    resetPage();
+  }, [resetPage]);
 
   useEffect(() => {
-    getAllWithFilters(page, sortFilter)
+    if (!pageSize) return;
+    getAllWithFilters(page, sortFilter, pageSize)
       .then((data) => {
         setUsers(data.users);
         updatePageCount(data.pageCount);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [updatePageCount, page, sortFilter]);
+  }, [updatePageCount, page, sortFilter, pageSize]);
 
   const updateUsers = useCallback((data) => setUsers(data), []);
 
@@ -47,6 +53,7 @@ const Users = () => {
       isEmpty={!users?.length}
       emptyText="No users"
       minItemWidth={230}
+      onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         deleteOpen && (

@@ -17,8 +17,8 @@ export const createReview = async (data) => {
     return await request.post(reviewEnpoints.createReview, data);
 };
 
-export const getAllWithFilters = async (page = "", filter = "") => {
-    return await request.get(reviewEnpoints.getAll + `?page=${page}&filter=${filter}`);
+export const getAllWithFilters = async (page = "", filter = "", itemsPerPage = "") => {
+    return await request.get(reviewEnpoints.getAll + `?page=${page}&filter=${filter}&itemsPerPage=${itemsPerPage}`);
 };
 
 export const getAllReviewsAdmin = async () => {

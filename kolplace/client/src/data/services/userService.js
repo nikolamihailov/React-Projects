@@ -51,8 +51,8 @@ export const getAllUsers = async () => {
     return await request.get(userEndpoints.getAllUsers);
 };
 
-export const getAllWithFilters = async (page = "", filter = "") => {
-    return await request.get(userEndpoints.getAllUsers + `?page=${page}&filter=${filter}`);
+export const getAllWithFilters = async (page = "", filter = "", itemsPerPage = "") => {
+    return await request.get(userEndpoints.getAllUsers + `?page=${page}&filter=${filter}&itemsPerPage=${itemsPerPage}`);
 };
 
 export const getAllUsersAdmin = async () => {

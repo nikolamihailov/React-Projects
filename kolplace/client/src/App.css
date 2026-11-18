@@ -2,13 +2,10 @@
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
   --primary-color: #23272f;
-  /* Brand crimson. --brand fills buttons and badges (white text on it passes
-     WCAG AA at 6.4:1). --secondary-color is the brand shade for text, icons
-     and focus rings, tuned per theme below so it stays readable. */
+  /* Brand red #ba1e24, used everywhere: fills, borders, text and icons. */
   --brand: #ba1e24;
   --secondary-color: #ba1e24;
-  /* Brand text on the inverted bars (dark bar in light mode, light bar in dark mode). */
-  --secondary-on-inverted: #ef6b6e;
+  --secondary-on-inverted: #ba1e24;
   --dropshadow-color: #ba1e24;
   --top-nav-background-color: whitesmoke;
   --main-nav-background: rgb(20, 19, 19);
@@ -90,9 +87,6 @@ body {
   --background-inverted-color: whitesmoke;
   --primary-color: whitesmoke;
   --top-nav-background-color: #23272f;
-  /* Lighter crimson so brand-coloured text reads on the dark background (5:1). */
-  --secondary-color: #ef6b6e;
-  --secondary-on-inverted: #ba1e24;
   color: var(--primary-color);
   background-color: var(--background-color);
 }

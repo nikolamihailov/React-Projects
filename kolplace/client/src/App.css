@@ -63,6 +63,23 @@ body {
   background-color: var(--brand);
 }
 
+/* Browser autofill paints its own pale-yellow background and dark text.
+   Keep each field's own background (the long transition delays the browser
+   colour indefinitely) and use the theme's text colour. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--primary-color);
+  caret-color: var(--primary-color);
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input:autofill {
+  -webkit-text-fill-color: var(--primary-color);
+}
+
 /* Shared design tokens. Declared on the theme classes so the colour mixes use
    the active theme's background and text colours. */
 .light,

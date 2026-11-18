@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.25rem;
+  padding: 1.3rem;
   position: relative;
 }
 
@@ -21,11 +21,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 3.125rem;
+  margin-right: 3.1rem;
 }
 
 .product-details .product-info {
-  height: 43.75rem;
+  height: 43.8rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
 }
 
 .product-details .product-images .other-images .active-image {
-  border: 0.4375rem solid var(--secondary-color);
+  border: 0.45rem solid var(--secondary-color);
 }
 
 .product-details .product-images .other-images .non-active-image {
@@ -55,16 +55,16 @@
 
 .product-details .product-images .main-image img {
   width: 50rem;
-  height: 36.25rem;
+  height: 36.3rem;
   object-fit: contain;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.95rem;
 }
 
 .product-details .product-images .other-images img {
-  width: 6.875rem;
-  height: 6.875rem;
+  width: 6.9rem;
+  height: 6.9rem;
   object-fit: cover;
-  margin: 0 0.625rem;
+  margin: 0 0.65rem;
 }
 
 .product-details .product-info h1 {
@@ -73,30 +73,30 @@
 }
 
 .product-details .product-info strong {
-  margin-right: 1.25rem;
+  margin-right: 1.3rem;
 }
 .product-details .product-info a {
   text-decoration: none;
 }
 
 .product-details .product-info p {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 .product-details .product-info span {
   color: var(--white-color);
-  border-radius: 0.625rem;
+  border-radius: 0.65rem;
   background-color: var(--product-category-background-color);
   font-weight: bold;
   padding: 0.5rem 0.75rem;
-  font-size: 1.1875rem;
-  margin: 0.625rem;
+  font-size: 1.2rem;
+  margin: 0.65rem;
 }
 
 .product-details .product-info .product-prices-buttons {
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
-  border-radius: 0.9375rem;
+  border-radius: 0.95rem;
   width: 50%;
   margin: 0 auto;
   display: flex;
@@ -105,7 +105,7 @@
   flex-direction: column;
 }
 .product-prices-buttons .prices p {
-  font-size: 1.5625rem;
+  font-size: 1.6rem;
 }
 .product-details .product-info .product-prices-buttons .btns {
   width: 100%;
@@ -116,7 +116,7 @@
 }
 
 /* .product-details .product-info .product-prices-buttons p:nth-child(1) {
-  font-size: 2.1875rem;
+  font-size: 2.2rem;
   font-weight: bold;
 } */
 
@@ -125,12 +125,12 @@
   text-align: center;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   background-color: var(--secondary-color);
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
-  margin-bottom: 0.625rem;
-  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
+  margin-bottom: 0.65rem;
+  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 
 .product-details .product-info .btns p {
@@ -140,11 +140,11 @@
   cursor: pointer;
   background-color: none;
   color: var(--secondary-color);
-  font-size: 1.5625rem;
+  font-size: 1.6rem;
 }
 
 .product-details .prices {
-  margin: 0.625rem 0;
+  margin: 0.65rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,11 +152,11 @@
 
 .product-details .promo-price {
   margin-top: 0;
-  margin-left: 0.625rem;
+  margin-left: 0.65rem;
   background-color: var(--promo-price-color);
-  padding: 0.1875rem 0.3125rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 50%;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--white-color);
 }
@@ -167,7 +167,7 @@
 
 .product-info .ratings-reviews {
   cursor: pointer;
-  margin: 0.9375rem 0;
+  margin: 0.95rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,21 +175,21 @@
 }
 
 .product-info .ratings-reviews i {
-  font-size: 1.375rem;
+  font-size: 1.4rem;
   color: #eba834;
 }
 
 .product-info .ratings-reviews b {
-  font-size: 1.5625rem;
-  margin-left: 0.9375rem;
+  font-size: 1.6rem;
+  margin-left: 0.95rem;
 }
 
 .product-info .ratings-reviews p {
-  font-size: 1.3125rem;
-  margin-left: 0.9375rem;
+  font-size: 1.3rem;
+  margin-left: 0.95rem;
 }
 
-@media screen and (max-width: 106.25em) {
+@media screen and (max-width: 106.5em) {
   .product-details .product-images {
     margin-right: 0;
   }
@@ -199,12 +199,12 @@
     width: 90%;
   }
 }
-@media screen and (max-width: 93.75em) {
+@media screen and (max-width: 94em) {
   .product-details .product {
     width: 95vw;
   }
   .product-details .product-info h1 {
-    font-size: 2.1875rem;
+    font-size: 2.2rem;
   }
 
   .product-details .product-images .main-image img {
@@ -213,14 +213,14 @@
   }
 
   .product-details .product-images .other-images img {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 6.3rem;
+    height: 6.3rem;
   }
   .product-details .product-info button {
     text-align: center;
     width: 40%;
     padding: 0.5rem 0.75rem;
-    font-size: 1.0625rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -230,52 +230,52 @@
     flex-direction: column;
   }
   .product-details .product-images .main-image img {
-    height: 18.75rem;
+    height: 18.8rem;
   }
   .product-details .product-info {
     text-align: center;
     height: auto;
   }
   .product-details .product-info h1 {
-    font-size: 1.875rem;
+    font-size: 1.9rem;
   }
 
   .product-details .product-images .other-images img {
-    width: 4.6875rem;
-    height: 4.6875rem;
+    width: 4.7rem;
+    height: 4.7rem;
   }
 
   .product-info .ratings-reviews i {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
 
   .product-info .ratings-reviews b {
-    font-size: 1.3125rem;
+    font-size: 1.3rem;
   }
   .product-info .ratings-reviews {
     width: 90%;
   }
   .product-info p {
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.65rem;
   }
   .product-details .product-info p {
-    font-size: 1.0625rem;
+    font-size: 1.1rem;
   }
   .product-details .product-info .product-prices-buttons {
     width: 80%;
   }
 }
 
-@media screen and (max-width: 31.25em) {
+@media screen and (max-width: 31.5em) {
   .product-details .product {
     width: 95vw;
   }
   .product-details .product-info h1 {
-    font-size: 1.5625rem;
+    font-size: 1.6rem;
   }
 
   .product-details .product-images .other-images img {
-    width: 3.75rem;
-    height: 3.75rem;
+    width: 3.8rem;
+    height: 3.8rem;
   }
 }

@@ -1,7 +1,7 @@
 .checkout-item {
   width: 100%;
   color: var(--background-color);
-  padding: 0.625rem;
+  padding: 0.65rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,8 +17,8 @@
 }
 
 .checkout-item img {
-  height: 4.375rem;
-  width: 4.375rem;
+  height: 4.4rem;
+  width: 4.4rem;
   object-fit: contain;
 }
 
@@ -29,6 +29,6 @@
 }
 
 .checkout-item p {
-  font-size: 1.0625rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }

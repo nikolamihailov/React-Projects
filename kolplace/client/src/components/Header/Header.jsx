@@ -8,8 +8,8 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Header = () => {
   const [pageURL, setPageURL] = useState("/");
-  // Below 900px at the default font size (56.25em).
-  const isMobile = useMediaQuery("(max-width: 56.24em)");
+  // Same breakpoint as the CSS media queries (56.5em).
+  const isMobile = useMediaQuery("(max-width: 56.5em)");
   const loc = useLocation();
 
   useEffect(() => {

@@ -119,7 +119,7 @@ const FavouriteProductItem = ({
           <p
             style={
               hasPromoPrice
-                ? { textDecoration: "line-through", fontSize: "0.8125rem" }
+                ? { textDecoration: "line-through", fontSize: "0.8rem" }
                 : { textDecoration: "none" }
             }
           >

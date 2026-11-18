@@ -5,10 +5,10 @@
   align-items: flex-start;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
-  padding: 1.5625rem;
-  font-size: 1.0625rem;
-  border-radius: 1.25rem;
-  margin: 1.25rem;
+  padding: 1.6rem;
+  font-size: 1.1rem;
+  border-radius: 1.3rem;
+  margin: 1.3rem;
 }
 
 .order button {
@@ -16,21 +16,21 @@
   margin: 0 auto;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   background-color: var(--secondary-color);
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
-  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
+  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 .order h4 strong {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
 }
 .order h4 {
   font-weight: 400;
-  margin: 0.9375rem 0;
+  margin: 0.95rem 0;
 }
 .order i {
   color: var(--secondary-color);
-  font-size: 1.3125rem;
-  margin-right: 0.9375rem;
+  font-size: 1.3rem;
+  margin-right: 0.95rem;
 }

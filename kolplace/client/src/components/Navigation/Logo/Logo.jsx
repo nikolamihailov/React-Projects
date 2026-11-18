@@ -4,7 +4,7 @@ import logo from "../../../assets/logo.svg";
 import favicon from "../../../assets/favicon.png";
 
 const Logo = () => {
-  // Compact icon up to 1000px at the default font size (62.5em).
+  // Same breakpoint as the CSS media queries (62.5em).
   const isCompact = useMediaQuery("(max-width: 62.5em)");
   const logoSrc = isCompact ? favicon : logo;
   return (

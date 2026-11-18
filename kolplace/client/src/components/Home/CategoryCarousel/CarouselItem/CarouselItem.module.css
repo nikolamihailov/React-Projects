@@ -16,30 +16,30 @@
 .carousel-home-item a {
   text-decoration: none;
   position: absolute;
-  bottom: 1.875rem;
+  bottom: 1.9rem;
   margin: 0 auto;
   padding: 0.75rem;
   background-color: var(--primary-color);
-  border-radius: 1.25rem;
-  border: 0.3125rem solid var(--secondary-color);
+  border-radius: 1.3rem;
+  border: 0.3rem solid var(--secondary-color);
 }
 .carousel-home-item button {
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.625rem 1.5625rem;
+  padding: 0.65rem 1.6rem;
   background-color: var(--secondary-color);
-  font-size: 1.375rem;
-  border-radius: 0.625rem;
-  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
+  font-size: 1.4rem;
+  border-radius: 0.65rem;
+  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .carousel-home-item {
     width: 85vw;
   }
   .carousel-home-item button {
-    padding: 0.4375rem 0.9375rem;
-    font-size: 0.9375rem;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.95rem;
   }
 }

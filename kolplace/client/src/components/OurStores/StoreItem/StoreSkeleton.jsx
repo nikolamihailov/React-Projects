@@ -11,14 +11,14 @@ function StoreSkeleton({ stores }) {
       return (
         <motion.div layout className={styles["store-item"]} exit={{ opacity: 0 }} key={idx}>
           <Skeleton
-            width="15.625rem"
-            height="15.625rem"
-            style={{ marginBottom: "1.875rem", borderRadius: "0.625rem" }}
+            width="15.6rem"
+            height="15.6rem"
+            style={{ marginBottom: "1.9rem", borderRadius: "0.65rem" }}
           />
           <h2>
             <h2>
               <i className="fa-solid fa-location-dot"></i>
-              <Skeleton width="6.25rem" />
+              <Skeleton width="6.3rem" />
             </h2>
           </h2>
         </motion.div>

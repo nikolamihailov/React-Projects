@@ -13,11 +13,11 @@
   width: 6rem;
   height: 6rem;
   object-fit: cover;
-  filter: drop-shadow(0 0 0.1875rem var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.2rem var(--background-inverted-color));
 }
 
 .admin-user-profile h2 {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
 }
 
 .admin-user-profile button {
@@ -25,24 +25,24 @@
   cursor: pointer;
   color: var(--white-color);
   background-color: var(--secondary-color);
-  border-radius: 0.625rem;
-  padding: 0.5rem 0.625rem;
-  font-size: 1.0625rem;
+  border-radius: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 1.1rem;
   margin-bottom: 0;
 }
 
 .admin-user-profile h3 {
-  padding: 0.4375rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   background-color: var(--secondary-color);
   filter: drop-shadow(0 0 0.25rem var(--secondary-color));
   color: var(--white-color);
-  border-radius: 1.25rem;
-  font-size: 0.875rem;
+  border-radius: 1.3rem;
+  font-size: 0.9rem;
 }
 
 .admin-user-profile span {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: bold;
   font-style: italic;
 }
@@ -54,6 +54,6 @@
   padding-top: 0.75rem;
   display: flex;
   justify-content: center;
-  gap: 0.625rem;
+  gap: 0.65rem;
   align-items: center;
 }

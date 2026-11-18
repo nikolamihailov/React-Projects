@@ -6,8 +6,8 @@
   top: 100%;
   left: 0;
   z-index: 999;
-  font-size: 1.125rem;
-  border-radius: 0.3125rem;
+  font-size: 1.1rem;
+  border-radius: 0.3rem;
   width: 350%;
 }
 .user-dropdown a {
@@ -16,8 +16,8 @@
 }
 
 .user-dropdown li {
-  padding: 0.875rem;
-  border-radius: 0.3125rem;
+  padding: 0.9rem;
+  border-radius: 0.3rem;
   transition: all linear 0.3s;
 }
 
@@ -29,21 +29,21 @@
 
 .user-dropdown i {
   color: var(--secondary-color);
-  font-size: 1.125rem;
-  margin-right: 0.625rem;
+  font-size: 1.1rem;
+  margin-right: 0.65rem;
 }
 
 .errors-container {
   z-index: 9999;
   position: fixed;
   top: 7.5rem;
-  right: 0.9375rem;
+  right: 0.95rem;
   display: flex;
   flex-direction: column;
 }
 @media screen and (max-width: 37.5em) {
   .user-dropdown {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
     width: 300%;
   }
 

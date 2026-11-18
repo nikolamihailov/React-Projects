@@ -1,7 +1,7 @@
 .cart-item {
   width: 95%;
   color: var(--primary-color);
-  padding: 1.5625rem 0.625rem;
+  padding: 1.6rem 0.65rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,18 +19,18 @@
   color: var(--primary-color);
   text-decoration: none;
   padding-left: 2.5rem;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   word-wrap: break-word;
 }
 
 .cart-item .title-category span {
   color: var(--white-color);
-  border-radius: 0.625rem;
+  border-radius: 0.65rem;
   background-color: var(--product-category-background-color);
   font-weight: bold;
-  margin-top: 0.9375rem;
-  padding: 0.25rem 0.375rem;
-  font-size: 1.0625rem;
+  margin-top: 0.95rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 1.1rem;
 }
 
 .cart-item .image {
@@ -38,8 +38,8 @@
 }
 
 .cart-item img {
-  height: 6.25rem;
-  width: 6.25rem;
+  height: 6.3rem;
+  width: 6.3rem;
   object-fit: contain;
 }
 .cart-item .quantity {
@@ -49,41 +49,41 @@
   align-items: center;
 }
 .cart-item input {
-  width: 3.75rem;
+  width: 3.8rem;
   font-weight: bold;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 1.1875rem;
-  padding: 0.375rem;
+  font-size: 1.2rem;
+  padding: 0.4rem;
 }
 .cart-item p {
   width: 10%;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .cart-item .remove i {
   cursor: pointer;
   position: static;
   color: var(--secondary-color);
-  font-size: 1.5625rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin-left: 0.9375rem;
+  margin-left: 0.95rem;
 }
 
 /* .cart-item button {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   margin: 0 0.25rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
 } */
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .cart-item {
     width: 95%;
-    padding: 1.5625rem 0;
+    padding: 1.6rem 0;
   }
   .cart-item .title-category {
     display: flex;
@@ -94,28 +94,28 @@
   }
 
   .cart-item .title-category a {
-    padding-left: 1.25rem;
-    font-size: 0.9375rem;
+    padding-left: 1.3rem;
+    font-size: 0.95rem;
   }
 
   .cart-item .title-category span {
-    margin-top: 0.625rem;
-    font-size: 0.9375rem;
+    margin-top: 0.65rem;
+    font-size: 0.95rem;
   }
 
   .cart-item img {
-    height: 4.375rem;
-    width: 4.375rem;
+    height: 4.4rem;
+    width: 4.4rem;
   }
   .cart-item input {
-    width: 1.875rem;
-    font-size: 0.9375rem;
+    width: 1.9rem;
+    font-size: 0.95rem;
     padding: 0.25rem;
   }
   .cart-item p {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
   }
   .cart-item .remove i {
-    font-size: 1.0625rem;
+    font-size: 1.1rem;
   }
 }

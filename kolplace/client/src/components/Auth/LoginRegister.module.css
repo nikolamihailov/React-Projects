@@ -13,19 +13,19 @@
 .login-section h1,
 .register-section h1 {
   font-size: 2.5rem;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.95rem;
 }
 
 .login-section form,
 .register-section form {
-  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
   min-height: 40%;
   max-height: 90%;
   min-width: 20%;
   color: var(--background-color);
-  padding: 1.875rem 2.5rem;
+  padding: 1.9rem 2.5rem;
   background: var(--background-inverted-color);
-  border-radius: 1.25rem;
+  border-radius: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -43,7 +43,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.95rem;
 }
 
 .form-group > div {
@@ -56,7 +56,7 @@
 }
 .form-group > div i {
   color: red;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .form-group input {
@@ -64,8 +64,8 @@
   background: none;
   font-size: 1rem;
   border: none;
-  padding: 0.625rem 0.9375rem;
-  border-radius: 0.9375rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 0.95rem;
 }
 
 .form-group input:focus {
@@ -73,7 +73,7 @@
 }
 
 .form-group label {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 1vh;
 }
@@ -81,7 +81,7 @@
 .btns {
   position: relative;
   width: 70%;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,18 +91,18 @@
   all: unset;
   width: 100%;
   cursor: pointer;
-  padding: 0.75rem 0.9375rem;
-  font-size: 1.125rem;
+  padding: 0.75rem 0.95rem;
+  font-size: 1.1rem;
   color: var(--white-color);
   font-weight: bold;
-  border-radius: 0.9375rem;
+  border-radius: 0.95rem;
   background: linear-gradient(to bottom right, var(--secondary-color), var(--black-color));
 }
 
 .errors-container {
   position: absolute;
-  top: 0.9375rem;
-  right: 0.9375rem;
+  top: 0.95rem;
+  right: 0.95rem;
   display: flex;
   flex-direction: column;
 }
@@ -113,14 +113,14 @@
     min-height: 50%;
     max-height: 95%;
     min-width: 20%;
-    padding: 0.9375rem 1.5625rem;
-    width: 16.875rem;
+    padding: 0.95rem 1.6rem;
+    width: 16.9rem;
   }
 
   .login-section h1,
   .register-section h1 {
-    font-size: 1.875rem;
-    margin-bottom: 0.9375rem;
+    font-size: 1.9rem;
+    margin-bottom: 0.95rem;
   }
 
   .form-group {
@@ -128,12 +128,12 @@
   }
 
   .btns button {
-    padding: 0.375rem 0.5rem;
-    font-size: 0.9375rem;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.95rem;
   }
 
   .form-group input {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     padding: 0.5rem 0.75rem;
   }
   .form-group label {

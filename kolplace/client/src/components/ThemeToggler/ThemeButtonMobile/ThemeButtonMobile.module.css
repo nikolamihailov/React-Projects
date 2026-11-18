@@ -2,7 +2,7 @@
   all: unset;
   position: relative;
   cursor: pointer;
-  padding: 0.125rem 0.625rem;
+  padding: 0.15rem 0.65rem;
   z-index: 2;
   border-radius: 50%;
 }
@@ -11,6 +11,6 @@
 .theme-btn svg {
   font-size: 1.5rem;
   color: var(--secondary-color);
-  filter: drop-shadow(0 0 0.0625rem var(--dropshadow-color));
+  filter: drop-shadow(0 0 0.05rem var(--dropshadow-color));
   transition: all 0.8s ease-in-out;
 }

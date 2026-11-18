@@ -52,7 +52,7 @@ const Users = () => {
       isLoading={isLoading}
       isEmpty={!users?.length}
       emptyText="No users"
-      minItemWidth={14.375}
+      minItemWidth={14.4}
       onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={

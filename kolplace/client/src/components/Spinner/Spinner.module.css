@@ -3,9 +3,9 @@
   top: 45%;
   transform: translateY(-50%);
   margin: 0 auto;
-  width: 4.25rem;
-  height: 4.25rem;
-  border: 0.625rem solid;
+  width: 4.3rem;
+  height: 4.3rem;
+  border: 0.65rem solid;
   border-color: var(--secondary-color) var(--background-inverted-color);
   border-radius: 50%;
   display: inline-block;

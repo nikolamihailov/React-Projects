@@ -22,10 +22,10 @@
 .links a {
   text-decoration: none;
   display: inline-block;
-  font-size: 1.0625rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: var(--background-color);
-  padding: 0.9375rem;
+  padding: 0.95rem;
 }
 .active-link li {
   color: var(--secondary-color);

@@ -1,7 +1,7 @@
 .categories-btn-container {
   background-color: var(--main-nav-categories);
   height: 100%;
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -12,9 +12,9 @@
 
 .categories-btn-container button {
   all: unset;
-  font-size: 1.3125rem;
+  font-size: 1.3rem;
 }
 
 .categories-btn-container i {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
 }

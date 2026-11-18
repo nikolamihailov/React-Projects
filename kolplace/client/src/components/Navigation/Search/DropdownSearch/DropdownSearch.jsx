@@ -35,7 +35,7 @@ const DropdownSearch = ({ products, search, onClose }) => {
             className={styles["dropdown-search-products"]}
             style={{ textAlign: "center" }}
           >
-            <div style={{ padding: "0.9375rem", fontWeight: "bold" }}>
+            <div style={{ padding: "0.95rem", fontWeight: "bold" }}>
               No Products
             </div>
             <div className={styles["searching-for"]}>

@@ -1,5 +1,5 @@
 .top-nav {
-  padding: 0.9375rem;
+  padding: 0.95rem;
   width: 100%;
   height: 100%;
   flex: 1;
@@ -8,7 +8,7 @@
   align-items: center;
   z-index: 2;
   background-color: var(--top-nav-background-color);
-  border-bottom: 0.375rem solid var(--secondary-color);
+  border-bottom: 0.4rem solid var(--secondary-color);
 }
 
 .top-nav-container {

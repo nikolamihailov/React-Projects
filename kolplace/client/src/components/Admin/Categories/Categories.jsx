@@ -83,7 +83,7 @@ const Categories = () => {
       isLoading={isLoading}
       isEmpty={!categories?.length}
       emptyText="No categories"
-      minItemWidth={13.75}
+      minItemWidth={13.8}
       onPageSizeChange={onPageSizeChange}
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={

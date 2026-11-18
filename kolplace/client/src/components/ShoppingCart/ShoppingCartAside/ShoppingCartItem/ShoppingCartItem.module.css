@@ -1,7 +1,7 @@
 .cart-item {
   width: 95%;
   color: var(--background-color);
-  padding: 1.5625rem 0.625rem;
+  padding: 1.6rem 0.65rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,8 +15,8 @@
   word-wrap: break-word;
 }
 .cart-item img {
-  height: 4.375rem;
-  width: 4.375rem;
+  height: 4.4rem;
+  width: 4.4rem;
   object-fit: contain;
 }
 
@@ -27,68 +27,68 @@
 } */
 
 .cart-item input {
-  width: 3.125rem;
+  width: 3.1rem;
   font-weight: bold;
   background-color: var(--secondary-color);
   color: var(--white-color);
   font-size: 1rem;
-  padding: 0.1875rem;
+  padding: 0.2rem;
 }
 .cart-item p {
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .cart-item .remove i {
   cursor: pointer;
   position: static;
   color: var(--secondary-color);
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-left: 0.9375rem;
+  margin-left: 0.95rem;
 }
 
 .cart-item button {
   border: none;
   outline: none;
   cursor: pointer;
-  width: 1.25rem;
-  height: 1.25rem;
-  font-size: 0.875rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.9rem;
   margin: 0 0.25rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .cart-item {
-    padding: 0.9375rem 0.625rem;
+    padding: 0.95rem 0.65rem;
   }
   .cart-item a {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
   .cart-item img {
-    height: 3.125rem;
-    width: 3.125rem;
+    height: 3.1rem;
+    width: 3.1rem;
   }
 
   .cart-item input {
-    width: 1.875rem;
-    font-size: 0.875rem;
+    width: 1.9rem;
+    font-size: 0.9rem;
   }
   .cart-item p {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
   }
   .cart-item .remove i {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
   }
 
   .cart-item button {
     border: none;
     outline: none;
     cursor: pointer;
-    width: 1.25rem;
-    height: 1.25rem;
-    font-size: 0.875rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 0.9rem;
     margin: 0 0.25rem;
     background-color: var(--secondary-color);
     color: var(--white-color);

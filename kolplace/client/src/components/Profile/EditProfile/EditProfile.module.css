@@ -6,12 +6,12 @@
   margin: 0 auto;
   min-height: 70vh;
   z-index: 6;
-  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
   max-height: 90%;
   color: var(--background-color);
-  padding: 1.875rem 2.5rem;
+  padding: 1.9rem 2.5rem;
   background: var(--background-inverted-color);
-  border-radius: 1.25rem;
+  border-radius: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,17 +24,17 @@
 }
 
 .edit-profile img {
-  margin-top: 1.25rem;
-  filter: drop-shadow(0 0 0.4375rem var(--secondary-color));
+  margin-top: 1.3rem;
+  filter: drop-shadow(0 0 0.45rem var(--secondary-color));
   border-radius: 50%;
-  height: 9.375rem;
-  width: 9.375rem;
+  height: 9.4rem;
+  width: 9.4rem;
   object-fit: cover;
   transition: all 0.5s;
 }
 
 .edit-profile img:hover {
-  filter: drop-shadow(0 0 0.6875rem var(--secondary-color));
+  filter: drop-shadow(0 0 0.7rem var(--secondary-color));
   scale: 1.02;
 }
 
@@ -42,16 +42,16 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   background-color: var(--secondary-color);
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
-  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
+  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 .edit-profile label,
 .edit-profile input {
   display: block;
-  margin-bottom: 0.3125rem;
+  margin-bottom: 0.3rem;
 }
 
 .edit-profile label:nth-child(1) {
@@ -66,7 +66,7 @@
   background: none;
   font-size: 1rem;
   border: none;
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   border-bottom: 3px solid var(--secondary-color);
 }
 
@@ -81,7 +81,7 @@
 .errors-container {
   position: absolute;
   top: 12.5rem;
-  right: 0.9375rem;
+  right: 0.95rem;
   display: flex;
   flex-direction: column;
 }

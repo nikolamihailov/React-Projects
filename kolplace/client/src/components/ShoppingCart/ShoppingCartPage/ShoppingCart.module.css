@@ -7,20 +7,20 @@
   text-align: center;
   width: 90vw;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: 1.3rem;
   position: relative;
 }
 
 .cart-page-section .cart-icon {
-  margin-bottom: 3.125rem;
+  margin-bottom: 3.1rem;
 }
 .cart-page-section .cart-icon i {
-  font-size: 3.4375rem;
+  font-size: 3.4rem;
   color: var(--secondary-color);
 }
 .cart-page-section h1 {
   font-size: 2.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.3rem;
 }
 
 .cart-page-section .no-products {
@@ -29,34 +29,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   color: var(--primary-color);
   font-weight: bold;
   text-align: center;
 }
 
 .cart-page-section .totalPrice {
-  margin-top: 1.875rem;
+  margin-top: 1.9rem;
   color: var(--primary-color);
-  font-size: 1.625rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
 .cart-page-section .no-products p {
   color: var(--secondary-color);
   font-weight: bold;
-  font-size: 1.375rem;
+  font-size: 1.4rem;
 }
 
 .cart-page-section .no-products strong {
-  margin-left: 0.625rem;
-  font-size: 1.3125rem;
+  margin-left: 0.65rem;
+  font-size: 1.3rem;
   color: var(--secondary-color);
 }
 
 .cart-page-section .no-products img {
-  height: 15.625rem;
-  width: 15.625rem;
+  height: 15.6rem;
+  width: 15.6rem;
   object-fit: contain;
 }
 
@@ -64,8 +64,8 @@
   cursor: pointer;
   color: var(--secondary-color);
   position: absolute;
-  top: 0.9375rem;
-  right: 0.9375rem;
+  top: 0.95rem;
+  right: 0.95rem;
   font-size: 1.5rem;
 }
 
@@ -76,14 +76,14 @@
   width: 100%;
 }
 .cart-item-container .headers {
-  padding: 0.625rem 0;
+  padding: 0.65rem 0;
   display: flex;
   width: 100%;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: bold;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
-  border-radius: 0.9375rem;
+  border-radius: 0.95rem;
 }
 
 .cart-item-container .headers span:nth-child(1) {
@@ -101,12 +101,12 @@
 }
 
 .cart-page-section .btns {
-  margin-top: 1.875rem;
+  margin-top: 1.9rem;
   display: flex;
   width: 50%;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 3.125rem;
+  margin-bottom: 3.1rem;
 }
 .cart-page-section .btns button {
   border: none;
@@ -114,13 +114,13 @@
   cursor: pointer;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  padding: 0.9375rem 1.25rem;
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
+  padding: 0.95rem 1.3rem;
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
 }
 
 .cart-page-section .btns button i {
-  margin-left: 0.625rem;
+  margin-left: 0.65rem;
 }
 
 @keyframes slideIn {
@@ -132,30 +132,30 @@
   }
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .cart-page-section {
     width: 95vw;
-    padding: 0.625rem 0;
+    padding: 0.65rem 0;
   }
   .cart-page-section .totalPrice {
-    font-size: 1.1875rem;
+    font-size: 1.2rem;
   }
 
   .cart-page-section .no-products p {
-    font-size: 1.1875rem;
+    font-size: 1.2rem;
   }
 
   .cart-page-section .no-products img {
-    height: 9.375rem;
-    width: 9.375rem;
+    height: 9.4rem;
+    width: 9.4rem;
   }
 
   .cart-page-section div:nth-child(1) > i {
     cursor: pointer;
     color: var(--secondary-color);
     position: absolute;
-    top: 0.9375rem;
-    right: 0.9375rem;
+    top: 0.95rem;
+    right: 0.95rem;
     font-size: 1.5rem;
   }
 
@@ -166,25 +166,25 @@
     width: 100%;
   }
   .cart-item-container .headers {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
   }
 
   .cart-page-section .btns button {
-    padding: 0.5rem 0.625rem;
+    padding: 0.5rem 0.65rem;
     font-size: 1rem;
   }
 
   .cart-page-section .btns button i {
-    margin-left: 0.625rem;
+    margin-left: 0.65rem;
   }
   .cart-page-section .orders-icon i {
-    font-size: 2.1875rem;
+    font-size: 2.2rem;
   }
   .cart-page-section h1 {
-    font-size: 1.5625rem;
+    font-size: 1.6rem;
   }
   .cart-page-section .btns {
     width: 80%;
-    gap: 0.625rem;
+    gap: 0.65rem;
   }
 }

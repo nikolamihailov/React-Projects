@@ -6,7 +6,7 @@
   width: 33vw;
   background-color: var(--background-inverted-color);
   z-index: 9999;
-  padding: 0.9375rem 0.3125rem;
+  padding: 0.95rem 0.3rem;
   border-left: 4px solid var(--secondary-color);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
@@ -20,34 +20,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   color: var(--background-color);
   font-weight: bold;
   text-align: center;
 }
 
 .cart-aside .totalPrice {
-  margin-top: 1.875rem;
+  margin-top: 1.9rem;
   color: var(--background-color);
-  font-size: 1.4375rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
 .cart-aside .no-products p {
   color: var(--secondary-color);
   font-weight: bold;
-  font-size: 1.375rem;
+  font-size: 1.4rem;
 }
 
 .cart-aside .no-products strong {
-  margin-left: 0.625rem;
-  font-size: 1.3125rem;
+  margin-left: 0.65rem;
+  font-size: 1.3rem;
   color: var(--secondary-color);
 }
 
 .cart-aside .no-products img {
-  height: 15.625rem;
-  width: 15.625rem;
+  height: 15.6rem;
+  width: 15.6rem;
   object-fit: contain;
 }
 
@@ -55,8 +55,8 @@
   cursor: pointer;
   color: var(--secondary-color);
   position: absolute;
-  top: 0.9375rem;
-  right: 0.9375rem;
+  top: 0.95rem;
+  right: 0.95rem;
   font-size: 1.5rem;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .cart-aside .btns {
-  margin-top: 1.875rem;
+  margin-top: 1.9rem;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -82,13 +82,13 @@
   cursor: pointer;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  padding: 0.625rem;
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
+  padding: 0.65rem;
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
 }
 
 .cart-aside .btns button i {
-  margin-left: 0.625rem;
+  margin-left: 0.65rem;
 }
 
 @keyframes slideIn {

@@ -1,5 +1,5 @@
 .aside {
-  flex: 0 0 16.25rem;
+  flex: 0 0 16.3rem;
   min-height: 0;
   overflow-y: auto;
   box-sizing: border-box;
@@ -17,8 +17,8 @@
   display: none;
 }
 
-/* Below 56.25rem the side menu slides in over the content. */
-@media screen and (max-width: 56.25em) {
+/* Below 56.3rem the side menu slides in over the content. */
+@media screen and (max-width: 56.5em) {
   .aside {
     position: fixed;
     top: 0;
@@ -29,7 +29,7 @@
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.2s ease-out, visibility 0.2s;
-    box-shadow: 0.5rem 0 1.875rem rgba(0, 0, 0, 0.35);
+    box-shadow: 0.5rem 0 1.9rem rgba(0, 0, 0, 0.35);
   }
 
   .aside.open {

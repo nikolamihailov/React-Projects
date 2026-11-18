@@ -29,8 +29,8 @@ const UserProfile = ({
           <p
             style={{
               fontWeight: "bold",
-              fontSize: "1.1875rem",
-              marginBottom: "0.9375rem",
+              fontSize: "1.2rem",
+              marginBottom: "0.95rem",
             }}
           >
             You

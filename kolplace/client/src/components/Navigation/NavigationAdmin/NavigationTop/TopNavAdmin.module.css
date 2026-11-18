@@ -23,8 +23,8 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 0.625rem;
-  font-size: 1.375rem;
+  border-radius: 0.65rem;
+  font-size: 1.4rem;
   color: var(--secondary-color);
 }
 
@@ -33,9 +33,9 @@
   outline-offset: 2px;
 }
 
-@media screen and (max-width: 56.25em) {
+@media screen and (max-width: 56.5em) {
   .top-nav-admin {
-    padding: 0.625rem 1rem;
+    padding: 0.65rem 1rem;
   }
 
   .menu-button {

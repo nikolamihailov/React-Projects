@@ -6,7 +6,7 @@
   top: 100%;
   left: 0;
   z-index: 999;
-  border-radius: 0.3125rem;
+  border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   width: auto;
@@ -16,10 +16,10 @@
 
 .categories-dropdown li {
   width: 100%;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  padding: 0.875rem;
-  border-radius: 0.3125rem;
+  padding: 0.9rem;
+  border-radius: 0.3rem;
   transition: all 0.5s ease-in-out;
   display: flex;
   justify-content: flex-start;
@@ -46,8 +46,8 @@
 }
 .categories-dropdown img {
   flex: 1;
-  height: 3.125rem;
-  width: 3.125rem;
+  height: 3.1rem;
+  width: 3.1rem;
   object-fit: contain;
   z-index: 4;
 }

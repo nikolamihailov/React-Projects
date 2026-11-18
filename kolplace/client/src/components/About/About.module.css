@@ -15,28 +15,28 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0.625rem 0;
-  margin: 0.625rem 0;
+  padding: 0.65rem 0;
+  margin: 0.65rem 0;
 }
 
 .about-us-section div:nth-child(1) > h1 {
   font-size: 2.5rem;
 }
 .about-us-section div:nth-child(1) > p {
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
 .about-us-section .contact-section {
   flex: 1;
   text-align: center;
-  padding: 1.25rem;
+  padding: 1.3rem;
 }
 
 .about-us-section .contact-section p {
   font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.95rem;
 }
 
 .about-us-section .contact-section p:nth-child(1) {
@@ -48,7 +48,7 @@
   text-decoration: none;
   font-weight: 600;
   transition: color 0.5s ease;
-  margin-left: 0.625rem;
+  margin-left: 0.65rem;
   font-size: 1.2rem;
 }
 
@@ -61,26 +61,26 @@
   z-index: 1;
   height: 15rem;
   width: 100%;
-  border: 0.3125rem solid var(--main-nav-categories);
+  border: 0.3rem solid var(--main-nav-categories);
 }
 
 /* .leaflet-popup .leaflet-popup-content-wrapper {
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  border-radius: 0.3125rem;
+  border-radius: 0.3rem;
   padding-right: 0.6rem;
 }
 
 .store-popup .leaflet-popup-content-wrapper {
-  border-left: 0.3125rem solid var(--secondary-color);
+  border-left: 0.3rem solid var(--secondary-color);
 } */
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .about-us-section .info {
-    padding: 0.625rem;
+    padding: 0.65rem;
   }
   .about-us-section div:nth-child(1) > h1 {
-    font-size: 1.5625rem;
+    font-size: 1.6rem;
   }
   .about-us-section div:nth-child(1) > p {
     font-size: 1rem;

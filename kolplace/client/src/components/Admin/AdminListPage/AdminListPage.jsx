@@ -9,7 +9,7 @@ const GAP = { grid: 1.25, list: 0.75 };
 // Phones: narrower cards so two fit side by side, and at least this many rows
 // per page (the list scrolls) so a page is never just one or two items.
 const COMPACT_WIDTH = 37.5;
-const COMPACT_MIN_ITEM_WIDTH = 9.375;
+const COMPACT_MIN_ITEM_WIDTH = 9.4;
 const COMPACT_MIN_ROWS = 3;
 
 const rootFontSize = () =>
@@ -30,7 +30,7 @@ const AdminListPage = ({
   isEmpty,
   emptyText = "Nothing here yet",
   layout = "grid",
-  minItemWidth = 13.75, // rem
+  minItemWidth = 13.8, // rem
   rows = 2,
   onPageSizeChange,
   pagination,

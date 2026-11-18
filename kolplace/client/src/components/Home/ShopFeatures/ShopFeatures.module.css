@@ -4,9 +4,9 @@
   align-items: center;
   margin: 0 auto;
   width: 75vw;
-  margin-top: 1.25rem;
+  margin-top: 1.3rem;
   position: relative;
-  height: 5.625rem;
+  height: 5.6rem;
   padding-right: 3%;
 }
 .feature a {
@@ -21,20 +21,20 @@
   font-weight: bold;
 }
 .feature i {
-  font-size: 2.8125rem;
+  font-size: 2.8rem;
   color: var(--secondary-color);
 }
 
 .feature p {
-  font-size: 1.125rem;
-  margin-top: 0.625rem;
+  font-size: 1.1rem;
+  margin-top: 0.65rem;
   color: var(--primary-color);
 }
 
 .feature-slash {
-  margin: 0 1.5625rem;
+  margin: 0 1.6rem;
   height: 100%;
-  width: 0.125rem;
+  width: 0.15rem;
   background-color: var(--secondary-color);
   transform: rotate(40deg);
 }
@@ -47,7 +47,7 @@
     text-align: center;
   }
   .feature i {
-    font-size: 2.1875rem;
+    font-size: 2.2rem;
   }
 
   .feature p {
@@ -58,20 +58,20 @@
   }
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .shopFeatures {
     width: 95vw;
   }
   .feature i {
-    font-size: 1.5625rem;
+    font-size: 1.6rem;
   }
 }
 
 @media screen and (max-width: 25em) {
   .feature i {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
   .feature p {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
 }

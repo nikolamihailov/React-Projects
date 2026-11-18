@@ -9,20 +9,20 @@
 }
 
 .order-complete-section div {
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: bold;
   animation: move 5s ease-in infinite;
   transition: 0.5s ease-in;
 }
 
 .order-complete-section i {
-  margin-left: 0.3125rem;
+  margin-left: 0.3rem;
   font-size: 2.5rem;
   color: var(--secondary-color);
 }
 .order-complete-section h1 {
   font-size: 2.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.3rem;
 }
 
 .order-complete-section a {
@@ -34,12 +34,12 @@
   margin: 0 auto;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.625rem 0.9375rem;
+  padding: 0.65rem 0.95rem;
   background-color: var(--secondary-color);
-  font-size: 1.1875rem;
-  border-radius: 0.625rem;
-  margin-top: 0.9375rem;
-  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
+  font-size: 1.2rem;
+  border-radius: 0.65rem;
+  margin-top: 0.95rem;
+  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 
 .order-complete-section img {

@@ -8,12 +8,12 @@
   z-index: 6;
 
   /* ---------------------------------------- */
-  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
   max-height: 90%;
   color: var(--background-color);
-  padding: 1.875rem 2.5rem;
+  padding: 1.9rem 2.5rem;
   background: var(--background-inverted-color);
-  border-radius: 1.25rem;
+  border-radius: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -23,13 +23,13 @@
 
 .store-big-map .map {
   z-index: 1;
-  height: 31.25rem;
+  height: 31.3rem;
   width: 100%;
-  border: 0.3125rem solid var(--main-nav-categories);
+  border: 0.3rem solid var(--main-nav-categories);
 }
 
 .store-big-map p {
-  font-size: 1.4375rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -39,17 +39,17 @@
 }
 
 .store-big-map h2 {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
 }
 
 .store-big-map h2 i {
-  font-size: 1.5625rem;
-  margin-right: 0.9375rem;
+  font-size: 1.6rem;
+  margin-right: 0.95rem;
   color: var(--secondary-color);
 }
 
 .store-big-map p i {
-  font-size: 1.4375rem;
-  margin-right: 0.9375rem;
+  font-size: 1.4rem;
+  margin-right: 0.95rem;
   color: var(--secondary-color);
 }

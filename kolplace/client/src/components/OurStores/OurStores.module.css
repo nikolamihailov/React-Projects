@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 .our-stores-section .stores {
@@ -29,9 +29,9 @@
   font-size: 2.5rem;
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .our-stores-section h1 {
-    font-size: 1.5625rem;
+    font-size: 1.6rem;
   }
   .our-stores-section .info {
     font-size: 1rem;

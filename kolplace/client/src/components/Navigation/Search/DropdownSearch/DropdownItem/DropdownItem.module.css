@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.9375rem;
+  padding: 0.95rem;
   border-bottom: 1px solid var(--secondary-color);
   transition: all 0.5s ease-in-out;
-  border-radius: 0.3125rem;
+  border-radius: 0.3rem;
 }
 .dropdown-search-item:hover {
   scale: 1.02;
@@ -22,13 +22,13 @@
   color: var(--pimary-color);
 }
 .dropdown-search-item h3 {
-  padding: 0.625rem;
-  font-size: 1.0625rem;
+  padding: 0.65rem;
+  font-size: 1.1rem;
 }
 
 .dropdown-search-item img {
-  width: 4.375rem;
-  height: 4.375rem;
+  width: 4.4rem;
+  height: 4.4rem;
   object-fit: contain;
 }
 .dropdown-search-item .prices p {
@@ -44,20 +44,20 @@
 .dropdown-search-item .promo-price {
   margin-top: 0;
   background-color: var(--promo-price-color);
-  padding: 0.1875rem 0.3125rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 50%;
-  font-size: 1.1875rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--white-color);
 }
 
-@media screen and (max-width: 43.75em) {
+@media screen and (max-width: 44em) {
   .dropdown-search-item {
     padding: 0.75rem;
   }
   .dropdown-search-item h3 {
-    padding: 0.625rem;
-    font-size: 0.875rem;
+    padding: 0.65rem;
+    font-size: 0.9rem;
   }
 
   .dropdown-search-item img {
@@ -65,6 +65,6 @@
     height: 2.5rem;
   }
   .dropdown-search-item .promo-price {
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
   }
 }

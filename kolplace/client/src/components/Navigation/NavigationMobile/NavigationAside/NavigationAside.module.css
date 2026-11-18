@@ -6,7 +6,7 @@
   width: 33vw;
   background-color: var(--background-color);
   z-index: 9999;
-  padding: 0.9375rem 0.3125rem;
+  padding: 0.95rem 0.3rem;
   border-right: 4px solid var(--secondary-color);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
@@ -18,9 +18,9 @@
 .side-menu-mobile i:nth-child(1) {
   cursor: pointer;
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  font-size: 1.5625rem;
+  top: 1.3rem;
+  right: 1.3rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: var(--secondary-color);
 }
@@ -50,7 +50,7 @@
 .links a {
   text-decoration: none;
   display: inline-block;
-  font-size: 1.3125rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: var(--background-color-inverted);
   padding: 0.5rem;
@@ -61,10 +61,10 @@
 .links li {
   cursor: pointer;
   display: inline-block;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: var(--background-color-inverted);
-  padding: 0.3125rem;
+  padding: 0.3rem;
 }
 
 .links a:hover {
@@ -75,15 +75,15 @@
   position: absolute;
   height: 2.5rem;
   width: 2.5rem;
-  top: 1.25rem;
-  left: 1.25rem;
+  top: 1.3rem;
+  left: 1.3rem;
 }
 
 .side-menu-mobile button i {
-  margin-top: -0.9375rem;
+  margin-top: -0.95rem;
 }
 
-@media screen and (max-width: 59.375em) {
+@media screen and (max-width: 59.5em) {
   .side-menu-mobile {
     width: 85vw;
   }

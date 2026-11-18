@@ -13,9 +13,9 @@
 
 .visually-hidden {
   position: absolute;
-  width: 0.0625rem;
-  height: 0.0625rem;
-  margin: -0.0625rem;
+  width: 0.05rem;
+  height: 0.05rem;
+  margin: -0.05rem;
   padding: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
@@ -25,7 +25,7 @@
 
 /* Toolbar: filters on the left, primary action on the right */
 .toolbar {
-  padding: 1.25rem 2rem 1rem;
+  padding: 1.3rem 2rem 1rem;
   border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: row;
@@ -55,7 +55,7 @@
   gap: 0.5rem;
   height: 2.5rem;
   padding: 0 1rem;
-  border-radius: 0.625rem;
+  border-radius: 0.65rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
   font-size: 1rem;
@@ -86,13 +86,13 @@
 
 .filter select {
   height: 2.5rem;
-  min-width: 10.625rem;
-  padding: 0 2.25rem 0 0.75rem;
+  min-width: 10.6rem;
+  padding: 0 2.3rem 0 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 0.625rem;
+  border-radius: 0.65rem;
   background-color: var(--surface);
   color: var(--primary-color);
-  font-size: 0.9375rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-transform: none;
   letter-spacing: normal;
@@ -100,8 +100,8 @@
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 1.125rem) 50%, calc(100% - 0.8125rem) 50%;
-  background-size: 0.3125rem 0.3125rem;
+  background-position: calc(100% - 1.1rem) 50%, calc(100% - 0.8rem) 50%;
+  background-size: 0.3rem 0.3rem;
   background-repeat: no-repeat;
 }
 
@@ -136,7 +136,7 @@
 .list > * {
   background-color: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 0.875rem;
+  border-radius: 0.9rem;
   padding: 1rem;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .empty {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   opacity: 0.7;
 }
 
@@ -169,10 +169,10 @@
 }
 
 .grid.compact > * {
-  padding: 0.625rem;
+  padding: 0.65rem;
 }
 
-@media screen and (max-width: 56.25em) {
+@media screen and (max-width: 56.5em) {
   .toolbar {
     padding: 1rem;
   }
@@ -182,7 +182,7 @@
   }
 
   .footer {
-    padding: 0.625rem 1rem;
+    padding: 0.65rem 1rem;
   }
 }
 

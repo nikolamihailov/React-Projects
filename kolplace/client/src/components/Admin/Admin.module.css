@@ -44,14 +44,14 @@
 }
 
 .admin-panel-info h1 {
-  font-size: clamp(1.625rem, 1.2rem + 1.5vw, 2.1875rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
 }
 .admin-panel-info p {
   width: min(40vw, 40rem);
-  font-size: clamp(1.0625rem, 0.9rem + 0.6vw, 1.4375rem);
+  font-size: clamp(1.1rem, 0.9rem + 0.6vw, 1.4rem);
 }
 
-@media screen and (max-width: 56.25em) {
+@media screen and (max-width: 56.5em) {
   .admin-panel-info p {
     width: auto;
   }

@@ -1,6 +1,6 @@
 import AdminInfo from "../AdminInfo/AdminInfo";
 import SideMenu from "../SideMenu/SideMenu";
-import styles from "./navigationAside.module.css";
+import styles from "./NavigationAside.module.css";
 
 const NavigationAside = () => {
   return (

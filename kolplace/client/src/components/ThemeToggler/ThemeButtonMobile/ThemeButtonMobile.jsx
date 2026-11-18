@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../contexts/themeContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 import styles from "./ThemeButtonMobile.module.css";
 
 const ThemeButtonMobile = () => {

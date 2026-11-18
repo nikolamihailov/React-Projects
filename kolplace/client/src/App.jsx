@@ -15,7 +15,7 @@ import Products from "./components/Admin/Products/Products.jsx";
 import Users from "./components/Admin/Users/Users.jsx";
 import Stores from "./components/Admin/Stores/Stores.jsx";
 import RouteGuardAdmin from "./guards/RouteGuardAdmin.jsx";
-import { ThemeProvider } from "./contexts/themeContext.jsx";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 import Category from "./components/Category/Category.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";

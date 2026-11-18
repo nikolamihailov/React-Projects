@@ -1,36 +1,205 @@
+/* Desktop: a table row that shares --order-columns with the list head. */
 .order {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  background-color: var(--background-inverted-color);
-  color: var(--background-color);
-  padding: 1.6rem;
-  font-size: 1.1rem;
-  border-radius: 1.3rem;
-  margin: 1.3rem;
+  display: grid;
+  grid-template-columns: var(--order-columns);
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  transition: background-color 0.15s ease;
+  position: relative;
 }
 
-.order button {
-  all: unset;
-  margin: 0 auto;
+.order:last-child {
+  border-bottom: none;
+}
+
+.order:hover {
+  background-color: var(--surface-strong);
+}
+
+.cell {
+  min-width: 0;
+}
+
+/* Field names: only shown in the card layout, kept for screen readers. */
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.date > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip i {
+  color: var(--secondary-color);
+}
+
+.total {
+  text-align: right;
+}
+
+.price {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--primary-color);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
-  color: var(--white-color);
-  padding: 0.65rem 0.95rem;
-  background-color: var(--brand);
-  font-size: 1.2rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
-.order h4 strong {
-  font-size: 1.1rem;
+
+.button:hover {
+  background-color: var(--surface);
+  border-color: var(--secondary-color);
 }
-.order h4 {
-  font-weight: 400;
-  margin: 0.95rem 0;
+
+.button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
-.order i {
-  color: var(--secondary-on-inverted);
-  font-size: 1.3rem;
-  margin-right: 0.95rem;
+
+/* Tablets and phones: a card with the number + total on top, details below. */
+@media screen and (max-width: 56.5em) {
+  .order {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "number total"
+      "date date"
+      "delivery delivery"
+      "items items"
+      "action action";
+    gap: 0.6rem 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .order:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .order:hover {
+    background: var(--surface);
+  }
+
+  .number {
+    grid-area: number;
+  }
+
+  .total {
+    grid-area: total;
+  }
+
+  .date {
+    grid-area: date;
+  }
+
+  .delivery {
+    grid-area: delivery;
+  }
+
+  .items {
+    grid-area: items;
+  }
+
+  .action {
+    grid-area: action;
+    margin-top: 0.4rem;
+  }
+
+  .number,
+  .total {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .number .mono {
+    font-size: var(--text-md);
+  }
+
+  .price {
+    font-size: var(--text-lg);
+  }
+
+  /* Label / value pairs. */
+  .date,
+  .delivery,
+  .items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .date .label,
+  .delivery .label,
+  .items .label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    color: var(--muted);
+  }
+
+  .date > span:last-child {
+    flex-direction: row;
+    gap: 0.35rem;
+    text-align: right;
+  }
+
+  .date .muted {
+    font-size: var(--text-sm);
+  }
+
+  .button {
+    height: 2.75rem;
+  }
 }

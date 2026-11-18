@@ -1,50 +1,40 @@
 import { Link } from "react-router-dom";
 import styles from "./ShopFeatures.module.css";
 
-const ShopFeaturesSection = () => {
-  return (
-    <section className={styles["shopFeatures"]}>
-      <div className={styles["feature"]}>
-        <i className="fas fa-money-bill" />
-        <a
-          href="https://en.wikipedia.org/wiki/Money-back_guarantee"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <p>Money Back Guarantee</p>
-        </a>
-      </div>
-      <div className={styles["feature-slash"]}></div>
-      <div className={styles["feature"]}>
-        <i className="fas fa-shield-alt" />
-        <a
-          href="  https://www.acq.osd.mil/asda/dpc/index.html"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <p>Price Defense Policy</p>
-        </a>
-      </div>
-      <div className={styles["feature-slash"]}></div>
-      <div className={styles["feature"]}>
-        <i className="fas fa-truck" />
-        <p>Fast Shipping</p>
-      </div>
-      <div className={styles["feature-slash"]}></div>
-      <div className={styles["feature"]}>
-        <i className="fas fa-phone" />
-        <p>24/7 Customer Support</p>
-      </div>
-      <div className={styles["feature-slash"]}></div>
-      <div className={styles["feature"]}>
-        <i className="fas fa-store" />
-        <Link to={"/our-stores"}>
-          {" "}
-          <p>Our Stores</p>
-        </Link>
-      </div>
-    </section>
-  );
-};
+const FEATURES = [
+  { icon: "fa-money-bill", label: "Money back guarantee" },
+  { icon: "fa-shield-alt", label: "Price defense policy" },
+  { icon: "fa-truck", label: "Fast shipping" },
+  { icon: "fa-phone", label: "24/7 customer support" },
+  { icon: "fa-store", label: "Our stores", to: "/our-stores" },
+];
+
+const ShopFeaturesSection = () => (
+  <section className={styles["shop-features"]} aria-label="Why shop with us">
+    <ul className={styles["list"]}>
+      {FEATURES.map(({ icon, label, to }) => {
+        const content = (
+          <>
+            <span className={styles["icon"]} aria-hidden="true">
+              <i className={`fas ${icon}`}></i>
+            </span>
+            <span className={styles["label"]}>{label}</span>
+          </>
+        );
+        return (
+          <li key={label} className={styles["feature"]}>
+            {to ? (
+              <Link to={to} className={styles["link"]}>
+                {content}
+              </Link>
+            ) : (
+              <div className={styles["link"]}>{content}</div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+);
 
 export default ShopFeaturesSection;

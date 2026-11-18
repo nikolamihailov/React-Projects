@@ -1,6 +1,7 @@
 .carousel-products {
   display: flex;
-  width: 75vw;
+  /* Wide enough for five cards with their gaps on a laptop screen. */
+  width: min(92vw, 80rem);
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -9,7 +10,7 @@
 
 .carousel-products .carousel-products-heading {
   position: relative;
-  width: 75vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -61,7 +62,7 @@
   grid-auto-flow: column;
   grid-auto-columns: 13.5rem;
   justify-content: safe center;
-  gap: 1.25rem;
+  gap: 2rem;
   width: 100%;
   padding: 0.5rem 0.25rem 1rem;
   overflow-x: auto;

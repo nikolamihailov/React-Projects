@@ -1,34 +1,69 @@
+/* Compact product line. Colours inherit so it also works on the
+   inverted order-details panel. */
 .checkout-item {
   width: 100%;
-  color: var(--background-color);
-  padding: 0.65rem;
-  display: flex;
-  justify-content: space-between;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
   align-items: center;
-  border-bottom: 2px solid var(--brand);
+  gap: 0.9rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  color: inherit;
+  text-align: left;
+  line-height: 1.4;
 }
 
-.checkout-item a {
-  color: var(--background-color);
-  text-decoration: none;
-  width: 40%;
-  font-size: 1rem;
-  word-wrap: break-word;
+.checkout-item:last-child {
+  border-bottom: none;
 }
 
-.checkout-item img {
-  height: 4.4rem;
-  width: 4.4rem;
+.thumb {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  box-sizing: border-box;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, currentColor 8%, transparent);
+  opacity: 1;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.checkout-item h4 {
-  width: 40%;
-  font-size: 1rem;
-  word-wrap: break-word;
+.thumb > i {
+  opacity: 0.6;
 }
 
-.checkout-item p {
-  font-size: 1.1rem;
-  font-weight: bold;
+.info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.name {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+}
+
+.price {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  white-space: nowrap;
 }

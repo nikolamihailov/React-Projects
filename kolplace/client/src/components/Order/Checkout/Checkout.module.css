@@ -1,219 +1,415 @@
 .checkout-section {
-  min-height: 100%;
+  width: min(100%, 80rem);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  color: var(--primary-color);
+  text-align: left;
+  line-height: 1.6;
+}
+
+.page-head {
+  margin-bottom: 2rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.back:hover {
+  color: var(--secondary-color);
+}
+
+.back:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+}
+
+.page-head p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
+.loading {
+  position: relative;
+  min-height: 20rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Form sections left, sticky summary right. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, 24rem);
+  gap: 2rem;
+  align-items: start;
+}
+
+.sections {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 3.1rem;
-  position: relative;
+  gap: 1.5rem;
+  min-width: 0;
 }
-.checkout-section a {
-  position: absolute;
-  top: 1.6rem;
-  left: 1.6rem;
-  text-decoration: none;
+
+.card,
+.summary {
+  box-sizing: border-box;
+  padding: 1.5rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card h2,
+.summary h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-lg);
+}
+
+.step {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   background-color: var(--brand);
   color: var(--white-color);
-  font-size: 1.4rem;
-  border-radius: 50%;
-  padding: 0.65rem 0.95rem;
-}
-.checkout-section h5 {
-  font-size: 1.5rem;
-  margin: 1.3rem 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
 }
 
-.checkout-section .page-info h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.3rem;
-}
-
-.checkout-section .page-info img {
-  width: 9.4rem;
-  height: 9.4rem;
-  object-fit: contain;
-}
-
-.checkout-section form {
-  background-color: var(--background-inverted-color);
-  color: var(--background-color);
-  border-radius: 1.3rem;
-  padding: 1.3rem;
-  width: 60%;
+.contact {
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  border: 0.4rem solid var(--brand);
+  gap: 0.5rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
-.checkout-section label {
-  font-weight: bold;
-  margin-bottom: 0.3rem;
+.contact i {
+  color: var(--secondary-color);
 }
 
-.checkout-section select {
-  padding: 0.75rem 0.95rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  outline: none;
-  cursor: pointer;
-  border-radius: 0.95rem;
-  background-color: var(--background-color);
-  color: var(--background-inverted-color);
-  font-weight: bold;
-  width: 100%;
+.contact strong {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
-.checkout-section option {
-  background-color: var(--background-color);
-  color: var(--secondary-on-inverted);
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.checkout-section option:hover {
-  background-color: gray;
-}
-
-.checkout-section .without-office {
-  width: 30%;
-  height: 18.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.checkout-section .with-office {
-  width: 30%;
-  height: 18.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.checkout-section .form-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.checkout-section label {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-.checkout-section .delivery-type {
-  width: 18.8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.checkout-section .without-office input {
-  color: var(--background-color);
-  background: none;
-  font-size: 1rem;
+/* Delivery type: radio buttons drawn as selectable cards. */
+.delivery-type {
+  margin: 0;
+  padding: 0;
   border: none;
-  padding: 0.65rem 0.95rem;
-  border-bottom: 3px solid var(--brand);
-  outline: none;
+  min-width: 0;
 }
-.checkout-section form button {
+
+.delivery-type legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.option {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--background-color);
+}
+
+label.option {
+  cursor: pointer;
+}
+
+label.option:hover {
+  background-color: var(--surface-strong);
+}
+
+.option > i {
+  width: 1.25rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.option span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.option strong {
+  font-weight: 600;
+}
+
+.option small {
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+
+.option.selected {
+  border-color: var(--brand);
+  background-color: color-mix(in srgb, var(--brand) 8%, var(--background-color));
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+
+.option.selected > i {
+  color: var(--secondary-color);
+}
+
+/* The native radio stays focusable but is visually hidden. */
+.option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+
+.option:has(input:focus-visible) {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Fields */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.field select,
+.field input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-strong);
+  color: var(--primary-color);
+  font: inherit;
+  font-size: var(--text-md);
+  font-weight: 400;
+}
+
+.field select {
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.field option {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.field select:focus-visible,
+.field input:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 0;
+  border-color: transparent;
+}
+
+.field input::placeholder {
+  color: var(--muted);
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+/* Order summary */
+.summary {
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summary-items {
+  max-height: 22rem;
+  overflow-y: auto;
+  padding: 0.4rem 0.4rem 0 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.rows {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rows div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.rows dt {
+  color: var(--muted);
+}
+
+.rows dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.rows dd.muted {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: var(--text-sm);
+}
+
+.rows .total {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.rows .total dt {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.rows .total dd {
+  font-size: var(--text-xl);
+  font-weight: 800;
+}
+
+.primary,
+.secondary {
   all: unset;
   cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primary {
+  background-color: var(--brand);
   color: var(--white-color);
-  padding: 0.65rem 0.95rem;
-  background-color: var(--brand);
-  font-size: 1.2rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
 }
 
-.checkout-section .checkout-products {
-  width: 70%;
-  text-align: center;
-  margin: 3.1rem 0;
-}
-.checkout-section .checkout-products h3 {
-  font-size: 1.6rem;
-  margin-bottom: 1.3rem;
+.primary:hover {
+  filter: brightness(1.1);
 }
 
-input[type="radio"] {
-  display: none;
+.secondary {
+  border: 1px solid var(--border);
+  color: var(--primary-color);
 }
 
-input[type="radio"] + label {
-  position: relative;
-  padding-left: 1.9rem;
-  cursor: pointer;
+.secondary:hover {
+  background-color: var(--surface-strong);
 }
 
-input[type="radio"] + label::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 2px solid var(--background-inverted-color);
-  border-radius: 50%;
-  background-color: var(--background-color);
-  transition: background-color 0.3s;
-}
-
-input[type="radio"]:checked + label::before {
-  background-color: var(--brand);
-}
-
-.checkout-section .total-price {
-  font-size: 1.6rem;
-  margin-bottom: 2.5rem;
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 .errors-container {
   position: fixed;
   top: 12.5rem;
-  right: 0.95rem;
+  right: 1rem;
+  z-index: 20;
+  max-width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (max-width: 75em) {
-  .checkout-section .page-info h1 {
-    font-size: 1.9rem;
+@media screen and (max-width: 56.5em) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
 
-  .checkout-section .page-info img {
-    width: 8.1rem;
-    height: 8.1rem;
-    object-fit: contain;
+  .summary {
+    position: static;
   }
 
-  .checkout-section form {
-    padding: 0.95rem;
-    width: 90%;
+  .summary-items {
+    max-height: none;
   }
-  .checkout-section .without-office {
-    width: 70%;
+}
+
+@media screen and (max-width: 37.5em) {
+  .checkout-section {
+    padding: 1.5rem 1rem 3rem;
   }
 
-  .checkout-section .with-office {
-    width: 70%;
+  .page-head {
+    margin-bottom: 1.5rem;
   }
-  .checkout-section .checkout-products {
-    width: 90%;
+
+  .card,
+  .summary {
+    padding: 1.25rem;
   }
-  .checkout-section a {
-    font-size: 1.1rem;
-    padding: 0.3rem 0.5rem;
-  }
-  .checkout-section form button {
-    padding: 0.4rem 0.5rem;
-    font-size: 1.1rem;
+
+  .options,
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

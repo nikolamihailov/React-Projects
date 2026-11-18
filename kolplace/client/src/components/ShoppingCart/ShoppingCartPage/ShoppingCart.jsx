@@ -5,7 +5,6 @@ import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import useTitle from "../../../hooks/useTitle";
 import { Link, useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../contexts/NotificationContext";
-import emptyCartImage from "../../../assets/emptyCart.png";
 
 const ShoppingCart = ({ onClick }) => {
   useTitle("My Shopping Cart | KolPlace");
@@ -21,61 +20,84 @@ const ShoppingCart = ({ onClick }) => {
     }
   }, [cart?.products, updateNotifs, navigateTo]);
 
+  const itemCount =
+    cart?.products.reduce((count, p) => count + Number(p.quantity), 0) ?? 0;
+  const itemLabel = `${itemCount} ${itemCount === 1 ? "item" : "items"}`;
+
   return (
-    <>
-      <section className={styles["cart-page-section"]}>
-        <h1>My Shopping Cart</h1>
-        <div className={styles["cart-icon"]}>
-          <i className="fa-solid fa-shopping-cart"></i>
-        </div>
-        <div className={styles["cart-item-container"]}>
-          {cart.products.length === 0 && (
-            <div className={styles["no-products"]}>
-              <img src={emptyCartImage} alt="empty-cart" />
-              <p>Your cart is empty!</p>
-              <span>
-                Please add something to make me happy!
-                <strong>&#58;&#41;</strong>{" "}
-              </span>
-            </div>
-          )}
-          {cart?.products.length > 0 && (
-            <div className={styles["headers"]}>
-              <span>Image</span>
-              <span>Name</span>
-              <span>Quantity</span>
-              <span>Price</span>
-            </div>
-          )}
-          {cart?.products.map((p) => {
-            return (
-              <ShoppingCartItem
-                key={p.product._id}
-                productInfo={p}
-                onClick={onClick}
-              />
-            );
-          })}
-        </div>
+    <section className={styles["cart-page"]}>
+      <div className={styles["page-head"]}>
+        <h1>Shopping cart</h1>
         {cart?.products.length > 0 && (
-          <>
-            <p className={styles["totalPrice"]}>
-              Total price: ${cart?.totalPrice.toFixed(2)}
-            </p>
-            <div className={styles["btns"]}>
-              <button onClick={() => emptyCartProducts()}>
-                Empty Cart <i className="fa-solid fa-trash-can"></i>
-              </button>
-              <Link to={"/checkout"}>
-                <button>
-                  Proceed to Checkout <i className="fas fa-arrow-right"></i>
-                </button>
-              </Link>
-            </div>
-          </>
+          <p>
+            {itemLabel} in your cart. Review them, then continue to checkout.
+          </p>
         )}
-      </section>
-    </>
+      </div>
+
+      {cart.products.length === 0 ? (
+        <div className={styles["empty"]}>
+          <span className={styles["empty-icon"]} aria-hidden="true">
+            <i className="fa-solid fa-cart-shopping"></i>
+          </span>
+          <h2>Your cart is empty</h2>
+          <p>Add something you like and it will show up here.</p>
+          <Link to="/" className={styles["primary"]}>
+            Start shopping
+          </Link>
+        </div>
+      ) : (
+        <div className={styles["layout"]}>
+          <div className={styles["items-card"]}>
+            <div className={styles["items-head"]}>
+              <h2>Items</h2>
+              <button
+                type="button"
+                className={styles["text-btn"]}
+                onClick={() => emptyCartProducts()}
+              >
+                <i className="fa-solid fa-trash-can"></i> Empty cart
+              </button>
+            </div>
+            <ul className={styles["items"]}>
+              {cart?.products.map((p) => {
+                return (
+                  <ShoppingCartItem
+                    key={p.product._id}
+                    productInfo={p}
+                    onClick={onClick}
+                  />
+                );
+              })}
+            </ul>
+          </div>
+
+          <aside className={styles["summary"]} aria-label="Order summary">
+            <h2>Order summary</h2>
+            <dl className={styles["rows"]}>
+              <div>
+                <dt>Subtotal ({itemLabel})</dt>
+                <dd>${cart?.totalPrice.toFixed(2)}</dd>
+              </div>
+              <div>
+                <dt>Delivery</dt>
+                <dd className={styles["muted"]}>Chosen at checkout</dd>
+              </div>
+              <div className={styles["total"]}>
+                <dt>Total</dt>
+                <dd>${cart?.totalPrice.toFixed(2)}</dd>
+              </div>
+            </dl>
+            <Link to={"/checkout"} className={styles["primary"]}>
+              Proceed to checkout <i className="fas fa-arrow-right"></i>
+            </Link>
+            <Link to={"/"} className={styles["secondary"]}>
+              Continue shopping
+            </Link>
+          </aside>
+        </div>
+      )}
+    </section>
   );
 };
 

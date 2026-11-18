@@ -1,57 +1,119 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Aside.module.css";
 import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
 import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import { Link } from "react-router-dom";
-import emptyCart from "../../../assets/emptyCart.png";
 
 const ShoppingCartExpanded = ({ onClose }) => {
   const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
+  const hasProducts = cart?.products.length > 0;
+  const itemCount =
+    cart?.products.reduce((count, p) => count + Number(p.quantity), 0) ?? 0;
+
+  // Escape closes the cart, like the close button and the backdrop.
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
   return (
     <>
       <div className="backdrop" onClick={onClose}></div>
-      <aside className={styles["cart-aside"]}>
-        <div onClick={onClose}>
-          <i className="fa-solid fa-x"></i>
-        </div>
-        <div className={styles["cart-item-container"]}>
-          {cart.products.length === 0 && (
-            <div className={styles["no-products"]}>
-              <img src={emptyCart} alt="empty-cart" />
-              <p>Your cart is empty!</p>
-              <span>
-                Please add something to make me happy!
-                <strong>&#58;&#41;</strong>{" "}
+      <aside
+        className={styles["cart-aside"]}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-aside-title"
+      >
+        <div className={styles["head"]}>
+          <h2 id="cart-aside-title">
+            Your cart
+            {hasProducts && (
+              <span className={styles["count"]}>
+                {itemCount} {itemCount === 1 ? "item" : "items"}
               </span>
-            </div>
-          )}
-          {cart?.products.map((p) => {
-            return (
-              <ShoppingCartItem
-                key={p.product._id}
-                productInfo={p}
-                onClose={onClose}
-              />
-            );
-          })}
+            )}
+          </h2>
+          <button
+            type="button"
+            className={styles["close"]}
+            onClick={onClose}
+            aria-label="Close cart"
+            autoFocus
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
         </div>
-        {cart.products.length > 0 && (
-          <>
-            <p className={styles["totalPrice"]}>
-              Total price: ${cart?.totalPrice.toFixed(2)}
-            </p>
-            <div className={styles["btns"]}>
-              <Link to={"/shopping-cart"} onClick={() => onClose()}>
-                <button>
-                  View Cart
-                  <i className="fa-solid fa-cart-shopping"></i>
-                </button>
-              </Link>
-              <button onClick={() => emptyCartProducts()}>
-                Empty Cart <i className="fa-solid fa-trash-can"></i>
+
+        <div className={styles["body"]}>
+          {hasProducts ? (
+            <ul className={styles["items"]}>
+              {cart?.products.map((p) => {
+                return (
+                  <ShoppingCartItem
+                    key={p.product._id}
+                    productInfo={p}
+                    onClose={onClose}
+                  />
+                );
+              })}
+            </ul>
+          ) : (
+            <div className={styles["empty"]}>
+              <span className={styles["empty-icon"]} aria-hidden="true">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </span>
+              <p className={styles["empty-title"]}>Your cart is empty</p>
+              <p className={styles["empty-text"]}>
+                Add something you like and it will show up here.
+              </p>
+              <button
+                type="button"
+                className={styles["secondary"]}
+                onClick={onClose}
+              >
+                Continue shopping
               </button>
             </div>
-          </>
+          )}
+        </div>
+
+        {hasProducts && (
+          <div className={styles["foot"]}>
+            <div className={styles["subtotal"]}>
+              <span>Subtotal</span>
+              <strong>${cart?.totalPrice.toFixed(2)}</strong>
+            </div>
+            <p className={styles["note"]}>
+              Delivery and payment are chosen at checkout.
+            </p>
+            <Link
+              to={"/checkout"}
+              className={styles["primary"]}
+              onClick={() => onClose()}
+            >
+              Checkout <i className="fas fa-arrow-right"></i>
+            </Link>
+            <div className={styles["foot-row"]}>
+              <Link
+                to={"/shopping-cart"}
+                className={styles["secondary"]}
+                onClick={() => onClose()}
+              >
+                View cart
+              </Link>
+              <button
+                type="button"
+                className={styles["text-btn"]}
+                onClick={() => emptyCartProducts()}
+              >
+                <i className="fa-solid fa-trash-can"></i> Empty cart
+              </button>
+            </div>
+          </div>
         )}
       </aside>
     </>

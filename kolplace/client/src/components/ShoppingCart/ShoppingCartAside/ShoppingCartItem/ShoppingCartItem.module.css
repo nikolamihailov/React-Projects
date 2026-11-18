@@ -1,96 +1,168 @@
 .cart-item {
-  width: 95%;
-  color: var(--background-color);
-  padding: 1.6rem 0.65rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--brand);
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary-color);
+  text-align: left;
 }
-.cart-item a {
-  color: var(--background-color);
-  text-decoration: none;
-  width: 40%;
-  font-size: 1rem;
-  word-wrap: break-word;
+
+.cart-item:last-child {
+  border-bottom: none;
 }
-.cart-item img {
-  height: 4.4rem;
-  width: 4.4rem;
+
+.thumb {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 0.4rem;
+  box-sizing: border-box;
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-strong);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-/* .cart-item h4 {
-  width: 40%;
-  font-size: 1rem;
-  word-wrap: break-word;
-} */
+.info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
 
-.cart-item input {
-  width: 3.1rem;
-  font-weight: bold;
-  background-color: var(--brand);
-  color: var(--white-color);
-  font-size: 1rem;
-  padding: 0.2rem;
+.name {
+  color: var(--primary-color);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.cart-item p {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.cart-item .remove i {
-  cursor: pointer;
-  position: static;
+
+.name:hover {
   color: var(--secondary-color);
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-left: 0.95rem;
 }
 
-.cart-item button {
-  border: none;
-  outline: none;
+.unit-price {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+
+.sale {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Quantity stepper */
+.stepper {
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.stepper button {
+  all: unset;
   cursor: pointer;
-  width: 1.3rem;
-  height: 1.3rem;
-  font-size: 0.9rem;
-  margin: 0 0.25rem;
-  background-color: var(--brand);
-  color: var(--white-color);
+  box-sizing: border-box;
+  width: 2rem;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 0.7rem;
 }
 
-@media screen and (max-width: 44em) {
-  .cart-item {
-    padding: 0.95rem 0.65rem;
-  }
-  .cart-item a {
-    font-size: 0.9rem;
-  }
-  .cart-item img {
-    height: 3.1rem;
-    width: 3.1rem;
-  }
+.stepper button:hover:not(:disabled) {
+  background-color: var(--surface-strong);
+}
 
-  .cart-item input {
-    width: 1.9rem;
-    font-size: 0.9rem;
-  }
-  .cart-item p {
-    font-size: 0.95rem;
-  }
-  .cart-item .remove i {
-    font-size: 0.95rem;
-  }
+.stepper button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
 
-  .cart-item button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    width: 1.3rem;
-    height: 1.3rem;
-    font-size: 0.9rem;
-    margin: 0 0.25rem;
-    background-color: var(--brand);
-    color: var(--white-color);
-  }
+.stepper button:focus-visible,
+.stepper input:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: -2px;
+}
+
+.stepper input {
+  box-sizing: border-box;
+  width: 2.25rem;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-inline: 1px solid var(--border);
+  background: transparent;
+  color: var(--primary-color);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-align: center;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.line-total {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.remove {
+  all: unset;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.25rem -0.4rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.remove:hover {
+  color: var(--secondary-color);
+  background-color: color-mix(in srgb, var(--brand) 12%, transparent);
+}
+
+.remove:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }

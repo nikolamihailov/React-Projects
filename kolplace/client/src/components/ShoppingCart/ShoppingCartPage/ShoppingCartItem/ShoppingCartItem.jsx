@@ -3,70 +3,115 @@ import styles from "./ShoppingCartItem.module.css";
 import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
 import { useContext, useState } from "react";
 
+const MIN_QUANTITY = 1;
+const MAX_QUANTITY = 50;
+
 const ShoppingCartItem = ({ onClick, productInfo }) => {
   const { product, quantity } = productInfo;
   const { removeCartProduct, changeProductQuantity } =
     useContext(ShoppingCartContext);
   const [value, setValue] = useState(quantity);
 
+  const updateQuantity = (next) => {
+    const newValue = Number(
+      Math.min(Math.max(MIN_QUANTITY, next), MAX_QUANTITY)
+    );
+    setValue(newValue);
+    changeProductQuantity(product._id, newValue);
+  };
+
   const onChange = (e) => {
     const { value } = e.target;
     if (value.trim() !== "") {
-      const newValue = Number(Math.min(Math.max(1, value), 50));
-      setValue(newValue);
-      changeProductQuantity(product._id, newValue);
+      updateQuantity(value);
     } else {
       setValue(value);
     }
-    //changeProductQuantity(product._id, Number(value));
   };
+
+  const unitPrice = product.hasPromoPrice ? product.promoPrice : product.price;
+  const productUrl = `/products/${product._id}`;
+
   return (
-    <div className={styles["cart-item"]}>
+    <li className={styles["cart-item"]}>
       <Link
-        to={`/products/${product._id}`}
+        to={productUrl}
         onClick={onClick}
-        className={styles["image"]}
+        className={styles["thumb"]}
+        tabIndex={-1}
+        aria-hidden="true"
       >
-        <img src={product.mainImage} alt={product.name} />
+        <img src={product.mainImage} alt="" />
       </Link>
-      <div className={styles["title-category"]}>
-        <Link to={`/products/${product._id}`} onClick={onClick}>
-          <h4>{product.name}</h4>
-        </Link>
+
+      <div className={styles["info"]}>
         <Link
           to={`/categories/${product.category.name.toLowerCase()}`}
           onClick={onClick}
-          className={styles["title-category"]}
+          className={styles["category"]}
         >
-          <span>{product.category.name}</span>
+          {product.category.name}
         </Link>
+        <Link to={productUrl} onClick={onClick} className={styles["name"]}>
+          {product.name}
+        </Link>
+        <p className={styles["unit-price"]}>
+          {product.hasPromoPrice ? (
+            <>
+              <span className={styles["sale"]}>
+                ${product.promoPrice.toFixed(2)}
+              </span>
+              <s>${product.price.toFixed(2)}</s>
+            </>
+          ) : (
+            <span>${product.price.toFixed(2)}</span>
+          )}
+          <span className={styles["each"]}>each</span>
+        </p>
       </div>
 
-      <div className={styles["quantity"]}>
-        X
+      <div className={styles["stepper"]}>
+        <button
+          type="button"
+          aria-label={`Decrease quantity of ${product.name}`}
+          onClick={() => updateQuantity(Number(value) - 1)}
+          disabled={Number(value) <= MIN_QUANTITY}
+        >
+          <i className="fa-solid fa-minus"></i>
+        </button>
         <input
           type="number"
           name="quantity"
-          min={1}
-          max={25}
+          aria-label={`Quantity of ${product.name}`}
+          min={MIN_QUANTITY}
+          max={MAX_QUANTITY}
           value={value}
           onChange={onChange}
         />
+        <button
+          type="button"
+          aria-label={`Increase quantity of ${product.name}`}
+          onClick={() => updateQuantity(Number(value) + 1)}
+          disabled={Number(value) >= MAX_QUANTITY}
+        >
+          <i className="fa-solid fa-plus"></i>
+        </button>
       </div>
 
-      <p>
-        $
-        {product.hasPromoPrice
-          ? product.promoPrice.toFixed(2)
-          : product.price.toFixed(2)}
+      <p className={styles["line-total"]}>
+        ${(unitPrice * quantity).toFixed(2)}
       </p>
-      <div
+
+      <button
+        type="button"
         className={styles["remove"]}
+        aria-label={`Remove ${product.name} from cart`}
+        title="Remove"
         onClick={() => removeCartProduct(product._id)}
       >
         <i className="fa-solid fa-trash-can"></i>
-      </div>
-    </div>
+      </button>
+    </li>
   );
 };
 

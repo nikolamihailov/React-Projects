@@ -15,7 +15,6 @@ import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
 import { v4 as uuidv4 } from "uuid";
 import Spinner from "../../Spinner/Spinner";
-import checkoutCart from "../../../assets/checkout.png";
 
 const FORM_VALUES = {
   City: "city",
@@ -23,6 +22,21 @@ const FORM_VALUES = {
   DeliveryType: "deliveryType",
   Address: "address",
 };
+
+const DELIVERY_OPTIONS = [
+  {
+    id: "toAddress",
+    value: "To Address",
+    icon: "fa-solid fa-house",
+    hint: "Courier delivery to your door",
+  },
+  {
+    id: "toEcontOffice",
+    value: "To Econt Office",
+    icon: "fa-solid fa-building",
+    hint: "Pick up from an Econt office",
+  },
+];
 
 const Checkout = () => {
   useTitle("Checkout | KolPlace");
@@ -107,130 +121,185 @@ const Checkout = () => {
     }
   };
 
+  const isOfficeDelivery =
+    values[FORM_VALUES.DeliveryType] === "To Econt Office";
+  const itemCount =
+    cart?.products.reduce((count, p) => count + Number(p.quantity), 0) ?? 0;
+
+  const citySelect = (
+    <div className={styles["field"]}>
+      <label htmlFor={FORM_VALUES.City}>City</label>
+      <select
+        name={FORM_VALUES.City}
+        id={FORM_VALUES.City}
+        value={values[FORM_VALUES.City]}
+        onChange={onChange}
+      >
+        <option value="" disabled>
+          Select a city
+        </option>
+        {cities?.length > 0 &&
+          cities.map((c) => (
+            <option key={c.id} value={c.id + "-" + c.nameEn}>
+              {c.nameEn}
+            </option>
+          ))}
+      </select>
+    </div>
+  );
+
   return (
     <section className={styles["checkout-section"]}>
-      <Link to={"/shopping-cart"}>
-        <i className="fa-solid fa-arrow-left"></i>
-      </Link>
-      <div className={styles["page-info"]}>
+      <div className={styles["page-head"]}>
+        <Link to={"/shopping-cart"} className={styles["back"]}>
+          <i className="fa-solid fa-arrow-left"></i> Back to cart
+        </Link>
         <h1>Checkout</h1>
-        <img src={checkoutCart} alt="checkout" />
+        <p>Choose how you would like to receive your order, then place it.</p>
       </div>
+
       {isLoading ? (
-        <Spinner />
+        <div className={styles["loading"]}>
+          <Spinner />
+        </div>
       ) : (
-        <form onSubmit={onSubmit}>
-          <h5>Delivery Type</h5>
-          <div className={styles["delivery-type"]}>
-            <input
-              type="radio"
-              id="toEcontOffice"
-              name={FORM_VALUES.DeliveryType}
-              checked={values[FORM_VALUES.DeliveryType] === "To Econt Office"}
-              value="To Econt Office"
-              onChange={onChange}
-            />
-            <label htmlFor="toEcontOffice">To Econt Office</label>
+        <form onSubmit={onSubmit} className={styles["layout"]}>
+          <div className={styles["sections"]}>
+            <section className={styles["card"]}>
+              <h2>
+                <span className={styles["step"]}>1</span> Contact
+              </h2>
+              <p className={styles["contact"]}>
+                <i className="fa-solid fa-envelope"></i>
+                Ordering as <strong>{auth?.user?.email}</strong>
+              </p>
+            </section>
 
-            <input
-              type="radio"
-              id="toAddress"
-              name={FORM_VALUES.DeliveryType}
-              value="To Address"
-              onChange={onChange}
-              checked={values[FORM_VALUES.DeliveryType] === "To Address"}
-            />
-            <label htmlFor="toAddress">To Address</label>
-          </div>
-          <h5>Address Info</h5>
+            <section className={styles["card"]}>
+              <h2>
+                <span className={styles["step"]}>2</span> Delivery
+              </h2>
+              <fieldset className={styles["delivery-type"]}>
+                <legend>Delivery type</legend>
+                <div className={styles["options"]}>
+                  {DELIVERY_OPTIONS.map((o) => (
+                    <label
+                      key={o.id}
+                      htmlFor={o.id}
+                      className={`${styles["option"]} ${
+                        values[FORM_VALUES.DeliveryType] === o.value
+                          ? styles["selected"]
+                          : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        id={o.id}
+                        name={FORM_VALUES.DeliveryType}
+                        value={o.value}
+                        checked={values[FORM_VALUES.DeliveryType] === o.value}
+                        onChange={onChange}
+                      />
+                      <i className={o.icon} aria-hidden="true"></i>
+                      <span>
+                        <strong>{o.value}</strong>
+                        <small>{o.hint}</small>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
 
-          {values[FORM_VALUES.DeliveryType] === "To Econt Office" && (
-            <div className={styles["with-office"]}>
-              <div className={styles["form-group"]}>
-                <label htmlFor={FORM_VALUES.City}>City</label>
-                <select
-                  name={FORM_VALUES.City}
-                  id={FORM_VALUES.City}
-                  value={values[FORM_VALUES.City]}
-                  onChange={onChange}
-                >
-                  {cities?.length > 0 &&
-                    cities.map((c) => (
-                      <option key={c.id} value={c.id + "-" + c.nameEn}>
-                        {c.nameEn}
-                      </option>
-                    ))}
-                </select>
-              </div>
-
-              {offices?.length > 0 && (
-                <div className={styles["form-group"]}>
-                  <label htmlFor={FORM_VALUES.Address}>Office Address</label>
-                  <select
-                    name={FORM_VALUES.Address}
-                    id={FORM_VALUES.Address}
-                    value={values[FORM_VALUES.Address]}
-                    onChange={onChange}
-                  >
-                    {offices?.length > 0 &&
-                      offices.map((o) => (
-                        <option key={o.id} value={o.address.fullAddressEn}>
-                          {o.address.fullAddressEn}
+              {isOfficeDelivery && (
+                <div className={styles["fields"]}>
+                  {citySelect}
+                  {offices?.length > 0 && (
+                    <div className={styles["field"]}>
+                      <label htmlFor={FORM_VALUES.Address}>Office</label>
+                      <select
+                        name={FORM_VALUES.Address}
+                        id={FORM_VALUES.Address}
+                        value={values[FORM_VALUES.Address]}
+                        onChange={onChange}
+                      >
+                        <option value="" disabled>
+                          Select an office
                         </option>
-                      ))}
-                  </select>
+                        {offices.map((o) => (
+                          <option key={o.id} value={o.address.fullAddressEn}>
+                            {o.address.fullAddressEn}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                 </div>
               )}
-            </div>
-          )}
-          {values[FORM_VALUES.DeliveryType] === "To Address" && (
-            <div className={styles["without-office"]}>
-              <div className={styles["form-group"]}>
-                <label htmlFor={FORM_VALUES.City}>City</label>
-                <select
-                  name={FORM_VALUES.City}
-                  id={FORM_VALUES.City}
-                  value={values[FORM_VALUES.City]}
-                  onChange={onChange}
-                >
-                  {cities?.length > 0 &&
-                    cities.map((c) => (
-                      <option key={c.id} value={c.id + "-" + c.nameEn}>
-                        {c.nameEn}
-                      </option>
-                    ))}
-                </select>
+              {!isOfficeDelivery && (
+                <div className={styles["fields"]}>
+                  {citySelect}
+                  <div className={styles["field"]}>
+                    <label htmlFor={FORM_VALUES.Address}>Street address</label>
+                    <input
+                      type="text"
+                      placeholder="ul. TSar Ivan Asen I №1"
+                      id={FORM_VALUES.Address}
+                      name={FORM_VALUES.Address}
+                      value={values[FORM_VALUES.Address]}
+                      onChange={onChange}
+                    />
+                  </div>
+                </div>
+              )}
+            </section>
+
+            <section className={styles["card"]}>
+              <h2>
+                <span className={styles["step"]}>3</span> Payment
+              </h2>
+              <div className={`${styles["option"]} ${styles["selected"]}`}>
+                <i className="fa-solid fa-money-bill" aria-hidden="true"></i>
+                <span>
+                  <strong>Onsite pay</strong>
+                  <small>Pay when you receive your order.</small>
+                </span>
               </div>
-              <div className={styles["form-group"]}>
-                <label htmlFor={FORM_VALUES.Address}>Address</label>
-                <input
-                  type="text"
-                  placeholder="ul. TSar Ivan Asen I №1"
-                  id={FORM_VALUES.Address}
-                  name={FORM_VALUES.Address}
-                  value={values[FORM_VALUES.Address]}
-                  onChange={onChange}
-                />
-              </div>
-            </div>
-          )}
-          <h5>Payment method</h5>
-          <p style={{ fontWeight: "bold" }}> - Onsite Pay</p>
-          <span style={{ fontStyle: "italic", marginTop: "0.65rem" }}>
-            Currently we offer only onsite payment***
-          </span>
-          <div className={styles["checkout-products"]}>
-            <h3>Products</h3>
-            {cart?.products.map((p) => {
-              return <ProductItem key={p.product._id} productInfo={p} />;
-            })}
+              <p className={styles["hint"]}>
+                Currently we offer only onsite payment.
+              </p>
+            </section>
           </div>
 
-          <h5>Total Price</h5>
-          <div className={styles["total-price"]}>
-            <p>${cart.totalPrice.toFixed(2)}</p>
-          </div>
-          <button type="submit">Finish Order</button>
+          <aside className={styles["summary"]} aria-label="Order summary">
+            <h2>Order summary</h2>
+            <div className={styles["summary-items"]}>
+              {cart?.products.map((p) => {
+                return <ProductItem key={p.product._id} productInfo={p} />;
+              })}
+            </div>
+            <dl className={styles["rows"]}>
+              <div>
+                <dt>
+                  Subtotal ({itemCount} {itemCount === 1 ? "item" : "items"})
+                </dt>
+                <dd>${cart.totalPrice.toFixed(2)}</dd>
+              </div>
+              <div>
+                <dt>Payment</dt>
+                <dd className={styles["muted"]}>On delivery</dd>
+              </div>
+              <div className={styles["total"]}>
+                <dt>Total</dt>
+                <dd>${cart.totalPrice.toFixed(2)}</dd>
+              </div>
+            </dl>
+            <button type="submit" className={styles["primary"]}>
+              Place order
+            </button>
+            <Link to={"/shopping-cart"} className={styles["secondary"]}>
+              Edit cart
+            </Link>
+          </aside>
         </form>
       )}
 

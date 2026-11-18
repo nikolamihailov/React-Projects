@@ -20,13 +20,12 @@
   box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.25);
 }
 
-/* Product photos are shot on white, so they sit on a white panel in both themes. */
+/* Transparent so cut-out PNGs sit directly on the card. */
 .media {
   display: grid;
   place-items: center;
   aspect-ratio: 1 / 1;
   padding: 1.25rem;
-  background-color: #fff;
   /* Keeps the square: a tall photo cannot stretch the box. */
   overflow: hidden;
 }

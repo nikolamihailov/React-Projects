@@ -5,6 +5,7 @@ import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import useTitle from "../../../hooks/useTitle";
 import { Link, useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../contexts/NotificationContext";
+import Spinner from "../../Spinner/Spinner";
 
 const ShoppingCart = ({ onClick }) => {
   useTitle("My Shopping Cart | KolPlace");
@@ -14,11 +15,11 @@ const ShoppingCart = ({ onClick }) => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    if (cart?.products.length === 0) {
+    if (cart?.isLoaded && cart.products.length === 0) {
       updateNotifs([{ text: "You have no items in the cart!", type: "error" }]);
       navigateTo("/");
     }
-  }, [cart?.products, updateNotifs, navigateTo]);
+  }, [cart?.isLoaded, cart?.products, updateNotifs, navigateTo]);
 
   const itemCount =
     cart?.products.reduce((count, p) => count + Number(p.quantity), 0) ?? 0;
@@ -35,7 +36,9 @@ const ShoppingCart = ({ onClick }) => {
         )}
       </div>
 
-      {cart.products.length === 0 ? (
+      {!cart.isLoaded ? (
+        <Spinner />
+      ) : cart.products.length === 0 ? (
         <div className={styles["empty"]}>
           <span className={styles["empty-icon"]} aria-hidden="true">
             <i className="fa-solid fa-cart-shopping"></i>

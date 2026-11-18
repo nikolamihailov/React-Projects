@@ -55,18 +55,22 @@ const Checkout = () => {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    if (cart?.products.length === 0) {
+    if (cart?.isLoaded && cart.products.length === 0) {
       updateNotifs([{ text: "You have no items in the cart!", type: "error" }]);
       navigateTo("/");
     }
     window.scroll(0, 0);
     getAllCities()
       .then((data) => {
-        setCities(data.cities);
-        setIsLoading(false);
+        setCities(data?.cities || []);
       })
-      .catch((err) => console.log(err));
-  }, [cart?.products, updateNotifs, navigateTo]);
+      .catch((err) => {
+        // Never leave checkout spinning if the courier lookup fails.
+        console.log(err);
+        updateNotifs([{ text: "Could not load delivery cities, please refresh the page.", type: "error" }]);
+      })
+      .finally(() => setIsLoading(false));
+  }, [cart?.isLoaded, cart?.products, updateNotifs, navigateTo]);
 
   const onChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -158,7 +162,7 @@ const Checkout = () => {
         <p>Choose how you would like to receive your order, then place it.</p>
       </div>
 
-      {isLoading ? (
+      {isLoading || !cart?.isLoaded ? (
         <div className={styles["loading"]}>
           <Spinner />
         </div>

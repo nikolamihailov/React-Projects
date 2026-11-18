@@ -36,12 +36,13 @@ const reducer = (state, action) => {
     case "REMOVE_CART_PRODUCT":
     case "CHANGE_PRODUCT_QUANTITY": {
       const products = availableProducts(action.products);
-      return { products, totalPrice: cartTotal(products) };
+      return { products, totalPrice: cartTotal(products), isLoaded: true };
     }
     case "EMPTY_CART":
       return {
         products: action.products,
         totalPrice: 0,
+        isLoaded: true,
       };
     default:
       return state;
@@ -54,9 +55,12 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const userShoppingCartId = auth.user?.shoppingCart;
 
+  // isLoaded stays false until the cart has come back from the server, so
+  // pages can tell "still loading" apart from "really empty".
   const [cart, dispatch] = useReducer(reducer, {
     products: [],
     totalPrice: 0,
+    isLoaded: false,
   });
 
   useEffect(() => {

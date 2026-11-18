@@ -1,8 +1,5 @@
 .searched-products-section {
   min-height: 100%;
-}
-.searched-products-section {
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +7,10 @@
   width: 90vw;
   margin: 0 auto;
   padding: 1.3rem;
+}
+
+.searched-products-section .search-icon {
+  margin-bottom: 2.5rem;
 }
 
 .searched-products-section .search-icon i {
@@ -21,21 +22,15 @@
   margin-bottom: 1.3rem;
 }
 
-.searched-products-section .products {
-  text-align: center;
-  width: 75vw;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .searched-products-section .no-products {
   margin-top: 6.3rem;
 }
 
 @media screen and (max-width: 44em) {
-  .searched-products-section .orders-icon i {
+  .searched-products-section .search-icon {
+    margin-bottom: 1.5rem;
+  }
+  .searched-products-section .search-icon i {
     font-size: 2.2rem;
   }
   .searched-products-section h1 {

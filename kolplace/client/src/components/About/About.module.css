@@ -15,7 +15,9 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  text-align: center;
 }
 
 /* Page heading: the story is the first thing on the page. */

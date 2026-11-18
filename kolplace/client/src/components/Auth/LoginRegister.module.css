@@ -213,8 +213,9 @@
 
 @media screen and (max-width: 31.5em) {
   .auth-page {
-    padding: 2rem 1.25rem 3rem;
-    align-items: flex-start;
+    padding: 2rem 1.25rem;
+    /* Centred in the space below the header; "safe" lets a long form grow instead of overflowing. */
+    align-items: safe center;
   }
 
   /* Phones: no box, the form simply uses the screen width. */

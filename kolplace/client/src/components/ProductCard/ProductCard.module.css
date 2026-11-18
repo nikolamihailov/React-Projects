@@ -133,15 +133,6 @@
   font-size: 0.85rem;
 }
 
-.stars-full {
-  display: inline-flex;
-}
-
-.star-compact {
-  display: none;
-  color: #f5a524;
-}
-
 .score {
   white-space: nowrap;
 }
@@ -225,12 +216,14 @@
     font-size: 0.85rem;
   }
 
-  .stars-full {
-    display: none;
+  /* Five smaller stars so the score still fits on one line. */
+  .rating {
+    gap: 0.3rem;
+    font-size: var(--text-xs);
   }
 
-  .star-compact {
-    display: inline;
+  .rating [role=img] {
+    font-size: 0.7rem;
   }
 
   .favourite {

@@ -51,11 +51,7 @@ const ProductCard = ({ className = "", ...product }) => {
         <div className={styles["rating"]}>
           {reviews.length > 0 ? (
             <>
-              <span className={styles["stars-full"]}>
-                <StarRating value={rating} />
-              </span>
-              {/* Narrow cards: one star instead of five so the score fits on one line. */}
-              <i className={`fa-solid fa-star ${styles["star-compact"]}`} aria-hidden="true"></i>
+              <StarRating value={rating} />
               <span className={styles["score"]}>
                 {rating.toFixed(1)} ({reviews.length})
               </span>

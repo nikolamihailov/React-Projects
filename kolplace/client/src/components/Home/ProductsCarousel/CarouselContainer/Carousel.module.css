@@ -78,6 +78,11 @@
   .carousel-products {
     width: 90vw;
   }
+  /* Phones and tablets: smaller cards, about two visible at once. */
+  .carousel-products .products {
+    grid-auto-columns: 10.5rem;
+    gap: 0.9rem;
+  }
   .carousel-products .category-name h2 {
     font-size: 1.6rem;
   }

@@ -1,0 +1,39 @@
+.text {
+  margin: 0;
+  max-width: 65ch;
+  line-height: 1.65;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  color: color-mix(in srgb, var(--primary-color) 85%, transparent);
+}
+
+.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.toggle {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.toggle i {
+  font-size: 0.75rem;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}

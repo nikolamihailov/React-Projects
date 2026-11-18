@@ -9,6 +9,14 @@ import useProductActions from "../../hooks/useProductActions";
 import ReviewsContainer from "./Reviews/ReviewsContainer/ReviewsContainer";
 import StarRating from "../StarRating/StarRating";
 import { averageRating } from "../../utils/rating";
+import ExpandableText from "../ExpandableText/ExpandableText";
+
+// The same promises the home page makes (ShopFeatures), repeated where people decide to buy.
+const PERKS = [
+  { icon: "fa-truck-fast", text: "Fast shipping" },
+  { icon: "fa-rotate-left", text: "Money back guarantee" },
+  { icon: "fa-headset", text: "24/7 customer support" },
+];
 
 const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
@@ -126,11 +134,19 @@ const ProductDetails = () => {
                 {favourite ? "In favourites" : "Add to favourites"}
               </button>
             </div>
+            <ul className={styles["perks"]}>
+              {PERKS.map((perk) => (
+                <li key={perk.text}>
+                  <i className={`fa-solid ${perk.icon}`} aria-hidden="true"></i>
+                  {perk.text}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className={styles["description"]}>
             <h2>Description</h2>
-            <p>{product.description}</p>
+            <ExpandableText>{product.description}</ExpandableText>
           </div>
         </div>
       </div>

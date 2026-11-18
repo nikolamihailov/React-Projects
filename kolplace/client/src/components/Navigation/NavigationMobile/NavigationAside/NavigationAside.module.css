@@ -1,96 +1,152 @@
-.side-menu-mobile {
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background-color: rgba(0, 0, 0, 0.55);
+  animation: fade-in 0.2s ease-out;
+}
+
+.drawer {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 33vw;
-  background-color: var(--background-color);
-  z-index: 9999;
-  padding: 0.95rem 0.3rem;
-  border-right: 4px solid var(--brand);
-  animation: slideIn 0.1s ease-in-out;
+  bottom: 0;
+  z-index: 61;
+  width: min(85vw, 20rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border-right: 3px solid var(--brand);
+  box-shadow: 0.5rem 0 2rem rgba(0, 0, 0, 0.35);
+  animation: slide-in 0.22s ease-out;
 }
 
-.side-menu-mobile i:nth-child(1) {
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.head a {
+  display: inline-flex;
+}
+
+.close {
+  all: unset;
   cursor: pointer;
-  position: absolute;
-  top: 1.3rem;
-  right: 1.3rem;
-  font-size: 1.6rem;
-  font-weight: bold;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.close:hover {
+  background-color: var(--surface-strong);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
+}
+
+.links,
+.categories {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* Every row: links and the Categories / theme buttons look the same. */
+.link {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--radius-md);
+  color: var(--primary-color);
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link > i:first-child {
+  width: 1.25rem;
+  text-align: center;
   color: var(--secondary-color);
 }
 
-.main-nav {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: var(--background-inverted-color);
-  color: var(--background-color);
+.link:hover {
+  background-color: var(--surface-strong);
 }
 
-.categories-container {
-  flex: 1;
+.active {
+  background-color: color-mix(in srgb, var(--brand) 14%, transparent);
+  color: var(--secondary-color);
 }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
-}
-.links a {
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--background-color-inverted);
-  padding: 0.5rem;
-}
-.active-link li {
-  color: var(--secondary-on-inverted);
-}
-.links li {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--background-color-inverted);
-  padding: 0.3rem;
+.close:focus-visible,
+.link:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
-.links a:hover {
-  color: var(--secondary-on-inverted);
+.chevron {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
-.side-menu-mobile button {
-  position: absolute;
-  height: 2.5rem;
-  width: 2.5rem;
-  top: 1.3rem;
-  left: 1.3rem;
+.categories {
+  margin: 0.25rem 0 0.5rem 1rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border);
 }
 
-.side-menu-mobile button i {
-  margin-top: -0.95rem;
+.categories .link {
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
 }
 
-@media screen and (max-width: 59.5em) {
-  .side-menu-mobile {
-    width: 85vw;
+.categories img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.foot {
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
   }
 }
 
-@media screen and (max-width: 25em) {
-  .side-menu-mobile {
-    width: 90vw;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .scrim {
+    animation: none;
   }
 }

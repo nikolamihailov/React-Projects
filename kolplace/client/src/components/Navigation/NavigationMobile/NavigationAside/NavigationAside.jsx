@@ -1,77 +1,106 @@
-import { NavLink } from "react-router-dom";
-import styles from "../NavigationAside/NavigationAside.module.css";
-import { useEffect, useState } from "react";
-
+import { Link, NavLink } from "react-router-dom";
+import { createPortal } from "react-dom";
+import { useContext, useEffect, useState } from "react";
+import styles from "./NavigationAside.module.css";
 import { getAll } from "../../../../data/services/categoryService";
-import CategoriesDropdownMobile from "../../Categories/CategoriesDropdownMobile/CategoriesDropdownMobile";
-import { useShowHide } from "../../../../hooks/useShowHide";
-import ThemeButtonMobile from "../../../ThemeToggler/ThemeButtonMobile/ThemeButtonMobile";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
+import Logo from "../../Logo/Logo";
 
+const LINKS = [
+  { to: "/promotions", label: "Promotions", icon: "fa-tags" },
+  { to: "/about-us", label: "About us", icon: "fa-circle-info" },
+  { to: "/our-stores", label: "Our stores", icon: "fa-store" },
+];
+
+// Mobile side menu: a drawer from the left with the main links, the
+// categories (expandable) and the theme switch.
 const NavigationAside = ({ onClose }) => {
   const [categories, setCategories] = useState([]);
-  const { isOpen, showHide } = useShowHide();
+  const [showCategories, setShowCategories] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     getAll()
-      .then((data) => {
-        setCategories(data);
-      })
+      .then((data) => Array.isArray(data) && setCategories(data))
       .catch((err) => console.log(err));
   }, []);
 
-  return (
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    // Keep the page behind from scrolling while the drawer is open.
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  const linkClass = ({ isActive }) => `${styles["link"]} ${isActive ? styles["active"] : ""}`;
+
+  return createPortal(
     <>
-      <div className="backdrop" onClick={onClose}></div>
-      <aside className={styles["side-menu-mobile"]}>
-        <i className="fa-solid fa-x" onClick={onClose}></i>
-        <ThemeButtonMobile />
-        <ul className={styles["links"]}>
-          <NavLink
-            to="/promotions"
-            onClick={onClose}
-            className={({ isActive, isPending }) =>
-              isPending
-                ? styles["pending"]
-                : isActive
-                ? styles["active-link"]
-                : ""
-            }
-          >
-            <li>Promotions</li>
-          </NavLink>
-          <NavLink
-            to="/about-us"
-            onClick={onClose}
-            className={({ isActive, isPending }) =>
-              isPending
-                ? styles["pending"]
-                : isActive
-                ? styles["active-link"]
-                : ""
-            }
-          >
-            <li>About Us</li>
-          </NavLink>
-          <NavLink
-            to="/our-stores"
-            onClick={onClose}
-            className={({ isActive, isPending }) =>
-              isPending
-                ? styles["pending"]
-                : isActive
-                ? styles["active-link"]
-                : ""
-            }
-          >
-            <li>Our Stores</li>
-          </NavLink>
-          <li onClick={showHide}>Categories</li>
-        </ul>
-        {isOpen && (
-          <CategoriesDropdownMobile categories={categories} onClose={onClose} />
-        )}
+      <div className={styles["scrim"]} onClick={onClose} aria-hidden="true"></div>
+      <aside className={styles["drawer"]} aria-label="Menu">
+        <div className={styles["head"]}>
+          <Link to="/" onClick={onClose} aria-label="KolPlace home">
+            <Logo />
+          </Link>
+          <button type="button" className={styles["close"]} onClick={onClose} aria-label="Close menu" autoFocus>
+            <i className="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <nav className={styles["body"]}>
+          <ul className={styles["links"]}>
+            {LINKS.map((l) => (
+              <li key={l.to}>
+                <NavLink to={l.to} onClick={onClose} className={linkClass}>
+                  <i className={`fa-solid ${l.icon}`} aria-hidden="true"></i>
+                  {l.label}
+                </NavLink>
+              </li>
+            ))}
+            <li>
+              <button
+                type="button"
+                className={styles["link"]}
+                onClick={() => setShowCategories((v) => !v)}
+                aria-expanded={showCategories}
+              >
+                <i className="fa-solid fa-list" aria-hidden="true"></i>
+                Categories
+                <i
+                  className={`fa-solid fa-chevron-${showCategories ? "up" : "down"} ${styles["chevron"]}`}
+                  aria-hidden="true"
+                ></i>
+              </button>
+              {showCategories && (
+                <ul className={styles["categories"]}>
+                  {categories.map((c) => (
+                    <li key={c._id}>
+                      <NavLink to={`/categories/${c.name.toLowerCase()}`} onClick={onClose} className={linkClass}>
+                        <img src={c.categoryImage} alt="" />
+                        {c.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
+
+        <div className={styles["foot"]}>
+          <button type="button" className={styles["link"]} onClick={toggleTheme}>
+            <i className={`fa-solid ${theme === "dark" ? "fa-sun" : "fa-moon"}`} aria-hidden="true"></i>
+            {theme === "dark" ? "Light theme" : "Dark theme"}
+          </button>
+        </div>
       </aside>
-    </>
+    </>,
+    document.querySelector(".app") || document.body
   );
 };
 

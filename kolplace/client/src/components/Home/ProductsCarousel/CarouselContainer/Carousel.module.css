@@ -54,30 +54,30 @@
   font-weight: bold;
 }
 
+/* One row of cards: they share the width when there is room and scroll
+   sideways (snapping to each card) when there is not. */
 .carousel-products .products {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(13.5rem, 1fr);
+  gap: 1.25rem;
   width: 100%;
+  padding: 0.5rem 0.25rem 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.carousel-products .card {
+  scroll-snap-align: start;
 }
 
 @media screen and (max-width: 75em) {
   .carousel-products {
     width: 90vw;
   }
-  .carousel-products .products::-webkit-scrollbar {
-    display: none;
-  }
   .carousel-products .category-name h2 {
     font-size: 1.6rem;
   }
 
-  .carousel-products .products {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .carousel-products .products {
-    overflow-x: scroll;
-    justify-content: flex-start;
-  }
 }

@@ -1,0 +1,14 @@
+.stars {
+  display: inline-flex;
+  gap: 0.1rem;
+  color: #f5a524;
+  line-height: 1;
+}
+
+.sm {
+  font-size: 0.85rem;
+}
+
+.lg {
+  font-size: 1.1rem;
+}

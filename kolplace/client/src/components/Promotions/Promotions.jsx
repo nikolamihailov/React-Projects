@@ -6,8 +6,8 @@ import styles from "./Promotions.module.css";
 import Pagination from "../Pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
 import FilterProductsByCategory from "../Filters/UserFilters/FilterProductsByCategory";
-import ProductItem from "../Category/ProductItem/ProductItem";
-import { motion, AnimatePresence } from "framer-motion";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductGrid from "../ProductCard/ProductGrid";
 import FilterProductsBySort from "../Filters/UserFilters/FilterProductsBySort";
 import promotionsBanner from "../../assets/promotions-banner.png";
 
@@ -66,17 +66,15 @@ const Promotions = () => {
               <FilterProductsBySort onChange={onSortFilterChange} />
             )}
           </div>
-          <motion.div layout className={styles["products"]}>
-            <AnimatePresence>
+          <ProductGrid>
               {products.length > 0 ? (
                 products.map((p) => {
-                  return <ProductItem key={p._id} {...p} />;
+                  return <ProductCard key={p._id} {...p} />;
                 })
               ) : (
                 <h2>No products are on promotion from this category!</h2>
               )}
-            </AnimatePresence>
-          </motion.div>
+          </ProductGrid>
         </>
       )}
       <div className={styles["pagination"]}>

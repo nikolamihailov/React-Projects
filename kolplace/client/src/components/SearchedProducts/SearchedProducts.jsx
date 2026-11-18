@@ -2,8 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import styles from "./SearchedProducts.module.css";
 import { useEffect, useState } from "react";
 import { searchProducts } from "../../data/services/productService";
-import { motion, AnimatePresence } from "framer-motion";
-import ProductItem from "../Category/ProductItem/ProductItem";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductGrid from "../ProductCard/ProductGrid";
 import useTitle from "../../hooks/useTitle";
 import Spinner from "../Spinner/Spinner";
 
@@ -34,19 +34,17 @@ const SearchedProducts = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <motion.div layout className={styles["products"]}>
-          <AnimatePresence>
+        <ProductGrid>
             {products.length > 0 ? (
               products.map((p) => {
-                return <ProductItem key={p._id} {...p} />;
+                return <ProductCard key={p._id} {...p} />;
               })
             ) : (
               <h2 className={styles["no-products"]}>
                 No products matched the search!
               </h2>
             )}
-          </AnimatePresence>
-        </motion.div>
+        </ProductGrid>
       )}
     </section>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAll } from "../../../../data/services/productService";
 import { Link } from "react-router-dom";
-import CaroueselProductItem from "../CarouselItem/CarouselItem";
+import ProductCard from "../../../ProductCard/ProductCard";
 import styles from "./Carousel.module.css";
 
 const CarouselProducts = ({ category, items, title, id }) => {
@@ -49,7 +49,7 @@ const CarouselProducts = ({ category, items, title, id }) => {
           <div className={styles["products"]}>
             {products.length > 0 &&
               products.map((p) => {
-                return <CaroueselProductItem key={p._id} {...p} />;
+                return <ProductCard key={p._id} {...p} className={styles["card"]} />;
               })}
           </div>
         </>

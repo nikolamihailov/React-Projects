@@ -4,11 +4,11 @@ import { getOneCategoryByName } from "../../data/services/categoryService";
 import { NotifContext } from "../../contexts/NotificationContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { getAllWithFilters } from "../../data/services/productService";
-import ProductItem from "./ProductItem/ProductItem";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductGrid from "../ProductCard/ProductGrid";
 import useTitle from "../../hooks/useTitle";
 import styles from "./Category.module.css";
 import Spinner from "../Spinner/Spinner";
-import { motion, AnimatePresence } from "framer-motion";
 import FilterProductsBySort from "../Filters/UserFilters/FilterProductsBySort";
 import usePagination from "../../hooks/usePagination";
 import Pagination from "../Pagination/Pagination";
@@ -146,17 +146,15 @@ const Category = () => {
             )}
           </div>
 
-          <motion.div layout className={styles["products"]}>
-            <AnimatePresence>
+          <ProductGrid>
               {products.length > 0 ? (
                 products.map((p) => {
-                  return <ProductItem key={p._id} {...p} />;
+                  return <ProductCard key={p._id} {...p} />;
                 })
               ) : (
                 <h2>No products in this category!</h2>
               )}
-            </AnimatePresence>
-          </motion.div>
+          </ProductGrid>
         </>
       )}
       <div className={styles["pagination"]}>

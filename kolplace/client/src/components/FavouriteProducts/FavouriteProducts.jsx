@@ -1,16 +1,14 @@
 import { useContext, useEffect } from "react";
 import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
-import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FavouriteProducts.module.css";
-import FavouriteProductItem from "./FavouriteProductItem/FavouriteProductItem";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductGrid from "../ProductCard/ProductGrid";
 import useTitle from "../../hooks/useTitle";
 import favouritesBanner from "../../assets/favourites.png";
 
 const FavouriteProducts = () => {
   useTitle("Favourite Products | KolPlace");
-  const { favProducts, removeProductFromFavouritesList } = useContext(
-    FavouriteProductsContext
-  );
+  const { favProducts } = useContext(FavouriteProductsContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,25 +34,20 @@ const FavouriteProducts = () => {
           </p>
         </div>
       </div>
-      <motion.div layout className={styles["products"]}>
-        <AnimatePresence>
+      <ProductGrid>
           {favProducts.favouriteProducts.length > 0 ? (
             favProducts.favouriteProducts.map((p) => {
               return (
-                <FavouriteProductItem
+                <ProductCard
                   key={p._id}
                   {...p}
-                  removeProductFromFavouritesList={
-                    removeProductFromFavouritesList
-                  }
                 />
               );
             })
           ) : (
             <h2>You have no favourite products!</h2>
           )}
-        </AnimatePresence>
-      </motion.div>
+      </ProductGrid>
     </section>
   );
 };

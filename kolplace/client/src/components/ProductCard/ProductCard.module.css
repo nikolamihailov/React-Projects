@@ -1,0 +1,260 @@
+.card {
+  --card-surface: color-mix(in srgb, var(--background-inverted-color) 5%, var(--background-color));
+  --card-border: color-mix(in srgb, var(--background-inverted-color) 12%, transparent);
+  --muted: color-mix(in srgb, var(--primary-color) 65%, transparent);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  text-align: left;
+  background-color: var(--card-surface);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.25);
+}
+
+/* Product photos are shot on white, so they sit on a white panel in both themes. */
+.media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  padding: 1.25rem;
+  background-color: #fff;
+  /* Keeps the square: a tall photo cannot stretch the box. */
+  overflow: hidden;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .media img {
+  transform: scale(1.04);
+}
+
+.badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background-color: var(--promo-price-color);
+  color: var(--white-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.favourite {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #23272f;
+  font-size: 1rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.favourite:hover {
+  transform: scale(1.08);
+  color: var(--secondary-color);
+}
+
+.is-favourite {
+  color: var(--secondary-color);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.category {
+  align-self: flex-start;
+  color: var(--secondary-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.category:hover {
+  text-decoration: underline;
+}
+
+/* Two lines max, and always two lines tall so cards in a row line up. */
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  min-height: calc(2 * 1.35em);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.title a:hover {
+  color: var(--secondary-color);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stars-full {
+  display: inline-flex;
+}
+
+.star-compact {
+  display: none;
+  color: #f5a524;
+}
+
+.score {
+  white-space: nowrap;
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.4rem;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.current {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.old {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* A discounted price is shown in the sale colour. */
+.price:has(.old) .current {
+  color: var(--secondary-color);
+}
+
+.add {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 2.6rem;
+  border-radius: 0.6rem;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: filter 0.15s ease;
+}
+
+.add:hover {
+  filter: brightness(1.1);
+}
+
+.add:focus-visible,
+.favourite:focus-visible,
+.title a:focus-visible,
+.category:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Phones: cards sit two per row, so tighten everything a little. */
+@media screen and (max-width: 37.5em) {
+  .media {
+    padding: 0.75rem;
+  }
+
+  .body {
+    padding: 0.7rem 0.75rem 0.8rem;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .current {
+    font-size: 1.1rem;
+  }
+
+  .add {
+    height: 2.4rem;
+    font-size: 0.85rem;
+  }
+
+  .stars-full {
+    display: none;
+  }
+
+  .star-compact {
+    display: inline;
+  }
+
+  .favourite {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .media img,
+  .favourite {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .media img {
+    transform: none;
+  }
+}

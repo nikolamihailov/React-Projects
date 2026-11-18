@@ -1,65 +1,64 @@
 import { Link } from "react-router-dom";
 import styles from "./DropdownItem.module.css";
 
+const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
+
+// Wraps the first match of the searched term in a <mark>.
+const highlight = (name, term) => {
+  const index = term ? name.toLowerCase().indexOf(term.toLowerCase()) : -1;
+  if (index === -1) return name;
+  return (
+    <>
+      {name.slice(0, index)}
+      <mark className={styles["highlight"]}>
+        {name.slice(index, index + term.length)}
+      </mark>
+      {name.slice(index + term.length)}
+    </>
+  );
+};
+
 const DropdownItem = ({
   _id,
+  id,
   name,
   mainImage,
   price,
   hasPromoPrice,
   promoPrice,
   search,
+  isActive,
+  onHover,
   onClose,
 }) => {
-  const highlight = (name, searchedTerm) => {
-    if (name.toLowerCase().includes(searchedTerm.toLowerCase())) {
-      const index = name.toLowerCase().indexOf(searchedTerm.toLowerCase());
-      if (index === 0)
-        return (
-          <>
-            <span className={styles.highlight}>
-              {name.slice(index, index + searchedTerm.length)}
-            </span>
-            {name.slice(index + searchedTerm.length)}
-          </>
-        );
-      return (
-        <>
-          {name.slice(0, index)}
-          <span className={styles.highlight}>
-            {name.slice(index, index + searchedTerm.length)}
-          </span>
-          {name.slice(index + searchedTerm.length)}
-        </>
-      );
-    }
-    return name;
-  };
   return (
-    <div className={styles["dropdown-search-item"]}>
-      <Link to={`/products/${_id}`} onClick={onClose}>
-        {" "}
-        <img src={mainImage} alt="product-image" />
+    <li id={id} role="option" aria-selected={isActive}>
+      <Link
+        to={`/products/${_id}`}
+        onClick={onClose}
+        onMouseEnter={onHover}
+        className={`${styles["item"]} ${isActive ? styles["active"] : ""}`}
+      >
+        <span className={styles["thumb"]}>
+          <img src={mainImage} alt="" loading="lazy" />
+        </span>
+        <span className={styles["name"]}>{highlight(name, search)}</span>
+        <span className={styles["prices"]}>
+          {hasPromoPrice ? (
+            <>
+              <span className={`${styles["current"]} ${styles["sale"]}`}>
+                {formatPrice(promoPrice)}
+              </span>
+              <s className={styles["old"]} aria-label={`was ${formatPrice(price)}`}>
+                {formatPrice(price)}
+              </s>
+            </>
+          ) : (
+            <span className={styles["current"]}>{formatPrice(price)}</span>
+          )}
+        </span>
       </Link>
-      <Link to={`/products/${_id}`} onClick={onClose}>
-        {" "}
-        <h3>{highlight(name, search)}</h3>
-      </Link>
-      <div className={styles["prices"]}>
-        <p
-          style={
-            hasPromoPrice
-              ? { textDecoration: "line-through", fontSize: "0.95rem" }
-              : { textDecoration: "none" }
-          }
-        >
-          ${price.toFixed(2)}
-        </p>
-        {hasPromoPrice && (
-          <p className={styles["promo-price"]}>${promoPrice.toFixed(2)}</p>
-        )}
-      </div>
-    </div>
+    </li>
   );
 };
 

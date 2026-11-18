@@ -1,40 +1,83 @@
 .error-section {
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem 4rem;
   color: var(--primary-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, 34rem);
   text-align: center;
-  padding: 1.3rem;
 }
 
-.error-section h2 {
-  font-size: 2.2rem;
-}
-
-.error-section p {
-  font-size: 1.3rem;
-}
-
-.error-section img {
-  height: 40vh;
-  max-width: 100%;
+.image {
+  width: min(100%, 16rem);
+  max-height: 32vh;
+  margin-bottom: 1rem;
   object-fit: contain;
 }
 
-.error-section span {
+.eyebrow {
+  margin: 0;
   color: var(--secondary-color);
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.error-section a {
-  text-decoration: none;
-  color: var(--white-color);
-  padding: 0.65rem 0.95rem;
+.title {
+  margin: 0;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.text {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  margin-top: 0.75rem;
+  padding: 0 1.5rem;
+  border-radius: var(--radius-md);
   background-color: var(--brand);
-  font-size: 1.2rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
+  color: var(--white-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 37.5em) {
+  .error-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .image {
+    width: min(100%, 12rem);
+  }
 }

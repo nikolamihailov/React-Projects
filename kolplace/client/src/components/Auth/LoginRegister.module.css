@@ -2,8 +2,9 @@
   width: 100%;
   /* Fill most of the screen so the card sits clear of the header and footer,
      like its own page instead of a box squeezed between them. */
-  min-height: 70vh;
-  min-height: 70dvh;
+  /* Exactly the screen below the header, so the footer stays below the fold. */
+  min-height: calc(100vh - var(--header-h, 10rem));
+  min-height: calc(100svh - var(--header-h, 10rem));
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -212,7 +213,6 @@
 
 @media screen and (max-width: 31.5em) {
   .auth-page {
-    min-height: 0;
     padding: 2rem 1.25rem 3rem;
     align-items: flex-start;
   }

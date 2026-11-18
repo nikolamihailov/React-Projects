@@ -1,146 +1,189 @@
 .add-review {
-  margin-top: 0;
-  background-color: var(--background-color);
-  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
-  color: var(--background-color);
-  padding: 1.3rem 1.6rem;
-  background: var(--background-inverted-color);
-  border-radius: 1.3rem;
+  --surface: color-mix(in srgb, var(--background-inverted-color) 5%, var(--background-color));
+  --field-bg: color-mix(in srgb, var(--background-inverted-color) 7%, var(--background-color));
+  --border: color-mix(in srgb, var(--background-inverted-color) 14%, transparent);
+  --muted: color-mix(in srgb, var(--primary-color) 65%, transparent);
+
+  width: min(100%, 48rem);
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 50%;
-  position: relative;
-  margin-bottom: 3.1rem;
+  gap: 1.25rem;
+  text-align: left;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
 }
 
-.add-review i {
-  z-index: 7;
-  padding: 0.3rem;
+.add-review h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Star picker: radio buttons drawn as stars. */
+.rating {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.rating legend {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stars label {
+  position: relative;
   cursor: pointer;
-  font-size: 1.6rem;
-  color: var(--secondary-color);
+  font-size: 1.75rem;
+  color: #f5a524;
+  line-height: 1;
+  transition: transform 0.1s ease;
+}
+
+.stars label:hover {
+  transform: scale(1.12);
+}
+
+.stars input {
   position: absolute;
-  top: 0.95rem;
-  right: 0.95rem;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
 }
 
-.add-review label,
-.add-review input {
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.add-review .form-group {
-  width: 100%;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.add-review textarea {
-  color: var(--black-color);
-  font-size: 1.1rem;
-  padding: 0.95rem;
-  width: 80%;
-  height: 6.3rem;
-  border-radius: 0.95rem;
-  resize: none;
-}
-
-.add-review select {
-  padding: 0.75rem 0.95rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
+.stars label:has(input:focus-visible) {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
   border-radius: 0.25rem;
-  outline: none;
-  cursor: pointer;
-  border-radius: 0.95rem;
-  font-weight: bold;
-  width: 20%;
-  background-color: var(--background-color);
-  color: var(--background-inverted-color);
 }
 
-.add-review option {
-  background-color: var(--background-color);
-  color: var(--secondary-color);
-  font-size: 1.1rem;
-  font-weight: bold;
+.rating-label {
+  margin-left: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
-.add-review option:hover {
-  background-color: gray;
-}
-
-.errors-container {
-  position: absolute;
-  top: 9.4rem;
-  right: -3.1rem;
+.field {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.add-review .stars {
-  margin: 1.6rem;
+.field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 8rem;
+  resize: vertical;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background-color: var(--field-bg);
+  color: var(--primary-color);
+  font: inherit;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-.add-review .stars i {
-  position: static;
-  font-size: 1.6rem;
-  margin: 0.15rem;
-  color: #eba834;
+.field textarea:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 0;
+  border-color: transparent;
 }
 
-.add-review button {
+.counter {
+  align-self: flex-end;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.errors {
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: 0.75rem;
+  background-color: color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 45%, transparent);
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.primary,
+.secondary {
   all: unset;
   cursor: pointer;
-  color: var(--white-color);
-  padding: 0.65rem 0.95rem;
-  background-color: var(--brand);
-  font-size: 1.2rem;
-  border-radius: 0.65rem;
-  filter: drop-shadow(0 0 0.2rem var(--secondary-color));
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
 }
 
-@media screen and (max-width: 44em) {
+.primary {
+  background-color: var(--brand);
+  color: var(--white-color);
+}
+
+.primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  color: var(--primary-color);
+}
+
+.primary:not(:disabled):hover {
+  filter: brightness(1.1);
+}
+
+.secondary:hover {
+  background-color: var(--field-bg);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 31.5em) {
   .add-review {
-    padding: 0.65rem 0.95rem;
-    width: 88%;
+    padding: 1.25rem;
   }
 
-  .add-review i {
-    font-size: 0.95rem;
-  }
-  .add-review textarea {
-    color: var(--black-color);
-    font-size: 0.9rem;
-    padding: 0.75rem;
+  .actions {
+    flex-direction: column-reverse;
   }
 
-  .add-review select {
-    padding: 0.4rem 0.5rem;
-    font-size: 0.95rem;
-    width: 50%;
+  .primary,
+  .secondary {
+    width: 100%;
   }
+}
 
-  .add-review option {
-    font-size: 0.9rem;
-  }
-
-  .add-review .stars {
-    margin: 0.95rem;
-  }
-
-  .add-review .stars i {
-    font-size: 1.1rem;
-  }
-
-  .add-review button {
-    padding: 0.3rem 0.45rem;
-    font-size: 0.95rem;
+@media (prefers-reduced-motion: reduce) {
+  .stars label {
+    transition: none;
   }
 }

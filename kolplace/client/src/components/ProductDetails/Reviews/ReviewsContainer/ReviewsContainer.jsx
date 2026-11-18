@@ -11,12 +11,17 @@ const ReviewsContainer = ({ productId, reviews, updateProduct }) => {
         <h3>Reviews</h3>
         <span></span>
       </div>
-      <span className={styles["want-to-add-review"]}>
-        You have something to say?
-      </span>
-      <button onClick={showHide} className={styles["add"]}>
-        Add Review
-      </button>
+      {/* The prompt makes way for the form while it is open. */}
+      {!isOpen && (
+        <>
+          <span className={styles["want-to-add-review"]}>
+            You have something to say?
+          </span>
+          <button onClick={showHide} className={styles["add"]}>
+            Add Review
+          </button>
+        </>
+      )}
       {isOpen && (
         <AddReview
           onClose={showHide}

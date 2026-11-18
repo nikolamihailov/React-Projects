@@ -1,116 +1,126 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AddReview.module.css";
 import { createReview } from "../../../../data/services/reviewService";
-import { AuthContext } from "../../../../contexts/AuthContext";
 import { addReview } from "../../../../data/services/productService";
-import Notification from "../../../Notifications/Notification";
-import { v4 as uuidv4 } from "uuid";
+import { AuthContext } from "../../../../contexts/AuthContext";
 import { NotifContext } from "../../../../contexts/NotificationContext";
-import { useNavigate } from "react-router-dom";
 
-const FORM_VALUES = {
-  Text: "text",
-  Rating: "rating",
-};
-let stars;
+const RATING_LABELS = ["Poor", "Fair", "Good", "Very good", "Excellent"];
 
 const AddReview = ({ productId, reviews, onClose, updateProduct }) => {
-  const [values, setValues] = useState({
-    [FORM_VALUES.Text]: "",
-    [FORM_VALUES.Rating]: 1,
-  });
+  const [text, setText] = useState("");
+  const [rating, setRating] = useState(0);
+  const [hovered, setHovered] = useState(0);
   const [errors, setErrors] = useState([]);
-  const { auth, isAuthenticated } = useContext(AuthContext);
+  const [isSaving, setIsSaving] = useState(false);
+  const { auth, isAuthenticated, updateAuth } = useContext(AuthContext);
   const { updateNotifs } = useContext(NotifContext);
   const navigateTo = useNavigate();
-
-  stars = Array.from({ length: values[FORM_VALUES.Rating] }, (_, index) => (
-    <i key={index} className="fa-solid fa-star"></i>
-  ));
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setErrors([]);
-    setValues((state) => ({ ...state, [name]: value }));
-  };
+  const shown = hovered || rating;
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (isAuthenticated) {
-      const body = {
-        text: values.text,
-        rating: Number(values.rating),
-        author: auth.user?._id,
-        product: productId,
-      };
-      const hasAddedReview = reviews.find(
-        (r) => r.author._id === auth.user?._id
-      );
-      if (hasAddedReview) {
-        setErrors(["You have already written a review on this product!"]);
-        return;
-      }
-      const review = await createReview(body);
-      if (review.errors) {
-        setErrors(Object.values(review.errors));
-      } else {
-        const updatedProduct = await addReview(productId, {
-          reviewId: review._id,
-        });
-        updateProduct(updatedProduct);
-        updateNotifs([
-          { text: "Your review has been added!", type: "success" },
-        ]);
-        onClose();
-      }
-    } else {
-      updateNotifs([
-        { text: "You need to be signed in to add review!", type: "error" },
-      ]);
+    if (!isAuthenticated) {
+      updateNotifs([{ text: "You need to be signed in to add review!", type: "error" }]);
       navigateTo("/login");
+      return;
     }
+    const missing = [];
+    if (!rating) missing.push("Please choose a rating.");
+    if (!text.trim()) missing.push("Please write a few words about the product.");
+    if (missing.length) return setErrors(missing);
+    if (reviews.some((r) => r.author?._id === auth.user?._id)) {
+      return setErrors(["You have already written a review on this product!"]);
+    }
+
+    setIsSaving(true);
+    const review = await createReview({
+      text: text.trim(),
+      rating,
+      author: auth.user?._id,
+      product: productId,
+    });
+    if (review.expMessage) {
+      setIsSaving(false);
+      updateNotifs([{ text: review.expMessage, type: "error" }]);
+      updateAuth({});
+      navigateTo("/login");
+      return;
+    }
+    if (review.errors) {
+      setIsSaving(false);
+      setErrors(Object.values(review.errors));
+      return;
+    }
+    const updatedProduct = await addReview(productId, { reviewId: review._id });
+    setIsSaving(false);
+    updateProduct(updatedProduct);
+    updateNotifs([{ text: "Your review has been added!", type: "success" }]);
+    onClose();
   };
 
   return (
-    <>
-      {/* <div className="backdrop" onClick={onClose}></div> */}
-      <form className={styles["add-review"]} onSubmit={onSubmit}>
-        <i className="fa-solid fa-x" onClick={onClose}></i>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.Text}>Review</label>
-          <textarea
-            type="text"
-            name={FORM_VALUES.Text}
-            id={FORM_VALUES.Text}
-            placeholder="Awesome product, I really like it :)!"
-            onChange={onChange}
-          ></textarea>
-        </div>
-        <div className={styles["form-group"]}>
-          <label htmlFor={FORM_VALUES.Rating}>Rating</label>
-          <select
-            name={FORM_VALUES.Rating}
-            id={FORM_VALUES.Rating}
-            onChange={onChange}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <div className={styles["stars"]}>{stars}</div>
-        <button type="submit">Add</button>
-      </form>
+    <form className={styles["add-review"]} onSubmit={onSubmit} noValidate>
+      <h3>Write a review</h3>
+
       {errors.length > 0 && (
-        <div className={styles["errors-container"]}>
-          {errors.map((e) => (
-            <Notification text={e} type={"error"} key={uuidv4()} />
+        <ul className={styles["errors"]} role="alert">
+          {errors.map((err) => (
+            <li key={err}>{err}</li>
           ))}
-        </div>
+        </ul>
       )}
-    </>
+
+      <fieldset className={styles["rating"]}>
+        <legend>Your rating</legend>
+        <div className={styles["stars"]} onMouseLeave={() => setHovered(0)}>
+          {[1, 2, 3, 4, 5].map((value) => (
+            <label key={value} onMouseEnter={() => setHovered(value)} title={RATING_LABELS[value - 1]}>
+              <input
+                type="radio"
+                name="rating"
+                value={value}
+                checked={rating === value}
+                onChange={() => {
+                  setRating(value);
+                  setErrors([]);
+                }}
+                aria-label={`${value} star${value > 1 ? "s" : ""} - ${RATING_LABELS[value - 1]}`}
+              />
+              <i className={`${value <= shown ? "fa-solid" : "fa-regular"} fa-star`} aria-hidden="true"></i>
+            </label>
+          ))}
+          <span className={styles["rating-label"]} aria-hidden="true">
+            {shown ? RATING_LABELS[shown - 1] : "Select a rating"}
+          </span>
+        </div>
+      </fieldset>
+
+      <label className={styles["field"]}>
+        Your review
+        <textarea
+          name="text"
+          value={text}
+          maxLength={1000}
+          placeholder="What did you like or dislike? How did you use it?"
+          onChange={(e) => {
+            setText(e.target.value);
+            setErrors([]);
+          }}
+        />
+        <span className={styles["counter"]}>{text.length}/1000</span>
+      </label>
+
+      <div className={styles["actions"]}>
+        <button type="button" className={styles["secondary"]} onClick={onClose}>
+          Cancel
+        </button>
+        <button type="submit" className={styles["primary"]} disabled={isSaving}>
+          {isSaving ? "Submitting..." : "Submit review"}
+        </button>
+      </div>
+    </form>
   );
 };
 

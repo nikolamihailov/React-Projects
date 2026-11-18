@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ShopFeatures.module.css";
 
@@ -12,7 +13,7 @@ const FEATURES = [
 const ShopFeaturesSection = () => (
   <section className={styles["shop-features"]} aria-label="Why shop with us">
     <ul className={styles["list"]}>
-      {FEATURES.map(({ icon, label, to }) => {
+      {FEATURES.map(({ icon, label, to }, idx) => {
         const content = (
           <>
             <span className={styles["icon"]} aria-hidden="true">
@@ -22,15 +23,18 @@ const ShopFeaturesSection = () => (
           </>
         );
         return (
-          <li key={label} className={styles["feature"]}>
-            {to ? (
-              <Link to={to} className={styles["link"]}>
-                {content}
-              </Link>
-            ) : (
-              <div className={styles["link"]}>{content}</div>
-            )}
-          </li>
+          <Fragment key={label}>
+            {idx > 0 && <li className={styles["slash"]} aria-hidden="true"></li>}
+            <li className={styles["feature"]}>
+              {to ? (
+                <Link to={to} className={styles["link"]}>
+                  {content}
+                </Link>
+              ) : (
+                <div className={styles["link"]}>{content}</div>
+              )}
+            </li>
+          </Fragment>
         );
       })}
     </ul>

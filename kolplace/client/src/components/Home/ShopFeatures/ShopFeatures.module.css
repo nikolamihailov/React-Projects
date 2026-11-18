@@ -7,22 +7,23 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: flex;
+  /* Top-aligned so the icons stay in one line even when a title wraps. */
+  align-items: flex-start;
 }
 
-/* Tilted brand-red slashes between items, as in the original design. */
 .feature {
-  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
-.feature + .feature::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 15%;
-  height: 70%;
+/* Tilted brand-red slashes in their own slot between items, as in the original design. */
+.slash {
+  flex: 0 0 auto;
   width: 0.15rem;
+  /* Sits level with the icons (5rem circles below 0.75rem padding), above the titles. */
+  height: 4rem;
+  margin: 1.25rem 0.75rem 0;
   background-color: var(--brand);
   transform: rotate(25deg);
 }
@@ -32,7 +33,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.25rem;
   text-align: center;
   color: var(--primary-color);
   text-decoration: none;
@@ -74,11 +75,12 @@ a.link:focus-visible {
 /* Tablets and phones: three, then two per row, without dividers. */
 @media screen and (max-width: 56.5em) {
   .list {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     row-gap: 1.25rem;
   }
 
-  .feature + .feature::before {
+  .slash {
     display: none;
   }
 }

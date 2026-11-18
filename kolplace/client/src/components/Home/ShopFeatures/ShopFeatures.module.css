@@ -83,26 +83,52 @@ a.link:focus-visible {
   .slash {
     display: none;
   }
-}
-
-@media screen and (max-width: 31.5em) {
-  .list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  /* An odd last item sits centred on its own row. */
-  .feature:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-  }
 
   .icon {
-    width: 3.75rem;
-    height: 3.75rem;
-    font-size: 1.6rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
   }
 
   .label {
     font-size: var(--text-md);
+  }
+}
+
+/* Phones: a compact two-column list with the icon beside the text. */
+@media screen and (max-width: 31.5em) {
+  .shop-features {
+    margin: 1.25rem auto 0.5rem;
+  }
+
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 0.75rem;
+  }
+
+  .link {
+    flex-direction: row;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    text-align: left;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1rem;
+  }
+
+  .label {
+    font-size: var(--text-sm);
+    line-height: 1.25;
+  }
+
+  /* An odd last item spans both columns, centred. */
+  .feature:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 }
 

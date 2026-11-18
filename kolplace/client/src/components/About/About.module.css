@@ -72,7 +72,7 @@
 }
 
 .store-popup .leaflet-popup-content-wrapper {
-  border-left: 0.3rem solid var(--secondary-color);
+  border-left: 0.3rem solid var(--brand);
 } */
 
 @media screen and (max-width: 44em) {

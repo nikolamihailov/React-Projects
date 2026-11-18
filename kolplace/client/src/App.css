@@ -2,20 +2,26 @@
   --background-color: whitesmoke;
   --background-inverted-color: #23272f;
   --primary-color: #23272f;
-  --secondary-color: rgb(237, 23, 3);
-  --dropshadow-color: rgb(203, 21, 21);
+  /* Brand crimson. --brand fills buttons and badges (white text on it passes
+     WCAG AA at 5.5:1). --secondary-color is the brand shade for text, icons
+     and focus rings, tuned per theme below so it stays readable. */
+  --brand: #c8283c;
+  --secondary-color: #c8283c;
+  /* Brand text on the inverted bars (dark bar in light mode, light bar in dark mode). */
+  --secondary-on-inverted: #f0606f;
+  --dropshadow-color: #c8283c;
   --top-nav-background-color: whitesmoke;
   --main-nav-background: rgb(20, 19, 19);
-  --main-nav-categories: rgb(237, 23, 3);
-  --footer-color: rgb(237, 23, 3);
+  --main-nav-categories: var(--brand);
+  --footer-color: var(--brand);
   --reset-btn-color: green;
-  --scrollbar-track: rgb(102, 0, 0);
+  --scrollbar-track: #5c1520;
   --notification-error-color: rgb(252, 103, 103);
   --notification-success-color: rgb(87, 222, 83);
   --notification-error-progress-color: rgb(213, 0, 0);
   --notification-success-progress-color: rgb(4, 106, 0);
   --product-category-background-color: green;
-  --promo-price-color: rgb(185, 0, 0);
+  --promo-price-color: #9f1d30;
   --edit-btn-color: rgb(34, 211, 34);
   --delete-btn-color: rgb(195, 0, 0);
   --white-color: whitesmoke;
@@ -33,7 +39,7 @@ body {
   margin: 0;
   padding: 0;
   /* For Firefox */
-  scrollbar-color: var(--secondary-color) var(--primary-color);
+  scrollbar-color: var(--brand) var(--primary-color);
   scrollbar-width: thin;
 }
 
@@ -57,7 +63,7 @@ body {
 
 *::-webkit-scrollbar-thumb {
   border-radius: 1.3rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
 }
 
 .light {
@@ -84,6 +90,9 @@ body {
   --background-inverted-color: whitesmoke;
   --primary-color: whitesmoke;
   --top-nav-background-color: #23272f;
+  /* Lighter crimson so brand-coloured text reads on the dark background (4.7:1). */
+  --secondary-color: #f0606f;
+  --secondary-on-inverted: #c8283c;
   color: var(--primary-color);
   background-color: var(--background-color);
 }
@@ -117,7 +126,7 @@ body {
 }
 
 .store-popup .leaflet-popup-content-wrapper {
-  border-left: 0.45rem solid var(--secondary-color);
+  border-left: 0.45rem solid var(--brand);
 }
 
 .leaflet-popup-content-wrapper #popup-con {

@@ -8,7 +8,7 @@
   align-items: center;
   z-index: 2;
   background-color: var(--top-nav-background-color);
-  border-bottom: 0.4rem solid var(--secondary-color);
+  border-bottom: 0.4rem solid var(--brand);
 }
 
 .top-nav-container {

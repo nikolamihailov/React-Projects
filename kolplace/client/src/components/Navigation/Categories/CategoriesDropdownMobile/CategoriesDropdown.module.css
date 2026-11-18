@@ -20,7 +20,7 @@
   justify-content: flex-start;
   align-items: center;
   padding-left: 10%;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--brand);
   z-index: 4;
 }
 .categories-dropdown a {

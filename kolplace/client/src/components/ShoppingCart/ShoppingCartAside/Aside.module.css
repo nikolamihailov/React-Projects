@@ -7,7 +7,7 @@
   background-color: var(--background-inverted-color);
   z-index: 9999;
   padding: 0.95rem 0.3rem;
-  border-left: 4px solid var(--secondary-color);
+  border-left: 4px solid var(--brand);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
 }
 
 .cart-aside .no-products p {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
   font-weight: bold;
   font-size: 1.4rem;
 }
@@ -42,7 +42,7 @@
 .cart-aside .no-products strong {
   margin-left: 0.65rem;
   font-size: 1.3rem;
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }
 
 .cart-aside .no-products img {
@@ -53,7 +53,7 @@
 
 .cart-aside div:nth-child(1) > i {
   cursor: pointer;
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
   position: absolute;
   top: 0.95rem;
   right: 0.95rem;
@@ -80,7 +80,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
   padding: 0.65rem;
   font-size: 1.2rem;

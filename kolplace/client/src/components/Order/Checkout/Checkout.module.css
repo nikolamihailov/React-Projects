@@ -12,7 +12,7 @@
   top: 1.6rem;
   left: 1.6rem;
   text-decoration: none;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
   font-size: 1.4rem;
   border-radius: 50%;
@@ -44,7 +44,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 0.4rem solid var(--secondary-color);
+  border: 0.4rem solid var(--brand);
 }
 
 .checkout-section label {
@@ -68,7 +68,7 @@
 
 .checkout-section option {
   background-color: var(--background-color);
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -118,7 +118,7 @@
   font-size: 1rem;
   border: none;
   padding: 0.65rem 0.95rem;
-  border-bottom: 3px solid var(--secondary-color);
+  border-bottom: 3px solid var(--brand);
   outline: none;
 }
 .checkout-section form button {
@@ -126,7 +126,7 @@
   cursor: pointer;
   color: var(--white-color);
   padding: 0.65rem 0.95rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   font-size: 1.2rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
@@ -167,7 +167,7 @@ input[type="radio"] + label::before {
 }
 
 input[type="radio"]:checked + label::before {
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
 }
 
 .checkout-section .total-price {

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.95rem;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--brand);
   transition: all 0.5s ease-in-out;
   border-radius: 0.3rem;
 }
@@ -14,7 +14,7 @@
   color: var(--white-color);
 }
 .dropdown-search-item span {
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
 }
 .dropdown-search-item a {

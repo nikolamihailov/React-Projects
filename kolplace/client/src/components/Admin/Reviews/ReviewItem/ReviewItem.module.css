@@ -53,7 +53,7 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   border-radius: 0.65rem;
   padding: 0.5rem 0.65rem;
   font-size: 1.1rem;

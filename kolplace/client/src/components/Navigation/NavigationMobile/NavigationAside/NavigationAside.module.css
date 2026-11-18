@@ -7,7 +7,7 @@
   background-color: var(--background-color);
   z-index: 9999;
   padding: 0.95rem 0.3rem;
-  border-right: 4px solid var(--secondary-color);
+  border-right: 4px solid var(--brand);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
   padding: 0.5rem;
 }
 .active-link li {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }
 .links li {
   cursor: pointer;
@@ -68,7 +68,7 @@
 }
 
 .links a:hover {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }
 
 .side-menu-mobile button {

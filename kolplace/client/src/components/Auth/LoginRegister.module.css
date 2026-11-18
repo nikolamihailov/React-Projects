@@ -96,7 +96,7 @@
   color: var(--white-color);
   font-weight: bold;
   border-radius: 0.95rem;
-  background: linear-gradient(to bottom right, var(--secondary-color), var(--black-color));
+  background: linear-gradient(to bottom right, var(--brand), var(--black-color));
 }
 
 .errors-container {

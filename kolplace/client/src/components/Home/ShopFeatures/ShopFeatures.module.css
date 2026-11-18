@@ -35,7 +35,7 @@
   margin: 0 1.6rem;
   height: 100%;
   width: 0.15rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   transform: rotate(40deg);
 }
 

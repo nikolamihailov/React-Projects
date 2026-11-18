@@ -17,7 +17,7 @@
   cursor: pointer;
   color: var(--white-color);
   padding: 0.65rem 0.95rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   font-size: 1.2rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
@@ -30,7 +30,7 @@
   margin: 0.95rem 0;
 }
 .order i {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
   font-size: 1.3rem;
   margin-right: 0.95rem;
 }

@@ -44,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 0.15rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
 }
 
 .carousel-products .carousel-products-heading > a {

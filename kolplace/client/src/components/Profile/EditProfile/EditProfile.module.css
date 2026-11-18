@@ -43,7 +43,7 @@
   cursor: pointer;
   color: var(--white-color);
   padding: 0.65rem 0.95rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   font-size: 1.2rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
@@ -67,7 +67,7 @@
   font-size: 1rem;
   border: none;
   padding: 0.65rem 0.95rem;
-  border-bottom: 3px solid var(--secondary-color);
+  border-bottom: 3px solid var(--brand);
 }
 
 .form-group:focus-within {

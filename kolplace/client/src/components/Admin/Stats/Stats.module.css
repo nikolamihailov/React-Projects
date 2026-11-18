@@ -145,7 +145,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 35%;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   margin: 1.3rem;
   font-weight: bold;
   border-radius: 1.3rem;

@@ -24,7 +24,7 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   border-radius: 0.65rem;
   padding: 0.5rem 0.65rem;
   font-size: 1.1rem;
@@ -33,7 +33,7 @@
 
 .admin-user-profile h3 {
   padding: 0.45rem 0.75rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   filter: drop-shadow(0 0 0.25rem var(--secondary-color));
   color: var(--white-color);
   border-radius: 1.3rem;

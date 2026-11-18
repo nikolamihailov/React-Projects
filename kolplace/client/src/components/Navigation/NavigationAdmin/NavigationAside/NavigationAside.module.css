@@ -10,7 +10,7 @@
   align-items: stretch;
   gap: 1.5rem;
   padding: 1.5rem 1rem;
-  border-right: 4px solid var(--secondary-color);
+  border-right: 4px solid var(--brand);
 }
 
 .scrim {

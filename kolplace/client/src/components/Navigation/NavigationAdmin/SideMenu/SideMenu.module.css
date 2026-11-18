@@ -38,7 +38,7 @@
 }
 
 .side-menu-links .active-link {
-  background-color: color-mix(in srgb, var(--secondary-color) 16%, transparent);
+  background-color: color-mix(in srgb, var(--brand) 16%, transparent);
 }
 
 .side-menu-links .active-link li {

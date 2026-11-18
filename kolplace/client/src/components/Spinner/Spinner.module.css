@@ -6,7 +6,7 @@
   width: 4.3rem;
   height: 4.3rem;
   border: 0.65rem solid;
-  border-color: var(--secondary-color) var(--background-inverted-color);
+  border-color: var(--brand) var(--background-inverted-color);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;

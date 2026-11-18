@@ -21,7 +21,7 @@
   background-color: var(--background-color);
   color: var(--primary-color);
   border: 1px solid var(--border);
-  border-top: 4px solid var(--secondary-color);
+  border-top: 4px solid var(--brand);
   border-radius: 0.9rem;
   box-shadow: 0 1.5rem 3.8rem rgba(0, 0, 0, 0.45);
   outline: none;
@@ -132,7 +132,7 @@
 }
 
 .primary {
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
 }
 

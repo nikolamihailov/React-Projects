@@ -37,7 +37,7 @@
   right: 0.15rem;
   font-size: 0.8rem;
   background-color: var(--background-inverted-color);
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }
 
 .dropdown-container {

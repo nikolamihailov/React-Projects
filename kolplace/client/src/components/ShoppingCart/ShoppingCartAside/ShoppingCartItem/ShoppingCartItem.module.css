@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--brand);
 }
 .cart-item a {
   color: var(--background-color);
@@ -29,7 +29,7 @@
 .cart-item input {
   width: 3.1rem;
   font-weight: bold;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
   font-size: 1rem;
   padding: 0.2rem;
@@ -55,7 +55,7 @@
   height: 1.3rem;
   font-size: 0.9rem;
   margin: 0 0.25rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
 }
 
@@ -90,7 +90,7 @@
     height: 1.3rem;
     font-size: 0.9rem;
     margin: 0 0.25rem;
-    background-color: var(--secondary-color);
+    background-color: var(--brand);
     color: var(--white-color);
   }
 }

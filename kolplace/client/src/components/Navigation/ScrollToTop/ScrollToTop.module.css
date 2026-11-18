@@ -13,7 +13,7 @@
   display: grid;
   place-items: center;
   font-size: 1.6rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
   font-weight: bold;
   border: none;

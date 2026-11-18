@@ -28,9 +28,9 @@
   padding: 0.95rem;
 }
 .active-link li {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }
 
 .links a:hover {
-  color: var(--secondary-color);
+  color: var(--secondary-on-inverted);
 }

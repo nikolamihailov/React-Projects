@@ -8,7 +8,7 @@
   cursor: pointer;
   color: var(--white-color);
   padding: 0.65rem 0.95rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   font-size: 1.2rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
@@ -18,7 +18,8 @@
 
 .pagination button:disabled {
   cursor: not-allowed;
-  background-color: rgb(245, 130, 130);
+  background-color: var(--brand);
+  opacity: 0.45;
 }
 
 .pagination .page-active {

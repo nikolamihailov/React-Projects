@@ -11,7 +11,7 @@
   cursor: pointer;
   color: var(--white-color);
   padding: 0.5rem 0.75rem;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   font-size: 1.1rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));

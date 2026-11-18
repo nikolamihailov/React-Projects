@@ -112,7 +112,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
   color: var(--white-color);
   padding: 0.95rem 1.3rem;
   font-size: 1.2rem;

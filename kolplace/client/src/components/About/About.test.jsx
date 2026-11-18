@@ -6,7 +6,7 @@ describe("About Component", () => {
   it("renders the About component", () => {
     render(<About />);
 
-    const headingElement = screen.getByRole("heading", { name: /about us/i });
+    const headingElement = screen.getByRole("heading", { name: /our story/i });
     expect(headingElement).toBeInTheDocument();
 
     const emailLink = screen.getByRole("link", {

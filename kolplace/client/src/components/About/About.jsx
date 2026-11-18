@@ -25,16 +25,8 @@ const About = () => {
 
   return (
     <section className={styles["about"]}>
-      <div className={styles["intro"]}>
-        <h1>About us</h1>
-        <p>
-          Welcome to KolPlace, where the joy extends beyond just selecting your
-          latest acquisition.
-        </p>
-      </div>
-
       <div className={styles["story"]}>
-        <h2>Our story</h2>
+        <h1>Our story</h1>
         <p>
           We invite you to indulge in an experience that transforms your
           personal time into precious moments. At KolPlace, we believe in making

@@ -42,9 +42,3 @@
   }
 }
 
-.outro {
-  max-width: 60ch;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--muted);
-}

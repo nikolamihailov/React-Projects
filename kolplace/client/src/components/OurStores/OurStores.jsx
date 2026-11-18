@@ -47,12 +47,6 @@ const OurStores = () => {
             ))}
         </AnimatePresence>
       </ul>
-      <p className={styles["outro"]}>
-        Whether you&apos;re a tech enthusiast, a fashionista, or a bookworm,
-        KolPlace stores are designed to elevate your shopping experience. Join
-        us and indulge in a one-stop-shop where variety meets convenience, and
-        your satisfaction is our top priority.
-      </p>
       {isBigMapOpen && <StoreMap id={selectedStore} onClose={onClose} />}
     </section>
   );

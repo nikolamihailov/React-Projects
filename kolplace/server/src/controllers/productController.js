@@ -3,6 +3,7 @@ const { isAdmin } = require("../middlewares/isAdmin");
 const { trimBody } = require("../middlewares/trimBody");
 const { isAuthenticated } = require("../middlewares/isAuthenticated");
 const productService = require("../services/productService");
+const { parsePageSize } = require("../utils/pageSize");
 const { extractErrors } = require("../utils/errParse");
 const mongoose = require('mongoose');
 // let ITEMS_PER_PAGE = 8;
@@ -18,7 +19,7 @@ productController.get("/products", async (req, res) => {
                 const data = await productService.searchedProducts(searched);
                 return res.status(200).json(data);
             }
-            const data = await productService.getAllWithFilters(itemsPerPage, page, filter, category, onPromotion,);
+            const data = await productService.getAllWithFilters(parsePageSize(itemsPerPage, 12), page, filter, category, onPromotion);
             res.status(200).json(data);
         } else {
             const allProducts = await productService.getAllProducts();

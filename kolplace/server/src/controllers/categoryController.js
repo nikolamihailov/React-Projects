@@ -4,14 +4,15 @@ const { trimBody } = require("../middlewares/trimBody");
 const categoryService = require("../services/categoryService");
 const productService = require("../services/productService");
 const { extractErrors } = require("../utils/errParse");
+const { parsePageSize } = require("../utils/pageSize");
 const mongoose = require('mongoose');
 const ITEMS_PER_PAGE = 3;
 
 categoryController.get("/categories", async (req, res) => {
     try {
         if (Object.keys(req.query).length > 0) {
-            const { page, filter } = req.query;
-            const data = await categoryService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
+            const { page, filter, itemsPerPage } = req.query;
+            const data = await categoryService.getAllWithFilters(parsePageSize(itemsPerPage, ITEMS_PER_PAGE), page, filter);
             res.status(200).json(data);
         } else {
             const allCategories = await categoryService.getAllCategories();

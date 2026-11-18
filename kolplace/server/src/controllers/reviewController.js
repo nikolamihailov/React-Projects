@@ -4,13 +4,14 @@ const { trimBody } = require("../middlewares/trimBody");
 const { isAdmin } = require("../middlewares/isAdmin");
 const reviewService = require("../services/reviewService");
 const { extractErrors } = require("../utils/errParse");
+const { parsePageSize } = require("../utils/pageSize");
 
 const ITEMS_PER_PAGE = 6;
 
 reviewController.get("/reviews", isAdmin, async (req, res) => {
     try {
-        const { page, filter } = req.query;
-        const data = await reviewService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
+        const { page, filter, itemsPerPage } = req.query;
+        const data = await reviewService.getAllWithFilters(parsePageSize(itemsPerPage, ITEMS_PER_PAGE), page, filter);
         res.status(200).json(data);
 
     } catch (error) {

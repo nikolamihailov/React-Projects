@@ -4,6 +4,7 @@ const { trimBody } = require("../middlewares/trimBody");
 const { isAuthenticated } = require("../middlewares/isAuthenticated");
 const { isAdmin } = require("../middlewares/isAdmin");
 const { extractErrors } = require("../utils/errParse");
+const { parsePageSize } = require("../utils/pageSize");
 const ITEMS_PER_PAGE = 6;
 
 userController.post("/login", trimBody, async (req, res) => {
@@ -55,8 +56,8 @@ userController.get("/", isAdmin, async (req, res) => {
             return res.status(401).json({ expMessage: "Your session has expired, you have to login again!" });
         }
         if (Object.keys(req.query).length > 0) {
-            const { page, filter } = req.query;
-            const data = await userService.getAllWithFilters(ITEMS_PER_PAGE, page, filter);
+            const { page, filter, itemsPerPage } = req.query;
+            const data = await userService.getAllWithFilters(parsePageSize(itemsPerPage, ITEMS_PER_PAGE), page, filter);
             res.status(200).json(data);
         } else {
             const userData = await userService.getAllUsers();

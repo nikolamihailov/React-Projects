@@ -5,6 +5,7 @@ import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import useTitle from "../../../hooks/useTitle";
 import { Link, useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../contexts/NotificationContext";
+import emptyCartImage from "../../../assets/emptyCart.png";
 
 const ShoppingCart = ({ onClick }) => {
   useTitle("My Shopping Cart | KolPlace");
@@ -30,7 +31,7 @@ const ShoppingCart = ({ onClick }) => {
         <div className={styles["cart-item-container"]}>
           {cart.products.length === 0 && (
             <div className={styles["no-products"]}>
-              <img src="/src/assets/emptyCart.png" alt="empty-cart" />
+              <img src={emptyCartImage} alt="empty-cart" />
               <p>Your cart is empty!</p>
               <span>
                 Please add something to make me happy!

@@ -2,13 +2,14 @@
   width: 100%;
   /* Fill most of the screen so the card sits clear of the header and footer,
      like its own page instead of a box squeezed between them. */
-  min-height: max(100%, 75vh);
-  min-height: max(100%, 75dvh);
+  min-height: 70vh;
+  min-height: 70dvh;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 5rem 1rem;
+  /* "safe": if the card is taller than the space, it grows the page instead of spilling onto the footer. */
+  align-items: safe center;
+  padding: 4rem 1rem;
   background-color: var(--background-color);
 }
 

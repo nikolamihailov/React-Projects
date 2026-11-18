@@ -21,9 +21,14 @@
   position: absolute;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.65rem 1.1rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
   background-color: var(--secondary-color);
-  font-size: 1.6rem;
   border-radius: 50%;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
   top: 50%;
@@ -37,9 +42,14 @@
   position: absolute;
   cursor: pointer;
   color: var(--white-color);
-  padding: 0.65rem 1.1rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
   background-color: var(--secondary-color);
-  font-size: 1.6rem;
   border-radius: 50%;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
   top: 50%;
@@ -50,14 +60,16 @@
 
 @media screen and (max-width: 44em) {
   .left-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 1.1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
     left: 0.25rem;
     filter: drop-shadow(0 0 0.15rem var(--secondary-color));
   }
   .right-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 1.1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
     right: 0.25rem;
     filter: drop-shadow(0 0 0.15rem var(--secondary-color));
   }

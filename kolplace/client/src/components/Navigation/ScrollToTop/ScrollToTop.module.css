@@ -3,14 +3,18 @@
 }
 
 .visible {
-  display: block;
   position: fixed;
   bottom: 6.3rem;
   left: 3.1rem;
-  padding: 0.65rem 0.95rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 1.7rem;
   font-weight: bold;
   border: none;
   border-radius: 50%;
@@ -23,7 +27,8 @@
   .visible {
     bottom: 6.3rem;
     left: 1.3rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 1.3rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.2rem;
   }
 }

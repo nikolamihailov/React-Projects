@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./EditProfile.module.css";
-import { convertToBase64 } from "../../../utils/convertToBase64";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { getProfile, updateProfile } from "../../../data/services/userService";
 import { v4 as uuidv4 } from "uuid";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import Notification from "../../Notifications/Notification";
-import imageCompression from "browser-image-compression";
+import ImageUpload from "../../ImageUpload/ImageUpload";
 import avatar from "../../../assets/avatar.png";
 import Spinner from "../../Spinner/Spinner";
 
@@ -20,6 +19,7 @@ const FORM_VALUES = {
 const EditProfile = ({ onClose, update }) => {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
   const [profile, setProfile] = useState({
     [FORM_VALUES.FirstName]: "",
     [FORM_VALUES.LastName]: "",
@@ -44,20 +44,13 @@ const EditProfile = ({ onClose, update }) => {
       .catch((err) => console.log(err));
   }, [auth.user?._id]);
 
-  const onChange = async (e) => {
-    if (e.target.name === "avatar") {
-      const file = e.target.files[0];
-      const compressedFile = await imageCompression(file, { maxSizeMB: 0.5 });
-      const result = await convertToBase64(compressedFile);
-      setProfile((state) => ({ ...state, [e.target.name]: result }));
-    } else {
-      setProfile((state) => ({ ...state, [e.target.name]: e.target.value }));
-    }
-    /*    const file = e.target.files[0];
-    console.log(file);
-    const result = await convertToBase64(file);
-    console.log(result);
-    setFile(result); */
+  const onChange = (e) => {
+    setProfile((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
+  const onAvatarChange = (name, url) => {
+    setProfile((state) => ({ ...state, [name]: url }));
+    setErrors([]);
   };
 
   const onSubmit = async (e) => {
@@ -83,26 +76,15 @@ const EditProfile = ({ onClose, update }) => {
         ) : (
           <>
             <div className={styles["form-group"]}>
-              <label
-                htmlFor={FORM_VALUES.Avatar}
-                style={{
-                  cursor: "pointer",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                Avatar (Max Size - 15MB)
-                <img
-                  src={profile.avatar || avatar}
-                  alt="avatar"
-                  accept=".jpeg, .png, .jpg"
-                />
-              </label>
-              <input
-                type="file"
-                onChange={onChange}
+              <ImageUpload
                 name={FORM_VALUES.Avatar}
-                id={FORM_VALUES.Avatar}
+                label="Avatar"
+                value={profile.avatar}
+                folder="avatars"
+                fallback={avatar}
+                alt="avatar"
+                onChange={onAvatarChange}
+                onBusyChange={setIsUploading}
               />
             </div>
             <div className={styles["form-group"]}>
@@ -139,7 +121,7 @@ const EditProfile = ({ onClose, update }) => {
               />
             </div>
 
-            <button>Edit</button>
+            <button disabled={isUploading}>{isUploading ? "Uploading image..." : "Edit"}</button>
           </>
         )}
       </form>

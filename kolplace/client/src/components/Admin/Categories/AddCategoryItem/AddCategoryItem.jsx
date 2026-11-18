@@ -6,6 +6,8 @@ import styles from "./AddCategory.module.css";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import Notification from "../../../Notifications/Notification";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import ImageUpload from "../../../ImageUpload/ImageUpload";
+import noImage from "../../../../assets/no-image.jpg";
 
 const FORM_VALUES = {
   Name: "name",
@@ -20,6 +22,7 @@ const AddCategoryItem = ({ onClose }) => {
 
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
@@ -29,17 +32,22 @@ const AddCategoryItem = ({ onClose }) => {
     setErrors([]);
   };
 
+  const onImageChange = (name, url) => {
+    setValues((state) => ({ ...state, [name]: url }));
+    setErrors([]);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    const category = await createCategory(values);
     if (values[FORM_VALUES.Name].trim() === "") {
       updateNotifs([{ text: "Name must be filled!", type: "error" }]);
       return;
     }
-    if (values[FORM_VALUES.CategoryImage].trim() === "") {
+    if (!values[FORM_VALUES.CategoryImage]) {
       updateNotifs([{ text: "Image must be filled!", type: "error" }]);
       return;
     }
+    const category = await createCategory(values);
     if (category.expMessage) {
       updateNotifs([{ text: category.expMessage, type: "error" }]);
       navigateTo("/login");
@@ -72,26 +80,21 @@ const AddCategoryItem = ({ onClose }) => {
           />
         </div>
         <div className={styles["form-group"]}>
-          <label htmlFor="name">Category Image</label>
-          <input
-            type="urls"
-            name="categoryImage"
-            placeholder="https://games..."
-            id="categoryImage"
+          <ImageUpload
+            name={FORM_VALUES.CategoryImage}
+            label="Category Image"
             value={values[FORM_VALUES.CategoryImage]}
-            onChange={onChange}
+            folder="categories"
+            fallback={noImage}
+            alt={values[FORM_VALUES.Name]}
+            onChange={onImageChange}
+            onBusyChange={setIsUploading}
           />
         </div>
-        {values[FORM_VALUES.CategoryImage] === "" ? (
-          <img src="/src/assets/no-image.jpg" alt={values[FORM_VALUES.Name]} />
-        ) : (
-          <img
-            src={values[FORM_VALUES.CategoryImage]}
-            alt={values[FORM_VALUES.Name]}
-          />
-        )}
 
-        <button type="submit">Add</button>
+        <button type="submit" disabled={isUploading}>
+          {isUploading ? "Uploading image..." : "Add"}
+        </button>
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

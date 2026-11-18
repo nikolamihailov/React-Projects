@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Notification from "../../../Notifications/Notification";
 import { v4 as uuidv4 } from "uuid";
 import noImage from "../../../../assets/no-image.jpg";
+import ImageUpload from "../../../ImageUpload/ImageUpload";
 
 const FORM_VALUES = {
   Name: "name",
@@ -21,6 +22,13 @@ const FORM_VALUES = {
   ImageThree: "imageThree",
   ImageFour: "imageFour",
 };
+
+const PRODUCT_IMAGES = [
+  { field: FORM_VALUES.Image, label: "Product Image", optional: false },
+  { field: FORM_VALUES.ImageTwo, label: "Product Image 2 (Optional)", optional: true },
+  { field: FORM_VALUES.ImageThree, label: "Product Image 3 (Optional)", optional: true },
+  { field: FORM_VALUES.ImageFour, label: "Product Image 4 (Optional)", optional: true },
+];
 
 const AddProductItem = ({ onClose }) => {
   const [categories, setCategories] = useState([]);
@@ -39,6 +47,7 @@ const AddProductItem = ({ onClose }) => {
 
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
+  const [uploadsInProgress, setUploadsInProgress] = useState(0);
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
@@ -56,14 +65,21 @@ const AddProductItem = ({ onClose }) => {
     setErrors([]);
   };
 
+  const onImageChange = (name, url) => {
+    setValues((state) => ({ ...state, [name]: url }));
+    setErrors([]);
+  };
+
+  const onBusyChange = (busy) => setUploadsInProgress((n) => n + (busy ? 1 : -1));
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (values[FORM_VALUES.Name].trim() === "") {
       updateNotifs([{ text: "Name must be filled!", type: "error" }]);
       return;
     }
-    if (values[FORM_VALUES.Image].trim() === "") {
-      updateNotifs([{ text: "Image must be filled!", type: "error" }]);
+    if (!values[FORM_VALUES.Image]) {
+      updateNotifs([{ text: "Product image is required!", type: "error" }]);
       return;
     }
     if (values[FORM_VALUES.Description].trim() === "") {
@@ -181,92 +197,27 @@ const AddProductItem = ({ onClose }) => {
             </div>
           </div>
           <div className={styles["images"]}>
-            <div className={styles["form-group"]}>
-              <label htmlFor={FORM_VALUES.Image}>Product Image</label>
-              <input
-                type="url"
-                name={FORM_VALUES.Image}
-                placeholder="https://iphone-15..."
-                id={FORM_VALUES.Image}
-                value={values[FORM_VALUES.Image]}
-                onChange={onChange}
-              />
-              {values[FORM_VALUES.Image] === "" ? (
-                <img src={noImage} alt={values[FORM_VALUES.Name]} />
-              ) : (
-                <img
-                  src={values[FORM_VALUES.Image]}
+            {PRODUCT_IMAGES.map(({ field, label, optional }) => (
+              <div className={styles["form-group"]} key={field}>
+                <ImageUpload
+                  name={field}
+                  label={label}
+                  value={values[field]}
+                  folder="products"
+                  fallback={noImage}
                   alt={values[FORM_VALUES.Name]}
+                  optional={optional}
+                  onChange={onImageChange}
+                  onBusyChange={onBusyChange}
                 />
-              )}
-            </div>
-            <div className={styles["form-group"]}>
-              <label htmlFor={FORM_VALUES.ImageTwo}>
-                Product Image 2 (Optional)
-              </label>
-              <input
-                type="url"
-                name={FORM_VALUES.ImageTwo}
-                placeholder="https://iphone-15..."
-                id={FORM_VALUES.ImageTwo}
-                value={values[FORM_VALUES.ImageTwo]}
-                onChange={onChange}
-              />
-              {values[FORM_VALUES.ImageTwo] === "" ? (
-                <img src={noImage} alt={values[FORM_VALUES.Name]} />
-              ) : (
-                <img
-                  src={values[FORM_VALUES.ImageTwo]}
-                  alt={values[FORM_VALUES.Name]}
-                />
-              )}
-            </div>
-            <div className={styles["form-group"]}>
-              <label htmlFor={FORM_VALUES.ImageThree}>
-                Product Image 3 (Optional)
-              </label>
-              <input
-                type="url"
-                name={FORM_VALUES.ImageThree}
-                placeholder="https://iphone-15..."
-                id={FORM_VALUES.ImageThree}
-                value={values[FORM_VALUES.ImageThree]}
-                onChange={onChange}
-              />
-              {values[FORM_VALUES.ImageThree] === "" ? (
-                <img src={noImage} alt={values[FORM_VALUES.Name]} />
-              ) : (
-                <img
-                  src={values[FORM_VALUES.ImageThree]}
-                  alt={values[FORM_VALUES.Name]}
-                />
-              )}
-            </div>
-            <div className={styles["form-group"]}>
-              <label htmlFor={FORM_VALUES.ImageFour}>
-                Product Image 4 (Optional)
-              </label>
-              <input
-                type="url"
-                name={FORM_VALUES.ImageFour}
-                placeholder="https://iphone-15..."
-                id={FORM_VALUES.ImageFour}
-                value={values[FORM_VALUES.ImageFour]}
-                onChange={onChange}
-              />
-              {values[FORM_VALUES.ImageFour] === "" ? (
-                <img src={noImage} alt={values[FORM_VALUES.Name]} />
-              ) : (
-                <img
-                  src={values[FORM_VALUES.ImageFour]}
-                  alt={values[FORM_VALUES.Name]}
-                />
-              )}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <button type="submit">Add</button>
+        <button type="submit" disabled={uploadsInProgress > 0}>
+          {uploadsInProgress > 0 ? "Uploading image..." : "Add"}
+        </button>
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

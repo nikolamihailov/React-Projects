@@ -5,8 +5,8 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Notification from "../../../Notifications/Notification";
-import { convertToBase64 } from "../../../../utils/convertToBase64";
-import imageCompression from "browser-image-compression";
+import ImageUpload from "../../../ImageUpload/ImageUpload";
+import storeFallback from "../../../../assets/store.jpg";
 import { createStore } from "../../../../data/services/storeService";
 import { useShowHide } from "../../../../hooks/useShowHide";
 
@@ -28,18 +28,17 @@ const AddStore = ({ onClose, updateStores }) => {
 
   const navigateTo = useNavigate();
   const [errors, setErrors] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
 
-  const onChange = async (e) => {
-    if (e.target.name === "storeImage") {
-      const file = e.target.files[0];
-      const compressedFile = await imageCompression(file, { maxSizeMB: 0.5 });
-      const result = await convertToBase64(compressedFile);
-      setValues((state) => ({ ...state, [e.target.name]: result }));
-    } else {
-      setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-    }
+  const onChange = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+    setErrors([]);
+  };
+
+  const onImageChange = (name, url) => {
+    setValues((state) => ({ ...state, [name]: url }));
     setErrors([]);
   };
 
@@ -53,7 +52,7 @@ const AddStore = ({ onClose, updateStores }) => {
       updateNotifs([{ text: "Phone must be filled!", type: "error" }]);
       return;
     }
-    if (values[FORM_VALUES.StoreImage].trim() === "") {
+    if (!values[FORM_VALUES.StoreImage]) {
       updateNotifs([{ text: "Store Image must be filled!", type: "error" }]);
       return;
     }
@@ -85,26 +84,15 @@ const AddStore = ({ onClose, updateStores }) => {
       <div className="backdrop" onClick={onClose}></div>
       <form onSubmit={onSubmit} className={styles["add-store"]}>
         <div className={styles["form-group"]}>
-          <label
-            htmlFor={FORM_VALUES.StoreImage}
-            style={{
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            StoreImage (Max Size - 15MB)
-            <img
-              src={values[FORM_VALUES.StoreImage] || "/src/assets/store.jpg"}
-              alt="StoreImage"
-              accept=".jpeg, .png, .jpg"
-            />
-          </label>
-          <input
-            type="file"
-            onChange={onChange}
+          <ImageUpload
             name={FORM_VALUES.StoreImage}
-            id={FORM_VALUES.StoreImage}
+            label="Store Image"
+            value={values[FORM_VALUES.StoreImage]}
+            folder="stores"
+            fallback={storeFallback}
+            alt="Store"
+            onChange={onImageChange}
+            onBusyChange={setIsUploading}
           />
         </div>
         <div className={styles["form-group"]}>
@@ -149,7 +137,9 @@ const AddStore = ({ onClose, updateStores }) => {
           </div>
         )}
 
-        <button type="submit">Add</button>
+        <button type="submit" disabled={isUploading}>
+          {isUploading ? "Uploading image..." : "Add"}
+        </button>
       </form>
       {errors.length > 0 && (
         <div className={styles["errors-container"]}>

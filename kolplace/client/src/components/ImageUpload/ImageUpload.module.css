@@ -1,0 +1,73 @@
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.frame {
+  position: relative;
+  display: inline-flex;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+.hint {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Hidden but still focusable and reachable through its label. */
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.picker {
+  position: relative;
+}
+
+.picker:has(.file-input:focus-visible) .frame {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.remove {
+  border: none;
+  background: transparent;
+  color: var(--secondary-color);
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.error {
+  color: #e5484d;
+  font-size: 0.75rem;
+  margin: 0;
+  max-width: 220px;
+  text-align: center;
+}

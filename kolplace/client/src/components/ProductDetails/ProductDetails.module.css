@@ -12,9 +12,10 @@
 
 /* Gallery left, details right; one column on smaller screens. */
 .product {
-  width: min(100%, 75rem);
+  width: min(100%, 80rem);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  /* The gallery gets a little more room than the details. */
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
 }
@@ -28,14 +29,14 @@
   top: 1rem;
 }
 
-/* A fixed 4:3 stage with no frame. Every image is fitted inside it, so
+/* A fixed square stage with no frame. Every image is fitted inside it, so
    switching between tall box art and wide screenshots never moves the
-   thumbnails or anything below. 4:3 lets box art fill the height and 16:9
-   screenshots fill the width. */
+   thumbnails or anything below. Square lets box art and products shown
+   upright fill most of it; phones use 4:3 (below). */
 .main-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 34rem;
+  aspect-ratio: 1 / 1;
+  max-height: min(42rem, 75vh);
   position: relative;
 }
 
@@ -61,6 +62,7 @@
 
 .thumbnails {
   display: flex;
+  justify-content: safe center;
   gap: 0.75rem;
   overflow-x: auto;
   padding: 0.25rem;
@@ -274,6 +276,7 @@
   }
 
   .main-image {
+    aspect-ratio: 4 / 3;
     max-height: 22rem;
   }
 }

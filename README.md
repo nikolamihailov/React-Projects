@@ -9,7 +9,7 @@
 
 ### Live Demo: 
 
-[<img alt="kolplace screenshot" src="https://i.ibb.co/x2tSzXB/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png"/>]([https://kolplace.netlify.app/](https://kolplace-one.vercel.app/))
+[<img alt="kolplace screenshot" src="https://i.ibb.co/x2tSzXB/Screenshot-2023-12-11-at-01-41-18-Kol-Place-Your-Shopping-Place.png"/>](https://kolplace-one.vercel.app/)
 
 ## SipSpot: React, React Router(In Progress)
 

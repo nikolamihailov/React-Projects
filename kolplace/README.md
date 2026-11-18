@@ -156,13 +156,14 @@ At KolPlace, our mission is to elevate your online shopping experience and redef
  - https://drive.google.com/drive/u/0/folders/1mv0y5FLXTsj-SESumJ_5a3te2bgOvJDF
 
 ## Project Demo Video
- - The server is deployed on Render.
- - The frontend is deployed on Netlify.
+ - The server is deployed on Vercel as a serverless function: https://react-projects-server-phi.vercel.app
+ - The frontend is deployed on Vercel: https://kolplace-one.vercel.app/
+ - The database is hosted on MongoDB Atlas.
 
-*** Keep in mind that the app uses free server and the initial loading may took longer, because Render free plan will spin down after 15 minutes of inactivity 
+*** The first request after a period of inactivity may take a couple of seconds while the serverless function starts up.
 ### Live Demo: 
 
-[<img alt="Play Button" src="https://user-images.githubusercontent.com/114406139/211439129-37c7a037-dde4-49d6-bf62-4ffc4f315fa9.PNG" />](https://kolplace.netlify.app/)
+[<img alt="Play Button" src="https://user-images.githubusercontent.com/114406139/211439129-37c7a037-dde4-49d6-bf62-4ffc4f315fa9.PNG" />](https://kolplace-one.vercel.app/)
 
 - Presenting most of the project features
   

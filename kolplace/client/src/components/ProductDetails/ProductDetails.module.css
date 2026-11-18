@@ -28,27 +28,25 @@
   top: 1rem;
 }
 
+/* No box around the image: it takes its natural shape at full column width,
+   so wide screenshots are as large as tall box art. */
 .main-image {
-  position: relative;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1 / 1;
-  padding: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
+
 .main-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  display: block;
+  max-width: 100%;
+  max-height: 34rem;
+  width: auto;
+  height: auto;
+  border-radius: 0.75rem;
 }
 
 .badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+  align-self: center;
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
   background-color: var(--promo-price-color);
@@ -72,8 +70,8 @@
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 0.75rem;
-  border: 2px solid var(--border);
-  opacity: 0.75;
+  border: 2px solid transparent;
+  opacity: 0.7;
   transition: opacity 0.15s ease, border-color 0.15s ease;
 }
 
@@ -164,8 +162,10 @@
   line-height: 1;
 }
 
+/* Sale prices use the normal text colour; the badge and struck-through
+   old price already mark the discount. */
 .sale {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .old {
@@ -256,9 +256,8 @@
     position: static;
   }
 
-  .main-image {
-    aspect-ratio: 4 / 3;
-    padding: 1.25rem;
+  .main-image img {
+    max-height: 22rem;
   }
 }
 

@@ -60,7 +60,6 @@ const ProductDetails = () => {
         <div className={styles["gallery"]}>
           <div className={styles["main-image"]}>
             <img src={activeImage} alt={product.name} />
-            {discount > 0 && <span className={styles["badge"]}>-{discount}%</span>}
           </div>
           {images.length > 1 && (
             <div className={styles["thumbnails"]} role="group" aria-label="Product images">
@@ -105,6 +104,7 @@ const ProductDetails = () => {
                 <>
                   <span className={`${styles["current"]} ${styles["sale"]}`}>{formatPrice(product.promoPrice)}</span>
                   <s className={styles["old"]}>{formatPrice(product.price)}</s>
+                  <span className={styles["badge"]}>-{discount}%</span>
                   <span className={styles["saving"]}>You save {formatPrice(product.price - product.promoPrice)}</span>
                 </>
               ) : (

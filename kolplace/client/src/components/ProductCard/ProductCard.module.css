@@ -172,11 +172,6 @@
   font-size: 0.9rem;
 }
 
-/* A discounted price is shown in the sale colour. */
-.price:has(.old) .current {
-  color: var(--secondary-color);
-}
-
 .add {
   all: unset;
   cursor: pointer;

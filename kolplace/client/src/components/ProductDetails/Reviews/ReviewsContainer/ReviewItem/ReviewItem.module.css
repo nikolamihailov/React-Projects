@@ -1,108 +1,58 @@
 .review-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  height: 6.3rem;
-  margin-bottom: 2.5rem;
-}
-
-.review-item .author {
-  flex: 1;
-  height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  background-color: color-mix(in srgb, var(--background-inverted-color) 5%, var(--background-color));
+  border: 1px solid color-mix(in srgb, var(--background-inverted-color) 12%, transparent);
+  border-radius: 1rem;
+}
+
+.header {
+  display: flex;
   align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
 }
 
-.review-item .author img {
-  height: 4.4rem;
-  width: 4.4rem;
-  object-fit: cover;
+.header img {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-.review-item .author span {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-.review-item .content {
-  flex: 3;
+.meta {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  padding-left: 1.9rem;
+  min-width: 0;
 }
 
-.review-item .content p {
-  font-size: 1.1rem;
-}
-.review-item span {
-  margin: 0 0 1.3rem;
-}
-
-.review-item .content i {
-  color: #eba834;
-  font-size: 1.3rem;
-  margin: 0.1rem;
+/* Long names wrap between words, and only break inside a word if they must. */
+.name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
-.review-item .created {
-  flex: 1;
-  font-weight: 500;
+.date {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--primary-color) 65%, transparent);
 }
 
-@media screen and (max-width: 47em) {
+.text {
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 31.5em) {
   .review-item {
-    align-items: flex-start;
-    margin-bottom: 3.1rem;
-  }
-
-  .review-item .author img {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-
-  .review-item .author span {
-    font-size: 0.9rem;
-    word-break: break-all;
-    font-weight: bold;
-    margin-bottom: 0;
-    width: 3.1rem;
-  }
-
-  .review-item .content {
-    padding-left: 1.3rem;
-  }
-
-  .review-item .content p {
-    font-size: 0.95rem;
-  }
-  .review-item span {
-    margin: 0 0 1.3rem;
-  }
-
-  .review-item .content i {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 25em) {
-  .review-item .content p {
-    font-size: 0.75rem;
-  }
-  .review-item span {
-    margin: 0 0 0.95rem;
-  }
-
-  .review-item .content i {
-    font-size: 0.9rem;
-  }
-  .review-item .content {
-    padding-left: 0.65rem;
+    padding: 1rem;
   }
 }

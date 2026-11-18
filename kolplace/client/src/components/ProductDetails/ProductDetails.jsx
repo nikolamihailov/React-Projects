@@ -89,12 +89,12 @@ const ProductDetails = () => {
             {reviewCount > 0 ? (
               <>
                 <StarRating value={rating} size="lg" />
-                <span>
+                <span className={styles["rating-text"]}>
                   {rating.toFixed(1)} · {reviewCount} {reviewCount === 1 ? "review" : "reviews"}
                 </span>
               </>
             ) : (
-              <span>No reviews yet · be the first to review</span>
+              <span className={styles["rating-text"]}>No reviews yet · be the first to review</span>
             )}
           </button>
 

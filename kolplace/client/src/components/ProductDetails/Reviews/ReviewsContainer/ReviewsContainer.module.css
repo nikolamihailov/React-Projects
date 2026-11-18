@@ -47,11 +47,12 @@
   font-size: 1.2rem;
   border-radius: 0.65rem;
   filter: drop-shadow(0 0 0.2rem var(--secondary-color));
-  margin-bottom: 4.7rem;
+  margin-bottom: 2.5rem;
 }
 
+/* Readable width for the review cards. */
 .reviews-container .all-reviews {
-  width: 75%;
+  width: min(100%, 48rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,12 +69,12 @@
   }
 
   .reviews-container .all-reviews {
-    width: 85%;
+    width: 100%;
   }
   .reviews-container .add {
     padding: 0.5rem 0.75rem;
     font-size: 1.1rem;
-    margin-bottom: 4.1rem;
+    margin-bottom: 2rem;
   }
   .reviews-container .want-to-add-review {
     font-size: 1.1rem;

@@ -138,7 +138,7 @@
   font-size: 0.95rem;
 }
 
-.rating:hover span {
+.rating:hover .rating-text {
   color: var(--primary-color);
   text-decoration: underline;
 }

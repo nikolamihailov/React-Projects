@@ -1,35 +1,24 @@
 import { formatDate } from "../../../../../utils/dateFormatter";
 import styles from "./ReviewItem.module.css";
 import avatar from "../../../../../assets/avatar.png";
+import StarRating from "../../../../StarRating/StarRating";
 
 const ReviewItem = ({ text, rating, author, createdAt }) => {
-  const stars = Array.from({ length: rating }, (_, index) => (
-    <i key={index} className="fa-solid fa-star"></i>
-  ));
-
-  for (let i = 0; i < 5 - rating; i++) {
-    stars.push(<i key={i + rating} className="fa-regular fa-star"></i>);
-  }
-
+  const name = `${author.firstName} ${author.lastName}`;
   return (
-    <div className={styles["review-item"]}>
-      <div className={styles["author"]}>
-        <img
-          src={author.avatar ? author.avatar : avatar}
-          alt={author.firstName}
-        />
-        <span>
-          {author.firstName} {author.lastName}
-        </span>
+    <article className={styles["review-item"]}>
+      <div className={styles["header"]}>
+        <img src={author.avatar || avatar} alt="" />
+        <div className={styles["meta"]}>
+          <span className={styles["name"]}>{name}</span>
+          <time className={styles["date"]} dateTime={createdAt}>
+            {formatDate(createdAt)}
+          </time>
+        </div>
       </div>
-      <div className={styles["content"]}>
-        <span>{stars}</span>
-        <p>{text}</p>
-      </div>
-      <div className={styles["created"]}>
-        <p>{formatDate(createdAt)}</p>
-      </div>
-    </div>
+      <StarRating value={rating} />
+      <p className={styles["text"]}>{text}</p>
+    </article>
   );
 };
 

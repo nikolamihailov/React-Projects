@@ -1,6 +1,17 @@
 /* Top nav takes its natural height and the content fills exactly what is
    left, so the panel never grows past the screen and gets clipped. */
+/* Header and side menu follow the theme in their own shade instead of using
+   the inverted colour: deeper than the page in dark mode, soft grey in light. */
+:global(.dark) .admin-panel-section {
+  --admin-chrome: #1a1d23;
+}
+
+:global(.light) .admin-panel-section {
+  --admin-chrome: #e6e7ea;
+}
+
 .admin-panel-section {
+  --admin-chrome: color-mix(in srgb, var(--background-color) 85%, var(--background-inverted-color));
   height: 100vh;
   height: 100dvh;
   width: 100%;
@@ -20,11 +31,6 @@
   padding: 0;
 }
 
-/* The side menu scrolls on its own on short screens. */
-.content-container > aside,
-.content-container > nav {
-  overflow-y: auto;
-}
 
 .admin-panel-info {
   text-align: center;
@@ -43,4 +49,11 @@
 .admin-panel-info p {
   width: min(40vw, 640px);
   font-size: 23px;
+}
+
+@media screen and (max-width: 900px) {
+  .admin-panel-info p {
+    width: auto;
+    font-size: 18px;
+  }
 }

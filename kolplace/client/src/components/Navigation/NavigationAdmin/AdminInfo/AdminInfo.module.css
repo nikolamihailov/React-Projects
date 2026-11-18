@@ -1,23 +1,29 @@
 .info {
-  position: relative;
-  padding: 15px;
-  border-bottom: 3px solid var(--background-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 280px;
+  gap: 6px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 15%, transparent);
+  text-align: center;
 }
 
 .info img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 88px;
+  height: 88px;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .info p {
-  font-size: 20px;
+  margin: 0;
+  font-size: 17px;
   font-weight: bold;
+}
+
+.info p + p {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.7;
 }

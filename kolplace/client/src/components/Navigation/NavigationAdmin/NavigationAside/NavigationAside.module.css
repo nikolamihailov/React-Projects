@@ -1,26 +1,53 @@
 .aside {
-  flex: 1;
+  flex: 0 0 260px;
   min-height: 0;
   overflow-y: auto;
-  background-color: var(--background-inverted-color);
-  color: var(--background-color);
+  box-sizing: border-box;
+  background-color: var(--admin-chrome);
+  color: var(--primary-color);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* "safe" keeps the avatar visible when the menu is taller than the screen */
-  justify-content: safe center;
-  padding: 16px 0;
-  border-right: 5px solid var(--secondary-color);
+  align-items: stretch;
+  gap: 24px;
+  padding: 24px 16px;
+  border-right: 4px solid var(--secondary-color);
 }
 
-.admin-info {
-  flex: 1;
+.scrim {
+  display: none;
 }
 
-.side-menu {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 4;
+/* Below 900px the side menu slides in over the content. */
+@media screen and (max-width: 900px) {
+  .aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 40;
+    width: min(280px, 85vw);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.2s ease-out, visibility 0.2s;
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .aside.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aside {
+    transition: none;
+  }
 }

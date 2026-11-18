@@ -7,25 +7,24 @@ import useTitle from "../../hooks/useTitle";
 
 const AdminPanel = () => {
   useTitle("Admin Panel");
-  const [pageURL, setPageURL] = useState("/");
-  const loc = useLocation();
+  const { pathname } = useLocation();
+  // On narrow screens the side menu is a drawer opened from the top nav.
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    setPageURL(loc.pathname);
-  }, [loc]);
+  useEffect(() => setIsMenuOpen(false), [pathname]);
 
   return (
     <section className={styles["admin-panel-section"]}>
-      <TopNavAdmin />
+      <TopNavAdmin isMenuOpen={isMenuOpen} onMenuToggle={() => setIsMenuOpen((o) => !o)} />
       <div className={styles["content-container"]}>
-        <NavigationAside />
-        {pageURL === "/admin-panel" ? (
+        <NavigationAside isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        {pathname === "/admin-panel" ? (
           <div className={styles["admin-panel-info"]}>
             <h1>Welcome to Admin Panel!</h1>
             <p>
               Here you can manage categories, products, reviews, users and
-              stores!You can also check store statistics. From the navigation
-              aside you can choose what to manage. To go back to the webiste
+              stores! You can also check store statistics. From the side menu
+              you can choose what to manage. To go back to the website
               click the logo.
             </p>
           </div>

@@ -1,9 +1,49 @@
 .top-nav-admin {
-  background-color: var(--background-inverted-color);
+  background-color: var(--admin-chrome);
+  color: var(--primary-color);
   width: 100%;
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 5px solid var(--secondary-color);
-  padding: 16px;
+  gap: 16px;
+  border-bottom: 4px solid var(--secondary-color);
+  padding: 12px 32px;
+}
+
+.logo {
+  display: inline-flex;
+}
+
+.menu-button {
+  all: unset;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 22px;
+  color: var(--secondary-color);
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 900px) {
+  .top-nav-admin {
+    padding: 10px 16px;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  /* Keep the logo centred between the menu and theme buttons. */
+  .logo {
+    margin: 0 auto;
+  }
 }

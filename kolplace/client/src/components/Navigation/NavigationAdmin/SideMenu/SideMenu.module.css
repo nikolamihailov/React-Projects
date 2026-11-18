@@ -1,26 +1,44 @@
 .side-menu-links {
-  width: 60%;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .side-menu-links a {
+  display: block;
   text-decoration: none;
-  color: var(--background-color);
-  font-size: 20px;
-  padding: 20px;
+  color: var(--primary-color);
+  font-size: 17px;
+  border-radius: 10px;
 }
+
 .side-menu-links li {
-  font-weight: bold;
-  padding: 5px;
+  font-weight: 600;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 14px;
 }
+
 .side-menu-links li i {
-  flex: 1;
+  width: 22px;
+  text-align: center;
 }
-.side-menu-links li span {
-  flex: 2;
+
+.side-menu-links a:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.side-menu-links a:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.side-menu-links .active-link {
+  background-color: color-mix(in srgb, var(--secondary-color) 16%, transparent);
 }
 
 .side-menu-links .active-link li {

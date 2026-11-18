@@ -172,3 +172,20 @@
 .admin-stats .total-profit-sales span {
   font-weight: bold;
 }
+
+@media screen and (max-width: 700px) {
+  .admin-stats h1 {
+    font-size: 28px;
+  }
+
+  .admin-stats .stats {
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .admin-stats .stats > * {
+    width: 100%;
+    margin: 8px 0;
+  }
+}

@@ -1,10 +1,11 @@
 .icon-btn {
+  --icon-size: 1.8rem;
   all: unset;
   cursor: pointer;
   box-sizing: border-box;
   width: 3rem;
   height: 3rem;
-  margin: 0 0.25rem;
+  margin: 0 0.85rem 0 0.35rem;
   border-radius: 50%;
   position: relative;
   display: flex;
@@ -22,25 +23,31 @@
   outline-offset: 2px;
 }
 .icon-btn i {
-  font-size: 1.8rem;
+  font-size: var(--icon-size);
   color: var(--secondary-color);
 }
 
 .icon-btn i:nth-child(2) {
   position: absolute;
-  bottom: 0.45rem;
-  right: 0.35rem;
-  font-size: 0.8rem;
+  bottom: 0.3rem;
+  right: 0.15rem;
+  font-size: 0.75rem;
   z-index: 3;
+  border-radius: 50%;
+  background-color: var(--top-nav-background-color);
+  box-shadow: 0 0 0 2px var(--top-nav-background-color);
 }
 
 /* Count badge */
 .icon-btn span {
   position: absolute;
-  top: 0.2rem;
-  right: 0.1rem;
+  /* Starts just past the icon right edge, so it never covers the icon. */
+  top: 0;
+  /* Half the widest icon (the cart is ~1.15x its size) plus a little gap. */
+  left: calc(50% + var(--icon-size) * 0.62);
   min-width: 1.15rem;
   height: 1.15rem;
+  box-shadow: 0 0 0 2px var(--top-nav-background-color);
   box-sizing: border-box;
   padding: 0 0.3rem;
   display: grid;
@@ -58,8 +65,8 @@
 }
 
 @media screen and (max-width: 75em) {
-  .icon-btn i {
-    font-size: 1.5rem;
+  .icon-btn {
+    --icon-size: 1.5rem;
   }
 }
 
@@ -67,9 +74,12 @@
   .icon-btn {
     width: 2.6rem;
     height: 2.6rem;
-    margin: 0;
+    margin: 0 0.15rem;
   }
-  .icon-btn i {
-    font-size: 1.3rem;
+  .icon-btn {
+    --icon-size: 1.3rem;
+  }
+  .icon-btn span {
+    top: 0.1rem;
   }
 }

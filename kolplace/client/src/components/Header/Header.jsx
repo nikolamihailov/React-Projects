@@ -1,4 +1,4 @@
-import "./Header.module.css";
+import styles from "./Header.module.css";
 import MainNav from "../Navigation/NavigationMain/MainNav";
 import TopNav from "../Navigation/NavigationTop/TopNav";
 import { useLocation } from "react-router-dom";
@@ -20,7 +20,7 @@ const Header = () => {
       {pageURL.startsWith("/admin") ? (
         ""
       ) : (
-        <header>
+        <header className={styles["site-header"]}>
           {isMobile ? (
             <TopNavMobile />
           ) : (

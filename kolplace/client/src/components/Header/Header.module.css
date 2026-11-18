@@ -1,4 +1,6 @@
-header {
+/* Scoped to the site header; a bare "header" selector would also hit every
+   other <header> element on the page. */
+.site-header {
   position: sticky;
   top: 0;
   display: flex;

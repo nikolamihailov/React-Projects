@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
+  padding: 1.25rem 0;
   text-align: left;
-  background-color: color-mix(in srgb, var(--background-inverted-color) 5%, var(--background-color));
-  border: 1px solid color-mix(in srgb, var(--background-inverted-color) 12%, transparent);
-  border-radius: 1rem;
+}
+
+/* A plain list: just a thin line between reviews. */
+.review-item + .review-item {
+  border-top: 1px solid color-mix(in srgb, var(--background-inverted-color) 12%, transparent);
 }
 
 .header {
@@ -51,8 +52,3 @@
   overflow-wrap: anywhere;
 }
 
-@media screen and (max-width: 31.5em) {
-  .review-item {
-    padding: 1rem;
-  }
-}

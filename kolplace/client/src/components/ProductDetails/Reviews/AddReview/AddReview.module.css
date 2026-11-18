@@ -1,35 +1,35 @@
 .add-review {
   margin-top: 0;
   background-color: var(--background-color);
-  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
   color: var(--background-color);
-  padding: 20px 25px;
+  padding: 1.25rem 1.5625rem;
   background: var(--background-inverted-color);
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 50%;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 }
 
 .add-review i {
   z-index: 7;
-  padding: 5px;
+  padding: 0.3125rem;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 1.5625rem;
   color: var(--secondary-color);
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 0.9375rem;
+  right: 0.9375rem;
 }
 
 .add-review label,
 .add-review input {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 }
 
 .add-review .form-group {
@@ -43,22 +43,22 @@
 }
 .add-review textarea {
   color: var(--black-color);
-  font-size: 17px;
-  padding: 15px;
+  font-size: 1.0625rem;
+  padding: 0.9375rem;
   width: 80%;
-  height: 100px;
-  border-radius: 15px;
+  height: 6.25rem;
+  border-radius: 0.9375rem;
   resize: none;
 }
 
 .add-review select {
-  padding: 12px 15px;
-  font-size: 19px;
+  padding: 0.75rem 0.9375rem;
+  font-size: 1.1875rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   outline: none;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   font-weight: bold;
   width: 20%;
   background-color: var(--background-color);
@@ -68,7 +68,7 @@
 .add-review option {
   background-color: var(--background-color);
   color: var(--secondary-color);
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: bold;
 }
 
@@ -78,20 +78,20 @@
 
 .errors-container {
   position: absolute;
-  top: 150px;
-  right: -50px;
+  top: 9.375rem;
+  right: -3.125rem;
   display: flex;
   flex-direction: column;
 }
 
 .add-review .stars {
-  margin: 25px;
+  margin: 1.5625rem;
 }
 
 .add-review .stars i {
   position: static;
-  font-size: 25px;
-  margin: 2px;
+  font-size: 1.5625rem;
+  margin: 0.125rem;
   color: #eba834;
 }
 
@@ -99,48 +99,48 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .add-review {
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
     width: 88%;
   }
 
   .add-review i {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .add-review textarea {
     color: var(--black-color);
-    font-size: 14px;
-    padding: 12px;
+    font-size: 0.875rem;
+    padding: 0.75rem;
   }
 
   .add-review select {
-    padding: 6px 8px;
-    font-size: 15px;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.9375rem;
     width: 50%;
   }
 
   .add-review option {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .add-review .stars {
-    margin: 15px;
+    margin: 0.9375rem;
   }
 
   .add-review .stars i {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
 
   .add-review button {
-    padding: 5px 7px;
-    font-size: 15px;
+    padding: 0.3125rem 0.4375rem;
+    font-size: 0.9375rem;
   }
 }

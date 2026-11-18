@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 import styles from "./Logo.module.css";
 import logo from "../../../assets/logo.svg";
 import favicon from "../../../assets/favicon.png";
 
 const Logo = () => {
-  const [logoSrc, setLogoSrc] = useState(logo);
-
-  useEffect(() => {
-    const updateLogoSrc = () => {
-      if (window.innerWidth <= 1000) setLogoSrc(favicon);
-      else setLogoSrc(logo);
-    };
-
-    updateLogoSrc();
-
-    window.addEventListener("resize", updateLogoSrc);
-
-    // removing the event on unmount
-    return () => {
-      window.removeEventListener("resize", updateLogoSrc);
-    };
-  }, []);
+  // Compact icon up to 1000px at the default font size (62.5em).
+  const isCompact = useMediaQuery("(max-width: 62.5em)");
+  const logoSrc = isCompact ? favicon : logo;
   return (
     <div className={styles["logo-container"]}>
       <img src={logoSrc} className={styles.logo} alt="KolPlace logo" />

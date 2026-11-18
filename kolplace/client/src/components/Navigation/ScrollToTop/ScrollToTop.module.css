@@ -5,12 +5,12 @@
 .visible {
   display: block;
   position: fixed;
-  bottom: 100px;
-  left: 50px;
-  padding: 10px 15px;
+  bottom: 6.25rem;
+  left: 3.125rem;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 27px;
+  font-size: 1.6875rem;
   font-weight: bold;
   border: none;
   border-radius: 50%;
@@ -19,11 +19,11 @@
   z-index: 2;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .visible {
-    bottom: 100px;
-    left: 20px;
-    padding: 8px 12px;
-    font-size: 21px;
+    bottom: 6.25rem;
+    left: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.3125rem;
   }
 }

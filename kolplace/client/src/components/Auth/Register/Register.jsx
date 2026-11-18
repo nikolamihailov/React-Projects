@@ -132,7 +132,7 @@ const Register = () => {
         </div>
 
         <div className={styles["btns"]}>
-          <button type="submit">{isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "24px", color: "white" }}></i> : "Register"}</button>
+          <button type="submit">{isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "1.5rem", color: "white" }}></i> : "Register"}</button>
         </div>
         <Link to="/login">Already have an account?</Link>
       </form>

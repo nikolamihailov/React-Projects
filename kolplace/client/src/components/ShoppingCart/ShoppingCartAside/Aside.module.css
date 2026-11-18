@@ -6,7 +6,7 @@
   width: 33vw;
   background-color: var(--background-inverted-color);
   z-index: 9999;
-  padding: 15px 5px;
+  padding: 0.9375rem 0.3125rem;
   border-left: 4px solid var(--secondary-color);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
@@ -20,34 +20,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 19px;
+  font-size: 1.1875rem;
   color: var(--background-color);
   font-weight: bold;
   text-align: center;
 }
 
 .cart-aside .totalPrice {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   color: var(--background-color);
-  font-size: 23px;
+  font-size: 1.4375rem;
   font-weight: bold;
 }
 
 .cart-aside .no-products p {
   color: var(--secondary-color);
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 .cart-aside .no-products strong {
-  margin-left: 10px;
-  font-size: 21px;
+  margin-left: 0.625rem;
+  font-size: 1.3125rem;
   color: var(--secondary-color);
 }
 
 .cart-aside .no-products img {
-  height: 250px;
-  width: 250px;
+  height: 15.625rem;
+  width: 15.625rem;
   object-fit: contain;
 }
 
@@ -55,9 +55,9 @@
   cursor: pointer;
   color: var(--secondary-color);
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
+  top: 0.9375rem;
+  right: 0.9375rem;
+  font-size: 1.5rem;
 }
 
 .cart-item-container {
@@ -70,7 +70,7 @@
 }
 
 .cart-aside .btns {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -82,13 +82,13 @@
   cursor: pointer;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  padding: 10px;
-  font-size: 19px;
-  border-radius: 10px;
+  padding: 0.625rem;
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
 }
 
 .cart-aside .btns button i {
-  margin-left: 10px;
+  margin-left: 0.625rem;
 }
 
 @keyframes slideIn {
@@ -100,25 +100,25 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 87.5em) {
   .cart-aside {
     width: 50vw;
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 62.5em) {
   .cart-aside {
     width: 60vw;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 50em) {
   .cart-aside {
     width: 75vw;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5em) {
   .cart-aside {
     width: 90vw;
   }

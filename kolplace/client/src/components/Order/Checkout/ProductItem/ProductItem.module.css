@@ -1,7 +1,7 @@
 .checkout-item {
   width: 100%;
   color: var(--background-color);
-  padding: 10px;
+  padding: 0.625rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,23 +12,23 @@
   color: var(--background-color);
   text-decoration: none;
   width: 40%;
-  font-size: 16px;
+  font-size: 1rem;
   word-wrap: break-word;
 }
 
 .checkout-item img {
-  height: 70px;
-  width: 70px;
+  height: 4.375rem;
+  width: 4.375rem;
   object-fit: contain;
 }
 
 .checkout-item h4 {
   width: 40%;
-  font-size: 16px;
+  font-size: 1rem;
   word-wrap: break-word;
 }
 
 .checkout-item p {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: bold;
 }

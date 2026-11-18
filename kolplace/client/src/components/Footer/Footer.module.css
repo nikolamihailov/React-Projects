@@ -8,11 +8,11 @@
   color: var(--white-color);
   width: 100%;
   background-color: var(--footer-color);
-  padding: 16px;
+  padding: 1rem;
 }
 
 .footer a {
   text-decoration: none;
   color: var(--white-color);
-  margin-left: 10px;
+  margin-left: 0.625rem;
 }

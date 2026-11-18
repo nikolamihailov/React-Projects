@@ -1,7 +1,7 @@
 .cart-item {
   width: 95%;
   color: var(--primary-color);
-  padding: 25px 10px;
+  padding: 1.5625rem 0.625rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,19 +18,19 @@
 .cart-item .title-category a {
   color: var(--primary-color);
   text-decoration: none;
-  padding-left: 40px;
-  font-size: 19px;
+  padding-left: 2.5rem;
+  font-size: 1.1875rem;
   word-wrap: break-word;
 }
 
 .cart-item .title-category span {
   color: var(--white-color);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background-color: var(--product-category-background-color);
   font-weight: bold;
-  margin-top: 15px;
-  padding: 4px 6px;
-  font-size: 17px;
+  margin-top: 0.9375rem;
+  padding: 0.25rem 0.375rem;
+  font-size: 1.0625rem;
 }
 
 .cart-item .image {
@@ -38,8 +38,8 @@
 }
 
 .cart-item img {
-  height: 100px;
-  width: 100px;
+  height: 6.25rem;
+  width: 6.25rem;
   object-fit: contain;
 }
 .cart-item .quantity {
@@ -49,41 +49,41 @@
   align-items: center;
 }
 .cart-item input {
-  width: 60px;
+  width: 3.75rem;
   font-weight: bold;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 19px;
-  padding: 6px;
+  font-size: 1.1875rem;
+  padding: 0.375rem;
 }
 .cart-item p {
   width: 10%;
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: bold;
 }
 .cart-item .remove i {
   cursor: pointer;
   position: static;
   color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: bold;
-  margin-left: 15px;
+  margin-left: 0.9375rem;
 }
 
 /* .cart-item button {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 18px;
-  margin: 0px 4px;
+  font-size: 1.125rem;
+  margin: 0 0.25rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
 } */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .cart-item {
     width: 95%;
-    padding: 25px 0px;
+    padding: 1.5625rem 0;
   }
   .cart-item .title-category {
     display: flex;
@@ -94,28 +94,28 @@
   }
 
   .cart-item .title-category a {
-    padding-left: 20px;
-    font-size: 15px;
+    padding-left: 1.25rem;
+    font-size: 0.9375rem;
   }
 
   .cart-item .title-category span {
-    margin-top: 10px;
-    font-size: 15px;
+    margin-top: 0.625rem;
+    font-size: 0.9375rem;
   }
 
   .cart-item img {
-    height: 70px;
-    width: 70px;
+    height: 4.375rem;
+    width: 4.375rem;
   }
   .cart-item input {
-    width: 30px;
-    font-size: 15px;
-    padding: 4px;
+    width: 1.875rem;
+    font-size: 0.9375rem;
+    padding: 0.25rem;
   }
   .cart-item p {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .cart-item .remove i {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
 }

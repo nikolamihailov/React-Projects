@@ -6,8 +6,8 @@
   top: 100%;
   left: 0;
   z-index: 999;
-  font-size: 18px;
-  border-radius: 5px;
+  font-size: 1.125rem;
+  border-radius: 0.3125rem;
   width: 350%;
 }
 .user-dropdown a {
@@ -16,8 +16,8 @@
 }
 
 .user-dropdown li {
-  padding: 14px;
-  border-radius: 5px;
+  padding: 0.875rem;
+  border-radius: 0.3125rem;
   transition: all linear 0.3s;
 }
 
@@ -29,25 +29,25 @@
 
 .user-dropdown i {
   color: var(--secondary-color);
-  font-size: 18px;
-  margin-right: 10px;
+  font-size: 1.125rem;
+  margin-right: 0.625rem;
 }
 
 .errors-container {
   z-index: 9999;
   position: fixed;
-  top: 120px;
-  right: 15px;
+  top: 7.5rem;
+  right: 0.9375rem;
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5em) {
   .user-dropdown {
-    font-size: 15px;
+    font-size: 0.9375rem;
     width: 300%;
   }
 
   .user-dropdown i {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

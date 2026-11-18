@@ -4,7 +4,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 50px 0;
+  margin: 3.125rem 0;
 }
 
 .carousel-products .carousel-products-heading {
@@ -19,7 +19,7 @@
 
 .carousel-products .carousel-products-heading {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
   font-weight: bold;
   position: relative;
 }
@@ -32,8 +32,8 @@
   align-items: center;
 }
 .carousel-products .category-name h2 {
-  font-size: 35px;
-  padding: 0 10px;
+  font-size: 2.1875rem;
+  padding: 0 0.625rem;
   background-color: var(--background-color);
   z-index: 2;
 }
@@ -43,13 +43,13 @@
   top: 50%;
   left: 0;
   width: 100%;
-  height: 2.5px;
+  height: 0.1563rem;
   background-color: var(--secondary-color);
 }
 
 .carousel-products .carousel-products-heading > a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--secondary-color);
   font-weight: bold;
 }
@@ -61,7 +61,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75em) {
   .carousel-products {
     width: 90vw;
   }
@@ -69,7 +69,7 @@
     display: none;
   }
   .carousel-products .category-name h2 {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 
   .carousel-products .products {

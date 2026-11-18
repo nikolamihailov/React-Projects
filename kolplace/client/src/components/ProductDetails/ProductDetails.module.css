@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 1.25rem;
   position: relative;
 }
 
@@ -21,11 +21,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 50px;
+  margin-right: 3.125rem;
 }
 
 .product-details .product-info {
-  height: 700px;
+  height: 43.75rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
 }
 
 .product-details .product-images .other-images .active-image {
-  border: 7px solid var(--secondary-color);
+  border: 0.4375rem solid var(--secondary-color);
 }
 
 .product-details .product-images .other-images .non-active-image {
@@ -54,49 +54,49 @@
 }
 
 .product-details .product-images .main-image img {
-  width: 800px;
-  height: 580px;
+  width: 50rem;
+  height: 36.25rem;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 .product-details .product-images .other-images img {
-  width: 110px;
-  height: 110px;
+  width: 6.875rem;
+  height: 6.875rem;
   object-fit: cover;
-  margin: 0 10px;
+  margin: 0 0.625rem;
 }
 
 .product-details .product-info h1 {
-  font-size: 40px;
+  font-size: 2.5rem;
   text-align: center;
 }
 
 .product-details .product-info strong {
-  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 .product-details .product-info a {
   text-decoration: none;
 }
 
 .product-details .product-info p {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .product-details .product-info span {
   color: var(--white-color);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background-color: var(--product-category-background-color);
   font-weight: bold;
-  padding: 8px 12px;
-  font-size: 19px;
-  margin: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.1875rem;
+  margin: 0.625rem;
 }
 
 .product-details .product-info .product-prices-buttons {
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--background-inverted-color);
   color: var(--background-color);
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   width: 50%;
   margin: 0 auto;
   display: flex;
@@ -105,7 +105,7 @@
   flex-direction: column;
 }
 .product-prices-buttons .prices p {
-  font-size: 25px;
+  font-size: 1.5625rem;
 }
 .product-details .product-info .product-prices-buttons .btns {
   width: 100%;
@@ -116,7 +116,7 @@
 }
 
 /* .product-details .product-info .product-prices-buttons p:nth-child(1) {
-  font-size: 35px;
+  font-size: 2.1875rem;
   font-weight: bold;
 } */
 
@@ -125,12 +125,12 @@
   text-align: center;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  margin-bottom: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 
 .product-details .product-info .btns p {
@@ -140,11 +140,11 @@
   cursor: pointer;
   background-color: none;
   color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 1.5625rem;
 }
 
 .product-details .prices {
-  margin: 10px 0;
+  margin: 0.625rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,11 +152,11 @@
 
 .product-details .promo-price {
   margin-top: 0;
-  margin-left: 10px;
+  margin-left: 0.625rem;
   background-color: var(--promo-price-color);
-  padding: 3px 5px;
+  padding: 0.1875rem 0.3125rem;
   border-radius: 50%;
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: bold;
   color: var(--white-color);
 }
@@ -167,7 +167,7 @@
 
 .product-info .ratings-reviews {
   cursor: pointer;
-  margin: 15px 0;
+  margin: 0.9375rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,23 +175,23 @@
 }
 
 .product-info .ratings-reviews i {
-  font-size: 22px;
+  font-size: 1.375rem;
   color: #eba834;
 }
 
 .product-info .ratings-reviews b {
-  font-size: 25px;
-  margin-left: 15px;
+  font-size: 1.5625rem;
+  margin-left: 0.9375rem;
 }
 
 .product-info .ratings-reviews p {
-  font-size: 21px;
-  margin-left: 15px;
+  font-size: 1.3125rem;
+  margin-left: 0.9375rem;
 }
 
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 106.25em) {
   .product-details .product-images {
-    margin-right: 0px;
+    margin-right: 0;
   }
   .product-details .product-info {
     flex: 1.5;
@@ -199,83 +199,83 @@
     width: 90%;
   }
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 93.75em) {
   .product-details .product {
     width: 95vw;
   }
   .product-details .product-info h1 {
-    font-size: 35px;
+    font-size: 2.1875rem;
   }
 
   .product-details .product-images .main-image img {
     width: 90%;
-    height: 400px;
+    height: 25rem;
   }
 
   .product-details .product-images .other-images img {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
   .product-details .product-info button {
     text-align: center;
     width: 40%;
-    padding: 8px 12px;
-    font-size: 17px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.0625rem;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75em) {
   .product-details .product {
     width: 90vw;
     flex-direction: column;
   }
   .product-details .product-images .main-image img {
-    height: 300px;
+    height: 18.75rem;
   }
   .product-details .product-info {
     text-align: center;
     height: auto;
   }
   .product-details .product-info h1 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 
   .product-details .product-images .other-images img {
-    width: 75px;
-    height: 75px;
+    width: 4.6875rem;
+    height: 4.6875rem;
   }
 
   .product-info .ratings-reviews i {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .product-info .ratings-reviews b {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   .product-info .ratings-reviews {
     width: 90%;
   }
   .product-info p {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
   }
   .product-details .product-info p {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
   .product-details .product-info .product-prices-buttons {
     width: 80%;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 31.25em) {
   .product-details .product {
     width: 95vw;
   }
   .product-details .product-info h1 {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 
   .product-details .product-images .other-images img {
-    width: 60px;
-    height: 60px;
+    width: 3.75rem;
+    height: 3.75rem;
   }
 }

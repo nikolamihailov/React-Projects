@@ -6,12 +6,12 @@
   margin: 0 auto;
   min-height: 70vh;
   z-index: 6;
-  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
   max-height: 90%;
   color: var(--background-color);
-  padding: 30px 40px;
+  padding: 1.875rem 2.5rem;
   background: var(--background-inverted-color);
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,17 +24,17 @@
 }
 
 .edit-profile img {
-  margin-top: 20px;
-  filter: drop-shadow(0 0 7px var(--secondary-color));
+  margin-top: 1.25rem;
+  filter: drop-shadow(0 0 0.4375rem var(--secondary-color));
   border-radius: 50%;
-  height: 150px;
-  width: 150px;
+  height: 9.375rem;
+  width: 9.375rem;
   object-fit: cover;
   transition: all 0.5s;
 }
 
 .edit-profile img:hover {
-  filter: drop-shadow(0 0 11px var(--secondary-color));
+  filter: drop-shadow(0 0 0.6875rem var(--secondary-color));
   scale: 1.02;
 }
 
@@ -42,16 +42,16 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 .edit-profile label,
 .edit-profile input {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 }
 
 .edit-profile label:nth-child(1) {
@@ -64,9 +64,9 @@
 .edit-profile input {
   color: var(--background-color);
   background: none;
-  font-size: 16px;
+  font-size: 1rem;
   border: none;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   border-bottom: 3px solid var(--secondary-color);
 }
 
@@ -80,8 +80,8 @@
 
 .errors-container {
   position: absolute;
-  top: 200px;
-  right: 15px;
+  top: 12.5rem;
+  right: 0.9375rem;
   display: flex;
   flex-direction: column;
 }

@@ -15,8 +15,8 @@ const ThemeButton = () => {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
+          width="1em"
+          height="1em"
           fill="currentColor"
           className="bi bi-brightness-high"
           viewBox="0 0 16 16"

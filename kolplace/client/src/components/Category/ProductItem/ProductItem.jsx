@@ -99,7 +99,7 @@ const ProductItem = ({
         <p
           style={
             hasPromoPrice
-              ? { textDecoration: "line-through", fontSize: "13px" }
+              ? { textDecoration: "line-through", fontSize: "0.8125rem" }
               : { textDecoration: "none" }
           }
         >

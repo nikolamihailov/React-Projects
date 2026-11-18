@@ -1,48 +1,48 @@
 .notification-error {
   position: relative;
   color: var(--white-color);
-  margin-bottom: 10px;
-  font-size: 17px;
+  margin-bottom: 0.625rem;
+  font-size: 1.0625rem;
   z-index: 999;
   background-color: var(--notification-error-color);
-  padding-right: 20px;
+  padding-right: 1.25rem;
   display: flex;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   overflow: hidden;
   font-weight: bold;
 }
 
 .notification-error span {
-  padding: 15px 6px;
+  padding: 0.9375rem 0.375rem;
   text-align: center;
   display: block;
   height: 100%;
-  margin-right: 15px;
+  margin-right: 0.9375rem;
   background-color: var(--notification-error-progress-color);
 }
 
 .notification-success {
   position: relative;
   color: var(--white-color);
-  margin-bottom: 10px;
-  font-size: 17px;
+  margin-bottom: 0.625rem;
+  font-size: 1.0625rem;
   z-index: 999;
   background-color: var(--notification-success-color);
-  padding-right: 20px;
+  padding-right: 1.25rem;
   display: flex;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   overflow: hidden;
   font-weight: bold;
 }
 
 .notification-success span {
-  padding: 15px 6px;
+  padding: 0.9375rem 0.375rem;
   text-align: center;
   display: block;
   height: 100%;
-  margin-right: 15px;
+  margin-right: 0.9375rem;
   background-color: var(--notification-success-progress-color);
 }
 
@@ -51,7 +51,7 @@
   bottom: 0;
   left: 0;
   width: 0%;
-  height: 6px;
+  height: 0.375rem;
   background-color: var(--notification-error-progress-color);
   animation: progressBar 5s linear;
 }
@@ -60,7 +60,7 @@
   bottom: 0;
   left: 0;
   width: 0%;
-  height: 6px;
+  height: 0.375rem;
   background-color: var(--notification-success-progress-color);
   animation: progressBar 5s linear;
 }

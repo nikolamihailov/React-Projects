@@ -1,13 +1,13 @@
 .carousel-home {
   position: sticky;
-  top: 10px;
+  top: 0.625rem;
   overflow: hidden;
   width: 75vw;
   height: 35vh;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .carousel-home .inner {
@@ -21,14 +21,14 @@
   position: absolute;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 18px;
+  padding: 0.625rem 1.125rem;
   background-color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 1.5625rem;
   border-radius: 50%;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
   top: 50%;
   transform: translateY(-50%);
-  left: 10px;
+  left: 0.625rem;
   z-index: 1;
 }
 
@@ -37,28 +37,28 @@
   position: absolute;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 18px;
+  padding: 0.625rem 1.125rem;
   background-color: var(--secondary-color);
-  font-size: 25px;
+  font-size: 1.5625rem;
   border-radius: 50%;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
+  right: 0.625rem;
   z-index: 1;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .left-btn {
-    padding: 8px 12px;
-    font-size: 17px;
-    left: 4px;
-    filter: drop-shadow(0 0 2px var(--secondary-color));
+    padding: 0.5rem 0.75rem;
+    font-size: 1.0625rem;
+    left: 0.25rem;
+    filter: drop-shadow(0 0 0.125rem var(--secondary-color));
   }
   .right-btn {
-    padding: 8px 12px;
-    font-size: 17px;
-    right: 4px;
-    filter: drop-shadow(0 0 2px var(--secondary-color));
+    padding: 0.5rem 0.75rem;
+    font-size: 1.0625rem;
+    right: 0.25rem;
+    filter: drop-shadow(0 0 0.125rem var(--secondary-color));
   }
 }

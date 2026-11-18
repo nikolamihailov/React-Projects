@@ -4,13 +4,13 @@
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
-  min-height: 600px;
+  min-height: 37.5rem;
   z-index: 6;
-  filter: drop-shadow(0 0 9px var(--background-inverted-color));
+  filter: drop-shadow(0 0 0.5625rem var(--background-inverted-color));
   color: var(--background-color);
-  padding: 30px 40px;
+  padding: 1.875rem 2.5rem;
   background: var(--background-inverted-color);
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -21,16 +21,16 @@
 
 .order-details i {
   color: var(--secondary-color);
-  font-size: 21px;
-  margin-right: 15px;
+  font-size: 1.3125rem;
+  margin-right: 0.9375rem;
 }
 .order-details div {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .order-details header h2 {
-  font-size: 25px;
+  font-size: 1.5625rem;
   margin: 0;
 }
 
@@ -39,12 +39,12 @@
 }
 
 .order-details section {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .order-details section h3 {
-  font-size: 23px;
-  margin-bottom: 10px;
+  font-size: 1.4375rem;
+  margin-bottom: 0.625rem;
 }
 
 .order-details footer {
@@ -53,6 +53,6 @@
 }
 
 .order-details .ordered-products {
-  height: 150px;
+  height: 9.375rem;
   overflow-y: scroll;
 }

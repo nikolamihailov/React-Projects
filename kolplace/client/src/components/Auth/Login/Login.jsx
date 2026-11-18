@@ -96,7 +96,7 @@ const Login = () => {
 
         <div className={styles["btns"]}>
           <button type="submit">
-            {isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "24px", color: "white"}}></i> : "Sign in"}
+            {isLoading ? <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: "1.5rem", color: "white"}}></i> : "Sign in"}
           </button>
         </div>
 

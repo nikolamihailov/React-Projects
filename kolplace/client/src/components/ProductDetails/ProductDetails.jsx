@@ -135,7 +135,7 @@ const ProductDetails = () => {
                   <p
                     style={
                       product?.hasPromoPrice
-                        ? { textDecoration: "line-through", fontSize: "17px" }
+                        ? { textDecoration: "line-through", fontSize: "1.0625rem" }
                         : { textDecoration: "none" }
                     }
                   >

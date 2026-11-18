@@ -4,62 +4,62 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   position: relative;
 }
 .checkout-section a {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 1.5625rem;
+  left: 1.5625rem;
   text-decoration: none;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 22px;
+  font-size: 1.375rem;
   border-radius: 50%;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
 }
 .checkout-section h5 {
-  font-size: 24px;
-  margin: 20px 0;
+  font-size: 1.5rem;
+  margin: 1.25rem 0;
 }
 
 .checkout-section .page-info h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .checkout-section .page-info img {
-  width: 150px;
-  height: 150px;
+  width: 9.375rem;
+  height: 9.375rem;
   object-fit: contain;
 }
 
 .checkout-section form {
   background-color: var(--background-inverted-color);
   color: var(--background-color);
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
   width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 6px solid var(--secondary-color);
+  border: 0.375rem solid var(--secondary-color);
 }
 
 .checkout-section label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 }
 
 .checkout-section select {
-  padding: 12px 15px;
-  font-size: 19px;
+  padding: 0.75rem 0.9375rem;
+  font-size: 1.1875rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   outline: none;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   background-color: var(--background-color);
   color: var(--background-inverted-color);
   font-weight: bold;
@@ -69,7 +69,7 @@
 .checkout-section option {
   background-color: var(--background-color);
   color: var(--secondary-color);
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: bold;
 }
 
@@ -79,7 +79,7 @@
 
 .checkout-section .without-office {
   width: 30%;
-  height: 300px;
+  height: 18.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,7 +88,7 @@
 
 .checkout-section .with-office {
   width: 30%;
-  height: 300px;
+  height: 18.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,11 +103,11 @@
   align-items: center;
 }
 .checkout-section label {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
 }
 .checkout-section .delivery-type {
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,9 +115,9 @@
 .checkout-section .without-office input {
   color: var(--background-color);
   background: none;
-  font-size: 16px;
+  font-size: 1rem;
   border: none;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   border-bottom: 3px solid var(--secondary-color);
   outline: none;
 }
@@ -125,21 +125,21 @@
   all: unset;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 
 .checkout-section .checkout-products {
   width: 70%;
   text-align: center;
-  margin: 50px 0;
+  margin: 3.125rem 0;
 }
 .checkout-section .checkout-products h3 {
-  font-size: 25px;
-  margin-bottom: 20px;
+  font-size: 1.5625rem;
+  margin-bottom: 1.25rem;
 }
 
 input[type="radio"] {
@@ -148,7 +148,7 @@ input[type="radio"] {
 
 input[type="radio"] + label {
   position: relative;
-  padding-left: 30px;
+  padding-left: 1.875rem;
   cursor: pointer;
 }
 
@@ -158,8 +158,8 @@ input[type="radio"] + label::before {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
   border: 2px solid var(--background-inverted-color);
   border-radius: 50%;
   background-color: var(--background-color);
@@ -171,31 +171,31 @@ input[type="radio"]:checked + label::before {
 }
 
 .checkout-section .total-price {
-  font-size: 25px;
-  margin-bottom: 40px;
+  font-size: 1.5625rem;
+  margin-bottom: 2.5rem;
 }
 
 .errors-container {
   position: fixed;
-  top: 200px;
-  right: 15px;
+  top: 12.5rem;
+  right: 0.9375rem;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75em) {
   .checkout-section .page-info h1 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 
   .checkout-section .page-info img {
-    width: 130px;
-    height: 130px;
+    width: 8.125rem;
+    height: 8.125rem;
     object-fit: contain;
   }
 
   .checkout-section form {
-    padding: 15px;
+    padding: 0.9375rem;
     width: 90%;
   }
   .checkout-section .without-office {
@@ -209,11 +209,11 @@ input[type="radio"]:checked + label::before {
     width: 90%;
   }
   .checkout-section a {
-    font-size: 17px;
-    padding: 5px 8px;
+    font-size: 1.0625rem;
+    padding: 0.3125rem 0.5rem;
   }
   .checkout-section form button {
-    padding: 6px 8px;
-    font-size: 17px;
+    padding: 0.375rem 0.5rem;
+    font-size: 1.0625rem;
   }
 }

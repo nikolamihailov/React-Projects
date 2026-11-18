@@ -216,7 +216,7 @@ const Checkout = () => {
           )}
           <h5>Payment method</h5>
           <p style={{ fontWeight: "bold" }}> - Onsite Pay</p>
-          <span style={{ fontStyle: "italic", marginTop: "10px" }}>
+          <span style={{ fontStyle: "italic", marginTop: "0.625rem" }}>
             Currently we offer only onsite payment***
           </span>
           <div className={styles["checkout-products"]}>

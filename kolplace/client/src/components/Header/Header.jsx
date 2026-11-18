@@ -4,23 +4,16 @@ import TopNav from "../Navigation/NavigationTop/TopNav";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TopNavMobile from "../Navigation/NavigationMobile/NavigationTopMobile";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Header = () => {
   const [pageURL, setPageURL] = useState("/");
-  const [isMobile, setIsMobile] = useState(false);
+  // Below 900px at the default font size (56.25em).
+  const isMobile = useMediaQuery("(max-width: 56.24em)");
   const loc = useLocation();
 
   useEffect(() => {
     setPageURL(loc.pathname);
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, [loc]);
   return (
     <>

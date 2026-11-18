@@ -1,7 +1,7 @@
 .cart-item {
   width: 95%;
   color: var(--background-color);
-  padding: 25px 10px;
+  padding: 1.5625rem 0.625rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,85 +11,85 @@
   color: var(--background-color);
   text-decoration: none;
   width: 40%;
-  font-size: 16px;
+  font-size: 1rem;
   word-wrap: break-word;
 }
 .cart-item img {
-  height: 70px;
-  width: 70px;
+  height: 4.375rem;
+  width: 4.375rem;
   object-fit: contain;
 }
 
 /* .cart-item h4 {
   width: 40%;
-  font-size: 16px;
+  font-size: 1rem;
   word-wrap: break-word;
 } */
 
 .cart-item input {
-  width: 50px;
+  width: 3.125rem;
   font-weight: bold;
   background-color: var(--secondary-color);
   color: var(--white-color);
-  font-size: 16px;
-  padding: 3px;
+  font-size: 1rem;
+  padding: 0.1875rem;
 }
 .cart-item p {
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: bold;
 }
 .cart-item .remove i {
   cursor: pointer;
   position: static;
   color: var(--secondary-color);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
-  margin-left: 15px;
+  margin-left: 0.9375rem;
 }
 
 .cart-item button {
   border: none;
   outline: none;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
-  font-size: 14px;
-  margin: 0px 4px;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.875rem;
+  margin: 0 0.25rem;
   background-color: var(--secondary-color);
   color: var(--white-color);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .cart-item {
-    padding: 15px 10px;
+    padding: 0.9375rem 0.625rem;
   }
   .cart-item a {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .cart-item img {
-    height: 50px;
-    width: 50px;
+    height: 3.125rem;
+    width: 3.125rem;
   }
 
   .cart-item input {
-    width: 30px;
-    font-size: 14px;
+    width: 1.875rem;
+    font-size: 0.875rem;
   }
   .cart-item p {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .cart-item .remove i {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .cart-item button {
     border: none;
     outline: none;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
-    font-size: 14px;
-    margin: 0px 4px;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.875rem;
+    margin: 0 0.25rem;
     background-color: var(--secondary-color);
     color: var(--white-color);
   }

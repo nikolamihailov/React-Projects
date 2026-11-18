@@ -2,7 +2,7 @@
   all: unset;
   position: relative;
   cursor: pointer;
-  padding: 5px 15px;
+  padding: 0.3125rem 0.9375rem;
   z-index: 2;
   border-radius: 50%;
 }
@@ -13,14 +13,14 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 2px;
+  width: 0.125rem;
   background-color: var(--secondary-color);
 }
 
 .theme-btn i,
 .theme-btn svg {
-  font-size: 28px;
+  font-size: 1.75rem;
   color: var(--secondary-color);
-  filter: drop-shadow(0 0 1px var(--dropshadow-color));
+  filter: drop-shadow(0 0 0.0625rem var(--dropshadow-color));
   transition: all 0.8s ease-in-out;
 }

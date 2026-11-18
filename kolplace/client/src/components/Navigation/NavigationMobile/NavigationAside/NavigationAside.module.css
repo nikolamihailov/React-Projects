@@ -6,7 +6,7 @@
   width: 33vw;
   background-color: var(--background-color);
   z-index: 9999;
-  padding: 15px 5px;
+  padding: 0.9375rem 0.3125rem;
   border-right: 4px solid var(--secondary-color);
   animation: slideIn 0.1s ease-in-out;
   display: flex;
@@ -18,9 +18,9 @@
 .side-menu-mobile i:nth-child(1) {
   cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 25px;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.5625rem;
   font-weight: bold;
   color: var(--secondary-color);
 }
@@ -50,10 +50,10 @@
 .links a {
   text-decoration: none;
   display: inline-block;
-  font-size: 21px;
+  font-size: 1.3125rem;
   font-weight: bold;
   color: var(--background-color-inverted);
-  padding: 8px;
+  padding: 0.5rem;
 }
 .active-link li {
   color: var(--secondary-color);
@@ -61,10 +61,10 @@
 .links li {
   cursor: pointer;
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   color: var(--background-color-inverted);
-  padding: 5px;
+  padding: 0.3125rem;
 }
 
 .links a:hover {
@@ -73,23 +73,23 @@
 
 .side-menu-mobile button {
   position: absolute;
-  height: 40px;
-  width: 40px;
-  top: 20px;
-  left: 20px;
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 1.25rem;
+  left: 1.25rem;
 }
 
 .side-menu-mobile button i {
-  margin-top: -15px;
+  margin-top: -0.9375rem;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 59.375em) {
   .side-menu-mobile {
     width: 85vw;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 25em) {
   .side-menu-mobile {
     width: 90vw;
   }

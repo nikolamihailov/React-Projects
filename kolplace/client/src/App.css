@@ -39,11 +39,11 @@ body {
 
 /* Other browsers - Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 15px;
+  width: 0.9375rem;
 }
 
 *::-webkit-scrollbar-track {
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   background-color: var(--primary-color);
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 20px;
+  border-radius: 1.25rem;
   background-color: var(--secondary-color);
 }
 
@@ -107,13 +107,13 @@ body {
 .leaflet-popup .leaflet-popup-content-wrapper {
   background-color: var(--primary-color);
   color: var(--background-color);
-  font-size: 14px;
-  border-radius: 5px;
+  font-size: 0.875rem;
+  border-radius: 0.3125rem;
   padding-right: 0.6rem;
 }
 
 .store-popup .leaflet-popup-content-wrapper {
-  border-left: 7px solid var(--secondary-color);
+  border-left: 0.4375rem solid var(--secondary-color);
 }
 
 .leaflet-popup-content-wrapper #popup-con {
@@ -123,11 +123,11 @@ body {
   align-items: center;
 }
 .leaflet-popup-content-wrapper #popup-image {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   :root {
     --header-height: 14vh;
   }

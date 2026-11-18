@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 0.9375rem;
   border-bottom: 1px solid var(--secondary-color);
   transition: all 0.5s ease-in-out;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
 }
 .dropdown-search-item:hover {
   scale: 1.02;
@@ -22,13 +22,13 @@
   color: var(--pimary-color);
 }
 .dropdown-search-item h3 {
-  padding: 10px;
-  font-size: 17px;
+  padding: 0.625rem;
+  font-size: 1.0625rem;
 }
 
 .dropdown-search-item img {
-  width: 70px;
-  height: 70px;
+  width: 4.375rem;
+  height: 4.375rem;
   object-fit: contain;
 }
 .dropdown-search-item .prices p {
@@ -44,27 +44,27 @@
 .dropdown-search-item .promo-price {
   margin-top: 0;
   background-color: var(--promo-price-color);
-  padding: 3px 5px;
+  padding: 0.1875rem 0.3125rem;
   border-radius: 50%;
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: bold;
   color: var(--white-color);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 43.75em) {
   .dropdown-search-item {
-    padding: 12px;
+    padding: 0.75rem;
   }
   .dropdown-search-item h3 {
-    padding: 10px;
-    font-size: 14px;
+    padding: 0.625rem;
+    font-size: 0.875rem;
   }
 
   .dropdown-search-item img {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   .dropdown-search-item .promo-price {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 }

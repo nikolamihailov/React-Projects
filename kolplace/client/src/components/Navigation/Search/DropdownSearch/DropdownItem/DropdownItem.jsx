@@ -49,7 +49,7 @@ const DropdownItem = ({
         <p
           style={
             hasPromoPrice
-              ? { textDecoration: "line-through", fontSize: "15px" }
+              ? { textDecoration: "line-through", fontSize: "0.9375rem" }
               : { textDecoration: "none" }
           }
         >

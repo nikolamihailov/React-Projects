@@ -9,20 +9,20 @@
 }
 
 .order-complete-section div {
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: bold;
   animation: move 5s ease-in infinite;
   transition: 0.5s ease-in;
 }
 
 .order-complete-section i {
-  margin-left: 5px;
-  font-size: 40px;
+  margin-left: 0.3125rem;
+  font-size: 2.5rem;
   color: var(--secondary-color);
 }
 .order-complete-section h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .order-complete-section a {
@@ -34,17 +34,17 @@
   margin: 0 auto;
   cursor: pointer;
   color: var(--white-color);
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: var(--secondary-color);
-  font-size: 19px;
-  border-radius: 10px;
-  margin-top: 15px;
-  filter: drop-shadow(0 0 3px var(--secondary-color));
+  font-size: 1.1875rem;
+  border-radius: 0.625rem;
+  margin-top: 0.9375rem;
+  filter: drop-shadow(0 0 0.1875rem var(--secondary-color));
 }
 
 .order-complete-section img {
-  height: 160px;
-  width: 160px;
+  height: 10rem;
+  width: 10rem;
   object-fit: contain;
 }
 

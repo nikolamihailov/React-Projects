@@ -1,6 +1,6 @@
 .logo {
   height: 2.7em;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   filter: drop-shadow(0 0 0.3em var(--dropshadow-color));
   transition: scale 0.5s ease-in-out;
 }
@@ -9,7 +9,7 @@
   filter: drop-shadow(0 0 0.5em var(--dropshadow-color));
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 31.25em) {
   .logo {
     height: 1.9rem;
   }

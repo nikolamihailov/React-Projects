@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AdminFilterSelect } from "../../../Admin/AdminListPage/AdminListPage";
+import FilterSelect from "../../FilterSelect/FilterSelect";
 import { getAll } from "../../../../data/services/categoryService";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthContext";
@@ -25,7 +25,7 @@ const FilterProductsByCategory = ({ onChange }) => {
   }, [updateNotifs, navigateTo, updateAuth]);
 
   return (
-    <AdminFilterSelect label="Category" id="product-category" name="filtersCategory" onChange={onChange}>
+    <FilterSelect label="Category" id="product-category" name="filtersCategory" onChange={onChange}>
         <option value="all">All categories</option>
         {categories?.map((c) => {
           return (
@@ -34,7 +34,7 @@ const FilterProductsByCategory = ({ onChange }) => {
             </option>
           );
         })}
-    </AdminFilterSelect>
+    </FilterSelect>
   );
 };
 

@@ -9,6 +9,7 @@ import FilterProductsByCategory from "../Filters/UserFilters/FilterProductsByCat
 import ProductCard from "../ProductCard/ProductCard";
 import ProductGrid from "../ProductCard/ProductGrid";
 import FilterProductsBySort from "../Filters/UserFilters/FilterProductsBySort";
+import ListToolbar from "../Filters/ListToolbar/ListToolbar";
 import promotionsBanner from "../../assets/promotions-banner.png";
 
 const Promotions = () => {
@@ -57,15 +58,16 @@ const Promotions = () => {
             />
           </div>
           <hr />
-          <div className={styles["sort-and-info"]}>
-            <FilterProductsByCategory onChange={onCategoryFilterChange} />
-            <p>
-              Products on promotion: <span>{productsCount}</span>
-            </p>
-            {productsCount >= 2 && (
-              <FilterProductsBySort onChange={onSortFilterChange} />
-            )}
-          </div>
+          <ListToolbar
+            count={productsCount}
+            label={productsCount === 1 ? "product on promotion" : "products on promotion"}
+            filters={
+              <>
+                <FilterProductsByCategory onChange={onCategoryFilterChange} />
+                {productsCount >= 2 && <FilterProductsBySort onChange={onSortFilterChange} />}
+              </>
+            }
+          />
           <ProductGrid>
               {products.length > 0 ? (
                 products.map((p) => {

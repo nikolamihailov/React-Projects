@@ -10,6 +10,7 @@ import useTitle from "../../hooks/useTitle";
 import styles from "./Category.module.css";
 import Spinner from "../Spinner/Spinner";
 import FilterProductsBySort from "../Filters/UserFilters/FilterProductsBySort";
+import ListToolbar from "../Filters/ListToolbar/ListToolbar";
 import usePagination from "../../hooks/usePagination";
 import Pagination from "../Pagination/Pagination";
 
@@ -129,22 +130,21 @@ const Category = () => {
 
           <hr />
 
-          <div className={styles["sort-and-info"]}>
-            <p>
-              Products in this category: <span>{productsCount}</span>
-            </p>
-            {products.length >= 2 && (
-              <FilterProductsBySort
-                value={selectedFilter}
-                onChange={(e) => {
-                  setSelectedFilter(e.target.value);
-                  onSortFilterChange(e);
-                }}
-                /*onChange={onSortFilterChange}
-              value={selectedFilter}*/
-              />
-            )}
-          </div>
+          <ListToolbar
+            count={productsCount}
+            label={productsCount === 1 ? "product" : "products"}
+            filters={
+              products.length >= 2 && (
+                <FilterProductsBySort
+                  value={selectedFilter}
+                  onChange={(e) => {
+                    setSelectedFilter(e.target.value);
+                    onSortFilterChange(e);
+                  }}
+                />
+              )
+            }
+          />
 
           <ProductGrid>
               {products.length > 0 ? (

@@ -1,0 +1,53 @@
+.filter {
+  --surface: color-mix(in srgb, var(--background-inverted-color) 6%, var(--background-color));
+  --border: color-mix(in srgb, var(--background-inverted-color) 14%, transparent);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  opacity: 0.9;
+}
+
+.filter select {
+  height: 2.5rem;
+  min-width: 10.6rem;
+  padding: 0 2.3rem 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background-color: var(--surface);
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+  appearance: none;
+  /* Chevron drawn with two gradients, so it follows the text colour. */
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 1.1rem) 50%, calc(100% - 0.8rem) 50%;
+  background-size: 0.3rem 0.3rem;
+  background-repeat: no-repeat;
+}
+
+.filter select:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.filter option {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 37.5em) {
+  .filter select {
+    min-width: 0;
+    width: 100%;
+  }
+}

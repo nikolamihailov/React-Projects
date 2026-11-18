@@ -28,32 +28,11 @@
   width: 75vw;
   height: 0.3rem;
   margin: 1.9rem 0;
-  background-color: var(--secondary-color);
+  background-color: var(--brand);
 }
 
-.favourite-products-section .sort-and-info {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  justify-content: space-evenly;
-  margin-bottom: 3.1rem;
-}
 
-.favourite-products-section .sort-and-info p {
-  background-color: var(--background-inverted-color);
-  color: var(--background-color);
-  padding: 0.5rem 0.8rem;
-  font-size: 1.1rem;
-  border-radius: 0.95rem;
-  font-weight: bold;
-}
 
-.favourite-products-section .sort-and-info span {
-  margin-left: 0.3rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--secondary-color);
-}
 
 .favourite-products-section .products {
   width: 75vw;
@@ -75,21 +54,9 @@
     object-fit: contain;
     margin-bottom: 3.1rem;
   }
-  .favourite-products-section .sort-and-info {
-    flex-direction: column;
-    gap: 0.65rem;
-    justify-content: center;
-  }
   .favourite-products-section .products {
     width: 85vw;
     align-items: center;
     justify-content: space-evenly;
-  }
-  .favourite-products-section .sort-and-info p {
-    padding: 0.25rem 0.45rem;
-    font-size: 0.95rem;
-  }
-  .favourite-products-section .sort-and-info span {
-    font-size: 1rem;
   }
 }

@@ -4,6 +4,7 @@ import styles from "./FavouriteProducts.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductGrid from "../ProductCard/ProductGrid";
 import useTitle from "../../hooks/useTitle";
+import ListToolbar from "../Filters/ListToolbar/ListToolbar";
 import favouritesBanner from "../../assets/favourites.png";
 
 const FavouriteProducts = () => {
@@ -27,12 +28,10 @@ const FavouriteProducts = () => {
       <hr />
 
       <div>
-        <div className={styles["sort-and-info"]}>
-          <p>
-            Your Favourite Products:{" "}
-            <span>{favProducts.favouriteProducts.length}</span>
-          </p>
-        </div>
+        <ListToolbar
+          count={favProducts.favouriteProducts.length}
+          label={favProducts.favouriteProducts.length === 1 ? "favourite product" : "favourite products"}
+        />
       </div>
       <ProductGrid>
           {favProducts.favouriteProducts.length > 0 ? (

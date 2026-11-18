@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "../Filters.module.css";
+import FilterSelect from "../FilterSelect/FilterSelect";
 import { getAll } from "../../../data/services/categoryService";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -25,9 +25,8 @@ const FilterProductsByCategory = ({ onChange }) => {
   }, [updateNotifs, navigateTo, updateAuth]);
 
   return (
-    <div className={styles["filters"]}>
-      <select name="filtersCategory" id="filtersCategory" onChange={onChange}>
-        <option value="all">All</option>
+    <FilterSelect label="Category" id="products-category" name="filtersCategory" onChange={onChange}>
+        <option value="all">All categories</option>
         {categories?.map((c) => {
           return (
             <option value={c._id} key={c._id}>
@@ -35,8 +34,7 @@ const FilterProductsByCategory = ({ onChange }) => {
             </option>
           );
         })}
-      </select>
-    </div>
+    </FilterSelect>
   );
 };
 

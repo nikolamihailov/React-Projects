@@ -132,14 +132,5 @@ export const AdminActionButton = ({ children, ...props }) => (
   </button>
 );
 
-// Labelled select used for every admin filter.
-export const AdminFilterSelect = ({ label, id, children, ...props }) => (
-  <label className={styles["filter"]} htmlFor={id}>
-    <span>{label}</span>
-    <select id={id} {...props}>
-      {children}
-    </select>
-  </label>
-);
 
 export default AdminListPage;

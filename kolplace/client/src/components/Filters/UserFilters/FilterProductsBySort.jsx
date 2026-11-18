@@ -1,19 +1,15 @@
-import styles from "../Filters.module.css";
+import FilterSelect from "../FilterSelect/FilterSelect";
 
-const FilterProductsBySort = ({ onChange, value }) => {
-  return (
-    <div className={styles["filters"]}>
-      <select name="filters" id="filters" value={value} onChange={onChange}>
-        <option value="createdAt-asc">Oldest</option>
-        <option value="createdAt-desc">Newest</option>
-        <option value="name-asc">Name (a-z)</option>
-        <option value="name-desc">Name (z-a)</option>
-        <option value="price-asc">Price asc</option>
-        <option value="price-desc">Price desc</option>
-        <option value="reviews">Most commented</option>
-      </select>
-    </div>
-  );
-};
+const FilterProductsBySort = ({ onChange, value }) => (
+  <FilterSelect label="Sort by" id="products-sort" name="filters" value={value} onChange={onChange}>
+    <option value="createdAt-asc">Oldest</option>
+    <option value="createdAt-desc">Newest</option>
+    <option value="name-asc">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+    <option value="price-asc">Price (low to high)</option>
+    <option value="price-desc">Price (high to low)</option>
+    <option value="reviews">Most reviewed</option>
+  </FilterSelect>
+);
 
 export default FilterProductsBySort;

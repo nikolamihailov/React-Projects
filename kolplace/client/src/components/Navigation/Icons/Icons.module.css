@@ -1,56 +1,60 @@
 .icon-btn {
   all: unset;
   cursor: pointer;
-  padding: 0.95rem;
-  margin: 0.3rem;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 0.25rem;
+  border-radius: 50%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.icon-btn:hover {
+  background-color: var(--surface-strong);
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 .icon-btn i {
   font-size: 1.8rem;
   color: var(--secondary-color);
-  filter: drop-shadow(0 0 0.15rem var(--dropshadow-color));
-  transition: all 0.7s ease-in-out;
-}
-
-.icon-btn:hover > i:nth-child(1) {
-  animation: iconAnimation 0.7s ease-in-out;
-  scale: 1.15;
 }
 
 .icon-btn i:nth-child(2) {
   position: absolute;
   bottom: 0.45rem;
-  right: 0.15rem;
-  font-size: 0.95rem;
+  right: 0.35rem;
+  font-size: 0.8rem;
   z-index: 3;
 }
 
+/* Count badge */
 .icon-btn span {
-  border-radius: 0.65rem;
-  padding: 0 0.4rem;
-  font-weight: bold;
   position: absolute;
-  top: 0.25rem;
-  right: 0.15rem;
-  font-size: 0.8rem;
-  background-color: var(--background-inverted-color);
-  color: var(--secondary-on-inverted);
+  top: 0.2rem;
+  right: 0.1rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background-color: var(--brand);
+  color: var(--white-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .dropdown-container {
   position: relative;
-}
-
-@keyframes iconAnimation {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
 }
 
 @media screen and (max-width: 75em) {
@@ -59,18 +63,13 @@
   }
 }
 
-@media screen and (max-width: 25em) {
+@media screen and (max-width: 56.5em) {
   .icon-btn {
-    padding: 0.3rem 0.65rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0;
   }
   .icon-btn i {
     font-size: 1.3rem;
-  }
-  .icon-btn i:nth-child(2) {
-    font-size: 0.75rem;
-  }
-  .icon-btn span {
-    padding: 0 0.25rem;
-    font-size: 0.75rem;
   }
 }

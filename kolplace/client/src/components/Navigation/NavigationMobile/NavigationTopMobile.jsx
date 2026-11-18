@@ -12,27 +12,30 @@ const TopNavMobile = () => {
   const { isOpen, showHide } = useShowHide();
   return (
     <nav className={styles["top-nav-mobile"]}>
-      {isOpen ? (
-        <NavigationAside onClose={showHide} />
-      ) : (
-        <>
-          <div className={styles["top-nav-mobile-container"]}>
-            <div className={styles["logo-menu"]}>
-              <i className="fa-solid fa-bars" onClick={showHide}></i>
-              <Link to={"/"}>
-                <Logo />
-              </Link>
-            </div>
+      {isOpen && <NavigationAside onClose={showHide} />}
+      <div className={styles["top-nav-mobile-container"]}>
+        <div className={styles["logo-menu"]}>
+          <button
+            type="button"
+            className={styles["menu-btn"]}
+            onClick={showHide}
+            aria-label="Open menu"
+            aria-expanded={isOpen}
+          >
+            <i className="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+          <Link to={"/"} aria-label="KolPlace home">
+            <Logo />
+          </Link>
+        </div>
 
-            <div className={styles["icons-container"]}>
-              <UserIconDropDown />
-              <FavouritesIcon />
-              <ShoppingCartIcon />
-            </div>
-          </div>
-          <Search />
-        </>
-      )}
+        <div className={styles["icons-container"]}>
+          <UserIconDropDown />
+          <FavouritesIcon />
+          <ShoppingCartIcon />
+        </div>
+      </div>
+      <Search />
     </nav>
   );
 };

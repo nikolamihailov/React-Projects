@@ -5,7 +5,7 @@ import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 import { Link } from "react-router-dom";
 
 const ShoppingCartExpanded = ({ onClose }) => {
-  const { cart, emptyCartProducts } = useContext(ShoppingCartContext);
+  const { cart } = useContext(ShoppingCartContext);
   const hasProducts = cart?.products.length > 0;
   const itemCount =
     cart?.products.reduce((count, p) => count + Number(p.quantity), 0) ?? 0;
@@ -104,13 +104,6 @@ const ShoppingCartExpanded = ({ onClose }) => {
                 Checkout <i className="fas fa-arrow-right" aria-hidden="true"></i>
               </Link>
             </div>
-            <button
-              type="button"
-              className={styles["text-btn"]}
-              onClick={() => emptyCartProducts()}
-            >
-              <i className="fa-solid fa-trash-can" aria-hidden="true"></i> Empty cart
-            </button>
           </div>
         )}
       </aside>

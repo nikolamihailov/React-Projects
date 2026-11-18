@@ -9,17 +9,22 @@ function StoreSkeleton({ stores }) {
     .fill(0)
     .map((_, idx) => {
       return (
-        <motion.div layout className={styles["store-item"]} exit={{ opacity: 0 }} key={idx}>
-          <Skeleton
-            width="15.6rem"
-            height="15.6rem"
-            style={{ marginBottom: "1.9rem", borderRadius: "0.65rem" }}
-          />
-          <h2>
-            <i className="fa-solid fa-location-dot"></i>
-            <Skeleton width="6.3rem" />
-          </h2>
-        </motion.div>
+        <motion.li
+          layout
+          className={styles["store-item"]}
+          exit={{ opacity: 0 }}
+          key={idx}
+          aria-hidden="true"
+        >
+          <div className={styles["image"]}>
+            <Skeleton height="100%" style={{ display: "block", borderRadius: 0 }} />
+          </div>
+          <div className={styles["body"]}>
+            <Skeleton width="9rem" height="1.4rem" />
+            <Skeleton width="7rem" />
+            <Skeleton height="2.75rem" style={{ borderRadius: "0.9rem" }} />
+          </div>
+        </motion.li>
       );
     });
 }

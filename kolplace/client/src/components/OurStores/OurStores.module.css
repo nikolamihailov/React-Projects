@@ -1,39 +1,50 @@
-.our-stores-section {
-  text-align: center;
-  width: 100%;
-  position: relative;
+.our-stores {
+  width: min(100%, 80rem);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
+  gap: 3rem;
+  line-height: 1.6;
 }
 
-.our-stores-section .info {
-  width: 80%;
+.intro {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.intro h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+}
+
+.intro p {
+  max-width: 65ch;
+  color: var(--muted);
+  font-size: var(--text-md);
+}
+
+.stores {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 24rem));
   justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-  font-weight: 500;
-}
-.our-stores-section .stores {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-}
-
-.our-stores-section h1 {
-  font-size: 2.5rem;
+  gap: 1.5rem;
 }
 
 @media screen and (max-width: 44em) {
-  .our-stores-section h1 {
-    font-size: 1.6rem;
+  .our-stores {
+    padding: 2rem 1rem 3rem;
+    gap: 2rem;
   }
-  .our-stores-section .info {
-    font-size: 1rem;
-  }
+}
+
+.outro {
+  max-width: 60ch;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--muted);
 }

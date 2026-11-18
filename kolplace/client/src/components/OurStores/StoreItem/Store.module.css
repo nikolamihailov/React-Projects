@@ -1,60 +1,98 @@
 .store-item {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.store-item img {
-  height: 15.6rem;
-  width: 15.6rem;
+.store-item:hover {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+  box-shadow: var(--shadow);
+}
+
+.image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface-strong);
+}
+
+/* Skeleton wrapper fills the image area. */
+.image > span {
+  display: block;
+  height: 100%;
+}
+
+.image img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 1.8rem;
-  margin: 0.65rem 0;
-  filter: drop-shadow(0 0 0.2rem var(--background-inverted-color));
-}
-.store-item p {
-  font-size: 1.4rem;
-  font-weight: bold;
 }
 
-.store-item p a {
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.body h2 {
+  font-size: var(--text-xl);
+  line-height: 1.3;
+}
+
+.phone {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-size: var(--text-sm);
   text-decoration: none;
+}
+
+.phone i {
+  color: var(--secondary-color);
+}
+
+.phone:hover {
   color: var(--primary-color);
+  text-decoration: underline;
 }
 
-.store-item h2 {
-  font-size: 1.8rem;
+.map-btn {
+  margin-top: 0.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--primary-color);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.store-item h2 i {
-  font-size: 1.6rem;
-  margin-right: 0.95rem;
+.map-btn i {
   color: var(--secondary-color);
 }
 
-.store-item p i {
-  font-size: 1.4rem;
-  margin-right: 0.95rem;
-  color: var(--secondary-color);
+.map-btn:hover {
+  background: var(--surface-strong);
+  border-color: var(--brand);
 }
 
-@media screen and (max-width: 44em) {
-  .store-item img {
-    height: 12.5rem;
-    width: 12.5rem;
-  }
-  .store-item p {
-    font-size: 1.1rem;
-  }
-  .store-item h2 {
-    font-size: 1.4rem;
-  }
-
-  .store-item h2 i {
-    font-size: 1.3rem;
-    margin-right: 0.95rem;
-    color: var(--secondary-color);
-  }
+.phone:focus-visible,
+.map-btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
+

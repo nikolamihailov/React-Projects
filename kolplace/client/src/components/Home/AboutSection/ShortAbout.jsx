@@ -3,7 +3,7 @@ import styles from "../Home.module.css";
 const ShortAboutSection = () => {
   return (
     <div className={styles["short-about-section"]}>
-      <h3>Online Store KolPlace</h3>
+      <h2>Online Store KolPlace</h2>
       <p>
         Welcome to KolPlace - Your Ultimate Online Shopping Destination! Since
         2020, KolPlace has been your go-to platform for endless entertainment.

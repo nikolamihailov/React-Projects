@@ -1,55 +1,109 @@
+/* Centered dialog card above the global .backdrop (z-index 5). */
 .store-big-map {
-  background-color: var(--background-color);
-  position: absolute;
+  position: fixed;
   top: 50%;
-  transform: translateY(-50%);
-  margin: 0 auto;
-  min-height: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 6;
-
-  /* ---------------------------------------- */
-  filter: drop-shadow(0 0 0.55rem var(--background-inverted-color));
-  max-height: 90%;
-  color: var(--background-color);
-  padding: 1.9rem 2.5rem;
-  background: var(--background-inverted-color);
-  border-radius: 1.3rem;
+  width: min(calc(100% - 2rem), 60rem);
+  max-height: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  color: var(--primary-color);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.heading h2 {
+  display: flex;
   align-items: center;
-  min-width: 80vw;
+  gap: 0.6rem;
+  font-size: var(--text-xl);
+  line-height: 1.3;
 }
 
-.store-big-map .map {
-  z-index: 1;
-  height: 31.3rem;
-  width: 100%;
-  border: 0.3rem solid var(--main-nav-categories);
+.heading h2 i {
+  color: var(--secondary-color);
+  font-size: var(--text-lg);
 }
 
-.store-big-map p {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.store-big-map p a {
+.phone {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-size: var(--text-sm);
   text-decoration: none;
-  color: var(--background-color);
 }
 
-.store-big-map h2 {
-  font-size: 1.8rem;
-}
-
-.store-big-map h2 i {
-  font-size: 1.6rem;
-  margin-right: 0.95rem;
+.phone i {
   color: var(--secondary-color);
 }
 
-.store-big-map p i {
-  font-size: 1.4rem;
-  margin-right: 0.95rem;
-  color: var(--secondary-color);
+.phone:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.close {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--primary-color);
+  font-size: var(--text-lg);
+  cursor: pointer;
+}
+
+.close:hover {
+  background: var(--surface-strong);
+}
+
+.close:focus-visible,
+.phone:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.map-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  isolation: isolate;
+}
+
+.map {
+  z-index: 1;
+  width: 100%;
+  height: clamp(16rem, 60vh, 32rem);
+}
+
+@media screen and (max-width: 44em) {
+  .store-big-map {
+    padding: 1.25rem 1rem;
+  }
 }

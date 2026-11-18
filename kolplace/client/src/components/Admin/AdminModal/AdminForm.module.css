@@ -51,7 +51,22 @@
 
 .field textarea {
   min-height: 8.75rem;
-  resize: vertical;
+  /* Fixed size: the box fills the space the layout gives it, users cannot drag it bigger. */
+  resize: none;
+}
+
+/* A field that fills the rest of its column, e.g. the product description
+   stretching down to the bottom of the image grid next to it. */
+.stack {
+  height: 100%;
+}
+
+.grow {
+  flex: 1 1 auto;
+}
+
+.grow textarea {
+  flex: 1 1 auto;
 }
 
 .field input:focus-visible,

@@ -175,7 +175,7 @@ const ProductForm = ({ id, onClose, onSaved }) => {
                 <input type="number" step="0.01" min="0" name="promoPrice" value={values.promoPrice} onChange={onChange} placeholder="799" />
               </label>
             )}
-            <label className={form["field"]}>
+            <label className={`${form["field"]} ${form["grow"]}`}>
               Description
               <textarea name="description" value={values.description} onChange={onChange} placeholder="The iPhone 15 Pro Max is..." />
             </label>

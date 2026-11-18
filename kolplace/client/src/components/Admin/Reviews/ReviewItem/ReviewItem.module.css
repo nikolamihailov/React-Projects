@@ -64,3 +64,53 @@
   font-size: 15px;
   font-style: italic;
 }
+
+.review-item .content span {
+  white-space: nowrap;
+}
+
+/* Narrow screens: author and review on top, product, date and delete below. */
+@media screen and (max-width: 700px) {
+  .review-item {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "author content content"
+      "product date delete";
+    align-items: center;
+    gap: 10px 12px;
+  }
+
+  .review-item > :nth-child(1) {
+    grid-area: author;
+  }
+
+  .review-item > :nth-child(2) {
+    grid-area: content;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .review-item > :nth-child(3) {
+    grid-area: product;
+    justify-self: center;
+  }
+
+  .review-item > :nth-child(4) {
+    grid-area: date;
+    font-size: 13px;
+  }
+
+  .review-item > :nth-child(5) {
+    grid-area: delete;
+  }
+
+  .review-item .content i {
+    font-size: 16px;
+  }
+
+  .review-item button {
+    margin-bottom: 0;
+  }
+}

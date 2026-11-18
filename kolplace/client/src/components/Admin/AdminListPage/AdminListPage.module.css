@@ -163,6 +163,15 @@
   border-top: 1px solid var(--border);
 }
 
+/* Phones: smaller cards in two columns. */
+.grid.compact {
+  gap: 12px;
+}
+
+.grid.compact > * {
+  padding: 10px;
+}
+
 @media screen and (max-width: 900px) {
   .toolbar {
     padding: 16px;
@@ -174,5 +183,31 @@
 
   .footer {
     padding: 10px 16px;
+  }
+}
+
+/* Phones: filters share one row, the action gets its own full-width row. */
+@media screen and (max-width: 600px) {
+  .filters,
+  .actions {
+    width: 100%;
+    flex-wrap: nowrap;
+    margin-left: 0;
+  }
+
+  .filters > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .filter select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .action-button {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
   }
 }

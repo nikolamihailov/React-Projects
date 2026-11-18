@@ -5,6 +5,11 @@ import Spinner from "../../Spinner/Spinner";
 import Pagination from "../../Pagination/Pagination";
 
 const GAP = { grid: 20, list: 12 };
+// Phones: narrower cards so two fit side by side, and at least this many rows
+// per page (the list scrolls) so a page is never just one or two items.
+const COMPACT_WIDTH = 600;
+const COMPACT_MIN_ITEM_WIDTH = 150;
+const COMPACT_MIN_ROWS = 3;
 
 // Shared frame for every admin list: a toolbar on top, a scrolling item area
 // in the middle and pagination pinned to the bottom, so nothing gets pushed
@@ -31,8 +36,10 @@ const AdminListPage = ({
   const bodyRef = useRef(null);
   const itemsRef = useRef(null);
   const [itemHeight, setItemHeight] = useState(null);
+  const [isCompact, setIsCompact] = useState(false);
   const showPagination = pagination && pagination.pageCount > 1;
   const gap = GAP[layout] ?? GAP.grid;
+  const itemWidth = isCompact ? Math.min(minItemWidth, COMPACT_MIN_ITEM_WIDTH) : minItemWidth;
 
   // Tallest rendered item; the grid stretches every row to it.
   useLayoutEffect(() => {
@@ -43,17 +50,22 @@ const AdminListPage = ({
   }, [children, isLoading]);
 
   useEffect(() => {
-    if (!onPageSizeChange || !bodyRef.current) return;
+    if (!bodyRef.current) return;
     let last = null;
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
+      const compact = width < COMPACT_WIDTH;
+      setIsCompact(compact);
+      if (!onPageSizeChange) return;
+      const minWidth = compact ? Math.min(minItemWidth, COMPACT_MIN_ITEM_WIDTH) : minItemWidth;
       // Same maths as the CSS grid: repeat(auto-fill, minmax(minItemWidth, 1fr)).
       const columns = layout === "list"
         ? 1
-        : Math.max(1, Math.floor((width + gap) / (minItemWidth + gap)));
-      const fittingRows = itemHeight
+        : Math.max(1, Math.floor((width + gap) / (minWidth + gap)));
+      let fittingRows = itemHeight
         ? Math.max(1, Math.floor((height + gap) / (itemHeight + gap)))
         : rows;
+      if (compact) fittingRows = Math.max(fittingRows, COMPACT_MIN_ROWS);
       const size = columns * fittingRows;
       if (size !== last) {
         last = size;
@@ -87,8 +99,8 @@ const AdminListPage = ({
           <motion.div
             layout
             ref={itemsRef}
-            className={styles[layout === "list" ? "list" : "grid"]}
-            style={{ "--min-item-width": `${minItemWidth}px`, "--grid-gap": `${gap}px` }}
+            className={`${styles[layout === "list" ? "list" : "grid"]} ${isCompact ? styles["compact"] : ""}`}
+            style={{ "--min-item-width": `${itemWidth}px`, "--grid-gap": `${gap}px` }}
           >
             <AnimatePresence>{children}</AnimatePresence>
           </motion.div>

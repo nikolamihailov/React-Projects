@@ -4,6 +4,7 @@ import Login from "./components/Auth/Login/Login.jsx";
 import Home from "./components/Home/Home.jsx";
 import Register from "./components/Auth/Register/Register.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import RouteScrollReset from "./components/RouteScrollReset/RouteScrollReset.jsx";
 import "./App.css";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { NotifProvider } from "./contexts/NotificationContext.jsx";
@@ -44,6 +45,7 @@ function App() {
         <ShoppingCartProvider>
           <FavouriteProductsProvider>
             <ThemeProvider>
+              <RouteScrollReset />
               <Header />
               <main className="main">
                 <NotificationContainer />

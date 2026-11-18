@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "./DeleteUser.module.css";
+import { ConfirmDialog } from "../../AdminModal/AdminModal";
 import { useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { deleteUser, getProfile } from "../../../../data/services/userService";
-import Spinner from "../../../Spinner/Spinner";
 
 const DeleteUser = ({ onClose, id, updateUsers }) => {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBusy, setIsBusy] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
@@ -21,12 +21,12 @@ const DeleteUser = ({ onClose, id, updateUsers }) => {
   }, [id]);
 
   const onDelete = async () => {
-    console.log(id);
     const deletedUser = await deleteUser(id);
     if (deletedUser.expMessage) {
       updateNotifs([{ text: deletedUser.expMessage, type: "error" }]);
       navigateTo("/login");
       updateAuth({});
+      return;
     }
     if (deletedUser.error) {
       updateNotifs([{ text: deletedUser.error, type: "error" }]);
@@ -42,29 +42,28 @@ const DeleteUser = ({ onClose, id, updateUsers }) => {
       navigateTo("/admin-panel/users");
     }
   };
+  const confirmDelete = async () => {
+    setIsBusy(true);
+    try {
+      await onDelete();
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
   return (
-    <>
-      <div className="backdrop" onClick={onClose}></div>
-      <div className={styles["delete-user"]}>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <p>
-              Are you sure you want to delete{" "}
-              <span>
-                {user?.firstName} {user?.lastName}
-              </span>
-              ?
-            </p>
-            <div className={styles["btns"]}>
-              <button onClick={onDelete}>Ok</button>
-              <button onClick={onClose}>Cancel</button>
-            </div>
-          </>
-        )}
-      </div>
-    </>
+    <ConfirmDialog
+      title="Delete user"
+      onConfirm={confirmDelete}
+      onClose={onClose}
+      isLoading={isLoading}
+      isBusy={isBusy}
+    >
+      <p>
+          Delete <strong>{user?.firstName} {user?.lastName}</strong>? Their shopping cart is deleted
+          too. This can&apos;t be undone.
+        </p>
+    </ConfirmDialog>
   );
 };
 

@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "./DeleteReview.module.css";
+import { ConfirmDialog } from "../../AdminModal/AdminModal";
 import { useNavigate } from "react-router-dom";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { deleteReview, getOne } from "../../../../data/services/reviewService";
-import Spinner from "../../../Spinner/Spinner";
 
 const DeleteReview = ({ onClose, id, updateReviews }) => {
   const [review, setReview] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBusy, setIsBusy] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
@@ -23,12 +23,12 @@ const DeleteReview = ({ onClose, id, updateReviews }) => {
   }, [id]);
 
   const onDelete = async () => {
-    console.log(id);
     const deletedReview = await deleteReview(id);
     if (deletedReview.expMessage) {
       updateNotifs([{ text: deletedReview.expMessage, type: "error" }]);
       navigateTo("/login");
       updateAuth({});
+      return;
     }
     if (deletedReview.error) {
       updateNotifs([{ text: deletedReview.error, type: "error" }]);
@@ -44,26 +44,28 @@ const DeleteReview = ({ onClose, id, updateReviews }) => {
       navigateTo("/admin-panel/reviews");
     }
   };
+  const confirmDelete = async () => {
+    setIsBusy(true);
+    try {
+      await onDelete();
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
   return (
-    <>
-      <div className="backdrop" onClick={onClose}></div>
-      <div className={styles["delete-review"]}>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <p>
-              Are you sure you want to delete review by
-              <span> {review?.author.firstName}</span> on <span>{review?.product.name}</span>?
-            </p>
-            <div className={styles["btns"]}>
-              <button onClick={onDelete}>Ok</button>
-              <button onClick={onClose}>Cancel</button>
-            </div>
-          </>
-        )}
-      </div>
-    </>
+    <ConfirmDialog
+      title="Delete review"
+      onConfirm={confirmDelete}
+      onClose={onClose}
+      isLoading={isLoading}
+      isBusy={isBusy}
+    >
+      <p>
+          Delete the review by <strong>{review?.author?.firstName}</strong> on{" "}
+          <strong>{review?.product?.name}</strong>? This can&apos;t be undone.
+        </p>
+    </ConfirmDialog>
   );
 };
 

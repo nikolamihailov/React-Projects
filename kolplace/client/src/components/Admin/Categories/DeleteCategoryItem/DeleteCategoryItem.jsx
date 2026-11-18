@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { getOneCategory, deleteCategory } from "../../../../data/services/categoryService";
-import styles from "./DeleteCategory.module.css";
+import { ConfirmDialog } from "../../AdminModal/AdminModal";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import Spinner from "../../../Spinner/Spinner";
 
 const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
   const [category, setCategory] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBusy, setIsBusy] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
@@ -26,6 +26,7 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
       updateNotifs([{ text: deletedCategory.expMessage, type: "error" }]);
       navigateTo("/login");
       updateAuth({});
+      return;
     }
     if (deletedCategory.hasProducts) {
       updateNotifs([{ text: deletedCategory.hasProducts, type: "error" }]);
@@ -46,25 +47,28 @@ const DeleteCategoryItem = ({ onClose, id, updateCategories }) => {
       navigateTo("/admin-panel/categories");
     }
   };
+  const confirmDelete = async () => {
+    setIsBusy(true);
+    try {
+      await onDelete();
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
   return (
-    <>
-      <div className="backdrop" onClick={onClose}></div>
-      <div className={styles["delete-category"]}>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <p>
-              Are you sure you want to delete <span>{category?.name}</span> category?
-            </p>
-            <div>
-              <button onClick={onDelete}>Ok</button>
-              <button onClick={onClose}>Cancel</button>
-            </div>
-          </>
-        )}
-      </div>
-    </>
+    <ConfirmDialog
+      title="Delete category"
+      onConfirm={confirmDelete}
+      onClose={onClose}
+      isLoading={isLoading}
+      isBusy={isBusy}
+    >
+      <p>
+          Delete the <strong>{category?.name}</strong> category? A category that still has products
+          can&apos;t be deleted.
+        </p>
+    </ConfirmDialog>
   );
 };
 

@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "./DeleteProduct.module.css";
+import { ConfirmDialog } from "../../AdminModal/AdminModal";
 import { NotifContext } from "../../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { getOneProduct, deleteProduct } from "../../../../data/services/productService";
-import Spinner from "../../../Spinner/Spinner";
 
 const DeleteProductItem = ({ onClose, id, updateProducts }) => {
   const [product, setProduct] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBusy, setIsBusy] = useState(false);
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const { updateAuth } = useContext(AuthContext);
@@ -26,6 +26,7 @@ const DeleteProductItem = ({ onClose, id, updateProducts }) => {
       updateNotifs([{ text: deletedProduct.expMessage, type: "error" }]);
       navigateTo("/login");
       updateAuth({});
+      return;
     }
     if (deletedProduct.error) {
       updateNotifs([{ text: deletedProduct.error, type: "error" }]);
@@ -41,25 +42,28 @@ const DeleteProductItem = ({ onClose, id, updateProducts }) => {
       navigateTo("/admin-panel/products");
     }
   };
+  const confirmDelete = async () => {
+    setIsBusy(true);
+    try {
+      await onDelete();
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
   return (
-    <>
-      <div className="backdrop" onClick={onClose}></div>
-      <div className={styles["delete-product"]}>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <p>
-              Are you sure you want to delete the product <span>{product?.name}</span>?
-            </p>
-            <div>
-              <button onClick={onDelete}>Ok</button>
-              <button onClick={onClose}>Cancel</button>
-            </div>
-          </>
-        )}
-      </div>
-    </>
+    <ConfirmDialog
+      title="Delete product"
+      onConfirm={confirmDelete}
+      onClose={onClose}
+      isLoading={isLoading}
+      isBusy={isBusy}
+    >
+      <p>
+          Delete <strong>{product?.name}</strong>? Its reviews are removed and it is taken out of every
+          cart and favourites list. This can&apos;t be undone.
+        </p>
+    </ConfirmDialog>
   );
 };
 

@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import usePagination from "../../../hooks/usePagination";
-import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
-import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
+import CategoryForm from "./CategoryForm/CategoryForm";
 import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 import { getAllWithFilters } from "../../../data/services/categoryService";
 import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCategories";
@@ -24,6 +23,7 @@ const Categories = () => {
   const navigateTo = useNavigate();
   const { updateNotifs } = useContext(NotifContext);
   const [filter, setFilter] = useState("");
+  const [reloadKey, setReloadKey] = useState(0);
   const [pageSize, setPageSize] = useState(null);
   const onPageSizeChange = useCallback((size) => {
     setPageSize(size);
@@ -46,9 +46,14 @@ const Categories = () => {
       .catch((error) => {
         updateNotifs([{ text: error, type: "error" }]);
       });
-  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter, pageSize]);
+  }, [page, navigateTo, updateAuth, updateNotifs, updatePageCount, filter, pageSize, reloadKey]);
 
   const updateCategories = useCallback((data) => setCategories(data), []);
+  // A new item can land on any page, so reload; an edit is swapped in place.
+  const onSaved = useCallback((saved, isNew) => {
+    if (isNew) setReloadKey((k) => k + 1);
+    else setCategories((list) => list.map((c) => (c._id === saved._id ? saved : c)));
+  }, []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
   const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
   const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
@@ -83,13 +88,9 @@ const Categories = () => {
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         <>
-          {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
+          {isAddOpen && <CategoryForm onClose={onCloseAdd} onSaved={onSaved} />}
           {isEditOpen && (
-            <EditCategoryItem
-              onClose={onCloseEdit}
-              id={selectedCategory}
-              updateCategories={updateCategories}
-            />
+            <CategoryForm onClose={onCloseEdit} id={selectedCategory} onSaved={onSaved} />
           )}
           {isDeleteOpen && (
             <DeleteCategoryItem

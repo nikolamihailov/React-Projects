@@ -1,13 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import AdminListPage, { AdminActionButton } from "../AdminListPage/AdminListPage";
-import AddProductItem from "./AddProductItem/AddProduct";
+import ProductForm from "./ProductForm/ProductForm";
 import usePagination from "../../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { getAllWithFilters } from "../../../data/services/productService";
 import ProductItem from "./ProductItem/ProductItem";
-import EditProductItem from "./EditProductItem/EditProduct";
 import DeleteProductItem from "./DeleteProductItem/DeleteProductItem";
 import FilterProductsByCategory from "../../Filters/AdminFilters/ProductFilters/FilterProductsByCategory";
 import FilterProductsBySort from "../../Filters/AdminFilters/ProductFilters/FilterProductsBySort";
@@ -24,6 +23,7 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortFilter, setSortFilter] = useState("");
+  const [reloadKey, setReloadKey] = useState(0);
   const [pageSize, setPageSize] = useState(null);
   const onPageSizeChange = useCallback((size) => {
     setPageSize(size);
@@ -66,9 +66,15 @@ const Products = () => {
     categoryFilter,
     onPromotion,
     pageSize,
+    reloadKey,
   ]);
 
   const updateProducts = useCallback((data) => setProducts(data), []);
+  // A new item can land on any page, so reload; an edit is swapped in place.
+  const onSaved = useCallback((saved, isNew) => {
+    if (isNew) setReloadKey((k) => k + 1);
+    else setProducts((list) => list.map((p) => (p._id === saved._id ? saved : p)));
+  }, []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
   const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
   const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
@@ -113,13 +119,9 @@ const Products = () => {
       pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
       overlays={
         <>
-          {isAddOpen && <AddProductItem onClose={onCloseAdd} />}
+          {isAddOpen && <ProductForm onClose={onCloseAdd} onSaved={onSaved} />}
           {isEditOpen && (
-            <EditProductItem
-              onClose={onCloseEdit}
-              id={selectedProduct}
-              updateProducts={updateProducts}
-            />
+            <ProductForm onClose={onCloseEdit} id={selectedProduct} onSaved={onSaved} />
           )}
           {isDeleteOpen && (
             <DeleteProductItem

@@ -5,8 +5,7 @@ import { NotifContext } from "../../../contexts/NotificationContext";
 import { getAll } from "../../../data/services/storeService";
 import { useNavigate } from "react-router-dom";
 import StoreItem from "./StoreItem/StoreItem";
-import AddStore from "./AddStoreItem/AddStore";
-import EditStore from "./EditStore/EditStore";
+import StoreForm from "./StoreForm/StoreForm";
 import DeleteStore from "./DeleteStore/DeleteStore";
 
 const Stores = () => {
@@ -37,6 +36,9 @@ const Stores = () => {
   }, [navigateTo, updateAuth, updateNotifs]);
 
   const updateStores = useCallback((data) => setStores(data), []);
+  const onSaved = useCallback((saved, isNew) => {
+    setStores((list) => (isNew ? [...list, saved] : list.map((s) => (s._id === saved._id ? saved : s))));
+  }, []);
   const onCloseAdd = useCallback(() => setIsAddOpen(false), []);
   const onCloseEdit = useCallback(() => setIsEditOpen(false), []);
   const onCloseDelete = useCallback(() => setIsDeleteOpen(false), []);
@@ -63,10 +65,8 @@ const Stores = () => {
       minItemWidth={240}
       overlays={
         <>
-          {isAddOpen && <AddStore onClose={onCloseAdd} updateStores={updateStores} />}
-          {isEditOpen && (
-            <EditStore onClose={onCloseEdit} id={selectedStore} updateStores={updateStores} />
-          )}
+          {isAddOpen && <StoreForm onClose={onCloseAdd} onSaved={onSaved} />}
+          {isEditOpen && <StoreForm onClose={onCloseEdit} id={selectedStore} onSaved={onSaved} />}
           {isDeleteOpen && (
             <DeleteStore onClose={onCloseDelete} id={selectedStore} updateStores={updateStores} />
           )}

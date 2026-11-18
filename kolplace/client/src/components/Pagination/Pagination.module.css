@@ -26,3 +26,34 @@
   color: var(--background-color);
   filter: drop-shadow(0 0 3px var(--background-inverted-color));
 }
+
+.pagination .gap {
+  align-self: center;
+  padding: 0 4px;
+  font-weight: bold;
+}
+
+.pagination button:focus-visible {
+  outline: 2px solid var(--background-inverted-color);
+  outline-offset: 2px;
+}
+
+/* Smaller variant for the admin panel footer. */
+.compact {
+  align-items: center;
+  gap: 6px;
+}
+
+.compact button {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  margin: 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  border-radius: 8px;
+  filter: none;
+}

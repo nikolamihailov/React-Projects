@@ -1,243 +1,143 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { getOneProduct } from "../../data/services/productService";
 import styles from "./ProductDetails.module.css";
 import CarouselProducts from "../Home/ProductsCarousel/CarouselContainer/Carousel";
 import Spinner from "../Spinner/Spinner";
 import useTitle from "../../hooks/useTitle";
-import { AuthContext } from "../../contexts/AuthContext";
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
-import { NotifContext } from "../../contexts/NotificationContext";
-import { FavouriteProductsContext } from "../../contexts/FavouriteProductsContext";
+import useProductActions from "../../hooks/useProductActions";
 import ReviewsContainer from "./Reviews/ReviewsContainer/ReviewsContainer";
-import ProductRating from "./Reviews/ProductRating/ProductRating";
+import StarRating from "../StarRating/StarRating";
+import { averageRating } from "../../utils/rating";
+
+const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const { isAuthenticated } = useContext(AuthContext);
-  const { cart, addProductToCart } = useContext(ShoppingCartContext);
-  const { canAddProduct, addProductToFavouriteProducts } = useContext(
-    FavouriteProductsContext
-  );
-  const { updateNotifs } = useContext(NotifContext);
-  const navigateTo = useNavigate();
-
-  const [product, setProduct] = useState(null);
+  const { addToCart, isFavourite, toggleFavourite } = useProductActions();
   useTitle(`${product?.name ? product.name : "Product Details"} | KolPlace`);
+
   useEffect(() => {
+    setIsLoading(true);
     getOneProduct(id)
       .then((data) => {
         setProduct(data);
         setActiveImage(data.mainImage);
-        setIsLoading(false);
         window.scrollTo(0, 0);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [id]);
 
   const scrollToReviews = useCallback(() => {
-    const reviews = document.getElementById("reviews");
-
-    if (reviews) {
-      const topPosition = reviews.offsetTop;
-      window.scrollTo({ top: topPosition, behavior: "smooth" });
-    }
+    document.getElementById("reviews")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const updateProduct = useCallback((data) => {
-    setProduct(data);
-  }, []);
+  const updateProduct = useCallback((data) => setProduct(data), []);
+
+  if (isLoading || !product) {
+    return (
+      <section className={styles["product-details"]}>
+        <Spinner />
+      </section>
+    );
+  }
+
+  const images = [product.mainImage, product.imageTwo, product.imageThree, product.imageFour].filter(Boolean);
+  const rating = averageRating(product.reviews);
+  const reviewCount = product.reviews.length;
+  const discount = product.hasPromoPrice
+    ? Math.round(((product.price - product.promoPrice) / product.price) * 100)
+    : 0;
+  const favourite = isFavourite(product._id);
 
   return (
     <section className={styles["product-details"]}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <>
-          <div className={styles["product"]}>
-            <div className={styles["product-images"]}>
-              <div className={styles["main-image"]}>
-                <img src={activeImage} alt={product?.name} />
-              </div>
-              <div className={styles["other-images"]}>
-                <img
-                  src={product?.mainImage}
-                  alt={product?.name}
-                  onClick={() => setActiveImage(product.mainImage)}
-                  className={
-                    activeImage === product?.mainImage
-                      ? styles["active-image"]
-                      : styles["non-active-image"]
-                  }
-                />
-                {product?.imageTwo && (
-                  <img
-                    src={product?.imageTwo}
-                    alt={product?.name}
-                    onClick={() => setActiveImage(product.imageTwo)}
-                    className={
-                      activeImage === product?.imageTwo
-                        ? styles["active-image"]
-                        : styles["non-active-image"]
-                    }
-                  />
-                )}
-                {product?.imageThree && (
-                  <img
-                    src={product?.imageThree}
-                    alt={product?.name}
-                    onClick={() => setActiveImage(product.imageThree)}
-                    className={
-                      activeImage === product?.imageThree
-                        ? styles["active-image"]
-                        : styles["non-active-image"]
-                    }
-                  />
-                )}
-                {product?.imageFour && (
-                  <img
-                    src={product?.imageFour}
-                    alt={product?.name}
-                    onClick={() => setActiveImage(product.imageFour)}
-                    className={
-                      activeImage === product?.imageFour
-                        ? styles["active-image"]
-                        : styles["non-active-image"]
-                    }
-                  />
-                )}
-              </div>
-            </div>
-            <div className={styles["product-info"]}>
-              <h1>{product?.name}</h1>
-              {product && (
-                <ProductRating
-                  reviews={product.reviews}
-                  scrollToReviews={scrollToReviews}
-                />
-              )}
-              <p>
-                <strong>Category:</strong>
-                <Link
-                  to={`/categories/${product?.category.name.toLowerCase()}`}
+      <div className={styles["product"]}>
+        <div className={styles["gallery"]}>
+          <div className={styles["main-image"]}>
+            <img src={activeImage} alt={product.name} />
+            {discount > 0 && <span className={styles["badge"]}>-{discount}%</span>}
+          </div>
+          {images.length > 1 && (
+            <div className={styles["thumbnails"]} role="group" aria-label="Product images">
+              {images.map((src, i) => (
+                <button
+                  key={src}
+                  type="button"
+                  className={`${styles["thumbnail"]} ${src === activeImage ? styles["active"] : ""}`}
+                  onClick={() => setActiveImage(src)}
+                  aria-label={`Show image ${i + 1} of ${images.length}`}
+                  aria-pressed={src === activeImage}
                 >
-                  <span>{product?.category.name}</span>
-                </Link>
-              </p>
-              <p>
-                <strong>Description:</strong>
-                {product?.description}
-              </p>
-              <div className={styles["product-prices-buttons"]}>
-                <div className={styles["prices"]}>
-                  <p
-                    style={
-                      product?.hasPromoPrice
-                        ? { textDecoration: "line-through", fontSize: "1.1rem" }
-                        : { textDecoration: "none" }
-                    }
-                  >
-                    ${product?.price.toFixed(2)}
-                  </p>
-                  {product?.hasPromoPrice && (
-                    <p className={styles["promo-price"]}>
-                      ${product?.promoPrice.toFixed(2)}
-                    </p>
-                  )}
-                </div>
-                <div className={styles["btns"]}>
-                  <button
-                    title="Add To Cart"
-                    onClick={() => {
-                      if (isAuthenticated) {
-                        addProductToCart(product);
-                        const isIn = cart.products.find(
-                          (p) => p.product._id === product?._id
-                        );
-                        if (isIn)
-                          updateNotifs([
-                            {
-                              text: `Product already in cart, quantity increased!`,
-                              type: "success",
-                            },
-                          ]);
-                        else
-                          updateNotifs([
-                            {
-                              text: `${product?.name} added to cart!`,
-                              type: "success",
-                            },
-                          ]);
-                      } else {
-                        updateNotifs([
-                          {
-                            text: "You need to be signed in to buy products!",
-                            type: "error",
-                          },
-                        ]);
-                        navigateTo("/login");
-                      }
-                    }}
-                  >
-                    Add to cart <i className="fa-solid fa-cart-shopping"></i>
-                  </button>
+                  <img src={src} alt="" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
-                  {!isAuthenticated ? (
-                    <p
-                      onClick={() => {
-                        updateNotifs([
-                          {
-                            text: "You need to be signed in to add to favourite products!",
-                            type: "error",
-                          },
-                        ]);
-                        navigateTo("/login");
-                      }}
-                      title="Add To Favourite Products"
-                    >
-                      Add To Favourites <i className="fa-regular fa-heart"></i>
-                    </p>
-                  ) : isAuthenticated && canAddProduct(product?._id) ? (
-                    <p
-                      onClick={() => {
-                        addProductToFavouriteProducts(product._id);
-                        updateNotifs([
-                          {
-                            text: `${product?.name} added to favourites!`,
-                            type: "success",
-                          },
-                        ]);
-                      }}
-                      title="Add To Favourite Products"
-                    >
-                      Add To Favourites <i className="fa-regular fa-heart"></i>
-                    </p>
-                  ) : (
-                    <p title="Product is in Favourites">
-                      Product is in Favourites{" "}
-                      <i className="fa-solid fa-heart"></i>
-                    </p>
-                  )}
-                </div>
-              </div>
+        <div className={styles["info"]}>
+          <Link to={`/categories/${product.category.name.toLowerCase()}`} className={styles["category"]}>
+            {product.category.name}
+          </Link>
+          <h1>{product.name}</h1>
+
+          <button type="button" className={styles["rating"]} onClick={scrollToReviews}>
+            {reviewCount > 0 ? (
+              <>
+                <StarRating value={rating} size="lg" />
+                <span>
+                  {rating.toFixed(1)} · {reviewCount} {reviewCount === 1 ? "review" : "reviews"}
+                </span>
+              </>
+            ) : (
+              <span>No reviews yet · be the first to review</span>
+            )}
+          </button>
+
+          <div className={styles["purchase"]}>
+            <div className={styles["price"]}>
+              {product.hasPromoPrice ? (
+                <>
+                  <span className={`${styles["current"]} ${styles["sale"]}`}>{formatPrice(product.promoPrice)}</span>
+                  <s className={styles["old"]}>{formatPrice(product.price)}</s>
+                  <span className={styles["saving"]}>You save {formatPrice(product.price - product.promoPrice)}</span>
+                </>
+              ) : (
+                <span className={styles["current"]}>{formatPrice(product.price)}</span>
+              )}
+            </div>
+            <div className={styles["actions"]}>
+              <button type="button" className={styles["add"]} onClick={() => addToCart(product)}>
+                <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                Add to cart
+              </button>
+              <button
+                type="button"
+                className={`${styles["favourite"]} ${favourite ? styles["is-favourite"] : ""}`}
+                onClick={() => toggleFavourite(product)}
+                aria-pressed={favourite}
+              >
+                <i className={`${favourite ? "fa-solid" : "fa-regular"} fa-heart`} aria-hidden="true"></i>
+                {favourite ? "In favourites" : "Add to favourites"}
+              </button>
             </div>
           </div>
-          <ReviewsContainer
-            productId={product?._id}
-            reviews={product?.reviews}
-            updateProduct={updateProduct}
-          />
 
-          <CarouselProducts
-            items={4}
-            category={product?.category.name}
-            title={`People Also Viewed`}
-            id={product?._id}
-          />
-        </>
-      )}
+          <div className={styles["description"]}>
+            <h2>Description</h2>
+            <p>{product.description}</p>
+          </div>
+        </div>
+      </div>
+
+      <ReviewsContainer productId={product._id} reviews={product.reviews} updateProduct={updateProduct} />
+
+      <CarouselProducts items={4} category={product.category.name} title="People Also Viewed" id={product._id} />
     </section>
   );
 };

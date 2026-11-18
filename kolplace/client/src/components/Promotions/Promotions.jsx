@@ -46,18 +46,23 @@ const Promotions = () => {
   return (
     <section className={styles["promotions-section"]}>
       {isLoading ? (
-        <Spinner />
+        <div className={styles["loading"]}>
+          <Spinner />
+        </div>
       ) : (
         <>
-          <div>
-            <h1>Products On Promotion</h1>
-            <img
-              className={styles["promotion-banner-image"]}
-              src={promotionsBanner}
-              alt="promotions-banner"
-            />
+          <div className={styles["hero"]}>
+            <div className={styles["hero-text"]}>
+              <p className={styles["eyebrow"]}>Deals</p>
+              <h1 className={styles["title"]}>Products on promotion</h1>
+              <p className={styles["subtitle"]}>
+                Reduced prices across every category, while stocks last.
+              </p>
+            </div>
+            <div className={styles["hero-media"]}>
+              <img src={promotionsBanner} alt="Special promotion" />
+            </div>
           </div>
-          <hr />
           <ListToolbar
             count={productsCount}
             label={productsCount === 1 ? "product on promotion" : "products on promotion"}

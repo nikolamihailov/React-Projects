@@ -116,19 +116,25 @@ const Category = () => {
   return (
     <section className={styles["category-section"]}>
       {isLoading ? (
-        <Spinner />
+        <div className={styles["loading"]}>
+          <Spinner />
+        </div>
       ) : (
         <>
-          <div>
-            <h1>{category?.name} Category</h1>
-            <img
-              className={styles["category-banner-image"]}
-              src={category?.categoryImage}
-              alt={category?.name}
-            />
+          <div className={styles["hero"]}>
+            <div className={styles["hero-text"]}>
+              <p className={styles["eyebrow"]}>Category</p>
+              <h1 className={styles["title"]}>{category?.name}</h1>
+              <p className={styles["subtitle"]}>
+                Everything we stock in {category?.name}, all in one place.
+              </p>
+            </div>
+            {category?.categoryImage && (
+              <div className={styles["hero-media"]}>
+                <img src={category.categoryImage} alt={category.name} />
+              </div>
+            )}
           </div>
-
-          <hr />
 
           <ListToolbar
             count={productsCount}

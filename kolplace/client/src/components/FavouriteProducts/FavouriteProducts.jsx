@@ -17,15 +17,18 @@ const FavouriteProducts = () => {
 
   return (
     <section className={styles["favourite-products-section"]}>
-      <div>
-        <h1>Favourite Products</h1>
-        <img
-          className={styles["favourites-banner-image"]}
-          src={favouritesBanner}
-          alt="favourites-banner"
-        />
+      <div className={styles["hero"]}>
+        <div className={styles["hero-text"]}>
+          <p className={styles["eyebrow"]}>Your list</p>
+          <h1 className={styles["title"]}>Favourite products</h1>
+          <p className={styles["subtitle"]}>
+            Products you saved with the heart button, ready when you are.
+          </p>
+        </div>
+        <div className={styles["hero-media"]}>
+          <img src={favouritesBanner} alt="Favourites" />
+        </div>
       </div>
-      <hr />
 
       <div>
         <ListToolbar

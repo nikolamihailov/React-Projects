@@ -1,8 +1,19 @@
+/* Toasts stack in the top-right corner on desktop and across the top on phones. */
 .notifs-container {
   position: fixed;
-  top: 12.5rem;
-  right: 0.95rem;
+  top: 1rem;
+  right: 1rem;
+  z-index: 70;
+  width: min(24rem, calc(100vw - 2rem));
   display: flex;
   flex-direction: column;
-  z-index: 6;
+}
+
+@media screen and (max-width: 37.5em) {
+  .notifs-container {
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+  }
 }

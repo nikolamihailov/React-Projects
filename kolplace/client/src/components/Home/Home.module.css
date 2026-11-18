@@ -17,9 +17,6 @@
   align-items: center;
   gap: 1rem;
   text-align: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
 }
 
 .short-about-section h2 {

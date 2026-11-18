@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const storeSchema = new mongoose.Schema({
     storeImage: {
         type: String,
-
-        required: [true, "Store image is required!"]
+        required: [true, "Store image is required!"],
+        match: [/^https?:\/\/.+/, "Provide valid image link!"]
     },
     city: {
         type: String,

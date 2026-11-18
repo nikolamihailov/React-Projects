@@ -11,8 +11,8 @@ const routes = require("../routes");
 // api/index.js hands it to Vercel.
 const createApp = () => {
     const app = express();
-    app.use(express.json({ limit: '30mb' }));
-    app.use(express.urlencoded({ extended: false, limit: '30mb' }));
+    app.use(express.json({ limit: '1mb' }));
+    app.use(express.urlencoded({ extended: false, limit: '1mb' }));
     app.use(cors());
     app.get("/", (req, res) => {
         res.send("We are live!");

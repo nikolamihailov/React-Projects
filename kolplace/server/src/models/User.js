@@ -37,6 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
+        match: [/^https?:\/\/.+/, "Provide valid avatar link!"],
         // default: "https://icons-for-free.com/iconfiles/png/512/avatar+circle+male+profile+user+icon-1320196703471638282.png"
     },
     role: {

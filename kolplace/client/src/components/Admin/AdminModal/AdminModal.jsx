@@ -54,7 +54,7 @@ const AdminModal = ({
         <div className={styles["body"]}>
           {isLoading ? (
             <div className={styles["loading"]}>
-              <Spinner />
+              <Spinner inline />
             </div>
           ) : (
             children

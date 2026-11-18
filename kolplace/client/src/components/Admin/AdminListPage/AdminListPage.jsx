@@ -97,7 +97,7 @@ const AdminListPage = ({
       <div className={styles["body"]} ref={bodyRef}>
         {isLoading ? (
           <div className={styles["center"]}>
-            <Spinner />
+            <Spinner inline />
           </div>
         ) : isEmpty ? (
           <p className={styles["empty"]}>{emptyText}</p>

@@ -54,7 +54,7 @@ const Stats = () => {
     <section className={styles["admin-stats"]}>
       <h1>All Stats</h1>
       {isLoading ? (
-        <Spinner />
+        <Spinner inline />
       ) : (
         <div className={styles["stats"]}>
           <div className={styles["count-stats-categories"]}>

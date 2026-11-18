@@ -83,7 +83,7 @@ const OrderDetails = ({ id, onClose }) => {
         <div className={styles["body"]}>
           {isLoading ? (
             <div className={styles["loading"]}>
-              <Spinner />
+              <Spinner inline />
             </div>
           ) : (
             <>

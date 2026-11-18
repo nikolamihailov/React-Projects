@@ -115,7 +115,7 @@ const EditProfile = ({ onClose, update }) => {
         <div className={styles["body"]}>
           {isLoading ? (
             <div className={styles["loading"]}>
-              <Spinner />
+              <Spinner inline />
             </div>
           ) : (
             <>

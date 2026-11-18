@@ -24,7 +24,7 @@ const AdminInfo = () => {
   return (
     <div className={styles["info"]}>
       {isLoading ? (
-        <Spinner />
+        <Spinner inline />
       ) : (
         <>
           <Link to={"/admin-panel"}>

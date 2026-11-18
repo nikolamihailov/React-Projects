@@ -1,23 +1,28 @@
+.wrap {
+  width: 100%;
+  min-height: calc(100vh - var(--header-h, 10rem));
+  min-height: calc(100svh - var(--header-h, 10rem));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline {
+  min-height: 8rem;
+}
+
 .loader {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  margin: 0 auto;
-  width: 4.3rem;
-  height: 4.3rem;
-  border: 0.65rem solid;
-  border-color: var(--brand) var(--background-inverted-color);
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0.45rem solid;
+  border-color: var(--brand) var(--border);
   border-radius: 50%;
-  display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }

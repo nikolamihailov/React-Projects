@@ -6,6 +6,7 @@ const Product = require("../models/Product");
 const ShoppingCart = require("../models/ShoppingCart");
 const User = require("../models/User");
 const Review = require("../models/Review");
+const { deleteBlobs, replacedUrls } = require("../utils/blob");
 
 
 exports.getAllProducts = () => Product.find().populate("category").populate("reviews");
@@ -106,7 +107,14 @@ exports.getOneProduct = (id) => Product.findById(id).populate("category").popula
 
 exports.addProduct = (data) => Product.create(data);
 
-exports.editProduct = (id, data) => Product.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+const IMAGE_FIELDS = ["mainImage", "imageTwo", "imageThree", "imageFour"];
+
+exports.editProduct = async (id, data) => {
+    const before = await Product.findById(id).lean();
+    const updated = await Product.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+    await deleteBlobs(replacedUrls(before, updated, IMAGE_FIELDS));
+    return updated;
+};
 
 // Remove every reference to the product too, otherwise carts and favourites
 // populate it as null and the client crashes reading its fields.
@@ -125,6 +133,7 @@ exports.deleteProduct = async (id) => {
             { $pull: { favouriteProducts: deletedProduct._id } }
         ),
         Review.deleteMany({ product: deletedProduct._id }),
+        deleteBlobs(IMAGE_FIELDS.map((f) => deletedProduct[f])),
     ]);
 
     return deletedProduct;

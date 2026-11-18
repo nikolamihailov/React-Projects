@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const ShoppingCart = require("../models/ShoppingCart");
 const jwt = require("../utils/jwt");
 const bcrypt = require("bcryptjs");
+const { deleteBlobs, replacedUrls } = require("../utils/blob");
 const SECRET = process.env.JWT_SECRET; // some secret
 
 exports.register = async (data) => {
@@ -66,7 +67,9 @@ exports.updateUserInfo = async (id, data) => {
         throw new Error("Email already exists!");
     }
 
+    const before = await User.findById(id, "avatar").lean();
     const user = await User.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+    await deleteBlobs(replacedUrls(before, user, ["avatar"]));
 
     return user;
 };
@@ -154,7 +157,9 @@ exports.getAllWithFilters = async (itemsPerPage, page, filter) => {
 exports.deleteUser = async (id) => {
     const user = await User.findById(id);
     await ShoppingCart.findByIdAndDelete(user.shoppingCart);
-    return User.findByIdAndDelete(id);
+    const deleted = await User.findByIdAndDelete(id);
+    await deleteBlobs([user.avatar]);
+    return deleted;
 };
 
 exports.getAllCount = () => User.estimatedDocumentCount();

@@ -1,4 +1,5 @@
 const Category = require("../models/Category");
+const { deleteBlobs, replacedUrls } = require("../utils/blob");
 
 exports.getAllCategories = () => Category.find();
 
@@ -28,9 +29,18 @@ exports.getOneCategoryByName = (name) => Category.findOne({ name }).collation({ 
 
 exports.createCategory = (data) => Category.create(data);
 
-exports.editCategory = (id, data) => Category.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+exports.editCategory = async (id, data) => {
+    const before = await Category.findById(id).lean();
+    const updated = await Category.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+    await deleteBlobs(replacedUrls(before, updated, ["categoryImage"]));
+    return updated;
+};
 
-exports.deleteCategory = (id) => Category.findByIdAndDelete(id);
+exports.deleteCategory = async (id) => {
+    const deleted = await Category.findByIdAndDelete(id);
+    if (deleted) await deleteBlobs([deleted.categoryImage]);
+    return deleted;
+};
 
 exports.getAllCount = async () => {
     const count = await Category.estimatedDocumentCount();

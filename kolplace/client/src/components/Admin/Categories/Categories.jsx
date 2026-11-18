@@ -1,21 +1,18 @@
-import styles from "./Categories.module.css";
+import AdminListPage, { AdminActionButton } from "../AdminListPage/AdminListPage";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import CategoryItem from "./CategoryItem/CategoryItem";
 import usePagination from "../../../hooks/usePagination";
-import Pagination from "../../Pagination/Pagination";
 import AddCategoryItem from "./AddCategoryItem/AddCategoryItem";
 import EditCategoryItem from "./EditCategoryItem/EditCategoryItem";
 import DeleteCategoryItem from "./DeleteCategoryItem/DeleteCategoryItem";
 import { getAllWithFilters } from "../../../data/services/categoryService";
 import FilterCategories from "../../Filters/AdminFilters/CategoryFilter/FilterCategories";
-import { motion, AnimatePresence } from "framer-motion";
-import Spinner from "../../Spinner/Spinner";
 
 const Categories = () => {
-  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
+  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount, resetPage } =
     usePagination();
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
@@ -58,62 +55,49 @@ const Categories = () => {
     setSelectedCategory(id);
   }, []);
 
-  const onChange = useCallback((e) => setFilter(e.target.value), []);
+  const onChange = useCallback((e) => {
+    setFilter(e.target.value);
+    resetPage();
+  }, [resetPage]);
 
   return (
-    <div className={styles["admin-categories"]}>
-      <h1>All Categories</h1>
-
-      <div className={styles["admin-categories-top"]}>
-        <button onClick={() => setIsAddOpen(true)}>
-          Add category <i className="fa-solid fa-circle-plus"></i>
-        </button>
-        <FilterCategories onChange={onChange} />
-      </div>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <motion.div layout className={styles["admin-categories-container"]}>
-          <AnimatePresence>
-            {categories?.length > 0 ? (
-              categories.map((c) => (
-                <CategoryItem
-                  key={c._id}
-                  {...c}
-                  openEdit={openEdit}
-                  openDelete={openDelete}
-                />
-              ))
-            ) : (
-              <h2>No categories</h2>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      )}
-
-      {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
-      {isEditOpen && (
-        <EditCategoryItem
-          onClose={onCloseEdit}
-          id={selectedCategory}
-          updateCategories={updateCategories}
-        />
-      )}
-      {isDeleteOpen && (
-        <DeleteCategoryItem
-          onClose={onCloseDelete}
-          id={selectedCategory}
-          updateCategories={updateCategories}
-        />
-      )}
-      <Pagination
-        page={page}
-        pageCount={pageCount}
-        prevPage={prevPage}
-        nextPage={nextPage}
-        switchToPage={switchToPage}
-      />
-    </div>
+    <AdminListPage
+      title="Categories"
+      actions={
+        <AdminActionButton onClick={() => setIsAddOpen(true)}>
+          <i className="fa-solid fa-circle-plus"></i> Add category
+        </AdminActionButton>
+      }
+      filters={<FilterCategories onChange={onChange} />}
+      isLoading={isLoading}
+      isEmpty={!categories?.length}
+      emptyText="No categories"
+      minItemWidth={220}
+      pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
+      overlays={
+        <>
+          {isAddOpen && <AddCategoryItem onClose={onCloseAdd} />}
+          {isEditOpen && (
+            <EditCategoryItem
+              onClose={onCloseEdit}
+              id={selectedCategory}
+              updateCategories={updateCategories}
+            />
+          )}
+          {isDeleteOpen && (
+            <DeleteCategoryItem
+              onClose={onCloseDelete}
+              id={selectedCategory}
+              updateCategories={updateCategories}
+            />
+          )}
+        </>
+      }
+    >
+      {categories?.map((c) => (
+        <CategoryItem key={c._id} {...c} openEdit={openEdit} openDelete={openDelete} />
+      ))}
+    </AdminListPage>
   );
 };
 

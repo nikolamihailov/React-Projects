@@ -1,18 +1,14 @@
-import styles from "../../Filters.module.css";
+import { AdminFilterSelect } from "../../../Admin/AdminListPage/AdminListPage";
 
-const FilterProductsBySort = ({ onChange }) => {
-  return (
-    <div className={styles["filters"]}>
-      <select name="filters" id="filters" onChange={onChange}>
-        <option value="createdAt-asc">Oldest</option>
-        <option value="createdAt-desc">Newest</option>
-        <option value="name-asc">Name (a-z)</option>
-        <option value="name-desc">Name (z-a)</option>
-        <option value="price-asc">Price asc</option>
-        <option value="price-desc">Price desc</option>
-      </select>
-    </div>
-  );
-};
+const FilterProductsBySort = ({ onChange }) => (
+  <AdminFilterSelect label="Sort by" id="product-sort" name="product-sort" onChange={onChange}>
+    <option value="createdAt-asc">Oldest</option>
+    <option value="createdAt-desc">Newest</option>
+    <option value="name-asc">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+    <option value="price-asc">Price (low to high)</option>
+    <option value="price-desc">Price (high to low)</option>
+  </AdminFilterSelect>
+);
 
 export default FilterProductsBySort;

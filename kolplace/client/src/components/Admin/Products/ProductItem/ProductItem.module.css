@@ -1,21 +1,22 @@
 .admin-product-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  flex-basis: 22%;
-  height: 250px;
+  height: 100%;
+  text-align: center;
 }
 
 .admin-product-item img {
-  height: 105px;
-  width: 115px;
+  height: 140px;
+  width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 3px var(--background-inverted-color));
 }
 
 .admin-product-item h2 {
-  font-size: 18px;
+  font-size: 16px;
+  margin: 12px 0 4px;
 }
 
 .admin-product-item button {
@@ -29,7 +30,6 @@
   margin-bottom: 15px;
 }
 .admin-product-item div > button:nth-child(1) {
-  margin-right: 10px;
   background-color: var(--edit-btn-color);
   filter: drop-shadow(0 0 4px var(--edit-btn-color));
 }
@@ -59,4 +59,43 @@
   font-size: 19px;
   font-weight: bold;
   color: var(--white-color);
+}
+
+/* Card layout inside the admin grid: image, details, then the actions. */
+.admin-product-item > div:first-child {
+  order: 10;
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.admin-product-item > div:first-child > button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  color: var(--white-color);
+  font-size: 16px;
+}
+
+.admin-product-item > div:first-child > button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Declared after the reset above so the colours survive "all: unset". */
+.admin-product-item > div:first-child > button:nth-child(1) {
+  background-color: var(--edit-btn-color);
+}
+
+.admin-product-item > div:first-child > button:nth-child(2) {
+  background-color: var(--delete-btn-color);
 }

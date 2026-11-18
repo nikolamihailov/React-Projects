@@ -1,24 +1,21 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import styles from "./Products.module.css";
+import AdminListPage, { AdminActionButton } from "../AdminListPage/AdminListPage";
 import AddProductItem from "./AddProductItem/AddProduct";
 import usePagination from "../../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { NotifContext } from "../../../contexts/NotificationContext";
 import { getAllWithFilters } from "../../../data/services/productService";
-import Pagination from "../../Pagination/Pagination";
 import ProductItem from "./ProductItem/ProductItem";
 import EditProductItem from "./EditProductItem/EditProduct";
 import DeleteProductItem from "./DeleteProductItem/DeleteProductItem";
 import FilterProductsByCategory from "../../Filters/AdminFilters/ProductFilters/FilterProductsByCategory";
 import FilterProductsBySort from "../../Filters/AdminFilters/ProductFilters/FilterProductsBySort";
-import { motion, AnimatePresence } from "framer-motion";
-import Spinner from "../../Spinner/Spinner";
 
 const Products = () => {
   const onPromotion = false;
   const itemsPerPage = 8;
-  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount } =
+  const { page, pageCount, prevPage, nextPage, switchToPage, updatePageCount, resetPage } =
     usePagination();
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -81,69 +78,57 @@ const Products = () => {
 
   const onCategoryFilterChange = useCallback((e) => {
     setCategoryFilter(e.target.value);
-  }, []);
+    resetPage();
+  }, [resetPage]);
 
-  const onSortFilterChange = useCallback(
-    (e) => setSortFilter(e.target.value),
-    []
-  );
+  const onSortFilterChange = useCallback((e) => {
+    setSortFilter(e.target.value);
+    resetPage();
+  }, [resetPage]);
 
   return (
-    <div className={styles["admin-products"]}>
-      <h1>All Products</h1>
-
-      <div className={styles["admin-products-top"]}>
-        <FilterProductsByCategory onChange={onCategoryFilterChange} />
-        <button onClick={() => setIsAddOpen(true)}>
-          Add product <i className="fa-solid fa-circle-plus"></i>
-        </button>
-        <FilterProductsBySort onChange={onSortFilterChange} />
-      </div>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <motion.div layout className={styles["admin-products-container"]}>
-          <AnimatePresence>
-            {products?.length > 0 ? (
-              products.map((p) => (
-                <ProductItem
-                  key={p._id}
-                  {...p}
-                  openEdit={openEdit}
-                  openDelete={openDelete}
-                />
-              ))
-            ) : (
-              <h2>No products</h2>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      )}
-      {isAddOpen && <AddProductItem onClose={onCloseAdd} />}
-      {isEditOpen && (
-        <EditProductItem
-          onClose={onCloseEdit}
-          id={selectedProduct}
-          updateProducts={updateProducts}
-        />
-      )}
-      {isDeleteOpen && (
-        <DeleteProductItem
-          onClose={onCloseDelete}
-          id={selectedProduct}
-          updateProducts={updateProducts}
-        />
-      )}
-      {pageCount > 1 && (
-        <Pagination
-          page={page}
-          pageCount={pageCount}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          switchToPage={switchToPage}
-        />
-      )}
-    </div>
+    <AdminListPage
+      title="Products"
+      actions={
+        <AdminActionButton onClick={() => setIsAddOpen(true)}>
+          <i className="fa-solid fa-circle-plus"></i> Add product
+        </AdminActionButton>
+      }
+      filters={
+        <>
+          <FilterProductsByCategory onChange={onCategoryFilterChange} />
+          <FilterProductsBySort onChange={onSortFilterChange} />
+        </>
+      }
+      isLoading={isLoading}
+      isEmpty={!products?.length}
+      emptyText="No products"
+      minItemWidth={200}
+      pagination={{ page, pageCount, prevPage, nextPage, switchToPage }}
+      overlays={
+        <>
+          {isAddOpen && <AddProductItem onClose={onCloseAdd} />}
+          {isEditOpen && (
+            <EditProductItem
+              onClose={onCloseEdit}
+              id={selectedProduct}
+              updateProducts={updateProducts}
+            />
+          )}
+          {isDeleteOpen && (
+            <DeleteProductItem
+              onClose={onCloseDelete}
+              id={selectedProduct}
+              updateProducts={updateProducts}
+            />
+          )}
+        </>
+      }
+    >
+      {products?.map((p) => (
+        <ProductItem key={p._id} {...p} openEdit={openEdit} openDelete={openDelete} />
+      ))}
+    </AdminListPage>
   );
 };
 

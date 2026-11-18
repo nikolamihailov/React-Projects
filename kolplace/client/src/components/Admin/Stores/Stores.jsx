@@ -1,9 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import styles from "./Stores.module.css";
-import { motion, AnimatePresence } from "framer-motion";
+import AdminListPage, { AdminActionButton } from "../AdminListPage/AdminListPage";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { NotifContext } from "../../../contexts/NotificationContext";
-import Spinner from "../../Spinner/Spinner";
 import { getAll } from "../../../data/services/storeService";
 import { useNavigate } from "react-router-dom";
 import StoreItem from "./StoreItem/StoreItem";
@@ -52,54 +50,33 @@ const Stores = () => {
   }, []);
 
   return (
-    <div className={styles["admin-stores"]}>
-      <h1>All Stores</h1>
-
-      <div className={styles["admin-stores-top"]}>
-        <button onClick={() => setIsAddOpen(true)}>
-          Add store <i className="fa-solid fa-circle-plus"></i>
-        </button>
-      </div>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <motion.div layout className={styles["admin-stores-container"]}>
-          <AnimatePresence>
-            {stores?.length > 0 ? (
-              stores.map((c) => (
-                <StoreItem
-                  key={c._id}
-                  {...c}
-                  openEdit={openEdit}
-                  openDelete={openDelete}
-                />
-              ))
-            ) : (
-              <h2>No stores</h2>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      )}
-
-      {isAddOpen && (
-        <AddStore onClose={onCloseAdd} updateStores={updateStores} />
-      )}
-      {isEditOpen && (
-        <EditStore
-          onClose={onCloseEdit}
-          id={selectedStore}
-          updateStores={updateStores}
-        />
-      )}
-
-      {isDeleteOpen && (
-        <DeleteStore
-          onClose={onCloseDelete}
-          id={selectedStore}
-          updateStores={updateStores}
-        />
-      )}
-    </div>
+    <AdminListPage
+      title="Stores"
+      actions={
+        <AdminActionButton onClick={() => setIsAddOpen(true)}>
+          <i className="fa-solid fa-circle-plus"></i> Add store
+        </AdminActionButton>
+      }
+      isLoading={isLoading}
+      isEmpty={!stores?.length}
+      emptyText="No stores"
+      minItemWidth={240}
+      overlays={
+        <>
+          {isAddOpen && <AddStore onClose={onCloseAdd} updateStores={updateStores} />}
+          {isEditOpen && (
+            <EditStore onClose={onCloseEdit} id={selectedStore} updateStores={updateStores} />
+          )}
+          {isDeleteOpen && (
+            <DeleteStore onClose={onCloseDelete} id={selectedStore} updateStores={updateStores} />
+          )}
+        </>
+      }
+    >
+      {stores?.map((s) => (
+        <StoreItem key={s._id} {...s} openEdit={openEdit} openDelete={openDelete} />
+      ))}
+    </AdminListPage>
   );
 };
 

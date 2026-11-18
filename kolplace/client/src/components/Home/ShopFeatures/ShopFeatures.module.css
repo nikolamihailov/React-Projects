@@ -11,9 +11,20 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-/* Thin vertical hairlines between items, in place of the old slashes. */
-.feature + .feature {
-  border-left: 1px solid var(--border);
+/* Tilted brand-red slashes between items, as in the original design. */
+.feature {
+  position: relative;
+}
+
+.feature + .feature::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 0.15rem;
+  background-color: var(--brand);
+  transform: rotate(25deg);
 }
 
 .link {
@@ -67,8 +78,8 @@ a.link:focus-visible {
     row-gap: 1.25rem;
   }
 
-  .feature + .feature {
-    border-left: none;
+  .feature + .feature::before {
+    display: none;
   }
 }
 

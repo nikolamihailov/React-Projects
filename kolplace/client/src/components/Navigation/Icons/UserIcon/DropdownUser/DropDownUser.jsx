@@ -22,10 +22,10 @@ const DropDownUser = ({ mouseLeave }) => {
 
   return (
     <>
-      <ul className={styles["user-dropdown"]}>
+      <ul className={styles["user-dropdown"]} role="menu">
         {isAuthenticated ? (
           <>
-            <li>{email}</li>
+            <li className={styles["email"]}>{email}</li>
             <Link to={"/my-profile"} onClick={mouseLeave}>
               <li>
                 <i className="fa-solid fa-user"></i>

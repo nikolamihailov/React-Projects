@@ -17,7 +17,7 @@
   left: 1rem;
   display: grid;
   place-items: center;
-  color: var(--muted);
+  color: color-mix(in srgb, var(--primary-color) 80%, transparent);
   font-size: var(--text-sm);
   pointer-events: none;
 }
@@ -27,18 +27,21 @@
   width: 100%;
   height: 2.75rem;
   padding: 0 2.75rem 0 2.75rem;
-  border: 1px solid var(--border);
+  /* A filled pill that stands out from the header in both themes:
+     a shade darker than the light header, a shade lighter than the dark one. */
+  border: 1px solid color-mix(in srgb, var(--background-inverted-color) 30%, transparent);
   border-radius: 999px;
-  background-color: var(--background-color);
+  background-color: color-mix(in srgb, var(--background-inverted-color) 10%, var(--background-color));
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
   color: var(--primary-color);
   font: inherit;
   font-size: var(--text-md);
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
 .input::placeholder {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--primary-color) 70%, transparent);
 }
 
 /* We render our own clear button. */
@@ -47,13 +50,14 @@
 }
 
 .input:hover {
-  border-color: color-mix(in srgb, var(--primary-color) 30%, transparent);
+  border-color: color-mix(in srgb, var(--primary-color) 55%, transparent);
 }
 
 .input:focus-visible,
 .input:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+  background-color: color-mix(in srgb, var(--background-inverted-color) 4%, var(--background-color));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 35%, transparent);
 }
 
 .clear {

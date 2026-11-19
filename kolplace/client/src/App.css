@@ -131,6 +131,17 @@ input:autofill {
   background-color: var(--background-color);
 }
 
+/* The content area always fills the screen below the header, so on load you
+   see only header + content and the footer appears once you scroll.
+   Short pages sit centred in that space; "safe" lets tall pages start at the top. */
+.main {
+  min-height: calc(100vh - var(--header-h, 0px));
+  min-height: calc(100svh - var(--header-h, 0px));
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+}
+
 .backdrop {
   position: fixed; /* or position absolute */
   top: 0;
